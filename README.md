@@ -1,12 +1,8 @@
-# Hallo Gruppe 7!
+# StudienPlaner PROject
 
-Willkommen in Ihrem Repo für Web-Programmierung!
+Unsere Anwendung PROject ist eine Projektmanagement-Anwendung und dient dazu projektspezifische Aufgaben zu verwalten. Mit ihr können Nutzer Projekte anlegen und verschiedene Tools nutzen, um einen Überblick für ihr Projekt zu schaffen. Zum Beispiel ist es möglich, den Projekten Mitglieder zuzuweisen und Teilaufgaben zu verteilen. Der Fortschritt von Teilprozessen bzw. dem gesamten Projekt wird dem Nutzer optisch dargestellt. Eine Kalenderfunktion bietet unter anderem die Möglichkeit Deadlines festzuhalten. Der Nutzer kann somit visuell an Terminabgaben in Form eines Counters erinnert werden.  
 
-Projekt-URL: https://gruppe-07.wp20.mylab.th-luebeck.de
-
-Informationen zu benötigter Software und Technik: https://wp20.mylab.th-luebeck.de/
-
-Der Inhalt dieser Datei (`README.md`) wird in GitLab auf der Hauptseite Ihres Projektes angezeigt. Entsprechend ist hier ein guter Ort, ein paar grundlegende Angaben zu Ihrem Projekt zu machen, beispielsweise zu Besonderheiten Ihrer Ordnerstruktur und ähnliches. Diesen Absatz können Sie durch eine (kurze) Beschreibung Ihres Projektes ersetzen. Passen Sie bitte auch die Überschrift und die Mitgliederliste entsprechend an.
+Ein Dashboard bietet eine sinnvolle Übersicht über alle laufenden Projekte. Wahlweise kann sich der Nutzer aber auch nur ein konkretes Projekt oder Inhalte eines angebotenen Tools (wie z.B. offene Aufgaben als to do-Liste) anzeigen lassen.
 
 ## Mitglieder
 
