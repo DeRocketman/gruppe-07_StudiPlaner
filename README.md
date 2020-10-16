@@ -9,7 +9,7 @@ Ein Dashboard bietet eine sinnvolle Übersicht über alle laufenden Projekte. Wa
 - Kim Lara Feller
 - Louis Grümmer
 - Dirk Stricker
-- Ben Ansohn McDougall
+- Benjamin Ansohn McDougall
 
 ## Ordnerstruktur
 
