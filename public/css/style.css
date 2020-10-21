@@ -1,9 +1,9 @@
 body {
-  background-image: url("../images/palebluedot.jpg");
-  background-color: black;
+  /*background-image: url("../images/palebluedot.jpg");*/
+  /*background-position: right top;*/
+  background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right top;
 }
 
 div.poem {
