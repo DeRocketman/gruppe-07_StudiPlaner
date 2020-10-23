@@ -27,9 +27,11 @@ p.attribution {
   font-weight: normal;
   text-align: right;
 }
+
 table {
   border-spacing: 0;
 }
+
 th {
   background-color: maroon;
   color: white;
