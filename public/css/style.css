@@ -30,6 +30,7 @@ p.attribution {
 
 table {
   border-spacing: 0;
+  border-bottom: 3px solid black;
 }
 
 th {
@@ -66,4 +67,6 @@ tr:hover {
   color: white;
 }
 
-
+td:nth-child(2)::first-letter{
+   font-weight: bold;
+}
