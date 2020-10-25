@@ -1,5 +1,5 @@
 table {
-    border-spacing: 0;
+    border-collapse: collapse;
     border-bottom: 2px solid black;
     box-shadow: 10px -10px 3px grey;
 }
@@ -13,7 +13,7 @@ th {
 
 td {
     border-right-color: darkred;
-    border-right-style: solid;
+    border-right-style: ridge;
     border-right-width: 1px;
 }
 
