@@ -5,21 +5,21 @@
     <title>PROject - Der Studienplaner</title>
 
     <!-- <link rel="stylesheet" href=" "> Referenz CSS einfuegen -->
-    <link rel="shortcut icon" type="bild/papierflieger" href="images\papierflieger.ico">
+    <link rel="shortcut icon" type="bild/papierflieger" href="images/papierflieger.ico" />
 </head>
 
 <body>
 
 <header>
     <nav>
-    <a href="#Startseite">Startseite</a>
-    <a href="#Projekte">Projekte</a>
-    <a href="#Kalender">Kalender</a>
-    <a href="#Hilfe">Hilfe</a>
-    <a href="#Impressum">Impressum</a>
-    <p id="Startseite">
-        </nav>
-    <img src="images\papierflieger_logo.png" width="400" height="200" alt="Papierflieger Logo" title="Papierflieger - PROject" />
+        <a href="#">Startseite</a>
+        <a href="#">Projekte</a>
+        <a href="#">Kalender</a>
+        <a href="#">Hilfe</a>
+        <a href="#">Impressum</a>
+        <p id="Startseite">
+    </nav>
+    <img id="mainLogo" src="images/papierflieger_logo_400x268.png" alt="Papierflieger Logo" title="Papierflieger - PROject" />
     &nbsp;
     <h1> Willkommen!</h1>
     Der sicke Studienplaner
@@ -31,7 +31,7 @@
     <fieldset>
         <h2>Aufgaben</h2>
 
-        <table border="1">
+        <table>
             <tr>
                 <th>&#10004;</th> <!-- Unicode für ein Häkchen -->
                 <th>Modul</th>
@@ -68,23 +68,23 @@
             </ul>
         </div>
         <figure>
-            <progress value="30" max="100"/> <!-- zweite Visualisierung als Ladebalken -->
+            <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
         </figure>
     </fieldset>
     <!-- Drittes Fieldset für das Tool Kalender. -->
     <fieldset>
         <h2>Alle Termine auf einen Blick</h2>
 
-        <table border=1 id="kalender">
-            <tr style=visibility:collapse>
+        <table id="kalender">
+            <tr>
                 <td colspan=7 id=datums_speicher></td>
             </tr>
             <tr>
                 <td class="kalender_kopf"><a class="kalender_link"
-                                             href="javascript:prevMonth()">&#10094;</a></td> <!-- Idee Javascript Methode bereits mit eingetragen, Unicodezeichen für "<" -->
+                                             href="javascript:prevMonth()">&#10094;</a></td> <!-- Idee Javascript Methode bereits mit eingetragen, Unicode Zeichen für "<" -->
                 <td colspan=5 class="kalender_kopf_monat" id="kalender_monat"></td>
                 <td class="kalender_kopf"><a class="kalender_link"
-                                             href="javascript:nextMonth()">&#10095;</a></td> <!-- Idee Javascript Methode bereits mit eingetragen, Unicodezeichen für ">" -->
+                                             href="javascript:nextMonth()">&#10095;</a></td> <!-- Idee Javascript Methode bereits mit eingetragen, Unicode Zeichen für ">" -->
             </tr>
             <tr>
                 <td class="kalender_tag">Mo</td>
