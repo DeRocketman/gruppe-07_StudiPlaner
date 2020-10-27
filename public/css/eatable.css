@@ -1,0 +1,43 @@
+table {
+    border-collapse: collapse;
+    border-bottom: 2px solid black;
+    box-shadow: 10px -10px 3px grey;
+}
+
+th {
+    background-color: maroon;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    border-right-color: darkred;
+    border-right-style: ridge;
+    border-right-width: 1px;
+}
+
+td:last-child {
+    border-right-style: none;
+}
+
+tr {
+    color: black;
+}
+
+tr:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+tr:nth-child(even) {
+    background-color: darkgrey;
+}
+
+tr:hover {
+    background-color: red;
+    color: white;
+}
+
+td:nth-child(2)::first-letter{
+    font-weight: bold;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>PROject - Der Studienplaner</title>
+
+    <!-- <link rel="stylesheet" href=" "> Referenz CSS einfuegen -->
+    <link rel="shortcut icon" type="bild/papierflieger" href="images/papierflieger.ico" />
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#">Startseite</a>
+        <a href="#">Projekte</a>
+        <a href="#">Kalender</a>
+        <a href="#">Hilfe</a>
+        <a href="#">Impressum</a>
+        <p id="Startseite">
+    </nav>
+    <img id="mainLogo" src="images/papierflieger_logo_400x268.png" alt="Papierflieger Logo" title="Papierflieger - PROject" />
+    &nbsp;
+    <h1> Willkommen!</h1>
+    Der sicke Studienplaner
+
+</header>
+
+<main>
+    <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
+    <fieldset>
+        <h2>Aufgaben</h2>
+
+        <table>
+            <tr>
+                <th>&#10004;</th> <!-- Unicode für ein Häkchen -->
+                <th>Modul</th>
+                <th>Aufgaben</th>
+            </tr>
+            <tr>
+                <td><label><input type="checkbox" id="aufgabe1" name="aufgabe1"></label></td>
+                <td>MD2</td>
+                <td>Fotos für Webseite machen</td>
+            </tr>
+            <tr>
+                <td><label><input type="checkbox" id="aufgabe2" name="aufgabe2"></label></td>
+                <td>WebProg</td>
+                <td>Wireframe, HTML</td>
+            </tr>
+            <tr>
+                <td><label><input type="checkbox" id="aufgabe3" name="aufgabe3"></label></td>
+                <td>GdM</td>
+                <td>Rechnen</td>
+            </tr>
+        </table>
+    </fieldset>
+    <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
+    <fieldset>
+        <h2>Fortschritt</h2>
+        <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
+        <div class="containerProzessschritte">
+            <ul class="prozessschritte">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+        <figure>
+            <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
+        </figure>
+    </fieldset>
+    <!-- Drittes Fieldset für das Tool Kalender. -->
+    <fieldset>
+        <h2>Alle Termine auf einen Blick</h2>
+
+        <table id="kalender">
+            <tr>
+                <td colspan=7 id=datums_speicher></td>
+            </tr>
+            <tr>
+                <td class="kalender_kopf"><a class="kalender_link">&#10094;</a></td> <!-- Unicode Zeichen für "<" -->
+                <td colspan=5 class="kalender_kopf_monat" id="kalender_monat"></td>
+                <td class="kalender_kopf"><a class="kalender_link">&#10095;</a></td> <!-- Unicode Zeichen für ">" -->
+            </tr>
+            <tr>
+                <td class="kalender_tag">Mo</td>
+                <td class="kalender_tag">Di</td>
+                <td class="kalender_tag">Mi</td>
+                <td class="kalender_tag">Do</td>
+                <td class="kalender_tag">Fr</td>
+                <td class="kalender_tag">Sa</td>
+                <td class="kalender_tag">So</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_1"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_2"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_3"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_4"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_5">&#10008;</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_6"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_7"></td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_8"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_9">&#10008;</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_10"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_11"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_12"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_13"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_14"></td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_15"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_16"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_17"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_18">&#10008;</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_19"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_20"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_21"></td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_22"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_23"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_24"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_25"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_26"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_27"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_28">&#10008;</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_29"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_30"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_31"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_32"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_33">&#10008;</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_34"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_35"></td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_36">&#10008;</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_37"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_38"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_39"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_40"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_41"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_42"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <!-- Viertes Fieldset für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
+    <fieldset>
+        <h2>Projekte</h2>
+
+        <a href="#projekt1">Projekt 1</a>
+        <a href="#projekt2">Projekt 2</a>
+        <a href="#projekt3">Projekt 3</a>
+        <a href="#projekt4">Projekt 4</a>
+        <div class="projekte">
+        <p id="projekt1"> Die jeweiligen Inhalte der einzelnen Registerkarten
+        <p id="projekt2"> werden mit Hilfe von CSS später sichtbar
+        <p id="projekt3"> bzw. unsichtbar gemacht.
+        <p id="projekt4"> Je nachdem, was man dann auswählt :)
+        </div>
+
+    </fieldset>
+    <!-- Fünftes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
+    <fieldset>
+        <h2>Gruppen</h2>
+        <details open="open">
+            <summary>Gruppe 1</summary>
+            <p>Web-Programmierung <br /> Dirk, Ben, Louis, Kim</p>
+        </details>
+        <details>
+            <summary>Gruppe 2</summary>
+            <p>Mediendesign <br /> Ben, Kim, Dirk, Louis</p>
+        </details>
+        <details>
+            <summary>Gruppe 3</summary>
+            <p>Noch keine Mitglieder hinterlegt.</p>
+        </details>
+        <details>
+            <summary>Gruppe 4</summary>
+            <p>Noch keine Mitglieder hinterlegt.</p>
+        </details>
+    </fieldset>
+</main>
+</body>
+</html>

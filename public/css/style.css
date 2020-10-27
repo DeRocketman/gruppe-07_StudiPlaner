@@ -27,41 +27,4 @@ p.attribution {
   font-weight: normal;
   text-align: right;
 }
-table {
-  border-spacing: 0;
-}
-th {
-  background-color: maroon;
-  color: white;
-  text-align: left;
-  font-weight: bold;
-}
-
-td {
-  border-right-color: maroon;
-  border-right-style: solid;
-  border-right-width: 1px;
-}
-
-td:last-child {
-  border-right-style: none;
-}
-
-tr {
-  color: black;
-}
-
-tr:nth-child(odd) {
-  background-color: lightgrey;
-}
-
-tr:nth-child(even) {
-  background-color: darkgrey;
-}
-
-tr:hover {
-  background-color: red;
-  color: white;
-}
-
 
