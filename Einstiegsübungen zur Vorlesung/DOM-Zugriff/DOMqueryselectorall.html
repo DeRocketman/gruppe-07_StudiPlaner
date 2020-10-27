@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beispiel für DOM-Zugriff</title>
+    <script>
+
+        function selectAllForOne(){
+            var list = document.querySelectorAll("#main p");
+            list[1].innerHTML = "Ui, hier ist ja anderer Text!"
+        }
+
+        function selectAllForAll(){
+            var list = document.querySelectorAll("p");
+            for (var f = 0; f<list.length; f++) {
+                console.log (list[f].innerHTML);
+                list[f].innerHTML = "Ui, hier ist ja ganz anderer Text!";
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<!-- Aufgabe:
+     zum Start: Laden Sie die Seite im Browser und testen Sie das Verhalten.
+     a) Ändern Sie das HTML so, dass per JavaScript nur der zweite Absatz geändert wird.
+     b) Ändern Sie die Funktion selectAllForAll() so,
+        dass sich nur die Absätze innerhalb des zweiten divs ändern.
+        Testen Sie dafür beide in der VL vorgestellten Varianten.
+     c) Lassen Sie sich die Konsolenausgabe zeigen.-->
+
+<h1>Beispiele für DOM-Zugriff via querySelectorAll</h1>
+
+<h2>querySelector()</h2>
+<p>Der erste Absatz</p>
+<div id="main">
+    <p>Erster Absatz im div.</p>
+    <p>Zweiter Absatz im div.</p>
+</div>
+
+<div id="universe">
+    <p>Sonne im Universum</p>
+    <p>Planet im Universum</p>
+</div>
+
+
+<button onclick="selectAllForAll()">Try querySelectorAll</button>
+
+</body>
+</html>
+
+

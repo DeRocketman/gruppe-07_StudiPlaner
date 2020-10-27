@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Handling JavaScript</title>
+    <meta charset="utf-8">
+    <script>
+        function addHandler2(){
+            var divelement = document.getElementById('meindiv');
+            divelement.addEventListener('click', changeText, false);
+        }
+        function changeText(){
+            var divelement = document.getElementById('meindiv');
+            divelement.innerHTML = "Oups, hier stand doch eben was anderes...";
+        }
+    </script>
+</head>
+
+<body>
+<!-- Aufgabe: Fügen Sie eine neue Funktion changeButtonText() hinzu, bei der sich der
+         Button-Text ändert und sorgen Sie dafür, dass die Funktion aktiv wird und
+         ausgelöst werden kann. -->
+
+<div id="meindiv">Ist dieses div anklickbar?</div>
+<p></p>
+<button onclick="addHandler2()">Add a Handler (advanced)
+</button>
+
+
+</body>
+
+</html>
+

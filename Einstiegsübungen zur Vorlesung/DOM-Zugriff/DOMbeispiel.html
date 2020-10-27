@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beispiel für DOM-Zugriff</title>
+    <script>
+        function domzugriffID(){
+            var thetext = document.getElementById("meindiv").innerHTML;
+            alert('Hier steht der Text: ' + thetext);
+        }
+
+        function domzugriffClass(){
+            var locations = document.getElementsByClassName("location");
+            alert('Was steht in locations? ' + locations[0].innerHTML);
+
+        }
+        function domzugriffTag(){
+            var meinedivs = document.getElementsByTagName("div");
+            alert('Was steht im zweiten div? ' + meinedivs[1].innerHTML);
+        }
+
+
+    </script>
+</head>
+<body>
+<h1>Beispiele für DOM-Zugriff</h1>
+
+<h2>ID</h2>
+<div id="meindiv">Web is cool</div>
+<button onclick="domzugriffID()">Try me</button>
+
+<h2>Class</h2>
+<!-- Aufgabe:
+     Verändern Sie die Funktion domzugriffClass() so,
+     dass die Alertbox den Text aus dem dritten Div ("Kiel") ausgibt -->
+
+<div class="location">Lübeck</div>
+<div class="location">Hamburg</div>
+<div class="location">Kiel</div>
+<button onclick="domzugriffClass()">Try me also, please</button>
+
+<h2>Tag</h2>
+<button onclick="domzugriffTag()">Try the Tags</button>
+
+
+</body>
+</html>
+
+
