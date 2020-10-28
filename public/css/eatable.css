@@ -10,6 +10,7 @@ th {
     text-align: left;
     font-weight: bold;
     padding-left: 10px;
+    padding-right: 15px;
 }
 
 td {
@@ -17,6 +18,7 @@ td {
     border-right-style: ridge;
     border-right-width: 1px;
     padding-left: 10px;
+    padding-right: 15px;
 }
 
 td:last-child {
