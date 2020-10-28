@@ -7,6 +7,7 @@
     <!-- <link rel="stylesheet" href=" "> Referenz CSS einfuegen -->
     <link rel="shortcut icon" type="bild/papierflieger" href="images/papierflieger.ico" />
     <link rel="stylesheet" href="css/eatable.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -20,11 +21,11 @@
         <a href="#">Impressum</a>
         <p id="Startseite">
     </nav>
-    <img id="mainLogo" src="images/papierflieger_logo_400x268.png" alt="Papierflieger Logo" title="Papierflieger - PROject" />
-    &nbsp;
-    <h1> Willkommen!</h1>
-    Der sicke Studienplaner
-
+    <section class="headline">
+        <img id="mainLogo" src="images/papierflieger_logo_400x268.png" alt="Papierflieger Logo" title="Papierflieger - PROject" />
+        <h1> Willkommen!</h1>
+        <h2>Der sicke Studienplaner</h2>
+    </section>
 </header>
 
 <main>
@@ -56,24 +57,22 @@
         </table>
     </fieldset>
     <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
-    <fieldset>
+    <fieldset class="containerProzessschritte">
         <h2>Fortschritt</h2>
         <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
-        <div class="containerProzessschritte">
             <ul class="prozessschritte">
                 <li class="active">1</li>
-                <li>2</li>
+                <li class="active">2</li>
                 <li>3</li>
                 <li>4</li>
                 <li>5</li>
             </ul>
-        </div>
         <figure>
             <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
         </figure>
     </fieldset>
     <!-- Drittes Fieldset für das Tool Kalender. -->
-    <fieldset>
+    <fieldset id="kalenderfeld">
         <h2>Alle Termine auf einen Blick</h2>
 
         <table id="kalender">
@@ -179,14 +178,18 @@
         </details>
         <details>
             <summary>Gruppe 3</summary>
-            <p>Noch keine Mitglieder hinterlegt.</p>
+            <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
         </details>
         <details>
             <summary>Gruppe 4</summary>
-            <p>Noch keine Mitglieder hinterlegt.</p>
+            <p>Keine Mitglieder</p>
         </details>
     </fieldset>
 </main>
+<br>
+<br>
+<hr>
+<br>
 <table>
     <thead>
     <tr>

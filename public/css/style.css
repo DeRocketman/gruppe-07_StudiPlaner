@@ -1,30 +1,120 @@
-body {
-  /*background-image: url("../images/palebluedot.jpg");*/
-  /*background-position: right top;*/
-  background-color: white;
-  background-repeat: no-repeat;
-  background-size: cover;
+/*
+Layout des Dokuments
+ */
+nav {
+  background-color: aqua;
 }
 
-div.poem {
-  display: inline-block;
-  width: 63%;
-  margin: 70px;
-  padding: 20px;
-  border:1px solid black;
-  background: rgba(255,255,255,0.4);
+main {
+  display: grid;
+  grid-template-columns: repeat(1, 2fr 2fr 2fr);
+}
+
+/*
+Fortschrittsleiste
+ */
+.prozessschritte li {
+  list-style-type: none;
+  width: 20%;
+  float: left;
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}
+
+.prozessschritte li:before {
+  width: 30px;
+  height: 30px;
+  content: "";
+  line-height: 30px;
+  border: 2px solid #7d7d7d;
+  display: block;
+  text-align: center;
+  margin: 0 auto 3px auto;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.prozessschritte li:after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: darkgreen;
+  top: 17px;
+  left: -25%;
+  z-index: 0;
+}
+.prozessschritte li:first-child:after {
+  content: none;
+}
+.prozessschritte li.active {
+  color: darkmagenta;
   font-weight: bold;
 }
-
-p {
-  text-align: center;
+.prozessschritte li.active:before {
+  border-color: #555555;
+  background: darkmagenta;
 }
-
-p.attribution {
-  font-style: italic;
-  margin-top: 40px;
-  margin-right: 40px;
-  font-weight: normal;
-  text-align: right;
+.prozessschritte li.active + li:after {
+  background-color: darkmagenta;
 }
+.prozessschritte.active:before {
+  background: #55b776 no-repeat center center;
+  background-size: 60%;
+}
+.prozessschritte li::before {
+  background: #fff no-repeat center center;
+  background-size: 60%;
+}
+/*
+Hier könnte dein Code folgen
+ */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+F: Was fliegt durch du Luft und winkt?
+A: Ein Huhu
+ */
