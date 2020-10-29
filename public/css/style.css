@@ -1,13 +1,83 @@
 /*
 Layout des Dokuments
+
+  Farbschema:
+  cookieCrema: #ABA27D
+  navBlau: #C3F7F4
+  sandGeld: #F8EFC8
+  zartRosa: #F5D5F0
+  dunkelRosa: #AB63A0
  */
+
+body {
+  padding: 0;
+  margin: 0 0 1em 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12pt;
+  font-weight: normal;
+  color: #333333;
+}
+
 nav {
-  background-color: aqua;
+  display: flex;
+  background-color: #C3F7F4;
+  padding: .1em;
+}
+
+nav a {
+  color: #333333;
+  text-decoration: none;
+  padding: .45em 2em .45em 1em;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #AB63A0;
+}
+
+nav a:visited {
+  color: #ABA27D;
+}
+
+/* Logo mit Gruß-Formel und Unterschrift */
+header section {
+  display: flex;
+  padding: 1em;
+}
+
+header section img {
+  height: 90%;
+}
+
+/* fix für das flex box um die Überschriften rechtsbündig zu bekommen
+   siehe MDN Firefox ganz unten beim Flexbox Artikel, da align-self nicht hilft.
+ */
+header section div {
+  margin-left: auto;
+}
+
+header section h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 61pt;
+  font-weight: lighter;
+}
+
+header section h2 {
+  position: relative;
+  top: -12px;
+  right: 12px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  color: #666;
+  text-align: right;
 }
 
 main {
   display: grid;
   grid-template-columns: repeat(1, 2fr 2fr 2fr);
+  padding: 1em;
 }
 
 /*
