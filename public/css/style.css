@@ -75,9 +75,14 @@ header section h2 {
 }
 
 main {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+main section {
   display: grid;
-  grid-template-columns: repeat(1, 2fr 2fr 2fr);
-  padding: 1em;
+  grid-template-columns: repeat(1, 2fr 2fr);
 }
 
 /*
@@ -147,15 +152,20 @@ Fortschrittsleiste
   display: flex;
   flex-flow: column;
   text-align: center;
-  padding-bottom: 30px;
+}
+
+#kalender h2 {
+  padding-bottom: 50px;
 }
 
 #kalender table {
-  border: 1px #7d7d7d solid;
+  font-size: 11pt;
+  border: 1px #adadad solid;
   border-radius: 5px;
   box-shadow: none;
   border-collapse: separate;
   border-spacing: 0;
+  margin-bottom: 20%;
 }
 
 #kalender tr {
@@ -164,11 +174,11 @@ Fortschrittsleiste
 }
 
 #kalender thead th {
-  color: white;
+  font-size: 9pt;
+  color: #ffffff;
   background-color: #AB63A0;
   text-align: center;
   font-weight: lighter;
-  font-size: 10pt;
   padding: 1em;
 }
 
@@ -176,13 +186,13 @@ Fortschrittsleiste
   background-color: #F5D5F0;
   border:none;
   font-weight: lighter;
-  padding: 1em;
+  padding: .9em;
 }
 
 .kalender_eintrag  {
   border: none;
   font-weight: lighter;
-  padding: 1em;
+  padding: .8em;
 }
 
 /*

@@ -20,7 +20,6 @@
         <a href="kalender.html">Kalender</a>
         <a href="hilfe.html">Hilfe</a>
         <a href="impressum.html">Impressum</a>
-        <p id="Startseite">
     </nav>
     <section>
         <img id="mainLogo" src="images/papierflieger_logo_350x200.png" alt="Papierflieger Logo" title="Papierflieger - PROject" />
@@ -32,6 +31,7 @@
 </header>
 
 <main>
+    <section>
     <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
     <fieldset>
         <h2>Aufgaben</h2>
@@ -74,7 +74,44 @@
             <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
         </figure>
     </fieldset>
-    <!-- Drittes Fieldset für das Tool Kalender. -->
+    <!-- Drittes Fieldset für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
+    <fieldset>
+        <h2>Projekte</h2>
+
+        <a href="#projekt1">Projekt 1</a>
+        <a href="#projekt2">Projekt 2</a>
+        <a href="#projekt3">Projekt 3</a>
+        <a href="#projekt4">Projekt 4</a>
+        <div class="projekte">
+        <p id="projekt1"> Die jeweiligen Inhalte der einzelnen Registerkarten
+        <p id="projekt2"> werden mit Hilfe von CSS später sichtbar
+        <p id="projekt3"> bzw. unsichtbar gemacht.
+        <p id="projekt4"> Je nachdem, was man dann auswählt :)
+        </div>
+
+    </fieldset>
+    <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
+    <fieldset>
+        <h2>Gruppen</h2>
+        <details open="open">
+            <summary>Gruppe 1</summary>
+            <p>Web-Programmierung <br /> Dirk, Ben, Louis, Kim</p>
+        </details>
+        <details>
+            <summary>Gruppe 2</summary>
+            <p>Mediendesign <br /> Ben, Kim, Dirk, Louis</p>
+        </details>
+        <details>
+            <summary>Gruppe 3</summary>
+            <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
+        </details>
+        <details>
+            <summary>Gruppe 4</summary>
+            <p>Keine Mitglieder</p>
+        </details>
+    </fieldset>
+    </section>
+    <!-- letzte Fieldset für das Tool Kalender. -->
     <fieldset id="kalender">
         <h2>Alle Termine auf einen Blick</h2>
 
@@ -82,7 +119,7 @@
             <thead>
             <tr>
                 <th><a>&#10094;</a></th> <!-- Unicode Zeichen für "<" -->
-                <th colspan=5 id="kalender_monat">May 2020</th>
+                <th colspan=5 id="kalender_monat">May 2022</th>
                 <th><a class="kalender_link">&#10095;</a></th> <!-- Unicode Zeichen für ">" -->
             </tr>
             </thead>
@@ -140,52 +177,7 @@
                 <td class="kalender_eintrag" id="kalender_eintrag_34"> </td>
                 <td class="kalender_eintrag" id="kalender_eintrag_35"> </td>
             </tr>
-            <tr>
-                <td class="kalender_eintrag" id="kalender_eintrag_36"> </td>
-                <td class="kalender_eintrag" id="kalender_eintrag_37"> </td>
-                <td class="kalender_eintrag" id="kalender_eintrag_38"> </td>
-                <td class="kalender_eintrag" id="kalender_eintrag_39"> </td>
-                <td class="kalender_eintrag" id="kalender_eintrag_40"> </td>
-                <td class="kalender_eintrag" id="kalender_eintrag_41"> </td>
-                <td class="kalender_eintrag" id="kalender_eintrag_42"> </td>
-            </tr>
         </table>
-    </fieldset>
-    <!-- Viertes Fieldset für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
-    <fieldset>
-        <h2>Projekte</h2>
-
-        <a href="#projekt1">Projekt 1</a>
-        <a href="#projekt2">Projekt 2</a>
-        <a href="#projekt3">Projekt 3</a>
-        <a href="#projekt4">Projekt 4</a>
-        <div class="projekte">
-        <p id="projekt1"> Die jeweiligen Inhalte der einzelnen Registerkarten
-        <p id="projekt2"> werden mit Hilfe von CSS später sichtbar
-        <p id="projekt3"> bzw. unsichtbar gemacht.
-        <p id="projekt4"> Je nachdem, was man dann auswählt :)
-        </div>
-
-    </fieldset>
-    <!-- Fünftes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
-    <fieldset>
-        <h2>Gruppen</h2>
-        <details open="open">
-            <summary>Gruppe 1</summary>
-            <p>Web-Programmierung <br /> Dirk, Ben, Louis, Kim</p>
-        </details>
-        <details>
-            <summary>Gruppe 2</summary>
-            <p>Mediendesign <br /> Ben, Kim, Dirk, Louis</p>
-        </details>
-        <details>
-            <summary>Gruppe 3</summary>
-            <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
-        </details>
-        <details>
-            <summary>Gruppe 4</summary>
-            <p>Keine Mitglieder</p>
-        </details>
     </fieldset>
 </main>
 <br>
