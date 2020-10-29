@@ -141,11 +141,63 @@ Fortschrittsleiste
   background: #fff no-repeat center center;
   background-size: 60%;
 }
+
+/* Kalender fieldset */
+#kalender {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#kalender table {
+  border: 1px #7d7d7d solid;
+  border-radius: 5px;
+  box-shadow: none;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+#kalender tr {
+  border: none;
+  background-color: #F8EFC8;
+}
+
+#kalender thead th {
+  color: white;
+  background-color: #AB63A0;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 10pt;
+  padding: 1em;
+}
+
+#kalenderTage td {
+  background-color: #F5D5F0;
+  border:none;
+  font-weight: lighter;
+  padding: 1em;
+}
+
+.kalender_eintrag  {
+  border: none;
+  font-weight: lighter;
+  padding: 1em;
+}
+
 /*
-Hier könnte dein Code folgen
+um die Tabellen Aufgabe auszuhebeln
  */
 
+#kalender tr:hover {
+  color: black;
+}
 
+td:nth-child(2)::first-letter{
+  font-weight: lighter;
+}
+
+/* Ende Kalender */
 
 
 

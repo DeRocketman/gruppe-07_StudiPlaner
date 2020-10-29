@@ -75,16 +75,18 @@
         </figure>
     </fieldset>
     <!-- Drittes Fieldset für das Tool Kalender. -->
-    <fieldset id="kalenderfeld">
+    <fieldset id="kalender">
         <h2>Alle Termine auf einen Blick</h2>
 
-        <table id="kalender">
+        <table>
+            <thead>
             <tr>
-                <td class="kalender_kopf"><a class="kalender_link">&#10094;</a></td> <!-- Unicode Zeichen für "<" -->
-                <td colspan=5 class="kalender_kopf_monat" id="kalender_monat">May 2020</td>
-                <td class="kalender_kopf"><a class="kalender_link">&#10095;</a></td> <!-- Unicode Zeichen für ">" -->
+                <th><a>&#10094;</a></th> <!-- Unicode Zeichen für "<" -->
+                <th colspan=5 id="kalender_monat">May 2020</th>
+                <th><a class="kalender_link">&#10095;</a></th> <!-- Unicode Zeichen für ">" -->
             </tr>
-            <tr>
+            </thead>
+            <tr id="kalenderTage">
                 <td class="kalender_tag">Mo</td>
                 <td class="kalender_tag">Di</td>
                 <td class="kalender_tag">Mi</td>
