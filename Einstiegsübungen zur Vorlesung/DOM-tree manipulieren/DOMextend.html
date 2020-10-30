@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Handling JavaScript</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="DOMextend.css">
+
+    <script>
+        function insertListItemBefore() {
+            // create new li element and give it some content
+            var newItem = document.createElement("LI");
+            var newContent = document.createTextNode("Blue room");
+            // add content to new element
+            newItem.appendChild(newContent);
+
+            // add newly created element into the DOM
+            // a. define parent node
+            var list = document.getElementById("myList");
+            // b. insert before the first list-child
+            list.insertBefore(newItem, list.childNodes[0]);
+
+        }
+
+        function insertListItemEnd() {
+            // create new li element and give it some content
+            var newItem = document.createElement("LI");
+            var newContent = document.createTextNode("Last room");
+            // add content to new element
+            newItem.appendChild(newContent);
+
+            // add newly created element into the DOM
+            // a. define parent node
+            var list = document.getElementById("myList");
+            // b. insert new child
+            list.appendChild(newItem);
+        }
+
+        function addParagraphBefore(){
+            // create new p element and give it some content
+            var newP = document.createElement("p");
+            var newContent = document.createTextNode("Erster!");
+            // add content to new element
+            newP.appendChild(newContent);
+            // add newly created element into the DOM:
+            // a. select the parent element in which the new Element schould be added as child
+            var parentElement = document.getElementById("alerts");
+            // b. select the element before which the new one is inserted
+            var pElement = document.getElementsByTagName('p')[0];
+            // c. insert new element before pElement
+            parentElement.insertBefore(newP, pElement);
+        }
+
+        function addParagraphAfter(){
+            // create new p element and give it some content
+            var newP = document.createElement("p");
+            var newContent = document.createTextNode("Letzter!");
+            // add content to new element
+            newP.appendChild(newContent);
+            // add newly created element into the DOM
+            var currentElement = document.getElementsByTagName("button")[2];
+            var parentElement = currentElement.parentNode;
+            parentElement.insertBefore(newP, currentElement);
+
+        }
+
+        function removeParagraph(){
+            var parent = document.getElementById("alerts");
+            var childs = document.querySelectorAll("#alerts p");
+            var lastChild = childs[childs.length- 1];
+            console.log(childs.length);
+            parent.removeChild(lastChild);
+
+        }
+
+        function addAttribute () {
+            console.log('addAttribute');
+            var pElements = document.getElementsByTagName("p");
+            for (var i = 0; i < pElements.length; i++){
+                pElements[i].setAttribute("class", "green");
+            }
+            var tempclass = document.getElementsByTagName("#alerts p").getAttribute("class");
+            console.log(tempclass);
+
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+<!-- Aufgabe:
+     1. Liste:
+     Vollziehen Sie die Funktionen insertListItemBefore() und insertListItemEnd() Zeile für Zeile nach.
+     Nehmen Sie Veränderungen vor, indem Sie z.B. ein anderes HTML-Tag erzeugen,
+     oder das Element an einer anderen Stelle im DOM-Tree einfügen.
+
+     2. Absätze:
+     a) Sorgen Sie dafür, dass addParagraphAfter() einen Absatz in einem anderen Seiten-Bereich einfügt.
+
+     b) Sorgen Sie dafür, dass bei Klick auf den RemoveButton die entsprechende Funktion ausgeführt wird.
+
+     c) Sorgen Sie dafür, dass removeParagraph den ersten Absatz aus der Alerts-Section entfernt.
+
+     3. Attribute:
+     Testen Sie was passiert, wenn Sie im Browser erst "Attribut ändern" und dann "Absatz einfügen" klicken?
+     Und dann wieder "Attribut ändern"?
+
+     Was müssen Sie tun, um das Verhalten zu ändern?
+     -->
+
+<h1>JavaScript-Übung für DOM und Events (extended)</h1>
+
+<section id="listen">
+
+    <ol id="myList">
+        <li>Light room</li>
+        <li>Dark room</li>
+        <li>Twighlight zone</li>
+    </ol>
+    <button onclick="insertListItemBefore()">Listenpunkt vorne zufügen</button>
+    <button onclick="insertListItemEnd()">Listenpunkt ans Ende zufügen</button>
+
+</section>
+
+<section id="alerts">
+    <h2>Abschnitt, um mit Paragraphen zu spielen</h2>
+
+    <p>Erster Absatz mit Text in diesem Abschnitt.</p>
+    <p>Zweiter Absatz mit Text in diesem Abschnitt.</p>
+    <p>Dritter Absatz mit Text in diesem Abschnitt.</p>
+
+    <button onclick="addParagraphBefore()">Neuer erster Absatz</button><br>
+    <button onclick="addParagraphAfter()">Neuer letzter Absatz</button><br>
+    <button onclick="addAttributeNew()">Attribut ändern</button><br>
+</section>
+
+
+<section>
+    Buttons, um sie mit Funktionalität zu versorgen
+    <input type="submit" value="Insert paragraphs after"><br>
+    <input type="submit" value="Insert Paragraph before first one"><br>
+    <input type="submit" value="Remove last paragraph"><br>
+    <input type="submit" value="addAttribute"><br>
+</section>
+
+</body>
+
+</html>

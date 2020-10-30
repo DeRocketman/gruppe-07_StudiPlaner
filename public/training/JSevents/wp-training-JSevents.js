@@ -9,14 +9,14 @@
 */
 function addListenersFirst(){
 	// Add click listener to the upper div with className 'rechtebox'
+	const rechteBox = document.getElementsByClassName('rechtebox');
 	// a) put the div elements into a variable
+
 	// b) use variable to add event listener
 
 
 
-
 	// Add mouseover listener to the upper div with classname 'linkebox'
-
 
 
 	// Add listeners to action elements for "Make Alerts" "Bezeichner" and "Schreibe den Text"

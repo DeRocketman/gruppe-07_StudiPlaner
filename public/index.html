@@ -1,69 +1,237 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <title>Projekt - der freshe Studienplaner</title>
-  <meta charset = "UTF-8" lang="de"/>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/eatable.css">
-</head>
-<body>
-  <h1 class="welcome">Willkommen ;)</h1>
-  <h2 class="welcome">Projekt - der sicke Studienplaner</h2>
-  <p>Wenn Sie eine URL ohne Dateinamen aufrufen, wird standardmäßig (falls vorhanden) diese Datei (index.html) ausgeliefert.</p>
-  <p>Weitere Beispiele:</p>
+    <meta charset="UTF-8">
+    <title>PROject - Der Studienplaner</title>
 
-  <ul>
-    <li><a href="palebluedot.html">Beispielseite HTML mit CSS</a></li>
-    <li><a href="clock.html">Beispielseite HTML mit JavaScript</a></li>
-  </ul>
-  <table>
+    <!-- <link rel="stylesheet" href=" "> Referenz CSS einfuegen -->
+    <link rel="shortcut icon" type="bild/papierflieger" href="images/papierflieger.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/eatable.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#">Startseite</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="kalender.html">Kalender</a>
+        <a href="hilfe.html">Hilfe</a>
+        <a href="impressum.html">Impressum</a>
+    </nav>
+    <section>
+        <img id="mainLogo" src="images/papierflieger_logo_350x200.png" alt="Papierflieger Logo"
+             title="Papierflieger - PROject"/>
+        <div>
+            <h1> Willkommen ;)</h1>
+            <h2>Projekt - Der sicke Studienplaner</h2>
+        </div>
+    </section>
+</header>
+
+<main>
+    <section>
+        <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
+        <fieldset>
+            <h2>Aufgaben</h2>
+
+            <table>
+                <tr>
+                    <th>&#10004;</th> <!-- Unicode für ein Häkchen -->
+                    <th>Modul</th>
+                    <th>Aufgaben</th>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" id="aufgabe1" name="aufgabe1"></label></td>
+                    <td>MD2</td>
+                    <td>Fotos für Webseite machen</td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" id="aufgabe2" name="aufgabe2"></label></td>
+                    <td>WebProg</td>
+                    <td>Wireframe, HTML</td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" id="aufgabe3" name="aufgabe3"></label></td>
+                    <td>GdM</td>
+                    <td>Rechnen</td>
+                </tr>
+            </table>
+        </fieldset>
+        <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
+        <fieldset class="containerProzessschritte">
+            <h2>Fortschritt</h2>
+            <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
+            <ul class="prozessschritte">
+                <li class="active">1</li>
+                <li class="active">2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            <figure>
+                <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
+            </figure>
+        </fieldset>
+        <!-- Drittes Fieldset für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
+        <fieldset>
+            <h2>Projekte</h2>
+
+            <a href="#projekt1">Projekt 1</a>
+            <a href="#projekt2">Projekt 2</a>
+            <a href="#projekt3">Projekt 3</a>
+            <a href="#projekt4">Projekt 4</a>
+            <div class="projekte">
+                <p id="projekt1"> Die jeweiligen Inhalte der einzelnen Registerkarten
+                <p id="projekt2"> werden mit Hilfe von CSS später sichtbar
+                <p id="projekt3"> bzw. unsichtbar gemacht.
+                <p id="projekt4"> Je nachdem, was man dann auswählt :)
+            </div>
+
+        </fieldset>
+        <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
+        <fieldset>
+            <h2>Gruppen</h2>
+            <details open="open">
+                <summary>Gruppe 1</summary>
+                <p>Web-Programmierung <br/> Dirk, Ben, Louis, Kim</p>
+            </details>
+            <details>
+                <summary>Gruppe 2</summary>
+                <p>Mediendesign <br/> Ben, Kim, Dirk, Louis</p>
+            </details>
+            <details>
+                <summary>Gruppe 3</summary>
+                <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
+            </details>
+            <details>
+                <summary>Gruppe 4</summary>
+                <p>Keine Mitglieder</p>
+            </details>
+        </fieldset>
+    </section>
+    <!-- letzte Fieldset für das Tool Kalender. -->
+    <fieldset id="kalender">
+        <h2>Alle Termine auf einen Blick</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th><a>&#10094;</a></th> <!-- Unicode Zeichen für "<" -->
+                <th colspan=5 id="kalender_monat">May 2022</th>
+                <th><a class="kalender_link">&#10095;</a></th> <!-- Unicode Zeichen für ">" -->
+            </tr>
+            </thead>
+            <tr id="kalenderTage">
+                <td class="kalender_tag">Mo</td>
+                <td class="kalender_tag">Di</td>
+                <td class="kalender_tag">Mi</td>
+                <td class="kalender_tag">Do</td>
+                <td class="kalender_tag">Fr</td>
+                <td class="kalender_tag">Sa</td>
+                <td class="kalender_tag">So</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_1">1</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_2">2</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_3">3</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_4">4</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_5">5</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_6">6</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_7">7</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_8">8</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_9">9</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_10">10</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_11">11</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_12">12</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_13">13</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_14">14</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_15">15</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_16">16</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_17">17</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_18">18</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_19">19</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_20">20</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_21">21</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_22">22</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_23">23</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_24">24</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_25">25</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_26">26</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_27">27</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_28">28</td>
+            </tr>
+            <tr>
+                <td class="kalender_eintrag" id="kalender_eintrag_29">29</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_30">30</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_31">31</td>
+                <td class="kalender_eintrag" id="kalender_eintrag_32"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_33"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_34"></td>
+                <td class="kalender_eintrag" id="kalender_eintrag_35"></td>
+            </tr>
+        </table>
+    </fieldset>
+</main>
+<br>
+<br>
+<hr>
+<br>
+<table>
     <thead>
     <tr>
-      <th>Modul</th>
-      <th>Wochentag</th>
-      <th>Semester</th>
-      <th>bestanden</th>
-      <th>durchgefallen</th>
+        <th>Modul</th>
+        <th>Wochentag</th>
+        <th>Semester</th>
+        <th>bestanden</th>
+        <th>durchgefallen</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td>Webdesign</td>
-      <td>Montag</td>
-      <td>1</td>
-      <td></td>
-      <td>x</td>
+        <td>Webdesign</td>
+        <td>Montag</td>
+        <td>1</td>
+        <td></td>
+        <td>x</td>
     </tr>
     <tr>
-      <td>DB-Design</td>
-      <td>Dienstag</td>
-      <td>2</td>
-      <td>x</td>
-      <td></td>
+        <td>DB-Design</td>
+        <td>Dienstag</td>
+        <td>2</td>
+        <td>x</td>
+        <td></td>
     </tr>
     <tr>
-      <td>Scriptdesign</td>
-      <td>Mittwoch</td>
-      <td>3</td>
-      <td>x</td>
-      <td></td>
+        <td>Scriptdesign</td>
+        <td>Mittwoch</td>
+        <td>3</td>
+        <td>x</td>
+        <td></td>
     </tr>
     <tr>
-      <td>Node.js</td>
-      <td>Donnerstag</td>
-      <td>4</td>
-      <td>x</td>
-      <td></td>
+        <td>Node.js</td>
+        <td>Donnerstag</td>
+        <td>4</td>
+        <td>x</td>
+        <td></td>
     </tr>
     <tr>
-      <td>Angular</td>
-      <td>Freitag</td>
-      <td>5</td>
-      <td>x</td>
-      <td></td>
+        <td>Angular</td>
+        <td>Freitag</td>
+        <td>5</td>
+        <td>x</td>
+        <td></td>
     </tr>
     </tbody>
-  </table>
+</table>
 </body>
-
 </html>

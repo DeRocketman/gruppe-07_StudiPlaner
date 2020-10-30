@@ -1,30 +1,254 @@
+/*
+Layout des Dokuments
+
+  Farbschema:
+  cookieCrema: #ABA27D
+  navBlau: #C3F7F4
+  sandGeld: #F8EFC8
+  zartRosé: #F5D5F0
+  dunkelRosa: #AB63A0
+ */
+
 body {
-  /*background-image: url("../images/palebluedot.jpg");*/
-  /*background-position: right top;*/
-  background-color: white;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 0;
+  margin: 0 0 1em 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12pt;
+  font-weight: normal;
+  color: #333333;
 }
 
-div.poem {
-  display: inline-block;
-  width: 63%;
-  margin: 70px;
-  padding: 20px;
-  border:1px solid black;
-  background: rgba(255,255,255,0.4);
+nav {
+  display: flex;
+  background-color: #C3F7F4;
+  padding: .1em;
+}
+
+nav a {
+  color: #333333;
+  text-decoration: none;
+  padding: .45em 2em .45em 1em;
   font-weight: bold;
 }
 
-p {
-  text-align: center;
+nav a:hover {
+  color: #AB63A0;
 }
 
-p.attribution {
-  font-style: italic;
-  margin-top: 40px;
-  margin-right: 40px;
-  font-weight: normal;
+nav a:visited {
+  color: #ABA27D;
+}
+
+/* Logo mit Gruß-Formel und Unterschrift */
+header section {
+  display: flex;
+  padding: 1em;
+}
+
+header section img {
+  height: 90%;
+}
+
+/* fix für das flex box um die Überschriften rechtsbündig zu bekommen
+   siehe MDN Firefox ganz unten beim Flexbox Artikel, da align-self nicht hilft.
+ */
+header section div {
+  margin-left: auto;
+}
+
+header section h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 61pt;
+  font-weight: lighter;
+}
+
+header section h2 {
+  position: relative;
+  top: -12px;
+  right: 12px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  color: #666;
   text-align: right;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+
+main section {
+  display: grid;
+  grid-template-columns: repeat(1, 2fr 2fr);
+}
+
+/*
+Fortschrittsleiste
+ */
+.prozessschritte li {
+  list-style-type: none;
+  width: 20%;
+  float: left;
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}
+
+.prozessschritte li:before {
+  width: 30px;
+  height: 30px;
+  content: "";
+  line-height: 30px;
+  border: 2px solid #7d7d7d;
+  display: block;
+  text-align: center;
+  margin: 0 auto 3px auto;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.prozessschritte li:after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: darkgreen;
+  top: 17px;
+  left: -25%;
+  z-index: 0;
+}
+.prozessschritte li:first-child:after {
+  content: none;
+}
+.prozessschritte li.active {
+  color: darkmagenta;
+  font-weight: bold;
+}
+.prozessschritte li.active:before {
+  border-color: #555555;
+  background: darkmagenta;
+}
+.prozessschritte li.active + li:after {
+  background-color: darkmagenta;
+}
+.prozessschritte.active:before {
+  background: #55b776 no-repeat center center;
+  background-size: 60%;
+}
+.prozessschritte li::before {
+  background: #fff no-repeat center center;
+  background-size: 60%;
+}
+
+/* Kalender fieldset */
+#kalender {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+#kalender h2 {
+  padding-bottom: 50px;
+}
+
+#kalender table {
+  font-size: 11pt;
+  border: 1px #adadad solid;
+  border-radius: 5px;
+  box-shadow: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20%;
+}
+
+#kalender tr {
+  border: none;
+  background-color: #F8EFC8;
+}
+
+#kalender thead th {
+  font-size: 9pt;
+  color: #ffffff;
+  background-color: #AB63A0;
+  text-align: center;
+  font-weight: lighter;
+  padding: 1em;
+}
+
+#kalenderTage td {
+  background-color: #F5D5F0;
+  border:none;
+  font-weight: lighter;
+  padding: .9em;
+}
+
+.kalender_eintrag  {
+  border: none;
+  font-weight: lighter;
+  padding: .8em;
+}
+
+/*
+um die Tabellen Aufgabe auszuhebeln
+ */
+
+#kalender tr:hover {
+  color: black;
+}
+
+/*
+td:nth-child(2)::first-letter{
+  font-weight: lighter;
+}*/
+
+/* Ende Kalender */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+F: Was fliegt durch du Luft und winkt?
+A: Ein Huhu
+F: Was ist grün und klopft an der Tür
+A: Ein Kopfsalat
+ */

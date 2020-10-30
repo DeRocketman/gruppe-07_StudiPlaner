@@ -1,0 +1,64 @@
+
+body {
+    font-family: sans-serif;
+    color: #555555;
+
+}
+
+h1 {
+    font-size: 16pt;
+    text-align: center;
+}
+
+h2 {
+    font-size: 14pt;
+}
+
+h1, h2 {
+    margin-top: 30px;
+    margin-left: 5px;
+    clear: both;
+}
+
+p {
+    padding-top: 30px;
+    margin-left: 5px;
+    clear: both;
+
+}
+
+section {
+    clear: both;
+    padding-top: 15px;
+    border: 1px solid black;
+    margin: 15px 5px;
+}
+
+input {
+    margin: 10px;
+    font-size: 14px;
+}
+.rechts {
+    float: left;
+    border: 2px dotted green;
+    width: 40%;
+    margin: 5px;
+    padding: 15px;
+    min-height: 60px;
+    vertical-align: top;
+
+}
+
+.links {
+    float: left;
+    width: 50%;
+    border: 2px dotted red;
+    margin: 5px;
+    padding: 15px;
+    min-height: 60px;
+    vertical-align: top;
+}
+
+.green {
+    color: green;
+}

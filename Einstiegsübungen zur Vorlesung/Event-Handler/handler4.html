@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Handling JavaScript</title>
+    <meta charset="utf-8">
+    <script>
+
+        /* Experimentieren Sie mit dem Code, indem Sie z.B.
+        a) ändern, welche Funktion beim Click ausgelöst wird (Wo machen Sie das?);
+        oder
+        b) indem Sie das event ändern (z.B. mouseover statt click);
+        oder einen neue Handler hinzufügen. */
+        
+			function klickmich(){
+                var divelement = document.getElementById('meindiv');
+                divelement.addEventListener('click', showalert, false);
+            }
+
+        function showalert(){
+            alert('Du hast mich angeklickt!');
+        }
+
+
+        function init(){
+            var buttontag = document.getElementsByTagName('button');
+            buttontag[0].addEventListener('click', changeText, false);
+        }
+        //			function addHandler2(){
+        //				var divelement = document.getElementById('meindiv');
+        //				divelement.addEventListener('click', changeText, false);
+        //			}
+        function changeText(){
+            var divelement = document.getElementById('meindiv');
+            divelement.innerHTML = "Oups, hier stand doch eben was anderes...";
+        }
+        window.onload=init;
+    </script>
+</head>
+
+<body>
+<div id="meindiv">Klick mich an!</div>
+</body>
+
+</html>
+
