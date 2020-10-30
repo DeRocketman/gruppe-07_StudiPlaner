@@ -11,44 +11,10 @@ function Calendar() {
 Setzt den Namen des aktuellen Monats
  */
 Calendar.prototype.nameOfMonth = function() {
-    let nameOfMonth = "Januar";
-    switch(this.month) {
-        case 0:
-            break;
-        case 1:
-            nameOfMonth = "Februar";
-            break;
-        case 2:
-            nameOfMonth = "März";
-            break;
-        case 3:
-            nameOfMonth = "April";
-            break;
-        case 4:
-            nameOfMonth = "Mai";
-            break;
-        case 5:
-            nameOfMonth = "Juni";
-            break;
-        case 6:
-            nameOfMonth = "Juli";
-            break;
-        case 7:
-            nameOfMonth = "August";
-            break;
-        case 8:
-            nameOfMonth = "September";
-            break;
-        case 9:
-            nameOfMonth = "Oktober";
-            break;
-        case 10:
-            nameOfMonth = "November";
-            break;
-        case 11:
-            nameOfMonth = "Dezember";
-    }
-    return nameOfMonth;
+    const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli'
+        , 'August', 'September', 'Oktober', 'November', 'Dezember'];
+
+    return months[this.month];
 };
 
 
@@ -59,6 +25,9 @@ Calendar.prototype.daysOfMonth = function () {
     // Setzt die Anzahl der Tage direkt auf 31, da die meisten Monate diese
     // Anzahl an Tagen hat.
     let numberOfDaysInMonth = 31;
+
+    const possibleDaysOfMonth = [28,29,30,31];
+
 
     /*
     Private Funktion zur Berechnung ob es sich um ein Schaltjahr handelt.
@@ -84,30 +53,9 @@ Calendar.prototype.daysOfMonth = function () {
 };
 
 Calendar.prototype.nameOfDay = function() {
-    let today = 'Montag';
-    switch (this.weekday) {
-        case 1:
-            break;
-        case 2:
-            today = "Dienstag";
-            break;
-        case 3:
-            today = "Mittwoch";
-            break;
-        case 4:
-            today = "Donnerstag";
-            break;
-        case 5:
-            today = "Freitag";
-            break;
-        case 6:
-            today = "Samstag";
-            break;
-        case 7:
-            today = "Sonntag";
-            break;
-    }
-    return today;
+    // fängt bei der Nummer eins an zu zählen.
+    const woche = ['fehlerInNameOfDay', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+    return woche[this.weekday];
 };
 
 Calendar.prototype.prevMonth = function() {
@@ -133,6 +81,7 @@ Calendar.prototype.nextMonth = function() {
 }
 
 Calendar.prototype.fillCalendar = function() {
+    // setzt den Monat im Kalender zu: Monat Jahr, z.B. Oktober 2020
     document.getElementById('kalender_monat').innerHTML = this.nameOfMonth() + ' ' + this.year;
 
     let earliestDay = this.day % 7;
@@ -146,9 +95,11 @@ Calendar.prototype.fillCalendar = function() {
         }
     }
 
-    for(let i = 0; i < this.daysOfMonth(); ++i) {
-        document.getElementById("kalender_eintrag_" + (earliestWeekday + i)).innerHTML = i + 1;
-    }
+    // erstellt Liste mit mit Tagen des Monats
+    const listOfDays = [...Array(this.daysOfMonth()).keys()];
+    // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
+    listOfDays.map(day =>
+        document.getElementById('kalender_eintrag_' + (earliestWeekday + day)).innerHTML = day + 1);
 }
 
 
