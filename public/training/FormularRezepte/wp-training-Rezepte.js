@@ -12,8 +12,11 @@
     * - für den Button.
     * */
     function initiate(){
-        //add event listeners
-
+        let author = document.getElementById('autor');
+        let geschmack = document.getElementById('geschmack');
+        let speiseart = document.getElementById('speiseart');
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', checkval);
     }
 
     /*
