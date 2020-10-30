@@ -217,8 +217,7 @@ article.projekte section {
   width: 480px;
   height: 200px;
   top: 100px;
-  border: solid #000000;
-  border-width: 1px 1px 1px 1px;
+  border: 1px solid #000000;
 }
 
 article.projekte section h2 {
