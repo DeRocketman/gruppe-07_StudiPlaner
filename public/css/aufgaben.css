@@ -17,6 +17,8 @@ Layout des Dokuments
     border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 20%;
+    margin-left: 25px;
+    margin-right: 25px;
 
 }
 #aufgabenTable thead th:first-child{

@@ -71,13 +71,13 @@
             <div class="containerProzessschritte">
             <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
             <ul class="prozessschritte">
-                <li class="active">1</li>
-                <li class="active">2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+                <li id="fortschritt1" class="active">1</li>
+                <li id="fortschritt2" class="active">2</li>
+                <li id="fortschritt3">3</li>
+                <li id="fortschritt4">4</li>
+                <li id="fortschritt5">5</li>
             </ul>
-            <figure>
+            <figure id="ladebalken">
                 <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
             </figure>
             </div>
@@ -121,19 +121,19 @@
             <h2>Gruppen</h2>
             <div id="groupsdiv">
                 <details open="open">
-                    <summary>Gruppe 1</summary>
+                    <summary id="gruppe1" class="Gruppen">Gruppe 1</summary>
                     <p>Web-Programmierung <br/> Dirk, Ben, Louis, Kim</p>
                 </details>
                 <details>
-                    <summary>Gruppe 2</summary>
+                    <summary class="Gruppen">Gruppe 2</summary>
                     <p>Mediendesign <br/> Ben, Kim, Dirk, Louis</p>
                 </details>
                 <details>
-                    <summary>Gruppe 3</summary>
+                    <summary class="Gruppen">Gruppe 3</summary>
                     <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
                 </details>
                 <details>
-                    <summary>Gruppe 4</summary>
+                    <summary class="Gruppen">Gruppe 4</summary>
                     <p>Keine Mitglieder</p>
                 </details>
             </div>

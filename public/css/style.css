@@ -93,7 +93,7 @@ Fortschrittsleiste
  */
 .prozessschritte li {
   list-style-type: none;
-  width: 20%;
+  width: 18%;
   float: left;
   font-size: 18px;
   position: relative;
@@ -107,7 +107,7 @@ Fortschrittsleiste
   height: 30px;
   content: "";
   line-height: 30px;
-  border: 2px solid #000000;
+  border: black thin solid;
   display: block;
   text-align: center;
   margin: 0 auto 3px auto;
@@ -116,6 +116,11 @@ Fortschrittsleiste
   z-index: 2;
   background-color: #F5D5F0;
 }
+
+#fortschritt1 li:before {
+  content: "1";
+}
+
 
 .prozessschritte li:after {
   width: 100%;
@@ -127,29 +132,19 @@ Fortschrittsleiste
   left: -25%;
   z-index: 0;
 }
+
 .prozessschritte li:first-child:after {
   content: none;
 }
-.prozessschritte li.active {
-  color: #AB63A0;
-  font-weight: bold;
-}
+
 .prozessschritte li.active:before {
   border-color: #555555;
   background: #AB63A0;
 }
-.prozessschritte li.active + li:after {
-  background-color: #AB63A0;
-}
-.prozessschritte.active:before {
-  background: #55b776 no-repeat center center;
-  background-size: 60%;
-}
-.prozessschritte li::before {
-  background: #F5D5F0 no-repeat center center;
-  background-size: 60%;
-}
 
+#ladebalken{
+  color: #AB63A0;
+}
 /* Article Projekte                   */
 
 #projectsection {
@@ -161,17 +156,15 @@ Fortschrittsleiste
 /* Register Grundlayout*/
 .register {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-left: 55px;
+  margin-right: 55px;
 }
 
 /* ButtonDesign */
 .register button {
   background-color: #F5D5F0;
   float: left;
-  border-color: #333333;
+  border: black thin solid;
   outline: #333333;
   cursor: pointer;
 
@@ -200,13 +193,27 @@ Fortschrittsleiste
   padding: 8px 4px;
   border: 1px solid #333333;
   border-top: none;
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-left: 55px;
+  margin-right: 55px;
 }
 /* Sektion Projekte Ende */
 
 /* Sektion Gruppen Start */
+/*  Einbetten der TreeView für Design */
+#groupsdiv {
+  border: black thin solid;
+  margin-left: 25px;
+  margin-right: 25px;
+}
 
+.Gruppen {
+  border: black thin solid;
+  background-color: #F5D5F0;
+}
+
+#gruppe1 {
+  background-color: #AB63A0;
+}
 /* Kalender fieldset */
 #kalender {
   display: flex;
