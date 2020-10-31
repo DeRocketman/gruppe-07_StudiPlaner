@@ -80,35 +80,39 @@
                 <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
             </figure>
         </section>
+
         <!-- Drittes Fieldset (aktuell mit Article) für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
         <!-- Registerlinks -->
-        <div class="register">
-            <button class="registerlink" onclick="openProjekt(event, 'Projekt1')">Projekt 1</button>
-            <button class="registerlink" onclick="openProjekt(event, 'Projekt2')">Projekt 2</button>
-            <button class="registerlink" onclick="openProjekt(event, 'Projekt3')">Projekt 3</button>
-            <button class="registerlink" onclick="openProjekt(event, 'Projekt4')">Projekt 4</button>
-        </div>
+        <section>
+            <h2>Porjekte</h2>
+            <div class="register">
+                <button class="registerlink" onclick="openProjekt(event, 'Projekt1')">Projekt 1</button>
+                <button class="registerlink" onclick="openProjekt(event, 'Projekt2')">Projekt 2</button>
+                <button class="registerlink" onclick="openProjekt(event, 'Projekt3')">Projekt 3</button>
+                <button class="registerlink" onclick="openProjekt(event, 'Projekt4')">Projekt 4</button>
+            </div>
 
         <!-- Tabprojektinhalt -->
-        <div id="Projekt1" class="tabcontent">
-            <h3>Projekt 1</h3>
-            <p>Inhalt 1</p>
-        </div>
+            <div id="Projekt1" class="registerinhalt">
+                <h3>Projekt 1</h3>
+                <p>Inhalt 1</p>
+            </div>
 
-        <div id="Projekt2" class="tabcontent">
-            <h3>Projekt 2<</h3>
-            <p>Inhalt 2</p>
-        </div>
+            <div id="Projekt2" class="registerinhalt">
+                <h3>Projekt 2<</h3>
+                <p>Inhalt 2</p>
+            </div>
 
-        <div id="Projek3" class="tabcontent">
-            <h3>Projekt 3</h3>
-            <p>Inhalt 3</p>
-        </div>
+            <div id="Projekt3" class="registerinhalt">
+                <h3>Projekt 3</h3>
+                <p>Inhalt 3</p>
+            </div>
 
-        <div id="Projek4" class="tabcontent">
-            <h3>Projekt 4</h3>
-            <p>Inhalt 4</p>
-        </div>
+            <div id="Projekt4" class="registerinhalt">
+                <h3>Projekt 4</h3>
+                <p>Inhalt 4</p>
+            </div>
+        </section>
 
         <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
         <section>

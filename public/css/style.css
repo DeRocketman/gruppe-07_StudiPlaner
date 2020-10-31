@@ -158,11 +158,11 @@ Fortschrittsleiste
 /* ButtonDesign */
 .register button {
   background-color: #F5D5F0;
-  float: left;
-  border: #333333;
+  float: inside;
+  border-color: #333333;
   outline: #333333;
   cursor: pointer;
-  padding: 10px 14px;
+  padding: 4px 8px;
   transition: 0.3s;
 }
 
@@ -176,8 +176,8 @@ Fortschrittsleiste
   background-color: #AB63A0;
 }
 
-/* Style the tab content */
-.tabcontent {
+/* Design des t*/
+.registerinhalt {
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
