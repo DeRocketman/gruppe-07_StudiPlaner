@@ -12,22 +12,38 @@ Layout des Dokuments
     font-size: 11pt;
     text-align: center;
     border: 1px #adadad solid;
-    border-radius: 5px;
+    border-radius: 5px ;
     box-shadow: none;
     border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 20%;
+
+}
+#aufgabenTable thead th:first-child{
+    border-radius: 5px 0 0 0;
+}
+#aufgabenTable thead th:last-child{
+    border-radius: 0 5px 0 0;
 }
 #aufgabenTable thead th{
     background-color: #AB63A0;
     text-align: center;
+
 }
+
 #aufgabenZeile1{
     background-color: #F5D5F0;
 }
 #aufgabenZeile2{
     background-color: #F8EFC8;
 }
-#aufgabeZeile3{
+#aufgabenZeile3{
     background-color: #F5D5F0;
+
+}
+#aufgabenZeile3 td:first-child{
+    border-radius: 0 0 0 5px;
+}
+#aufgabenZeile3 td:last-child{
+    border-radius: 0 0 5px 0px;
 }
