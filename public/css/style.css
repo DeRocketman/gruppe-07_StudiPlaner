@@ -79,9 +79,10 @@ main {
   justify-content: center;
 }
 
-main section {
+main article {
   display: grid;
   grid-template-columns: repeat(1, 2fr 2fr);
+  border: 1px solid black;
 }
 
 /*
@@ -146,76 +147,13 @@ Fortschrittsleiste
   background-size: 60%;
 }
 
-/* Kalender fieldset */
-#kalender {
-  display: flex;
-  flex-flow: column;
-  text-align: center;
-}
-
-#kalender h2 {
-  padding-bottom: 50px;
-}
-
-#kalender table {
-  font-size: 11pt;
-  border: 1px #adadad solid;
-  border-radius: 5px;
-  box-shadow: none;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 20%;
-}
-
-#kalender tr {
-  border: none;
-  background-color: #F8EFC8;
-}
-
-#kalender thead th {
-  font-size: 9pt;
-  color: #ffffff;
-  background-color: #AB63A0;
-  text-align: center;
-  font-weight: lighter;
-  padding: 1em;
-}
-
-#kalenderTage td {
-  background-color: #F5D5F0;
-  border:none;
-  font-weight: lighter;
-  padding: .9em;
-}
-
-.kalender_eintrag  {
-  border: none;
-  font-weight: lighter;
-  padding: .8em;
-}
-
-/*
-um die Tabellen Aufgabe auszuhebeln
- */
-
-#kalender tr:hover {
-  color: black;
-}
-
-/*
-td:nth-child(2)::first-letter{
-  font-weight: lighter;
-}*/
-
-/* Ende Kalender */
-
 /* Article Projekte (bisher nicht gekürzt) */
 
 article.projekte section {
-  position: absolute;
   display: block;
   width: 450px;
   height: 200px;
+  position: absolute;
   top: 100px;
   border: 1px solid #000000;
   padding-left: 15px;
@@ -277,6 +215,78 @@ article.projekte section:target, article.projekte section:target p {
 }
 
 /* Article Projekte Ende */
+
+/* Kalender fieldset */
+#kalender {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+#kalender h2 {
+  padding-bottom: 50px;
+}
+
+#kalender table {
+  font-size: 11pt;
+  border: 1px #adadad solid;
+  border-radius: 5px;
+  box-shadow: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20%;
+}
+
+#kalender tr {
+  background-color: #F8EFC8;
+}
+
+#kalender thead th {
+  font-size: 9pt;
+  color: #ffffff;
+  background-color: #AB63A0;
+  text-align: center;
+  font-weight: lighter;
+  padding: 1em;
+}
+
+#kalender thead th:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+#kalender thead th:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+#kalenderTage td {
+  background-color: #F5D5F0;
+  border:none;
+  font-weight: lighter;
+  padding: .9em;
+}
+
+.kalender_eintrag  {
+  border: none;
+  font-weight: lighter;
+  padding: .8em;
+}
+
+/*
+um die Tabellen Aufgabe auszuhebeln
+ */
+
+#kalender tr:hover {
+  color: black;
+}
+
+/*
+td:nth-child(2)::first-letter{
+  font-weight: lighter;
+}*/
+
+/* Ende Kalender */
+
+
 
 
 

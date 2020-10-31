@@ -33,9 +33,9 @@
 </header>
 
 <main>
-    <section>
+    <article>
         <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
-        <fieldset id="aufgaben">
+        <section id="aufgaben">
             <h2>Aufgaben</h2>
 
             <table id="aufgabenTable">
@@ -62,9 +62,9 @@
                     <td>Rechnen</td>
                 </tr>
             </table>
-        </fieldset>
+        </section>
         <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
-        <fieldset class="containerProzessschritte">
+        <section class="containerProzessschritte">
             <h2>Fortschritt</h2>
             <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
             <ul class="prozessschritte">
@@ -77,12 +77,10 @@
             <figure>
                 <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
             </figure>
-        </fieldset>
+        </section>
         <!-- Drittes Fieldset (aktuell mit Article) für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
-        <fieldset>
+        <article class="projekte">
             <h2>Projekte</h2>
-
-            <article class="projekte">
                 <section id="projekt1">
                     <h2><a href="#projekt1">Projekt 1</a></h2>
                     <p>Web-Programmierung: HTML, CSS, JavaScript.</p>
@@ -99,11 +97,9 @@
                     <h2><a href="#projekt4">Projekt 4</a></h2>
                     <p>Projekt 4 = Feierabend! &#127867;</p>
                 </section>
-            </article>
-
-        </fieldset>
+        </article>
         <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
-        <fieldset>
+        <section>
             <h2>Gruppen</h2>
             <details open="open">
                 <summary>Gruppe 1</summary>
@@ -121,12 +117,11 @@
                 <summary>Gruppe 4</summary>
                 <p>Keine Mitglieder</p>
             </details>
-        </fieldset>
-    </section>
+        </section>
+    </article>
     <!-- letzte Fieldset für das Tool Kalender. -->
-    <fieldset id="kalender">
+    <section id="kalender">
         <h2>Alle Termine auf einen Blick</h2>
-
         <table>
             <thead>
             <tr>
@@ -190,7 +185,7 @@
                 <td class="kalender_eintrag" id="kalender_eintrag_35"></td>
             </tr>
         </table>
-    </fieldset>
+    </section>
 </main>
 <br>
 <br>
