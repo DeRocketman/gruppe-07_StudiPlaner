@@ -148,72 +148,41 @@ Fortschrittsleiste
 }
 
 /* Article Projekte (bisher nicht gekürzt) */
-
-article.projekte section {
-  display: block;
-  width: 450px;
-  height: 200px;
-  position: absolute;
-  top: 100px;
-  border: 1px solid #000000;
-  padding-left: 15px;
-  padding-right: 15px;
+/* Style the tab */
+.register {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
-/* Registerkarten, wenn sie nicht ausgewählt sind*/
-article.projekte section h2 {
-  position: absolute;
-  left: 0;
-  top: -30px;
-  width: 119px;
-  height: 29px;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 15px;
-  margin: 0;
+
+/* Style the buttons that are used to open the tab content */
+.register button {
   background-color: #F5D5F0;
-  border-radius: 15px 15px 0 0;
-  border: solid #000000;
-  border-width: 1px 1px 0 1px;
-  z-index: 1;
-}
-/* Anordnung der Registerkarten mit Hilfe des z-index */
-article.projekte section:nth-child(2) h2 {
-  left: 120px;
-  z-index: 0;
+  float: left;
+  border: #333333;
+  outline: #333333;
+  cursor: pointer;
+  padding: 10px 14px;
+  transition: 0.3s;
 }
 
-article.projekte section:nth-child(3) h2 {
-  left: 240px;
-  z-index: -1;
-}
-article.projekte section:nth-child(4) h2 {
-  left: 360px;
-  z-index: -2;
-}
-/* Schwarze Überschriften der Register, die anklickbar sind */
-article.projekte section h2 a {
-  display: block;
-  margin: 5px 0 0 0;
-  text-align: center;
-  text-decoration: none;          /* Verlinkung (Unterstreichung) ausblenden */
-  color: #000000;
-}
-/* Registerkarte angeklickt (dunkelrosa) */
-article.projekte section:target, article.projekte section:target h2 {
-  color: #FFFFFF;
+/* Aendert Hintergrund des buttons beim hover */
+.register button:hover {
   background-color: #AB63A0;
-  z-index: 1;
-}
-/* Überschrift angeklickte Registerkarte */
-article.projekte section:target h2 a {
-  color: #FFFFFF;
-}
-/* Layout Kasten/Schrift der Paragraphen der Section*/
-article.projekte section:target, article.projekte section:target p {
-  color: #000000;
-  background-color: #FFFFFF;
-  z-index: 1;
 }
 
+/* Create an active/current tablink class */
+.register button.a{
+  background-color: #AB63A0;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
 /* Article Projekte Ende */
 
 /* Kalender fieldset */
