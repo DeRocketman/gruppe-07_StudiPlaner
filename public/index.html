@@ -9,6 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/eatable.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/aufgaben.css"
 </head>
 
 <body>
@@ -34,26 +35,28 @@
 <main>
     <section>
         <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
-        <fieldset>
+        <fieldset id="aufgaben">
             <h2>Aufgaben</h2>
 
-            <table>
+            <table id="aufgabenTable">
+                <thead>
                 <tr>
                     <th>&#10004;</th> <!-- Unicode für ein Häkchen -->
                     <th>Modul</th>
                     <th>Aufgaben</th>
                 </tr>
-                <tr>
+                </thead>
+                <tr id="aufgabenZeile1">
                     <td><label><input type="checkbox" id="aufgabe1" name="aufgabe1"></label></td>
                     <td>MD2</td>
                     <td>Fotos für Webseite machen</td>
                 </tr>
-                <tr>
+                <tr id="aufgabenZeile2">
                     <td><label><input type="checkbox" id="aufgabe2" name="aufgabe2"></label></td>
                     <td>WebProg</td>
                     <td>Wireframe, HTML</td>
                 </tr>
-                <tr>
+                <tr id="aufgabeZeile3">
                     <td><label><input type="checkbox" id="aufgabe3" name="aufgabe3"></label></td>
                     <td>GdM</td>
                     <td>Rechnen</td>

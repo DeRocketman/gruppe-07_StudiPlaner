@@ -1,0 +1,33 @@
+/*
+Layout des Dokuments
+
+  Farbschema:
+  cookieCrema: #ABA27D
+  navBlau: #C3F7F4
+  sandGeld: #F8EFC8
+  zartRosé: #F5D5F0
+  dunkelRosa: #AB63A0
+ */
+#aufgabenTable {
+    font-size: 11pt;
+    text-align: center;
+    border: 1px #adadad solid;
+    border-radius: 5px;
+    box-shadow: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20%;
+}
+#aufgabenTable thead th{
+    background-color: #AB63A0;
+    text-align: center;
+}
+#aufgabenZeile1{
+    background-color: #F5D5F0;
+}
+#aufgabenZeile2{
+    background-color: #F8EFC8;
+}
+#aufgabeZeile3{
+    background-color: #F5D5F0;
+}
