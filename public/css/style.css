@@ -85,6 +85,9 @@ main article {
   border: 1px solid black;
 }
 
+.gridmember {
+  border: black thin solid;
+}
 /*
 Fortschrittsleiste
  */
@@ -104,14 +107,14 @@ Fortschrittsleiste
   height: 30px;
   content: "";
   line-height: 30px;
-  border: 2px solid #7d7d7d;
+  border: 2px solid #000000;
   display: block;
   text-align: center;
   margin: 0 auto 3px auto;
   border-radius: 50%;
   position: relative;
   z-index: 2;
-  background-color: #fff;
+  background-color: #F5D5F0;
 }
 
 .prozessschritte li:after {
@@ -119,7 +122,7 @@ Fortschrittsleiste
   height: 2px;
   content: '';
   position: absolute;
-  background-color: darkgreen;
+  background-color: black;
   top: 17px;
   left: -25%;
   z-index: 0;
@@ -128,40 +131,40 @@ Fortschrittsleiste
   content: none;
 }
 .prozessschritte li.active {
-  color: darkmagenta;
+  color: #AB63A0;
   font-weight: bold;
 }
 .prozessschritte li.active:before {
   border-color: #555555;
-  background: darkmagenta;
+  background: #AB63A0;
 }
 .prozessschritte li.active + li:after {
-  background-color: darkmagenta;
+  background-color: #AB63A0;
 }
 .prozessschritte.active:before {
   background: #55b776 no-repeat center center;
   background-size: 60%;
 }
 .prozessschritte li::before {
-  background: #fff no-repeat center center;
+  background: #F5D5F0 no-repeat center center;
   background-size: 60%;
 }
 
-/* Article Projekte (bisher nicht gekürzt) */
+/* Article Projekte                   */
 
 #projectsection {
   border-color: #333333;
   border-style: solid;
   border-width: thin;
-  border-bottom-width: 0px;
+  border-bottom-width: 0;
 }
 /* Register Grundlayout*/
 .register {
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 /* ButtonDesign */
@@ -197,10 +200,12 @@ Fortschrittsleiste
   padding: 8px 4px;
   border: 1px solid #333333;
   border-top: none;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
-/* Article Projekte Ende */
+/* Sektion Projekte Ende */
+
+/* Sektion Gruppen Start */
 
 /* Kalender fieldset */
 #kalender {

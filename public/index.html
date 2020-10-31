@@ -35,7 +35,7 @@
 <main>
     <article>
         <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
-        <section id="aufgaben">
+        <section id="aufgaben" class="gridmember">
             <h2>Aufgaben</h2>
 
             <table id="aufgabenTable" height=55%>
@@ -66,8 +66,9 @@
             </table>
         </section>
         <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
-        <section class="containerProzessschritte">
+        <section class="gridmember">
             <h2>Fortschritt</h2>
+            <div class="containerProzessschritte">
             <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
             <ul class="prozessschritte">
                 <li class="active">1</li>
@@ -79,11 +80,12 @@
             <figure>
                 <progress value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
             </figure>
+            </div>
         </section>
 
         <!-- Drittes Fieldset (aktuell mit Article) für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
         <!-- Registerlinks -->
-        <section id="projectsection">
+        <section id="projectsection" class="gridmember">
             <h2>Projekte</h2>
             <div class="register">
                 <button class="registerlink" onclick="openProjekt(event, 'Projekt1')">Projekt 1</button>
@@ -115,28 +117,30 @@
         </section>
 
         <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
-        <section>
+        <section class="gridmember">
             <h2>Gruppen</h2>
-            <details open="open">
-                <summary>Gruppe 1</summary>
-                <p>Web-Programmierung <br/> Dirk, Ben, Louis, Kim</p>
-            </details>
-            <details>
-                <summary>Gruppe 2</summary>
-                <p>Mediendesign <br/> Ben, Kim, Dirk, Louis</p>
-            </details>
-            <details>
-                <summary>Gruppe 3</summary>
-                <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
-            </details>
-            <details>
-                <summary>Gruppe 4</summary>
-                <p>Keine Mitglieder</p>
-            </details>
+            <div id="groupsdiv">
+                <details open="open">
+                    <summary>Gruppe 1</summary>
+                    <p>Web-Programmierung <br/> Dirk, Ben, Louis, Kim</p>
+                </details>
+                <details>
+                    <summary>Gruppe 2</summary>
+                    <p>Mediendesign <br/> Ben, Kim, Dirk, Louis</p>
+                </details>
+                <details>
+                    <summary>Gruppe 3</summary>
+                    <p>(Java) Swing <br> Dirk wartet auf Mitglieder</p>
+                </details>
+                <details>
+                    <summary>Gruppe 4</summary>
+                    <p>Keine Mitglieder</p>
+                </details>
+            </div>
         </section>
     </article>
     <!-- letzte Fieldset für das Tool Kalender. -->
-    <section id="kalender">
+    <section id="kalender" class="gridmember">
         <h2>Alle Termine auf einen Blick</h2>
         <table>
             <thead>
