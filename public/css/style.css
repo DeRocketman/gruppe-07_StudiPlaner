@@ -153,6 +153,7 @@ Fortschrittsleiste
   border-color: #333333;
   border-style: solid;
   border-width: thin;
+  border-bottom-width: 0px;
 }
 /* Register Grundlayout*/
 .register {
@@ -169,7 +170,7 @@ Fortschrittsleiste
   outline: #333333;
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: 1.3s;
 }
 
 /* Aendert Hintergrund des buttons beim hover */
