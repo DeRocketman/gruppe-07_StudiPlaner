@@ -209,7 +209,74 @@ td:nth-child(2)::first-letter{
 
 /* Ende Kalender */
 
+/* Article Projekte (bisher nicht gekürzt) */
 
+article.projekte section {
+  position: absolute;
+  display: block;
+  width: 450px;
+  height: 200px;
+  top: 100px;
+  border: 1px solid #000000;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Registerkarten, wenn sie nicht ausgewählt sind*/
+article.projekte section h2 {
+  position: absolute;
+  left: 0;
+  top: -30px;
+  width: 119px;
+  height: 29px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 15px;
+  margin: 0;
+  background-color: #F5D5F0;
+  border-radius: 15px 15px 0 0;
+  border: solid #000000;
+  border-width: 1px 1px 0 1px;
+  z-index: 1;
+}
+/* Anordnung der Registerkarten mit Hilfe des z-index */
+article.projekte section:nth-child(2) h2 {
+  left: 120px;
+  z-index: 0;
+}
+
+article.projekte section:nth-child(3) h2 {
+  left: 240px;
+  z-index: -1;
+}
+article.projekte section:nth-child(4) h2 {
+  left: 360px;
+  z-index: -2;
+}
+/* Schwarze Überschriften der Register, die anklickbar sind */
+article.projekte section h2 a {
+  display: block;
+  margin: 5px 0 0 0;
+  text-align: center;
+  text-decoration: none;          /* Verlinkung (Unterstreichung) ausblenden */
+  color: #000000;
+}
+/* Registerkarte angeklickt (dunkelrosa) */
+article.projekte section:target, article.projekte section:target h2 {
+  color: #FFFFFF;
+  background-color: #AB63A0;
+  z-index: 1;
+}
+/* Überschrift angeklickte Registerkarte */
+article.projekte section:target h2 a {
+  color: #FFFFFF;
+}
+/* Layout Kasten/Schrift der Paragraphen der Section*/
+article.projekte section:target, article.projekte section:target p {
+  color: #000000;
+  background-color: #FFFFFF;
+  z-index: 1;
+}
+
+/* Article Projekte Ende */
 
 
 
