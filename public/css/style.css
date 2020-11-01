@@ -10,130 +10,131 @@ Layout des Dokuments
  */
 
 body {
-  padding: 0;
-  margin: 0 0 1em 0;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 12pt;
-  font-weight: normal;
-  color: #333333;
+    padding: 0;
+    margin: 0 0 1em 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #333333;
 }
 
 nav {
-  display: flex;
-  background-color: #C3F7F4;
-  padding: .1em;
+    display: flex;
+    background-color: #C3F7F4;
+    padding: .1em;
 }
 
 nav a {
-  color: #333333;
-  text-decoration: none;
-  padding: .45em 2em .45em 1em;
-  font-weight: bold;
+    color: #333333;
+    text-decoration: none;
+    padding: .45em 2em .45em 1em;
+    font-weight: bold;
 }
 
 nav a:hover {
-  color: #AB63A0;
+    color: #AB63A0;
 }
 
 nav a:visited {
-  color: #ABA27D;
+    color: #ABA27D;
 }
 
 /* Logo mit Gruß-Formel und Unterschrift */
 header section {
-  display: flex;
-  padding: 1em;
+    display: flex;
+    padding: 1em;
 }
 
 header section img {
-  height: 90%;
+    height: 90%;
 }
 
 /* fix für das flex box um die Überschriften rechtsbündig zu bekommen
    siehe MDN Firefox ganz unten beim Flexbox Artikel, da align-self nicht hilft.
  */
 header section div {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 header section h1 {
-  margin: 0;
-  padding: 0;
-  font-size: 61pt;
-  font-weight: lighter;
+    margin: 0;
+    padding: 0;
+    font-size: 61pt;
+    font-weight: lighter;
 }
 
 header section h2 {
-  position: relative;
-  top: -12px;
-  right: 12px;
-  font-weight: lighter;
-  margin: 0;
-  padding: 0;
-  color: #666;
-  text-align: right;
+    position: relative;
+    top: -12px;
+    right: 12px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    text-align: right;
 }
 
 main {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 main article {
-  display: grid;
-  grid-template-columns: repeat(1, 2fr 2fr);
-  border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr 2fr);
+    border-bottom: 1px solid black;
 }
 
 main article section {
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
 }
+
 main article section h3 {
-  text-align: center;
+    text-align: center;
 }
 
 /* Beginn Aufgaben */
 main article section:first-child table {
-  font-size: 11pt;
-  text-align: center;
-  border: 1px #adadad solid;
-  border-radius: 5px ;
-  box-shadow: none;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 20%;
-  margin-left: 25px;
-  margin-right: 25px;
+    font-size: 11pt;
+    text-align: center;
+    border: 1px #adadad solid;
+    border-radius: 5px;
+    box-shadow: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20%;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
-main article section:first-child table thead th:first-child{
-  border-radius: 5px 0 0 0;
+main article section:first-child table thead th:first-child {
+    border-radius: 5px 0 0 0;
 }
 
-main article section:first-child tablethead th:last-child{
-  border-radius: 0 5px 0 0;
+main article section:first-child tablethead th:last-child {
+    border-radius: 0 5px 0 0;
 }
 
 main article section:first-child table thead th {
-  background-color: #AB63A0;
-  text-align: center;
+    background-color: #AB63A0;
+    text-align: center;
 }
 
 main article section:first-child table tr:nth-child(odd) {
-  background-color: #F5D5F0;
+    background-color: #F5D5F0;
 }
 
 main article section:first-child table tr:nth-child(even) {
-  background-color: #F8EFC8;
+    background-color: #F8EFC8;
 }
 
-main article section:first-child table tr:last-child td:first-child{
-  border-radius: 0 0 0 5px;
+main article section:first-child table tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
 }
 
-main article section:first-child table tr:last-child td:last-child{
-  border-radius: 0 0 5px 0px;
+main article section:first-child table tr:last-child td:last-child {
+    border-radius: 0 0 5px 0px;
 }
 
 /* Ende Aufgaben */
@@ -143,137 +144,135 @@ Beginn Fortschrittsleiste
  */
 
 main article section:nth-child(2) {
-  display: flex;
-  flex-flow: column wrap;
+    display: flex;
+    flex-flow: column wrap;
 }
 
 main article section:nth-child(2) ul li {
-  list-style-type: none;
-  width: 18%;
-  float: left;
-  font-size: 18px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  color: black;
-  counter-increment: li;
+    list-style-type: none;
+    width: 18%;
+    float: left;
+    font-size: 18px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    counter-increment: li;
 }
 
 main article section:nth-child(2) ul li:before {
-  width: 30px;
-  height: 30px;
-  content: "";
-  line-height: 30px;
-  border: black thin solid;
-  display: block;
-  text-align: center;
-  margin: 0 auto 3px auto;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-  background-color: #F5D5F0;
+    width: 30px;
+    height: 30px;
+    content: "";
+    line-height: 30px;
+    border: black thin solid;
+    display: block;
+    text-align: center;
+    margin: 0 auto 3px auto;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    background-color: #F5D5F0;
 }
 
-main article section:nth-child(2) ul li:first-child:before  {
-  content: counter(li);
-  color: white;
-  background-color: #AB63A0;
+main article section:nth-child(2) ul li:first-child:before {
+    content: counter(li);
+    color: white;
+    background-color: #AB63A0;
 }
 
-main article section:nth-child(2) ul li:not(:first-child):before  {
-  content: counter(li);
-  color: #AB63A0;
+main article section:nth-child(2) ul li:not(:first-child):before {
+    content: counter(li);
+    color: #AB63A0;
 }
-
 
 main article section:nth-child(2) ul li:not(:first-child):after {
-  width: 100%;
-  height: 2px;
-  content: '';
-  position: absolute;
-  background-color: black;
-  top: 17px;
-  left: -25%;
-  z-index: 0;
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: black;
+    top: 17px;
+    left: -25%;
+    z-index: 0;
 }
 
 main article section:nth-child(2) div {
-  border: 1px solid black;
-  margin-top: 1em;
-  margin-left: 23%;
-  width: 56%;
-  background-color: #F8EFC8;
+    border: 1px solid black;
+    margin-top: 1em;
+    margin-left: 23%;
+    width: 56%;
+    background-color: #F8EFC8;
 }
 
 main article section:nth-child(2) div span {
-  display: block;
-  height: 1em;
-  width: 42%;
-  background-color: #AB63A0;
+    display: block;
+    height: 1em;
+    width: 42%;
+    background-color: #AB63A0;
 }
 
 /* Article Projekte  */
 
 main article section:nth-child(3) {
-  border-color: #333333;
-  border-style: solid;
-  border-width: thin;
-  border-bottom-width: 0;
-  display: flex;
-  flex-flow: column wrap;
+    border-color: #333333;
+    border-style: solid;
+    border-width: thin;
+    border-bottom-width: 0;
+    display: flex;
+    flex-flow: column wrap;
 }
-
 
 /* Register Grundlayout*/
 
 .tabs {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 
 /* ButtonDesign */
 .tabs button {
-  background-color: #F5D5F0;
-  border: black thin solid;
-  border-radius: 15px 15px 0 0;
-  border-bottom: none;
-  border-spacing: 0;
-  cursor: pointer;
-  transition: 1.3s;
-  line-height: 25px;
-  font-size: 9pt;
+    background-color: #F5D5F0;
+    border: black thin solid;
+    border-radius: 15px 15px 0 0;
+    border-bottom: none;
+    border-spacing: 0;
+    cursor: pointer;
+    transition: 1.3s;
+    line-height: 25px;
+    font-size: 9pt;
 }
 
 /* Ändert Hintergrund des buttons beim hover */
 .tabs button:hover {
-  background-color: #AB63A0;
-  color: #F8EFC8;
+    background-color: #AB63A0;
+    color: #F8EFC8;
 }
 
 /* Hintergrundauswahl faker*/
-.tabs button:nth-child(3){
-  background-color: #AB63A0;
-  color: #F8EFC8;
+.tabs button:nth-child(3) {
+    background-color: #AB63A0;
+    color: #F8EFC8;
 }
 
 /* Design des Inhalts Faker (implementiert mit JS) */
 .tabInhalt {
-  display: none;
-  padding: 8px 4px;
-  border: 1px solid #333333;
-  width: 236px;
-  font-size: 9pt;
-  /* ein alter hack um das Element mittig zu bekommen, vllt. besser mit grid oder flex */
-  margin: 0 auto;
+    display: none;
+    padding: 8px 4px;
+    border: 1px solid #333333;
+    width: 236px;
+    font-size: 9pt;
+    /* ein alter hack um das Element mittig zu bekommen, vllt. besser mit grid oder flex */
+    margin: 0 auto;
 }
 
 .tabInhalt.activeTab {
-  display: block;
-  padding: 8px 4px;
-  border: 1px solid #333333;
-  border-top: none;
+    display: block;
+    padding: 8px 4px;
+    border: 1px solid #333333;
+    border-top: none;
 }
 
 /* Sektion Projekte Ende */
@@ -281,98 +280,100 @@ main article section:nth-child(3) {
 /* Sektion Gruppen Start */
 /*  Einbetten der TreeView für Design */
 #groups {
-  margin-left: 8%;
-  margin-right: 8%;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  margin-bottom: 5px;
+    margin-left: 8%;
+    margin-right: 8%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin-bottom: 5px;
 }
 
 details summary {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 details summary:not(:last-child) {
-  border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 /* Hack: entfernt die summary arrows vor dem Text */
 details summary::-webkit-details-marker {
-  display: none;
+    display: none;
 }
 
 .Gruppen {
-  background-color: #F5D5F0;
+    background-color: #F5D5F0;
 }
 
 #gruppe1 {
-  background-color: #AB63A0;
+    background-color: #AB63A0;
 }
 
 
 /* Kalender fieldset */
 #kalender {
-  display: flex;
-  flex-flow: column;
-  text-align: center;
-  padding: 0 2% 0 2%;
-  border: 1px black solid;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    padding: 0 2% 0 2%;
+    border: 1px black solid;
 }
 
 #kalender h2 {
-  padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 #kalender table {
-  font-size: 11pt;
-  border: 1px #adadad solid;
-  border-radius: 5px;
-  box-shadow: none;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-top: 2.5em;
-  margin-bottom: 20%;
+    font-size: 11pt;
+    border: 1px #adadad solid;
+    border-radius: 5px;
+    box-shadow: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 2.5em;
+    margin-bottom: 20%;
 }
 
 #kalender tr {
-  background-color: #F8EFC8;
+    background-color: #F8EFC8;
 }
 
 #kalender thead th {
-  font-size: 9pt;
-  color: #ffffff;
-  background-color: #AB63A0;
-  text-align: center;
-  font-weight: lighter;
-  padding: 1em;
+    font-size: 9pt;
+    color: #ffffff;
+    background-color: #AB63A0;
+    text-align: center;
+    font-weight: lighter;
+    padding: 1em;
 }
 
 #kalender thead th:first-child {
-  border-radius: 5px 0 0 0;
+    border-radius: 5px 0 0 0;
 }
 
 #kalender thead th:last-child {
-  border-radius: 0 5px 0 0;
+    border-radius: 0 5px 0 0;
 }
 
-#letzteKalenderZeile td:first-child{
-  border-radius: 0 0 0 5px;
+#letzteKalenderZeile td:first-child {
+    border-radius: 0 0 0 5px;
 }
-#letzteKalenderZeile td:last-child{
-  border-radius: 0 0 5px 0;
+
+#letzteKalenderZeile td:last-child {
+    border-radius: 0 0 5px 0;
 }
+
 #kalenderTage td {
-  background-color: #F5D5F0;
-  border:none;
-  font-weight: lighter;
-  padding: .9em;
+    background-color: #F5D5F0;
+    border: none;
+    font-weight: lighter;
+    padding: .9em;
 }
 
-.kalender_eintrag  {
-  border: none;
-  font-weight: lighter;
-  padding: .8em;
+.kalender_eintrag {
+    border: none;
+    font-weight: lighter;
+    padding: .8em;
 }
 
 /*
@@ -380,51 +381,15 @@ um die Tabellen Aufgabe auszuhebeln
  */
 
 #kalender tr:hover {
-  color: black;
+    color: black;
 }
 
-/*
-td:nth-child(2)::first-letter{
-  font-weight: lighter;
-}*/
+
+#kalender td:nth-child(2)::first-letter {
+    font-weight: lighter;
+}
 
 /* Ende Kalender */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
