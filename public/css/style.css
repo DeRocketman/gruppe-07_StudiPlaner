@@ -85,12 +85,16 @@ main article {
   border: 1px solid black;
 }
 
-.gridmember {
+main article section {
   border: black thin solid;
 }
 
+main article section:first-child h2 {
+  text-align: center;
+}
+
 /* Beginn Aufgaben */
-#aufgabenTable {
+main article section:first-child table {
   font-size: 11pt;
   text-align: center;
   border: 1px #adadad solid;
@@ -101,41 +105,41 @@ main article {
   margin-bottom: 20%;
   margin-left: 25px;
   margin-right: 25px;
-
 }
-#aufgabenTable thead th:first-child{
+
+main article section:first-child table thead th:first-child{
   border-radius: 5px 0 0 0;
 }
-#aufgabenTable thead th:last-child{
+
+main article section:first-child tablethead th:last-child{
   border-radius: 0 5px 0 0;
 }
-#aufgabenTable thead th{
+
+main article section:first-child table thead th {
   background-color: #AB63A0;
   text-align: center;
-
 }
 
-#aufgabenZeile1{
+main article section:first-child table tr:nth-child(odd) {
   background-color: #F5D5F0;
 }
-#aufgabenZeile2{
+
+main article section:first-child table tr:nth-child(even) {
   background-color: #F8EFC8;
 }
-#aufgabenZeile3{
-  background-color: #F5D5F0;
 
-}
-#aufgabenZeile3 td:first-child{
+main article section:first-child table tr:last-child td:first-child{
   border-radius: 0 0 0 5px;
 }
-#aufgabenZeile3 td:last-child{
+
+main article section:first-child table tr:last-child td:last-child{
   border-radius: 0 0 5px 0px;
 }
 
 /* Ende Aufgaben */
 
 /*
-Fortschrittsleiste
+Beginn Fortschrittsleiste
  */
 .prozessschritte li {
   list-style-type: none;
@@ -189,9 +193,13 @@ Fortschrittsleiste
 }
 
 progress{
+  justify-content: center;
   color: #AB63A0;
+  background-color: #ABA27D;
 }
-/* Article Projekte                   */
+
+
+/* Article Projekte  */
 
 #projectsection {
   border-color: #333333;

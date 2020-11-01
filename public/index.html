@@ -34,10 +34,10 @@
 <main>
     <article>
         <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
-        <section id="aufgaben" class="gridmember">
+        <section>
             <h2>Aufgaben</h2>
 
-            <table id="aufgabenTable" height=55%>
+            <table height=55%>
                 <thead>
                 <tr>
                     <th>&#10004;</th> <!-- Unicode für ein Häkchen -->
@@ -46,17 +46,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="aufgabenZeile1">
+                <tr>
                     <td><label><input type="checkbox" id="aufgabe1" name="aufgabe1"></label></td>
                     <td>MD2</td>
-                    <td>Fotos für Webseite machen</td>
+                    <td>Fotos, Webseite</td>
                 </tr>
-                <tr id="aufgabenZeile2">
+                <tr>
                     <td><label><input type="checkbox" id="aufgabe2" name="aufgabe2"></label></td>
                     <td>WebProg</td>
                     <td>Wireframe, HTML</td>
                 </tr>
-                <tr id="aufgabenZeile3">
+                <tr>
                     <td><label><input type="checkbox" id="aufgabe3" name="aufgabe3"></label></td>
                     <td>GdM</td>
                     <td>Rechnen</td>
@@ -65,7 +65,7 @@
             </table>
         </section>
         <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
-        <section class="gridmember">
+        <section>
             <h2>Fortschritt</h2>
             <div class="containerProzessschritte">
             <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
@@ -84,7 +84,7 @@
 
         <!-- Drittes Fieldset (aktuell mit Article) für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
         <!-- Registerlinks -->
-        <section id="projectsection" class="gridmember">
+        <section>
             <h2>Projekte</h2>
             <div class="register">
                 <button class="registerlink" onclick="openProjekt(event, 'Projekt1')">Projekt 1</button>
@@ -116,7 +116,7 @@
         </section>
 
         <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
-        <section class="gridmember">
+        <section>
             <h2>Gruppen</h2>
             <div id="groupsdiv">
                 <details open="open">
@@ -139,7 +139,7 @@
         </section>
     </article>
     <!-- letzte Fieldset für das Tool Kalender. -->
-    <section id="kalender" class="gridmember">
+    <section id="kalender">
         <h2>Alle Termine auf einen Blick</h2>
         <table>
             <thead>
