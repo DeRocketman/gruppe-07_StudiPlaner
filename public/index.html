@@ -77,7 +77,7 @@
             </ul>
 
             <!-- haben hier selbst ein progress bar gebaut, da die mitgegebenen auf mdn nicht empfohlen wurden,
-                 ein bisschen 'old-school' css gehacke :) -->
+                 ein bisschen 'old-school' css gehake :) -->
             <div>
                 <span></span>
             </div>
@@ -87,39 +87,43 @@
         <!-- Registerlinks -->
         <section>
             <h3>Projekte</h3>
-            <div class="register">
-                <button class="registerlink" onclick="openProjekt(event, 'Projekt1')">Projekt 1</button>
-                <button class="registerlink" onclick="openProjekt(event, 'Projekt2')">Projekt 2</button>
-                <button class="registerlink" onclick="openProjekt(event, 'Projekt3')">Projekt 3</button>
-                <button class="registerlink" onclick="openProjekt(event, 'Projekt4')">Projekt 4</button>
-            </div>
 
-        <!-- Tabprojektinhalt -->
-            <div id="Projekt1" class="registerinhalt">
-                <h4>Projekt 3</h4>
-                <p>Inhalt 3 kreativer Platzhalter</p>
-            </div>
+            <div id="tabContainer">
 
-            <div id="Projekt2" class="registerinhalt">
-                <h4>Projekt 2<</h4>
-                <p>Inhalt 2</p>
-            </div>
+                <div class="register">
+                    <button>Projekt 1</button>
+                    <button>Projekt 2</button>
+                    <button>Projekt 3</button>
+                    <button>Projekt 4</button>
+                </div>
 
-            <div id="Projekt3" class="registerinhalt">
-                <h4>Projekt 3</h4>
-                <p>Inhalt 3</p>
-            </div>
+                <!-- Tabprojektinhalt -->
+                <div id="Projekt1" class="registerinhalt">
+                    <h4>Projekt 1</h4>
+                    <p>Inhalt 1 kreativer Platzhalter</p>
+                </div>
 
-            <div id="Projekt4" class="registerinhalt">
-                <h4>Projekt 4</h4>
-                <p>Inhalt 4</p>
+                <div id="Projekt2" class="registerinhalt">
+                    <h4>Projekt 2<</h4>
+                    <p>Inhalt 2</p>
+                </div>
+
+                <div id="Projekt3" class="registerinhalt">
+                    <h4>Projekt 3</h4>
+                    <p>Inhalt 3</p>
+                </div>
+
+                <div id="Projekt4" class="registerinhalt">
+                    <h4>Projekt 4</h4>
+                    <p>Inhalt 4</p>
+                </div>
             </div>
         </section>
 
         <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
         <section>
             <h3>Gruppen</h3>
-            <div id="groupsdiv">
+            <div id="groups">
                 <details open="open">
                     <summary id="gruppe1" class="Gruppen">Gruppe 1</summary>
                     <p>Web-Programmierung <br/> Dirk, Ben, Louis, Kim</p>

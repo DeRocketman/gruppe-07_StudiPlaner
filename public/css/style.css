@@ -82,13 +82,13 @@ main {
 main article {
   display: grid;
   grid-template-columns: repeat(1, 2fr 2fr);
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 main article section {
-  border: black thin solid;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
 }
-
 main article section h3 {
   text-align: center;
 }
@@ -212,41 +212,52 @@ main article section:nth-child(2) div span {
   background-color: #AB63A0;
 }
 
-
 /* Article Projekte  */
 
-#projectsection {
+main article section:nth-child(3) {
   border-color: #333333;
   border-style: solid;
   border-width: thin;
   border-bottom-width: 0;
+  display: flex;
+  flex-flow: column wrap;
 }
 /* Register Grundlayout*/
+
+#tabContainer {
+  display: flex;
+  flex-flow: column wrap;
+}
+
 .register {
   overflow: hidden;
-  margin-left: 55px;
-  margin-right: 55px;
+  margin: 0;
+  padding: 0;
 }
 
 /* ButtonDesign */
 .register button {
   background-color: #F5D5F0;
-  float: left;
   border: black thin solid;
-  outline: #333333;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
   cursor: pointer;
-
   transition: 1.3s;
+  font-size: 9pt;
+  line-height: 25px;
+  border-spacing: 0;
 }
 
 /* Aendert Hintergrund des buttons beim hover */
 .register button:hover {
   background-color: #AB63A0;
+  color: #F8EFC8;
 }
 
 /* Hintergrundauswahl faker*/
 .register button:nth-child(3){
   background-color: #AB63A0;
+  color: #F8EFC8;
 }
 
 /* Design des Inhalts Faker (implementiert mit JS) */
@@ -261,32 +272,52 @@ main article section:nth-child(2) div span {
   padding: 8px 4px;
   border: 1px solid #333333;
   border-top: none;
-  margin-left: 55px;
-  margin-right: 55px;
 }
 /* Sektion Projekte Ende */
 
 /* Sektion Gruppen Start */
 /*  Einbetten der TreeView für Design */
-#groupsdiv {
-  border: black thin solid;
-  margin-left: 25px;
-  margin-right: 25px;
+#groups {
+  margin-left: 8%;
+  margin-right: 8%;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  margin-bottom: 5px;
+}
+
+details {
+}
+
+details summary {
+  padding-left: 5px;
+}
+
+details summary:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+/* Hack: entfernt die summary arrows vor dem Text */
+details summary::-webkit-details-marker {
+  display: none;
 }
 
 .Gruppen {
-  border: black thin solid;
   background-color: #F5D5F0;
 }
 
 #gruppe1 {
   background-color: #AB63A0;
 }
+
+
 /* Kalender fieldset */
 #kalender {
   display: flex;
   flex-flow: column;
   text-align: center;
+  padding: 0 2% 0 2%;
+  border: 1px black solid;
 }
 
 #kalender h2 {
