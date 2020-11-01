@@ -79,6 +79,7 @@ main {
     justify-content: center;
 }
 
+/* Kalender gehört nicht zu diesem Grid Layout */
 main article {
     display: grid;
     grid-template-columns: repeat(1, 2fr 2fr);
@@ -104,8 +105,12 @@ main article section:first-child table {
     border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 20%;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+main article section:first-child table tr:not(:last-child) td {
+    border-bottom: 1px solid #AB63A0;
 }
 
 main article section:first-child table thead th:first-child {
@@ -263,9 +268,9 @@ main article section:nth-child(3) {
     padding: 8px 4px;
     border: 1px solid #333333;
     width: 236px;
+    height: 95%;
     font-size: 9pt;
-    /* ein alter hack um das Element mittig zu bekommen, vllt. besser mit grid oder flex */
-    margin: 0 auto;
+    margin: auto;
 }
 
 .tabInhalt.activeTab {
@@ -289,7 +294,8 @@ main article section:nth-child(3) {
 }
 
 details summary {
-    padding-left: 5px;
+    font-size: 11pt;
+    padding: 5px;
 }
 
 details summary:not(:last-child) {
@@ -303,14 +309,19 @@ details summary::-webkit-details-marker {
 
 .Gruppen {
     background-color: #F5D5F0;
+    border-top: 1px solid black;
 }
 
-#gruppe1 {
+.Gruppen.active {
+    color: #F8EFC8;
     background-color: #AB63A0;
 }
 
 
-/* Kalender fieldset */
+/* Kalender section, hier sind recht viele Ids und Klassen aufgrund von Javascript
+Entwicklung, wollen mal schauen ob es auch ohne geht, allerdings im ersten Wurf
+brauchten wir noch die Bezeichner. Es wurde ansonsten zu kompliziert. */
+
 #kalender {
     display: flex;
     flex-flow: column;
@@ -332,6 +343,7 @@ details summary::-webkit-details-marker {
     border-spacing: 0;
     margin-top: 2.5em;
     margin-bottom: 20%;
+    background-color: #F8EFC8;
 }
 
 #kalender tr {
@@ -355,22 +367,22 @@ details summary::-webkit-details-marker {
     border-radius: 0 5px 0 0;
 }
 
-#letzteKalenderZeile td:first-child {
+#kalender tr:last-child td:first-child {
     border-radius: 0 0 0 5px;
 }
 
-#letzteKalenderZeile td:last-child {
+#kalender tr:last-child td:last-child {
     border-radius: 0 0 5px 0;
 }
 
-#kalenderTage td {
+#kalender tr:nth-child(1) td {
     background-color: #F5D5F0;
     border: none;
     font-weight: lighter;
     padding: .9em;
 }
 
-.kalender_eintrag {
+#kalender tr:not(:nth-child(1)) td {
     border: none;
     font-weight: lighter;
     padding: .8em;
@@ -390,6 +402,7 @@ um die Tabellen Aufgabe auszuhebeln
 }
 
 /* Ende Kalender */
+
 
 
 /*
