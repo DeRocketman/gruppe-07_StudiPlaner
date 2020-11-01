@@ -222,57 +222,60 @@ main article section:nth-child(3) {
   display: flex;
   flex-flow: column wrap;
 }
+
+
 /* Register Grundlayout*/
 
-#tabContainer {
+.tabs {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
-.register {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
 
 /* ButtonDesign */
-.register button {
+.tabs button {
   background-color: #F5D5F0;
   border: black thin solid;
   border-radius: 15px 15px 0 0;
   border-bottom: none;
+  border-spacing: 0;
   cursor: pointer;
   transition: 1.3s;
-  font-size: 9pt;
   line-height: 25px;
-  border-spacing: 0;
+  font-size: 9pt;
 }
 
-/* Aendert Hintergrund des buttons beim hover */
-.register button:hover {
+/* Ändert Hintergrund des buttons beim hover */
+.tabs button:hover {
   background-color: #AB63A0;
   color: #F8EFC8;
 }
 
 /* Hintergrundauswahl faker*/
-.register button:nth-child(3){
+.tabs button:nth-child(3){
   background-color: #AB63A0;
   color: #F8EFC8;
 }
 
 /* Design des Inhalts Faker (implementiert mit JS) */
-.registerinhalt {
+.tabInhalt {
   display: none;
   padding: 8px 4px;
   border: 1px solid #333333;
-  border-top: none;
+  width: 236px;
+  font-size: 9pt;
+  /* ein alter hack um das Element mittig zu bekommen, vllt. besser mit grid oder flex */
+  margin: 0 auto;
 }
-.registerinhalt:nth-child(3) {
+
+.tabInhalt.activeTab {
   display: block;
   padding: 8px 4px;
   border: 1px solid #333333;
   border-top: none;
 }
+
 /* Sektion Projekte Ende */
 
 /* Sektion Gruppen Start */
@@ -284,9 +287,6 @@ main article section:nth-child(3) {
   border-left: 1px solid black;
   border-right: 1px solid black;
   margin-bottom: 5px;
-}
-
-details {
 }
 
 details summary {
@@ -331,6 +331,7 @@ details summary::-webkit-details-marker {
   box-shadow: none;
   border-collapse: separate;
   border-spacing: 0;
+  margin-top: 2.5em;
   margin-bottom: 20%;
 }
 
