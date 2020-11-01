@@ -35,9 +35,9 @@
     <article>
         <!-- Erstes Fieldset für das Tool Aufgaben. Nutzer kann Aufgaben mit einer Checkbox abhaken. -->
         <section>
-            <h2>Aufgaben</h2>
+            <h3>Aufgaben</h3>
 
-            <table height=55%>
+            <table>
                 <thead>
                 <tr>
                     <th>&#10004;</th> <!-- Unicode für ein Häkchen -->
@@ -66,26 +66,27 @@
         </section>
         <!-- Zweites Fieldset für das Tool Fortschritt. Nutzer kann den Fortschritt des Projektes optisch erkennen. -->
         <section>
-            <h2>Fortschritt</h2>
-            <div class="containerProzessschritte">
+            <h3>Fortschritt</h3>
             <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
-            <ul class="prozessschritte">
-                <li id="fortschritt1" class="active">1</li>
-                <li id="fortschritt2" class="active">2</li>
-                <li id="fortschritt3">3</li>
-                <li id="fortschritt4">4</li>
-                <li id="fortschritt5">5</li>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
-            <figure>
-                <progress id="ladebalken" value="30" max="100"></progress> <!-- zweite Visualisierung als Ladebalken -->
-            </figure>
+
+            <!-- haben hier selbst ein progress bar gebaut, da die mitgegebenen auf mdn nicht empfohlen wurden,
+                 ein bisschen 'old-school' css gehacke :) -->
+            <div>
+                <span></span>
             </div>
         </section>
 
         <!-- Drittes Fieldset (aktuell mit Article) für das Tool Projekte. Projektinformationen können in einer Registeransicht angesehen werden. (Hinweis CSS: target) -->
         <!-- Registerlinks -->
         <section>
-            <h2>Projekte</h2>
+            <h3>Projekte</h3>
             <div class="register">
                 <button class="registerlink" onclick="openProjekt(event, 'Projekt1')">Projekt 1</button>
                 <button class="registerlink" onclick="openProjekt(event, 'Projekt2')">Projekt 2</button>
@@ -95,29 +96,29 @@
 
         <!-- Tabprojektinhalt -->
             <div id="Projekt1" class="registerinhalt">
-                <h3>Projekt 3</h3>
+                <h4>Projekt 3</h4>
                 <p>Inhalt 3 kreativer Platzhalter</p>
             </div>
 
             <div id="Projekt2" class="registerinhalt">
-                <h3>Projekt 2<</h3>
+                <h4>Projekt 2<</h4>
                 <p>Inhalt 2</p>
             </div>
 
             <div id="Projekt3" class="registerinhalt">
-                <h3>Projekt 3</h3>
+                <h4>Projekt 3</h4>
                 <p>Inhalt 3</p>
             </div>
 
             <div id="Projekt4" class="registerinhalt">
-                <h3>Projekt 4</h3>
+                <h4>Projekt 4</h4>
                 <p>Inhalt 4</p>
             </div>
         </section>
 
         <!-- Viertes Fieldset für das Tool Gruppen. Die Mitglieder der Gruppen werden angezeigt. -->
         <section>
-            <h2>Gruppen</h2>
+            <h3>Gruppen</h3>
             <div id="groupsdiv">
                 <details open="open">
                     <summary id="gruppe1" class="Gruppen">Gruppe 1</summary>
@@ -140,7 +141,7 @@
     </article>
     <!-- letzte Fieldset für das Tool Kalender. -->
     <section id="kalender">
-        <h2>Alle Termine auf einen Blick</h2>
+        <h3>Alle Termine auf einen Blick</h3>
         <table>
             <thead>
             <tr>
