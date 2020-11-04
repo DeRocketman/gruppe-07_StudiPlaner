@@ -1,6 +1,5 @@
 /*
 Layout des Dokuments
-
   Farbschema:
   cookieCrema: #ABA27D
   navBlau: #C3F7F4
@@ -8,7 +7,6 @@ Layout des Dokuments
   zartRosé: #F5D5F0
   dunkelRosa: #AB63A0
  */
-
 body {
     padding: 0;
     margin: 0 0 1em 0;
@@ -109,7 +107,7 @@ main article section:first-child table {
     margin-right: 5px;
 }
 
-main article section:first-child table tr:not(:last-child) td {
+main article section:first-child thead tr:not(:last-child) td {
     border-bottom: 1px solid #AB63A0;
 }
 
@@ -117,7 +115,7 @@ main article section:first-child table thead th:first-child {
     border-radius: 5px 0 0 0;
 }
 
-main article section:first-child tablethead th:last-child {
+main article section:first-child thead th:last-child {
     border-radius: 0 5px 0 0;
 }
 
@@ -139,7 +137,7 @@ main article section:first-child table tr:last-child td:first-child {
 }
 
 main article section:first-child table tr:last-child td:last-child {
-    border-radius: 0 0 5px 0px;
+    border-radius: 0 0 5px 0;
 }
 
 /* Ende Aufgaben */
@@ -147,7 +145,6 @@ main article section:first-child table tr:last-child td:last-child {
 /*
 Beginn Fortschrittsleiste
  */
-
 main article section:nth-child(2) {
     display: flex;
     flex-flow: column wrap;
@@ -268,7 +265,6 @@ main article section:nth-child(3) {
     padding: 8px 4px;
     border: 1px solid #333333;
     width: 236px;
-    height: 95%;
     font-size: 9pt;
     margin: auto;
 }
