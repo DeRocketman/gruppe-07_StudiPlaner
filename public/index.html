@@ -7,6 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/eatable.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/kalenderStyle.css">
 </head>
 
 <body>
@@ -137,62 +138,77 @@
         <table>
             <thead>
             <tr>
-                <th><a>&#10094;</a></th> <!-- Unicode Zeichen für "<" -->
-                <th colspan="5">May 2022</th>
-                <th><a>&#10095;</a></th> <!-- Unicode Zeichen für ">" -->
+                <th><a id="vorherigerMonat">&#10094;</a></th> <!-- Unicode Zeichen für "<" -->
+                <th colspan="5" id="kalender_monat">May 2022</th>
+                <th><a id="naechsterMonat">&#10095;</a></th> <!-- Unicode Zeichen für ">" -->
             </tr>
             </thead>
             <tr>
+                <td>So</td>
                 <td>Mo</td>
                 <td>Di</td>
                 <td>Mi</td>
                 <td>Do</td>
                 <td>Fr</td>
                 <td>Sa</td>
-                <td>So</td>
             </tr>
             <tr>
-                <td id="kalender_eintrag_1">1</td>
-                <td id="kalender_eintrag_2">2</td>
-                <td id="kalender_eintrag_3">3</td>
-                <td id="kalender_eintrag_4">4</td>
-                <td id="kalender_eintrag_5">5</td>
-                <td id="kalender_eintrag_6">6</td>
-                <td id="kalender_eintrag_7">7</td>
+                <td id="kalender_eintrag_0"></td>
+                <td id="kalender_eintrag_1"></td>
+                <td id="kalender_eintrag_2"></td>
+                <td id="kalender_eintrag_3"></td>
+                <td id="kalender_eintrag_4"></td>
+                <td id="kalender_eintrag_5"></td>
+                <td id="kalender_eintrag_6"></td>
             </tr>
             <tr>
-                <td id="kalender_eintrag_8">8</td>
-                <td id="kalender_eintrag_9">9</td>
-                <td id="kalender_eintrag_10">10</td>
-                <td id="kalender_eintrag_11">11</td>
-                <td id="kalender_eintrag_12">12</td>
-                <td id="kalender_eintrag_13">13</td>
-                <td id="kalender_eintrag_14">14</td>
+                <td id="kalender_eintrag_7"></td>
+                <td id="kalender_eintrag_8"></td>
+                <td id="kalender_eintrag_9"></td>
+                <td id="kalender_eintrag_10"></td>
+                <td id="kalender_eintrag_11"></td>
+                <td id="kalender_eintrag_12"></td>
+                <td id="kalender_eintrag_13"></td>
             </tr>
             <tr>
-                <td id="kalender_eintrag_15">15</td>
-                <td id="kalender_eintrag_16">16</td>
-                <td id="kalender_eintrag_17">17</td>
-                <td id="kalender_eintrag_18">18</td>
-                <td id="kalender_eintrag_19">19</td>
-                <td id="kalender_eintrag_20">20</td>
-                <td id="kalender_eintrag_21">21</td>
+                <td id="kalender_eintrag_14"></td>
+                <td id="kalender_eintrag_15"></td>
+                <td id="kalender_eintrag_16"></td>
+                <td id="kalender_eintrag_17"></td>
+                <td id="kalender_eintrag_18"></td>
+                <td id="kalender_eintrag_19"></td>
+                <td id="kalender_eintrag_20"></td>
             </tr>
             <tr>
-                <td id="kalender_eintrag_22">22</td>
-                <td id="kalender_eintrag_23">23</td>
-                <td id="kalender_eintrag_24">24</td>
-                <td id="kalender_eintrag_25">25</td>
-                <td id="kalender_eintrag_26">26</td>
-                <td id="kalender_eintrag_27">27</td>
-                <td id="kalender_eintrag_28">28</td>
+                <td id="kalender_eintrag_21"></td>
+                <td id="kalender_eintrag_22"></td>
+                <td id="kalender_eintrag_23"></td>
+                <td id="kalender_eintrag_24"></td>
+                <td id="kalender_eintrag_25"></td>
+                <td id="kalender_eintrag_26"></td>
+                <td id="kalender_eintrag_27"></td>
             </tr>
             <tr>
-                <td id="kalender_eintrag_29">29</td>
-                <td id="kalender_eintrag_30">30</td>
-                <td id="kalender_eintrag_31">31</td>
+                <td id="kalender_eintrag_28"></td>
+                <td id="kalender_eintrag_29"></td>
+                <td id="kalender_eintrag_30"></td>
+                <td id="kalender_eintrag_31"></td>
+                <td id="kalender_eintrag_32"></td>
+                <td id="kalender_eintrag_33"></td>
+                <td id="kalender_eintrag_34"></td>
+            </tr>
+            <tr>
+                <td id="kalender_eintrag_35"></td>
+                <td id="kalender_eintrag_36"></td>
+                <td id="kalender_eintrag_37"></td>
+                <td id="kalender_eintrag_38"></td>
+                <td id="kalender_eintrag_39"></td>
+                <td id="kalender_eintrag_40"></td>
+                <td id="kalender_eintrag_41"></td>
             </tr>
         </table>
+        <!-- calendar.js erst hier laden nachdem html geladen hat. -->
+        <script type="application/javascript" src="js/calendar.js"></script>
     </section>
 </main>
 <br>

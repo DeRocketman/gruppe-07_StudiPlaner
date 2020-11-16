@@ -11,11 +11,12 @@ class Calendar {
         this.weekday = currentDate.getDay();
         this.monthsName = this.nameOfMonth();
         this.daysName = this.nameOfDay();
+        this.numberOfDaysMonth = this.daysOfMonth()
         console.log(this.toString());
     }
 
     toString = () =>
-        `Heute ist ${this.nameOfDay()} der ${this.day}. ${this.nameOfMonth()} ${this.year} mit ${this.daysOfMonth()} Tagen`;
+        `Heute ist ${this.daysName} der ${this.day}. ${this.monthsName} ${this.year} mit ${this.numberOfDaysMonth} Tagen`;
 
     /*
     Ermittelt den aktuellen Monat, falls keine Parameter mitgegeben wird
@@ -58,44 +59,51 @@ class Calendar {
             daysOfFebruary.call(this);
         }
         return numberOfDaysInMonth;
-    };
+    }
 
 
     // Wechselt zum vorherigen Monat und berücksichtigt dabei Jahreswechsel
     prevMonth = function () {
-        let isJanuary = this.month === 0;
+        let isJanuary = cal.month === 0;
 
         if (isJanuary) {
-            this.month = 11;
-            this.year--;
+            console.log("switching to previous year")
+            cal.month = 11;
+            cal.year--;
         } else {
             this.month--;
         }
-    };
+        const previousCalendar = new Calendar(new Date(cal.year, cal.month, 1));
+        previousCalendar.fillCalendar();
+    }
 
     // Wechselt zum nächsten Monat und berücksichtigt dabei Jahreswechsel
     nextMonth = function () {
-        console.log(this.month);
-        let isDecember = this.month === 11;
+        let isDecember = cal.month === 11;
         if (isDecember) {
-            this.month = 0;
-            this.year++;
+            console.log("and the new year");
+            cal.month = 0;
+            cal.year += 1;
+            console.log(cal.year);
         } else {
-            this.month++;
+            cal.month++;
         }
+        const nextCalendar = new Calendar(new Date(cal.year, cal.month, 1));
+        nextCalendar.fillCalendar();
     }
 
     // Füllt den Kalender mit Tagen, Monat und Jahresangabe
     fillCalendar = function () {
+        console.log("fillin calendar");
         // setzt den Monat im Kalender zu: Monat Jahr, z.B. Oktober 2020
         let kalenderMonat = document.getElementById('kalender_monat');
         // Falls das HTML Document keine Referenzen hat werden hier keine Fehler geworfen.
         if (kalenderMonat) {
-            kalenderMonat.innerHTML = this.monthsName + ' ' + this.year;
-
+            kalenderMonat.innerHTML = `${this.monthsName} ${this.year}`;
 
             let earliestDay = this.day % 7;
             let earliestWeekday = this.weekday;
+
             // // Falls wir noch nicht den ersten Tag des Monats haben.
             if (earliestDay !== 1) {
                 while (earliestDay > 1) {
@@ -106,19 +114,21 @@ class Calendar {
             }
 
             // erstellt Liste mit mit Tagen des Monats
-            const listOfDays = [...Array(this.daysName).keys()];
+            const listOfDays = [...Array(this.numberOfDaysMonth).keys()];
             // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
-            listOfDays.map(day =>
-                document.getElementById('kalender_eintrag_'
+            listOfDays.map(day => document.getElementById('kalender_eintrag_'
                     + (earliestWeekday + day)).innerHTML = day + 1);
 
             document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.prevMonth);
             document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
         }
     }
-
 }
 
 const cal = new Calendar();
 cal.fillCalendar();
+
+// TODO: 1. Clear Calendar function on prev and next or better still in fillCalendar
+//       2. Problem with the new year appearing a month too late.
+//       3. Previous year is broken.
 
