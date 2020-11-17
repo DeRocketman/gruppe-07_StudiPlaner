@@ -14,9 +14,11 @@ class Calendar {
         this.numberOfDaysMonth = this.daysOfMonth()
         console.log(this.toString());
     }
-
     toString = () =>
         `Heute ist ${this.daysName} der ${this.day}. ${this.monthsName} ${this.year} mit ${this.numberOfDaysMonth} Tagen`;
+
+    toShortString = () =>
+        `${this.day}.${this.monthsName}.${this.year}`
 
     /*
     Ermittelt den aktuellen Monat, falls keine Parameter mitgegeben wird

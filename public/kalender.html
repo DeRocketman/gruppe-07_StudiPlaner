@@ -5,7 +5,8 @@
     </title>
     <link rel="stylesheet" href="css/style.css">
     <link href="css/kalenderStyle.css" rel="stylesheet"/>
-    <script type="application/ecmascript" src="js/calender.js"></script>
+    <script type="application/ecmascript" src="js/calendar.js"></script>
+    <script type="application/ecmascript" src="js/calendarEntry.js"></script>
 </head>
 <body>
 <header>
@@ -29,24 +30,16 @@
     <section>
 <fieldset>
     <legend>Termineingabe</legend>
-    <table class="aktuellesDatum" >
-        <thead>
-        <tr>
-            <td id="daten1"> 31.10.2020</td>
-            <td> <img src="https://maxcdn.icons8.com/Share/icon/p1em/Time_And_Date/calendar1600.png" height="15" width="15" alt="Kalender-Logo" ></td>
-        </tr>
-        </thead>
-    </table>
-    <textarea id="notizfeld" cols="30" rows="20" >
-        hier k&#246nnte Ihre Werbung stehen
-    </textarea>
+    <div id="datumsSelektion">
+        <p id="aktuellesDatum"></p>
+        <img src="https://maxcdn.icons8.com/Share/icon/p1em/Time_And_Date/calendar1600.png" alt="Kalender-Logo"/>
+    </div>
+        <textarea id="notizfeld" cols="30" rows="20" placeholder="Bitte text eingeben..."></textarea>
     <br>
-    <button type="button" id="speicherbutton" class="button" onclick="alert('Du hast gespeicher!')">Speichern</button>
-    <button type="button" id="löschenbutton" class="button" onclick="alert('Eingaben wurden gel&#246scht!')">L&#246schen</button>
+    <button type="button" id="speichernButton" class="button">Speichern</button>
+    <button type="reset" id="loeschenButton" class="button">L&#246schen</button>
 </fieldset>
     </section>
-    <section>
-
     </section>
 </main>
 </body>

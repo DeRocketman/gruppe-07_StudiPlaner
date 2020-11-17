@@ -18,17 +18,26 @@ thead th a {
     text-align: center;
     font-size: 11pt;
 }
-#daten1 {
 
+#datumsSelektion {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#datumsSelektion p {
     border-right: 1px solid black;
     border-collapse: separate;
     border-spacing: 0;
-    margin-bottom: 20%;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0;
+    padding: 0;
 }
-.button {
 
+#datumsSelektion img {
+    height: 22px;
+    width: 22px;
+}
+
+.button {
     border: 1px solid black;
     border-radius: 5px;
     color: black;
@@ -39,9 +48,19 @@ thead th a {
     font-size: 12px;
     font-weight: 600;
 }
-#speicherbutton {
+
+#notizfeld {
+    resize: none;
+}
+
+#speicherButton {
     background-color: #C3F7F4;
 }
-#löschenbutton {
+
+#loeschenButton a {
     background-color: #adadad;
+}
+
+#loeschenButton a:hover {
+    background-color: #AB63A0;
 }
