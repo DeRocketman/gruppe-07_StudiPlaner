@@ -157,5 +157,8 @@ cal.highlightToday();
 document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.prevMonth);
 document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
 
-// Nais to have in Version 3: ToolTips für alle eingetragenen Tage im Monat aus dem Lokal Storage anfragen.
+// Nais to have in Version 3:
+// 1. ToolTips für alle eingetragenen Tage im Monat aus dem Lokal Storage anfragen.
+// 2. Lieber neue Kind-Knoten im Kalender anlegen als leere Tabellenelemente im HTML zu haben.
+//    - Dynamisch erzeugen, ist irgendwie cooler und somit auch modularer einsetzbar ohne viel Aufwand.
 
