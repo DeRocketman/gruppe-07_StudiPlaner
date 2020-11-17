@@ -12,7 +12,8 @@ class Calendar {
         this.monthsName = this.nameOfMonth();
         this.daysName = this.nameOfDay();
         this.numberOfDaysMonth = this.daysOfMonth()
-        console.log(this.toString());
+        // wird in fillCalendar berechnet
+        this.firstWeekdayOfMonth = 0;
     }
     toString = () =>
         `Heute ist ${this.daysName} der ${this.day}. ${this.monthsName} ${this.year} mit ${this.numberOfDaysMonth} Tagen`;
@@ -69,7 +70,6 @@ class Calendar {
         let isJanuary = cal.month === 0;
 
         if (isJanuary) {
-            console.log("switching to previous year")
             cal.month = 11;
             cal.year--;
         } else {
@@ -84,7 +84,6 @@ class Calendar {
     nextMonth = function () {
         let isDecember = this.month === 11;
         if (isDecember) {
-            console.log("and the new year");
             cal.month = 0;
             cal.year += 1;
             console.log(cal.year);
@@ -98,16 +97,10 @@ class Calendar {
 
     // Füllt den Kalender mit Tagen, Monat und Jahresangabe
     fillCalendar = function () {
-        console.log("fillin calendar");
-        // setzt den Monat im Kalender zu: Monat Jahr, z.B. Oktober 2020
-        let kalenderMonat = document.getElementById('kalender_monat');
-        // Falls das HTML Document keine Referenzen hat werden hier keine Fehler geworfen.
-        if (kalenderMonat) {
-            kalenderMonat.innerHTML = `${this.monthsName} ${this.year}`;
-
+        // Interne Hilfsfunktion: Berechnet den ersten Tag des Monats
+        function calculateFirstDayOfMonth() {
             let earliestDay = this.day % 7;
             let earliestWeekday = this.weekday;
-
             // // Falls wir noch nicht den ersten Tag des Monats haben.
             if (earliestDay !== 1) {
                 while (earliestDay > 1) {
@@ -116,31 +109,53 @@ class Calendar {
                     earliestWeekday = earliestWeekday < 0 ? earliestWeekday = 6 : earliestWeekday;
                 }
             }
+            return earliestWeekday;
+        }
 
+        let kalenderMonat = document.getElementById('kalender_monat');
+        // Falls das HTML Document keine Referenzen hat werden hier keine Fehler geworfen.
+        if (kalenderMonat) {
+            // setzt den Monat im Kalender zu: Monat Jahr, z.B. Oktober 2020
+            kalenderMonat.innerHTML = `${this.monthsName} ${this.year}`;
+            this.firstWeekdayOfMonth = calculateFirstDayOfMonth.call(this);
             // erstellt Liste mit mit Tagen des Monats
             const listOfDays = [...Array(this.numberOfDaysMonth).keys()];
             // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
             listOfDays.map(day => document.getElementById('kalender_eintrag_'
-                    + (earliestWeekday + day)).innerHTML = day + 1);
-
-            document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.prevMonth);
-            document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
+                    + (this.firstWeekdayOfMonth + day)).innerHTML = day + 1);
         }
     }
 
-    // TODO: needs some refactoring.
+    /*
+    Leert alle Einträge aus dem HTML Kalender um einen neuen Kalender zu füllen, damit keine einzelnen Tage
+    übrig bleiben, falls eins der vorherigen Monate früher begann aus der aktuelle
+     */
     clearCalendar = () => {
-        console.log('emptying calender');
         const answerToTheUltimateQuestionOfLifeTheUniverseAndEverything = 42;
         const kalenderTableDataEntries = [...Array(answerToTheUltimateQuestionOfLifeTheUniverseAndEverything).keys()];
         kalenderTableDataEntries.map(kalenderEntryTableData =>
             document.getElementById('kalender_eintrag_' + kalenderEntryTableData).innerHTML = '');
+    }
+
+    /*
+    Hebt die position des aktuellen Tages im Kalender hervor.
+     */
+    highlightToday = () => {
+        // da wir bei day + 1 im FillCalendar als letztes vornehmen, müssen wir hier
+        // wieder ran und es abziehen.
+        const calendarOffsetForToday = this.firstWeekdayOfMonth + this.day - 1;
+        const todaysEntry = document.getElementById('kalender_eintrag_' + calendarOffsetForToday);
+        todaysEntry.style.color = '#AB63A0';
+        todaysEntry.style.fontWeight = 'bold';
     }
 }
 
 
 const cal = new Calendar();
 cal.fillCalendar();
+cal.highlightToday();
+document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.prevMonth);
+document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
 
-// TODO: previous and nextmonth are a little bit hacky by using the cal, but it works for now.
+// Nais to have in Version 3: ToolTips für alle eingetragenen Tage im Monat aus dem Lokal Storage anfragen.
 
