@@ -73,16 +73,16 @@ class Calendar {
             cal.month = 11;
             cal.year--;
         } else {
-            this.month--;
+            cal.month--;
         }
-        const previousCalendar = new Calendar(new Date(cal.year, cal.month, 1));
+        const previousCalendar = new Calendar(new Date(cal.year, cal.month, cal.day));
         previousCalendar.clearCalendar();
         previousCalendar.fillCalendar();
     }
 
     // Wechselt zum nächsten Monat und berücksichtigt dabei Jahreswechsel
     nextMonth = function () {
-        let isDecember = cal.month === 11;
+        let isDecember = this.month === 11;
         if (isDecember) {
             console.log("and the new year");
             cal.month = 0;
@@ -91,7 +91,7 @@ class Calendar {
         } else {
             cal.month++;
         }
-        const nextCalendar = new Calendar(new Date(cal.year, cal.month, 1));
+        const nextCalendar = new Calendar(new Date(cal.year, cal.month, cal.day));
         nextCalendar.clearCalendar();
         nextCalendar.fillCalendar();
     }
@@ -142,7 +142,5 @@ class Calendar {
 const cal = new Calendar();
 cal.fillCalendar();
 
-// TODO: 1. Clear Calendar function on prev and next or better still in fillCalendar
-//       2. Problem with the new year appearing a month too late.
-//       3. Previous year is broken.
+// TODO: previous and nextmonth are a little bit hacky by using the cal, but it works for now.
 
