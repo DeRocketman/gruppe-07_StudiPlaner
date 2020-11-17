@@ -11,5 +11,37 @@ thead th a {
     cursor: pointer;
 }
 
+.aktuellesDatum {
+    background-color: #F8EFC8;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 11pt;
+}
+#daten1 {
 
+    border-right: 1px solid black;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.button {
 
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 15px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+}
+#speicherbutton {
+    background-color: #C3F7F4;
+}
+#löschenbutton {
+    background-color: #adadad;
+}
