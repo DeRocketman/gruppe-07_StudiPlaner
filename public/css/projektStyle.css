@@ -1,0 +1,140 @@
+/*
+Layout des Dokuments
+  Farbschema:
+  cookieCrema: #ABA27D
+  navBlau: #C3F7F4
+  sandGeld: #F8EFC8
+  zartRosé: #F5D5F0
+  dunkelRosa: #AB63A0
+ */
+body {
+    padding: 0;
+    margin: 0 0 1em 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #333333;
+}
+
+nav {
+    display: flex;
+    background-color: #C3F7F4;
+    padding: .1em;
+}
+
+nav a {
+    color: #333333;
+    text-decoration: none;
+    padding: .45em 2em .45em 1em;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #AB63A0;
+}
+
+nav a:visited {
+    color: #ABA27D;
+}
+
+/* Logo mit Gruß-Formel und Unterschrift */
+header section {
+    display: flex;
+    padding: 1em;
+}
+
+header section img {
+    height: 90%;
+}
+
+/* fix für das flex box um die Überschriften rechtsbündig zu bekommen
+   siehe MDN Firefox ganz unten beim Flexbox Artikel, da align-self nicht hilft.
+ */
+header section div {
+    margin-left: auto;
+}
+
+header section h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 61pt;
+    font-weight: lighter;
+}
+
+header section h2 {
+    position: relative;
+    top: -12px;
+    right: 12px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    text-align: right;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+main article {
+    display: grid;
+    border: solid black thin;
+
+}
+
+main article section {
+    border: solid thin black;
+}
+
+main article section h3 {
+    text-align: center;
+}
+
+/* Beginn Kreisdiagramm-Projekte */
+#piechart {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.piece {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    clip: rect(0px, 250px, 250px, 125px);
+    border-radius: 125px;
+}
+
+.piece-inner {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    clip: rect(0px, 125px, 250px, 0px);
+    border-radius: 125px;
+    -webkit-backface-visibility: hidden;
+}
+/* Spezifische Einstellungen */
+#piece1 {
+    transform: rotate(0deg);
+}
+#piece1 > .piece-inner {
+    background: red;
+    transform: rotate(72deg);
+}
+#piece2 {
+    transform: rotate(72deg);
+}
+#piece2 > .piece-inner {
+    background: blue;
+    transform: rotate(126deg);
+}
+#piece3 {
+    transform: rotate(198deg);
+}
+#piece3 > .piece-inner {
+    background: green;
+    transform: rotate(168deg);
+}
