@@ -76,6 +76,7 @@ class Calendar {
             this.month--;
         }
         const previousCalendar = new Calendar(new Date(cal.year, cal.month, 1));
+        previousCalendar.clearCalendar();
         previousCalendar.fillCalendar();
     }
 
@@ -91,6 +92,7 @@ class Calendar {
             cal.month++;
         }
         const nextCalendar = new Calendar(new Date(cal.year, cal.month, 1));
+        nextCalendar.clearCalendar();
         nextCalendar.fillCalendar();
     }
 
@@ -125,7 +127,17 @@ class Calendar {
             document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
         }
     }
+
+    // TODO: needs some refactoring.
+    clearCalendar = () => {
+        console.log('emptying calender');
+        const answerToTheUltimateQuestionOfLifeTheUniverseAndEverything = 42;
+        const kalenderTableDataEntries = [...Array(answerToTheUltimateQuestionOfLifeTheUniverseAndEverything).keys()];
+        kalenderTableDataEntries.map(kalenderEntryTableData =>
+            document.getElementById('kalender_eintrag_' + kalenderEntryTableData).innerHTML = '');
+    }
 }
+
 
 const cal = new Calendar();
 cal.fillCalendar();
