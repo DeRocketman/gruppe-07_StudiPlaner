@@ -73,14 +73,14 @@ header section h2 {
 }
 
 main {
-    display: flex;
+    display: grid;
     justify-content: center;
+    grid: repeat(2,80%)/auto-flow;
 }
 
-main article {
-    display: grid;
+#oberhaus {
+    display: flex;
     border: solid black thin;
-
 }
 
 main article section {
@@ -89,6 +89,10 @@ main article section {
 
 main article section h3 {
     text-align: center;
+}
+
+#unterhaus {
+    display: flex;
 }
 
 /* Beginn Kreisdiagramm-Projekte */
