@@ -39,8 +39,11 @@ nav a:visited {
 
 /* Logo mit Gruß-Formel und Unterschrift */
 header section {
-    display: flex;
-    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: 100px 100px;
+    padding: 1px;
+
 }
 
 header section img {
@@ -318,35 +321,44 @@ details summary::-webkit-details-marker {
 Entwicklung, wollen mal schauen ob es auch ohne geht, allerdings im ersten Wurf
 brauchten wir noch die Bezeichner. Es wurde ansonsten zu kompliziert. */
 
-#kalender {
+.kalender {
     display: flex;
     flex-flow: column;
     text-align: center;
     padding: 0 2% 0 2%;
+    margin: 0;
+}
+#kalenderZeugStartseite{
     border: 1px black solid;
 }
 
-#kalender h2 {
+.kalender h2 {
     padding-bottom: 50px;
 }
 
-#kalender table {
+.kalender table {
     font-size: 11pt;
     border: 1px #adadad solid;
     border-radius: 5px;
     box-shadow: none;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 2.5em;
-    margin-bottom: 20%;
+    margin-top: 0;
+    margin-bottom: 2em;
+    background-color: #F8EFC8;
+
+}
+
+
+.kalenderKlasse {
+    height: 80px;
+}
+
+.kalender tr {
     background-color: #F8EFC8;
 }
 
-#kalender tr {
-    background-color: #F8EFC8;
-}
-
-#kalender thead th {
+.kalender thead th {
     font-size: 9pt;
     color: #ffffff;
     background-color: #AB63A0;
@@ -355,30 +367,30 @@ brauchten wir noch die Bezeichner. Es wurde ansonsten zu kompliziert. */
     padding: 1em;
 }
 
-#kalender thead th:first-child {
+.kalender thead th:first-child {
     border-radius: 5px 0 0 0;
 }
 
-#kalender thead th:last-child {
+.kalender thead th:last-child {
     border-radius: 0 5px 0 0;
 }
 
-#kalender tr:last-child td:first-child {
+.kalender tr:last-child td:first-child {
     border-radius: 0 0 0 5px;
 }
 
-#kalender tr:last-child td:last-child {
+.kalender tr:last-child td:last-child {
     border-radius: 0 0 5px 0;
 }
 
-#kalender tr:nth-child(1) td {
+.kalender tr:nth-child(1) td {
     background-color: #F5D5F0;
     border: none;
     font-weight: lighter;
     padding: .9em;
 }
 
-#kalender tr:not(:nth-child(1)) td {
+.kalender tr:not(:nth-child(1)) td {
     border: none;
     font-weight: lighter;
     padding: .8em;
@@ -388,13 +400,16 @@ brauchten wir noch die Bezeichner. Es wurde ansonsten zu kompliziert. */
 um die Tabellen Aufgabe auszuhebeln
  */
 
-#kalender tr:hover {
+.kalender tr:hover {
     color: black;
 }
 
 
-#kalender td:nth-child(2)::first-letter {
+.kalender td:nth-child(2)::first-letter {
     font-weight: lighter;
+}
+#kalenderK{
+    margin-top: 0;
 }
 /* Ende Kalender */
 
@@ -405,4 +420,8 @@ F: Was fliegt durch du Luft und winkt?
 A: Ein Huhu
 F: Was ist grün und klopft an der Tür
 A: Ein Kopfsalat
+F: Was ist weiß und stört beim Essen?
+A: Eine Lawine
+F: Was ist rot und schlecht für die Zähne?
+A: Ein Backstein
  */

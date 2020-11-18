@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="bild/papierflieger" href="images/papierflieger.ico"/>
@@ -29,9 +29,9 @@
         </div>
     </section>
 </header>
-<main>
+<main class="hauptteilKalender">
     <section>
-<fieldset>
+<fieldset id="unserFieldset">
     <legend>Termineingabe</legend>
     <div id="datumsSelektion">
         <p id="aktuellesDatum"></p>
@@ -43,10 +43,11 @@
     <button type="reset" id="loeschenButton" class="button">L&#246schen</button>
 </fieldset>
     </section>
-    <section id="kalender">
-        <table>
+
+    <section class="kalender" id="kalenderK">
+        <table id="kalenderzeug">
             <thead>
-            <tr>
+            <tr >
                 <th><a id="vorherigerMonat">&#10094;</a></th> <!-- Unicode Zeichen für "<" -->
                 <th colspan="5" id="kalender_monat">May 2022</th>
                 <th><a id="naechsterMonat">&#10095;</a></th> <!-- Unicode Zeichen für ">" -->
@@ -61,7 +62,7 @@
                 <td>Fr</td>
                 <td>Sa</td>
             </tr>
-            <tr>
+            <tr class="kalenderKlasse">
                 <td id="kalender_eintrag_0"></td>
                 <td id="kalender_eintrag_1"></td>
                 <td id="kalender_eintrag_2"></td>
@@ -70,7 +71,7 @@
                 <td id="kalender_eintrag_5"></td>
                 <td id="kalender_eintrag_6"></td>
             </tr>
-            <tr>
+            <tr class="kalenderKlasse">
                 <td id="kalender_eintrag_7"></td>
                 <td id="kalender_eintrag_8"></td>
                 <td id="kalender_eintrag_9"></td>
@@ -79,7 +80,7 @@
                 <td id="kalender_eintrag_12"></td>
                 <td id="kalender_eintrag_13"></td>
             </tr>
-            <tr>
+            <tr class="kalenderKlasse">
                 <td id="kalender_eintrag_14"></td>
                 <td id="kalender_eintrag_15"></td>
                 <td id="kalender_eintrag_16"></td>
@@ -88,7 +89,7 @@
                 <td id="kalender_eintrag_19"></td>
                 <td id="kalender_eintrag_20"></td>
             </tr>
-            <tr>
+            <tr class="kalenderKlasse">
                 <td id="kalender_eintrag_21"></td>
                 <td id="kalender_eintrag_22"></td>
                 <td id="kalender_eintrag_23"></td>
@@ -97,7 +98,7 @@
                 <td id="kalender_eintrag_26"></td>
                 <td id="kalender_eintrag_27"></td>
             </tr>
-            <tr>
+            <tr class="kalenderKlasse">
                 <td id="kalender_eintrag_28"></td>
                 <td id="kalender_eintrag_29"></td>
                 <td id="kalender_eintrag_30"></td>
@@ -106,7 +107,7 @@
                 <td id="kalender_eintrag_33"></td>
                 <td id="kalender_eintrag_34"></td>
             </tr>
-            <tr>
+            <tr class="kalenderKlasse">
                 <td id="kalender_eintrag_35"></td>
                 <td id="kalender_eintrag_36"></td>
                 <td id="kalender_eintrag_37"></td>
@@ -119,6 +120,8 @@
         <!-- calendar.js erst hier laden nachdem html geladen hat. -->
         <script type="application/javascript" src="js/calendar.js"></script>
     </section>
+    </section>
+
 </main>
 </body>
 </html>

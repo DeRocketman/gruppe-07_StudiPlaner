@@ -10,6 +10,10 @@ Layout des Dokuments
 thead th a {
     cursor: pointer;
 }
+#unserFieldset{
+    height: 560px;
+
+}
 
 .aktuellesDatum {
     background-color: #F8EFC8;
@@ -41,26 +45,40 @@ thead th a {
     border: 1px solid black;
     border-radius: 5px;
     color: black;
-    padding: 15px 27px;
+    padding: 15px 23px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
     font-weight: 600;
 }
-
+.hauptteilKalender{
+/*
+hier evtl. noch grid oder flex einbauen
+ */
+}
 #notizfeld {
     resize: none;
 }
 
-#speicherButton {
+#speichernButton {
     background-color: #C3F7F4;
 }
 
-#loeschenButton a {
+#loeschenButton {
     background-color: #adadad;
+    margin-left: 32px;
+    margin-top: 15px;
 }
 
-#loeschenButton a:hover {
+#loeschenButton :hover {
     background-color: #AB63A0;
 }
+#kalenderzeug{
+    width: 700px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+
+
