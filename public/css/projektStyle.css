@@ -73,28 +73,17 @@ header section h2 {
 }
 
 main {
-    display: grid;
+    display: flex;
     justify-content: center;
-    grid: repeat(2,80%)/auto-flow;
 }
-
-#oberhaus {
-    display: flex;
-    border: solid black thin;
+.oberhaus{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-
-main article section {
-    border: solid thin black;
+.oberhaus:nth-child(3){
+    display: grid;
+    grid-template-columns: 1fr;
 }
-
-main article section h3 {
-    text-align: center;
-}
-
-#unterhaus {
-    display: flex;
-}
-
 /* Beginn Kreisdiagramm-Projekte */
 #piechart {
     position: relative;
