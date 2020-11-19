@@ -99,6 +99,54 @@ main article:first-child ul li::marker {
     color: #000;
 }
 
+/*Ende Personen */
+
+/* Beginn Kreisdiagramm-Projekte */
+#piechart {
+    position: relative;
+    left: -10%;
+    top: 50px;
+}
+
+.piece {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    clip: rect(0px, 250px, 250px, 125px);
+    border-radius: 125px;
+}
+
+.piece-inner {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    clip: rect(0px, 125px, 250px, 0px);
+    border-radius: 125px;
+    -webkit-backface-visibility: hidden;
+}
+/* Spezifische Einstellungen */
+#piece1 {
+    transform: rotate(0deg);
+}
+#piece1 > .piece-inner {
+    background: red;
+    transform: rotate(72deg);
+}
+#piece2 {
+    transform: rotate(72deg);
+}
+#piece2 > .piece-inner {
+    background: blue;
+    transform: rotate(126deg);
+}
+#piece3 {
+    transform: rotate(198deg);
+}
+#piece3 > .piece-inner {
+    background: green;
+    transform: rotate(168deg);
+}
+
 .oberhaus:nth-child(3) {
     display: grid;
     grid-template-columns: 1fr;
@@ -173,48 +221,4 @@ main article:first-child ul li::marker {
     padding-top: 23px;
 }
 
-/* Beginn Kreisdiagramm-Projekte */
-#piechart {
-    position: relative;
-    left: -10%;
-    top: 50px;
-}
 
-.piece {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    clip: rect(0px, 250px, 250px, 125px);
-    border-radius: 125px;
-}
-
-.piece-inner {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    clip: rect(0px, 125px, 250px, 0px);
-    border-radius: 125px;
-    -webkit-backface-visibility: hidden;
-}
-/* Spezifische Einstellungen */
-#piece1 {
-    transform: rotate(0deg);
-}
-#piece1 > .piece-inner {
-    background: red;
-    transform: rotate(72deg);
-}
-#piece2 {
-    transform: rotate(72deg);
-}
-#piece2 > .piece-inner {
-    background: blue;
-    transform: rotate(126deg);
-}
-#piece3 {
-    transform: rotate(198deg);
-}
-#piece3 > .piece-inner {
-    background: green;
-    transform: rotate(168deg);
-}
