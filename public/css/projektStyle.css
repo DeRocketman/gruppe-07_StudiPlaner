@@ -76,6 +76,11 @@ main {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 1fr);
+    margin: 0 1em;
+}
+
+legend {
+    font-weight: 900;
 }
 
 main article:first-child ul {
@@ -171,10 +176,8 @@ main article:first-child ul li::marker {
 /* Beginn Kreisdiagramm-Projekte */
 #piechart {
     position: relative;
-    width: 250px;
-    height: 250px;
-    margin-left: 100px;
-    margin-top: 100px;
+    left: -10%;
+    top: 50px;
 }
 
 .piece {
