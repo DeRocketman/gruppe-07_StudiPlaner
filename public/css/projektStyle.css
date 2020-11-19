@@ -215,6 +215,10 @@ main article:first-child ul li::marker {
     min-height: 98%;
 }
 
+.erinnerungsmails img {
+    min-height: 30px;
+}
+
 .erinnerungsmails div {
     display: flex;
     flex-direction: column;
