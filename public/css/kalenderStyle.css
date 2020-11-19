@@ -26,19 +26,26 @@ thead th a {
 #datumsSelektion {
     display: flex;
     flex-flow: row wrap;
+    background-color: #F8EFC8;
+    margin-bottom: 1em;
 }
 
-#datumsSelektion p {
-    border-right: 1px solid black;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 0;
-    padding: 0;
+#datumsSelektion input {
+    padding: 2px;
+    width: 83%;
+    background-color: #F8EFC8;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
 }
 
 #datumsSelektion img {
     height: 22px;
     width: 22px;
+    border: 1px solid black;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-left: auto;
+    padding: 4px;
 }
 
 .button {

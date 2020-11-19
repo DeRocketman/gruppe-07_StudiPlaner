@@ -9,7 +9,7 @@ window.onload = function () {
         "Die schönste Jahreszeit ist Urlaub",
         "Man kann nicht immer nur lernen....aber fast immer.");
 
-    datumsAnzeigeLinks.innerHTML = heutigesDatum;
+    datumsAnzeigeLinks.value = heutigesDatum;
 
     function terminAbfragen(datum = heutigesDatum) {
         const gespeicherterText = localStorage.getItem(datum);
