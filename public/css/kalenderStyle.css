@@ -71,10 +71,10 @@ hier evtl. noch grid oder flex einbauen
     margin-top: 15px;
 }
 
-#loeschenButton :hover {
+#loeschenButton:hover {
     background-color: #AB63A0;
 }
-#kalenderzeug{
+#kalenderzeug {
     width: 700px;
     margin-top: 10px;
     padding: 0;

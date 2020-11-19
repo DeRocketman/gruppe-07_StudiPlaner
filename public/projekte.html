@@ -61,24 +61,66 @@
     </article>
     <article class="oberhaus">
         <section>
-            <h3>Literatur & Links</h3>
-            <p>Treeview nach Themen</p>
+            <fieldset>
+                <legend>Literatur & Links</legend>
+                <p>Treeview nach Themen</p>
+            </fieldset>
         </section>
         <section>
-            <h3>Notizen</h3>
-            <p>Platzhalter für anspruchsvolle und wichtige aber dafür auch überaus
-            lustige Notizen</p>
+            <fieldset>
+                <legend>Notizen</legend>
+                <textarea id="notizen">Platzhalter für anspruchsvolle und wichtige aber dafür auch überaus
+                </textarea>
+            </fieldset>
         </section>
     </article>
-    <article class="unterhaus">
-        <section id="aufgaben">
-            <h3>Aufgaben</h3>
-        </section>
-    </article>
-    <article class="unterhaus">
+    <article class="unterhaus1">
         <section>
-            <h3>Erinnerungsmail</h3>
+            <fieldset>
+                <legend>Aufgaben</legend>
+                <div class="aufgaben">
+                    <div class="unteraufgabeLinks">
+                        <input id="aufgabe_1" type="text" value="Aufgabe1">
+                    </div>
+                    <div>
+                        <input type="checkbox" checked>Checkbox 1</input>
+                    </div>
+                    <div class="unteraufgabeLinks">
+                        <input id="aufgabe_2"  type="text" value="Aufgabe2">
+                    </div>
+                    <div>
+                        <input type="checkbox">Checkbox 2</input>
+                    </div>
+                    <div class="unteraufgabeLinks">
+                        <input id="aufgabe_3" type="text" value="Aufgabe3">
+                    </div>
+                    <div>
+                        <input type="checkbox" checked>Checkbox 3</input>
+                    </div>
+
+                </div>
+            </fieldset>
         </section>
+    </article>
+    <article>
+            <fieldset>
+                <legend>Erinnerungsmail</legend>
+        <section  class="erinnerungsmail">
+                <div class="mail_1">
+                    <img src="images/person-24px.svg" />
+                    <p>Person A</p>
+                </div>
+                <div class="mail_2">
+                    <img src="images/person-24px.svg" />
+                    <p>Person B</p>
+                </div>
+                <div class="mail_3">
+                    <img src="images/person-24px.svg" />
+                    <p>Person C</p>
+                </div>
+        </section>
+            </fieldset>
+        </article>
     </article>
 </main>
 </body>
