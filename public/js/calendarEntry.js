@@ -1,6 +1,6 @@
 window.onload = function () {
     const terminInfosTextArea = document.getElementById('notizfeld');
-    const datumsAnzeigeLinks = document.getElementById('aktuellesDatum');
+    const datePicker = document.getElementById('aktuellesDatum');
     const heutigesDatum = cal.toShortString();
     const items = Array("Yolo!", "Nutze den Tag sonst nutzt dieser Dich", "Morgens ist mir immer zu hell",
         "Jetzt ne schöne Pommes und dann lernen...",
@@ -9,7 +9,7 @@ window.onload = function () {
         "Die schönste Jahreszeit ist Urlaub",
         "Man kann nicht immer nur lernen....aber fast immer.");
 
-    datumsAnzeigeLinks.value = heutigesDatum;
+    datePicker.value = heutigesDatum;
 
     function terminAbfragen(datum = heutigesDatum) {
         const gespeicherterText = localStorage.getItem(datum);
