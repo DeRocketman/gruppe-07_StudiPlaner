@@ -4,7 +4,7 @@ let y = 0;
 document.addEventListener('DOMContentLoaded', function() {
 
     //Takt mit setInterval erzeugen, um die Funktion zu wiederholen
-    takt = window.setInterval(taktung, 300);
+    takt = window.setInterval(taktung, 1200);
 
     let spielfeld = document.getElementById('spielflaeche');
     spiel = spielfeld.getContext('2d');
@@ -34,8 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //Abfrage der Tasten in der Konsole
         console.log('Tastaturcode: ' + evt.key);
 
-       //Switch/Case, Zahlen beziehen sich auf die Pfeiltasten
-
+        //Pfeiltaste links
         if (key === "ArrowLeft") {
             x -= 20;
 
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-           //Pfeiltaste oben
+        //Pfeiltaste oben
         if (key === "ArrowUp") {
             y -= 20;
 
@@ -53,20 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-           //Pfeiltaste rechts
+        //Pfeiltaste rechts
         if (key === "ArrowRight") {
             x += 20;
 
             if (x >= 600) {
-                x = 580;
+                x = 570;
             }
         }
-           //Pfeiltaste unten
+        //Pfeiltaste unten
         if (key === "ArrowDown") {
                y += 20;
 
                if (y >= 480) {
-                   y = 460;
+                   y = 450;
                }
        }
     })
