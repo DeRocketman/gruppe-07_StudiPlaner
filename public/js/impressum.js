@@ -1,9 +1,12 @@
 let x = 0;
 let y = 0;
 
+let xZiel = Math.floor(Math.random()*28)*20+20;
+let yZiel = Math.floor(Math.random()*22)*20+20;
+
 document.addEventListener('DOMContentLoaded', function() {
 
-    //Takt mit setInterval erzeugen, um die Funktion zu wiederholen
+    //Takt mit setInterval erzeugen, um die Funktion Taktung zu wiederholen
     takt = window.setInterval(taktung, 1200);
 
     let spielfeld = document.getElementById('spielflaeche');
@@ -12,10 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
     let papierflieger = new Image();
     papierflieger.src='images/papierflieger.png';
 
-    //Papierflieger wird an der angegeben Position gezeichnet: x,y ist die obere rechte Ecke davon
     papierflieger.onload = function() {
         spiel.drawImage(papierflieger,x,y);
     }
+
+    function zeichneZiel(){
+         let ziel = new Image();
+         ziel.src='images/notizblock.png';
+
+         ziel.onload = function() {
+             spiel.drawImage(ziel,xZiel,yZiel);
+         }
+    }
+    zeichneZiel();
 
     //Methode dient zum Löschen und Neuzeichnen der Position des Papierfliegers
     //Wird anhand des Taktes wiederholt aufgerufen
@@ -23,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Taktung funktioniert');
         spiel.clearRect(0, 0, spielflaeche.width, spielflaeche.height);
         spiel.beginPath();
+        zeichneZiel();
         spiel.drawImage(papierflieger,x,y);
-
     }
 
     document.addEventListener('keydown', (evt) => {
@@ -57,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             x += 20;
 
             if (x >= 600) {
-                x = 570;
+                x = 580;
             }
         }
         //Pfeiltaste unten
@@ -65,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                y += 20;
 
                if (y >= 480) {
-                   y = 450;
+                   y = 460;
                }
        }
     })
