@@ -1,8 +1,8 @@
 let x = 0;
 let y = 0;
-
 let xZiel = Math.floor(Math.random()*28)*20+20;
 let yZiel = Math.floor(Math.random()*22)*20+20;
+let punkte = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         spiel.drawImage(papierflieger,x,y);
     }
 
-    function zeichneZiel(){
+    function zeichneZiel() {
          let ziel = new Image();
          ziel.src='images/notizblock.png';
 
@@ -29,6 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     zeichneZiel();
 
+    function zielErreicht() {
+        if (x === xZiel && y === yZiel) {
+            console.log('Ziel wurde erreicht.');
+            xZiel = Math.floor(Math.random()*28)*20+20;
+            yZiel = Math.floor(Math.random()*22)*20+20;
+
+            punkte++;
+            document.getElementById('punktestand').innerHTML = 'Punktestand: ' + punkte;
+        }
+    }
     //Methode dient zum Löschen und Neuzeichnen der Position des Papierfliegers
     //Wird anhand des Taktes wiederholt aufgerufen
     function taktung() {
@@ -37,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         spiel.beginPath();
         zeichneZiel();
         spiel.drawImage(papierflieger,x,y);
+        zielErreicht();
     }
 
     document.addEventListener('keydown', (evt) => {
