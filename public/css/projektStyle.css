@@ -65,21 +65,21 @@ main article:first-child ul li::marker {
     transform: rotate(0deg);
 }
 #piece1 > .piece-inner {
-    background: red;
+    background: #F8EFC8;
     transform: rotate(72deg);
 }
 #piece2 {
     transform: rotate(72deg);
 }
 #piece2 > .piece-inner {
-    background: blue;
+    background: #C3F7F4;
     transform: rotate(126deg);
 }
 #piece3 {
     transform: rotate(198deg);
 }
 #piece3 > .piece-inner {
-    background: green;
+    background: #F5D5F0;
     transform: rotate(168deg);
 }
 
@@ -176,10 +176,9 @@ ul, #literatur {
     user-select: none;
 }
 
-/* Create the caret/arrow with a unicode, and style it */
 .caret::before {
     content: "\25B6";
-    color: black;
+    color: #C3F7F4;
     display: inline-block;
     margin-right: 10px;
 }
