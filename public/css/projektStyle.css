@@ -161,4 +161,37 @@ main article:first-child ul li::marker {
     padding-top: 23px;
 }
 
+/*Beginn Literatur und Links*/
+
+ul, #literatur {
+    list-style-type: none;
+}
+
+#literatur {
+    margin: 0;
+    padding: 0;
+}
+.caret {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 10px;
+}
+/* Pfeil drehen beim Aufklappen (JavaScript) */
+.caret-down::before {
+    transform: rotate(90deg);
+}
+/* nested bzw. active anzeigen (JavaScript) */
+.nested {
+    display: none;
+}
+.active {
+    display: block;
+}
 
