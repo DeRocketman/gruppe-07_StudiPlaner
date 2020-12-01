@@ -161,6 +161,17 @@ main article:first-child ul li::marker {
     padding-top: 23px;
 }
 
+.setting{
+    max-height: 13px;
+    max-width: 13px;
+    visibility: hidden;
+}
+
+.settingON{
+    max-height: 13px;
+    max-width: 13px;
+    visibility: visible;
+}
 /*Beginn Literatur und Links*/
 
 ul, #literatur {
