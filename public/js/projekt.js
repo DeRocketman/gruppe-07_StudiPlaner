@@ -10,9 +10,26 @@ for (i = 0; i < toggle.length; i++) {
     });
 }
 /* Versuch den Settingsbutton visible zu machen */
-document.getElementById("mainLogo").addEventListener('dblclick', dblclickfunction);
-    function dblclickfunction() {
+document.getElementById("teilnehmer").addEventListener('dblclick', dblclickfunction1);
+function dblclickfunction1() {
         document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
-        document.getElementById("mailsettings").className = "settingON";
+        document.getElementById("teilnehmersetting").className = "settingON";
+}
+document.getElementById("piechart").addEventListener('dblclick', dblclickfunction2);
+function dblclickfunction2() {
+    document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
+    document.getElementById("piechartsetting").className = "settingON";
+}
+
+document.getElementById("aufgaben").addEventListener('dblclick', dblclickfunction3);
+function dblclickfunction3() {
+    document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
+    document.getElementById("aufgabensetting").className = "settingON";
+}
+
+document.getElementById("erinnerungsmailset").addEventListener('dblclick', dblclickfunction4);
+function dblclickfunction4() {
+    document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
+    document.getElementById("mailsettings").className = "settingON";
 }
 
