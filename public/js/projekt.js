@@ -9,7 +9,13 @@ for (i = 0; i < toggle.length; i++) {
         this.classList.toggle('caret-down');
     });
 }
-/* Versuch den Settingsbutton visible zu machen */
+    var personAmail = "person.A@trashmail.com";
+    var personBmail = "person.B@trashmail.com";
+    var personCmail = "person.C@trashmail.com";
+
+/*
+* Settingsbuttons visible machen
+*/
 document.getElementById("teilnehmer").addEventListener('dblclick', dblclickfunction1);
 function dblclickfunction1() {
         document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
@@ -20,16 +26,29 @@ function dblclickfunction2() {
     document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
     document.getElementById("piechartsetting").className = "settingON";
 }
-
 document.getElementById("aufgaben").addEventListener('dblclick', dblclickfunction3);
 function dblclickfunction3() {
     document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
     document.getElementById("aufgabensetting").className = "settingON";
 }
-
 document.getElementById("erinnerungsmailset").addEventListener('dblclick', dblclickfunction4);
 function dblclickfunction4() {
     document.getElementById("projektName").innerHTML = "JA MAN EY, ENDLICH";
     document.getElementById("mailsettings").className = "settingON";
 }
+/*
+* Setting von Mailadressen
+* und make settings great (invisible) again
+*/
+document.getElementById("mailsettings").addEventListener('click', mailsetfunction);
+function mailsetfunction(){
+    alert("Klicken der Personen für Änderung");
+    document.getElementById("mailsettingsoki").className = "settingON";
+}
+document.getElementById("mailsettingsoki").addEventListener('click', mailsetokifunction);
+function mailsetokifunction() {
+    document.getElementById("mailsettingsoki").className = "setting";
+    document.getElementById("mailsettings").className = "setting";
+}
+
 
