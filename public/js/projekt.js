@@ -40,15 +40,28 @@ function dblclickfunction4() {
 * Setting von Mailadressen
 * und make settings great (invisible) again
 */
+var settingONflag = false;
+
 document.getElementById("mailsettings").addEventListener('click', mailsetfunction);
 function mailsetfunction(){
     alert("Klicken der Personen für Änderung");
     document.getElementById("mailsettingsoki").className = "settingON";
+    settingONflag = true;
+    if (settingONflag != false) {
+        document.getElementById("mail1").addEventListener('click', setmailname1);
+        function setmailname1() {
+            /*
+               @TODO Implementieren, wie Name und E Mail von Person1 gesetzt werden
+             */
+            document.getElementById("projektName").innerHTML = personAmail;
+        }
+    }
 }
 document.getElementById("mailsettingsoki").addEventListener('click', mailsetokifunction);
 function mailsetokifunction() {
     document.getElementById("mailsettingsoki").className = "setting";
     document.getElementById("mailsettings").className = "setting";
+    settingONflag = false;
 }
 
 
