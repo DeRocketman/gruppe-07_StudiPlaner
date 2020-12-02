@@ -54,12 +54,14 @@ window.onload = function () {
         }
     }
 
+    function getTodaysAppointment() {
+
+    }
+
     function random_text(items)
     {
         return items[Math.floor(Math.random()*items.length)];
     }
-
-
 
     const loeschenButton = document.getElementById('loeschenButton');
     loeschenButton.addEventListener('mousedown', textFeldLoeschen);

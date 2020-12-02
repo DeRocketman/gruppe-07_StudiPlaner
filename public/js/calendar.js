@@ -11,15 +11,16 @@ class Calendar {
         this.weekday = currentDate.getDay();
         this.monthsName = this.nameOfMonth();
         this.daysName = this.nameOfDay();
-        this.numberOfDaysMonth = this.daysOfMonth()
+        this.numberOfDaysMonth = this.daysOfMonth();
         // wird in fillCalendar berechnet
         this.firstWeekdayOfMonth = 0;
     }
+
     toString = () =>
         `Heute ist ${this.daysName} der ${this.day}. ${this.monthsName} ${this.year} mit ${this.numberOfDaysMonth} Tagen`;
 
     toShortString = () =>
-        `${this.day}.${this.monthsName}.${this.year}`
+        `${this.day}.${this.monthsName}.${this.year}`;
 
     /*
     Ermittelt den aktuellen Monat, falls keine Parameter mitgegeben wird
@@ -122,7 +123,7 @@ class Calendar {
             const listOfDays = [...Array(this.numberOfDaysMonth).keys()];
             // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
             listOfDays.map(day => document.getElementById('kalender_eintrag_'
-                    + (this.firstWeekdayOfMonth + day)).innerHTML = day + 1);
+                + (this.firstWeekdayOfMonth + day)).innerHTML = day + 1);
         }
     }
 
@@ -148,8 +149,16 @@ class Calendar {
         todaysEntry.style.color = '#AB63A0';
         todaysEntry.style.fontWeight = 'bold';
     }
-}
 
+    setAppointment = function(appointmentDate) {
+        // siehe highlightToday
+        const offsetForAppointmentDate = this.firstWeekdayOfMonth + appointmentDate - 1;
+        const appointmentEntry = document.getElementById('kalender_eintrag_' + offsetForAppointmentDate);
+        appointmentEntry.className = 'aktiverEintrag';
+        // calendarEntry Klasse bauen wird knackig
+        appointmentEntry.addEventListener('mousedown', getTodaysAppointment);
+    }
+}
 
 const cal = new Calendar();
 cal.fillCalendar();
@@ -158,7 +167,8 @@ document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.pre
 document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
 
 // Nais to have in Version 3:
-// 1. ToolTips für alle eingetragenen Tage im Monat aus dem Lokal Storage anfragen.
+// 1. Highlighting und mouse down, zieht infos zum Tag im Textfeld.
 // 2. Lieber neue Kind-Knoten im Kalender anlegen als leere Tabellenelemente im HTML zu haben.
 //    - Dynamisch erzeugen, ist irgendwie cooler und somit auch modularer einsetzbar ohne viel Aufwand.
+// 3. Klick auf Datum im Datepicker zeigt wie 1.
 

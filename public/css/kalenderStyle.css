@@ -76,5 +76,12 @@ hier evtl. noch grid oder flex einbauen
     padding: 0;
 }
 
+/* Neuer SprintKram */
+
+.aktiverEintrag {
+    border: 1px solid magenta;
+    /* TODO: Klf, bam: Geiler aussehen lassen, nur prototyp */
+}
+
 
 
