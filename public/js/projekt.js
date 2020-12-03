@@ -35,7 +35,7 @@ function clickfunction1(){
              */
                 break;
             case 3:
-                document.getElementById("projektName").innerHTML = "Projekt Projektseite";
+                document.getElementById("projektName").innerHTML = "Projektseite JS";
             /*
                 @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
              */
