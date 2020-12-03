@@ -42,38 +42,134 @@ function clickfunction1(){
                 document.getElementById("tn1").innerHTML = "Kim Lara Feller";
                 document.getElementById("tn2").innerHTML = "Louis Grümmer";
                 document.getElementById("tn3").innerHTML = "Benjamin Ansohn McDougall";
-                document.getElementById("tn4").className = "tnOFF";
-                document.getElementById("tn5").className = "tnOFF";
-                document.getElementById("tn6").className = "tnOFF";
-                document.getElementById("tn7").className = "tnOFF";
-                document.getElementById("tn8").className = "tnOFF";
-                document.getElementById("tn9").className = "tnOFF";
+                document.getElementById("tn4").className = "elementOFF";
+                document.getElementById("tn5").className = "elementOFF";
+                document.getElementById("tn6").className = "elementOFF";
+                document.getElementById("tn7").className = "elementOFF";
+                document.getElementById("tn8").className = "elementOFF";
+                document.getElementById("tn9").className = "elementOFF";
+
+                document.getElementById("notizen").innerHTML = "Skript weiter durcharbeiten \nVideos als Hilfe";
 
                 document.getElementById("mailP1").innerHTML = "K L Feller";
                 document.getElementById("mailP2").innerHTML = "L Gruemmer";
                 document.getElementById("mailP3").innerHTML = "B Ahnson McDougall";
 
-                personAmail = "kim.lara.feller@stud.th-luebeck.de";
-                personBmail = "louis.gruemmer@stud.th-luebeck.de";
-                personCmail = "benjamim.ansohn.mcdougall@stud.th-luebeck.de";
+                let mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+                personAmail = "kim.lara.feller@stud.th-luebeck.de"+mailbetreff;
+                personBmail = "louis.gruemmer@stud.th-luebeck.de"+mailbetreff;
+                personCmail = "benjamim.ansohn.mcdougall@stud.th-luebeck.de"+mailbetreff;
+
+                document.getElementById("aufgabe_1").value = "EA 1a abschließen";
+                document.getElementById("aufgabe_2").value = "EA 1b abschließen";
+                document.getElementById("aufgabe_3").value = "EA 3  abschließen";
+
+                document.getElementById("checkbox1").checked = true;
+                document.getElementById("checkbox2").checked = true;
+                document.getElementById("checkbox3").checked = false;
                 /*
-                    @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
+                    @TODO Piechart, Literaturverweise, links
                  */
                 break;
             case 2:
                 document.getElementById("projektName").innerHTML = "Kurs Datenbanken";
+                document.getElementById("tn1").innerHTML = "Benjamin Ansohn McDougall";
+                document.getElementById("tn2").innerHTML = "Hans A. Rostock";
+                document.getElementById("tn3").innerHTML = "Dirk Stricker";
+                document.getElementById("tn4").className = "elementOFF";
+                document.getElementById("tn5").className = "elementOFF";
+                document.getElementById("tn6").className = "elementOFF";
+                document.getElementById("tn7").className = "elementOFF";
+                document.getElementById("tn8").className = "elementOFF";
+                document.getElementById("tn9").className = "elementOFF";
+
+                document.getElementById("notizen").innerHTML = "Möglichkeiten von SQL zu NOSQL \nVideos als Hilfe \nnun ist gut";
+
+                document.getElementById("mailP1").innerHTML = "B Ahnson McDougall";
+                document.getElementById("mailP2").innerHTML = "H Rostock";
+                document.getElementById("mailP3").innerHTML = "D Stricker";
+
+                mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+                personAmail = "benjamim.ansohn.mcdougall@stud.th-luebeck.de"+mailbetreff;
+                personBmail = "info@fchansa.de"+mailbetreff;
+                personCmail = "dirk.stricker@stud.th-luebeck.de"+mailbetreff;
+
+                document.getElementById("aufgabe_1").value = "SQL Abfragen erstellen";
+                document.getElementById("aufgabe_2").value = "Anwendung implementieren";
+                document.getElementById("aufgabe_3").className= "Durchdrehen, weil nichts klappt!";
+
+                document.getElementById("checkbox1").checked = true;
+                document.getElementById("checkbox2").checked = false;
+                document.getElementById("checkbox3").checked = false;
             /*
-                @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
+                @TODO Piechart, Literaturverweise, links
              */
                 break;
             case 3:
                 document.getElementById("projektName").innerHTML = "Projektseite JS";
+                document.getElementById("tn1").innerHTML = "Kim Lara Feller";
+                document.getElementById("tn2").innerHTML = "Louis Grümmer";
+                document.getElementById("tn3").innerHTML = "Dirk Stricker";
+                document.getElementById("tn4").innerHTML = "Benjamin Ansohn McDougall";
+                document.getElementById("tn5").className = "elementOFF";
+                document.getElementById("tn6").className = "elementOFF";
+                document.getElementById("tn7").className = "elementOFF";
+                document.getElementById("tn8").className = "elementOFF";
+                document.getElementById("tn9").className = "elementOFF";
+
+                document.getElementById("notizen").innerHTML = "Skript weiter durcharbeiten \nVideos als Hilfe";
+
+                document.getElementById("mailP1").innerHTML = "K L Feller";
+                document.getElementById("mailP2").innerHTML = "L Grümmer";
+                document.getElementById("mailP3").innerHTML = "D Stricker";
+
+
+                mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+                personAmail = "Kim.Lara.Feller@stud.th-luebeck.de"+mailbetreff;
+                personBmail = "Louis.Gruemmer@stud.th-luebeck.de"+mailbetreff;
+                personCmail = "dirk.stricker@stud.th-luebeck.de"+mailbetreff;
+
+                document.getElementById("aufgabe_1").value = "Sachen und Dinge";
+                document.getElementById("aufgabe_2").value = "Andere Sachen und Dinge";
+                document.getElementById("aufgabe_3").className = "elementOFF";
+
+                document.getElementById("checkbox1").checked = true;
+                document.getElementById("checkbox2").checked = false;
+                document.getElementById("checkbox3").className= "elementOFF";
             /*
-                @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
+                @TODO Piechart, Literaturverweise, links
              */
                 break;
             case 4:
                 document.getElementById("projektName").innerHTML = "Häkeln mit der Omi";
+                document.getElementById("tn1").className = "elementOFF";
+                document.getElementById("tn2").className = "elementOFF";
+                document.getElementById("tn3").className = "elementOFF";
+                document.getElementById("tn4").className = "elementOFF";
+                document.getElementById("tn5").className = "elementOFF";
+                document.getElementById("tn6").className = "elementOFF";
+                document.getElementById("tn7").className = "elementOFF";
+                document.getElementById("tn8").className = "elementOFF";
+                document.getElementById("tn9").innerHTML = "Oma Inge";
+
+                document.getElementById("notizen").innerHTML = "Omi hat keine E-Mail";
+
+                document.getElementById("mailP1").className = "elementOFF";
+                document.getElementById("mailP2").className = "elementOFF";
+                document.getElementById("mailP3").innerHTML = "O Inge";
+
+                mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+                personAmail = ""+mailbetreff;
+                personBmail = ""+mailbetreff;
+                personCmail = ""+mailbetreff;
+
+                document.getElementById("aufgabe_1").value = "Häkeln lernen";
+                document.getElementById("aufgabe_2").value = "Tee kochen";
+                document.getElementById("aufgabe_3").value = "Häkeln mit Omi";
+
+                document.getElementById("checkbox1").checked = true;
+                document.getElementById("checkbox2").checked = true;
+                document.getElementById("checkbox3").checked = false;
                 /*
                     @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
                  */

@@ -7,7 +7,13 @@ Layout des Dokuments
   zartRosé: #F5D5F0
   dunkelRosa: #AB63A0
  */
-
+#mainLogo:hover {
+    animation: animation 1000ms linear backwards alternate-reverse;
+}
+@keyframes  animation {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
 main {
     display: grid;
     justify-content: center;
@@ -205,6 +211,6 @@ ul, #literatur {
     max-width: 13px;
     visibility: visible;
 }
-.tnOFF{
+.elementOFF{
     visibility: hidden;
 }
