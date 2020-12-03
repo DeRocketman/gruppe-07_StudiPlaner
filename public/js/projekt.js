@@ -11,9 +11,23 @@ for (i = 0; i < toggle.length; i++) {
         this.classList.toggle('caret-down');
     });
 }
-    let personAmail = "person.A@trashmail.com";
-    let personBmail = "person.B@trashmail.com";
-    let personCmail = "person.C@trashmail.com";
+
+/*
+        Mailfunktion
+*/
+let personAmail = "person.A@trashmail.com";
+let personBmail = "person.B@trashmail.com";
+let personCmail = "person.C@trashmail.com";
+
+function mailsender1() {
+    location.href = "mailto:" + personAmail;
+}
+function mailsender2() {
+    location.href = "mailto:" + personBmail;
+}
+function mailsender3() {
+    location.href = "mailto:" + personCmail;
+}
 /*
 * Projektwechseln inkl. Pseudobearbeitungssstand!
 */
@@ -35,6 +49,13 @@ function clickfunction1(){
                 document.getElementById("tn8").className = "tnOFF";
                 document.getElementById("tn9").className = "tnOFF";
 
+                document.getElementById("mailP1").innerHTML = "K L Feller";
+                document.getElementById("mailP2").innerHTML = "L Gruemmer";
+                document.getElementById("mailP3").innerHTML = "B Ahnson McDougall";
+
+                personAmail = "kim.lara.feller@stud.th-luebeck.de";
+                personBmail = "louis.gruemmer@stud.th-luebeck.de";
+                personCmail = "benjamim.ansohn.mcdougall@stud.th-luebeck.de";
                 /*
                     @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
                  */
@@ -87,7 +108,7 @@ function dblclickfunction4() {
 * Setting von Mailadressen
 * und make settings great (invisible) again
 */
-var settingONflag = false;
+let settingONflag = false;
 
 document.getElementById("mailsettings").addEventListener('click', mailsetfunction);
 function mailsetfunction(){
