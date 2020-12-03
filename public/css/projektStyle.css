@@ -160,17 +160,7 @@ main article:first-child ul li::marker {
     flex-direction: column;
     padding-top: 23px;
 }
-/* Einstellungsstyles */
-.setting{
-    max-height: 13px;
-    max-width: 13px;
-    visibility: hidden;
-}
-.settingON{
-    max-height: 13px;
-    max-width: 13px;
-    visibility: visible;
-}
+
 /*Beginn Literatur und Links*/
 
 ul, #literatur {
@@ -204,3 +194,14 @@ ul, #literatur {
     display: block;
 }
 
+/* Einstellungsstyles */
+.setting{
+    max-height: 13px;
+    max-width: 13px;
+    visibility: hidden;
+}
+.settingON{
+    max-height: 13px;
+    max-width: 13px;
+    visibility: visible;
+}
