@@ -4,11 +4,11 @@ params: Date, default derzeitige Datum
  */
 class Calendar {
     constructor(date = new Date()) {
-        const currentDate = date;
-        this.year = currentDate.getUTCFullYear();
-        this.month = currentDate.getMonth();
-        this.day = currentDate.getDate();
-        this.weekday = currentDate.getDay();
+        this.currentDate = date;
+        this.year = this.currentDate.getUTCFullYear();
+        this.month = this.currentDate.getMonth();
+        this.day = this.currentDate.getDate();
+        this.weekday = this.currentDate.getDay();
         this.monthsName = this.nameOfMonth();
         this.daysName = this.nameOfDay();
         this.numberOfDaysMonth = this.daysOfMonth();
@@ -21,6 +21,10 @@ class Calendar {
 
     toShortString = () =>
         `${this.day}.${this.monthsName}.${this.year}`;
+
+    // Brauchen hier für den DatePicker im calendarEntry noch zur initialisierung noch einen vernünftigen Wert.
+    toDatePickerString = () =>
+        `${this.year}-${this.month}-${this.day}`;
 
     /*
     Ermittelt den aktuellen Monat, falls keine Parameter mitgegeben wird

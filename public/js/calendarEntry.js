@@ -1,73 +1,85 @@
 window.onload = function () {
-    const terminInfosTextArea = document.getElementById('notizfeld');
-    const datePicker = document.getElementById('aktuellesDatum');
-    const heutigesDatum = cal.toShortString();
-    const items = Array("Yolo!", "Nutze den Tag sonst nutzt dieser Dich", "Morgens ist mir immer zu hell",
-        "Jetzt ne schöne Pommes und dann lernen...",
-        "Wer ist eigentlich diese Uni?",
-        "Ein hoch auf die Schule",
-        "Die schönste Jahreszeit ist Urlaub",
-        "Man kann nicht immer nur lernen....aber fast immer.");
-
-    datePicker.value = heutigesDatum;
-
-    function terminAbfragen(datum = heutigesDatum) {
-        const gespeicherterText = localStorage.getItem(datum);
-        console.log(gespeicherterText);
-
-        if(terminInfosTextArea.value === "" && gespeicherterText === "" ){
-            textVeraendern();
-        } else {
-            terminInfosTextArea.value = gespeicherterText;
+    class CalendarEntry {
+        constructor() {
+            this.terminInfosTextArea = document.getElementById('notizfeld');
+            this.datePicker = document.getElementById('aktuellesDatum');
+            this.IsoDatumOhneZeitStempel = new Date().toISOString().substr(0, 10);
+            this.datePicker.value = this.IsoDatumOhneZeitStempel;
+            this.items = Array("Yolo!", "Nutze den Tag sonst nutzt dieser Dich", "Morgens ist mir immer zu hell",
+                "Jetzt ne schöne Pommes und dann lernen...",
+                "Wer ist eigentlich diese Uni?",
+                "Ein hoch auf die Schule",
+                "Die schönste Jahreszeit ist Urlaub",
+                "Man kann nicht immer nur lernen....aber fast immer.");
         }
-    }
 
-    function textVeraendern() {
-        document.getElementById("notizfeld").placeholder = random_text(items);
-    }
+        terminAbfragen(datum = this.IsoDatumOhneZeitStempel) {
+            const gespeicherterText = localStorage.getItem(datum);
+            console.log(gespeicherterText);
 
-    function textFeldLoeschen(datum = heutigesDatum) {
-        localStorage.removeItem(datum);
-        localStorage.setItem(cal.toShortString(), "");
-        terminInfosTextArea.value = "";
-        alert('Der Eintrag für heute wurde gelöscht.');
-    }
-
-    function terminInfosSpeichern(terminInfos) {
-        localStorage.setItem(cal.toShortString(), terminInfos);
-        alert("Heutige Termine ist gespeichert! :) ");
-    }
-
-    function terminSpeichern() {
-        const terminInfos = terminInfosTextArea.value;
-        const terminInfosWurdenEingegeben = terminInfos !== '';
-        const browserKannLokalSpeichern = typeof(Storage) !== "undefined";
-
-        if(terminInfosWurdenEingegeben) {
-            if (browserKannLokalSpeichern) {
-                terminInfosSpeichern(terminInfos);
+            if(this.terminInfosTextArea.value === "" && gespeicherterText === "" ){
+                this.textVeraendern();
             } else {
-                alert('Sorry, Dein Browser kann nicht lokal speichern :-/');
+                this.terminInfosTextArea.value = gespeicherterText;
             }
-        } else {
-            alert('Bitte gib etwas ein damit wir Den Termin speichern werden.');
+        }
+
+        textVeraendern() {
+            console.log('Text wird verändert');
+            if(this.terminInfosTextArea.value = "") {
+                document.getElementById("notizfeld").placeholder = this.random_text(this.items);
+            }
+        }
+
+        textFeldLoeschen(datum = this.IsoDatumOhneZeitStempel) {
+            localStorage.removeItem(datum);
+            localStorage.setItem(this.IsoDatumOhneZeitStempel, "");
+            this.terminInfosTextArea.value = "";
+            alert('Der Eintrag für heute wurde gelöscht.');
+        }
+
+        terminInfosSpeichern(terminInfos) {
+            localStorage.setItem(this.IsoDatumOhneZeitStempel, terminInfos);
+            alert("Heutige Termine ist gespeichert! :) ");
+        }
+
+        terminSpeichern()
+        {
+            console.log(`Termin speichern ${this.terminInfosTextArea}`);
+            const terminInfos = this.terminInfosTextArea.value;
+            const terminInfosWurdenEingegeben = terminInfos !== '';
+            const browserKannLokalSpeichern = typeof(Storage) !== "undefined";
+
+            if(terminInfosWurdenEingegeben) {
+                if (browserKannLokalSpeichern) {
+                    this.terminInfosSpeichern(terminInfos);
+                } else {
+                    alert('Sorry, Dein Browser kann nicht lokal speichern :-/');
+                }
+            } else {
+                alert('Bitte gib etwas ein damit wir Den Termin speichern werden.');
+            }
+        }
+
+
+        random_text(items)
+        {
+            return items[Math.floor(Math.random()*items.length)];
+        }
+
+        getTodaysAppointment(today)
+        {
+
         }
     }
 
-    function getTodaysAppointment() {
+const calendarEntry = new CalendarEntry();
+const loeschenButton = document.getElementById('loeschenButton');
+loeschenButton.addEventListener('mousedown', calendarEntry.textFeldLoeschen);
 
-    }
+const speichernButton = document.getElementById('speichernButton');
+speichernButton.addEventListener('mousedown', calendarEntry.terminSpeichern);
 
-    function random_text(items)
-    {
-        return items[Math.floor(Math.random()*items.length)];
-    }
-
-    const loeschenButton = document.getElementById('loeschenButton');
-    loeschenButton.addEventListener('mousedown', textFeldLoeschen);
-
-    const speichernButton = document.getElementById('speichernButton');
-    speichernButton.addEventListener('mousedown', terminSpeichern);
-
-    terminAbfragen();
+calendarEntry.textVeraendern();
+calendarEntry.terminAbfragen();
 };
