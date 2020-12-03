@@ -205,3 +205,6 @@ ul, #literatur {
     max-width: 13px;
     visibility: visible;
 }
+.tnOFF{
+    visibility: hidden;
+}

@@ -11,19 +11,30 @@ for (i = 0; i < toggle.length; i++) {
         this.classList.toggle('caret-down');
     });
 }
-    var personAmail = "person.A@trashmail.com";
-    var personBmail = "person.B@trashmail.com";
-    var personCmail = "person.C@trashmail.com";
+    let personAmail = "person.A@trashmail.com";
+    let personBmail = "person.B@trashmail.com";
+    let personCmail = "person.C@trashmail.com";
 /*
 * Projektwechseln inkl. Pseudobearbeitungssstand!
 */
 document.getElementById("projektName").addEventListener('click', clickfunction1);
 let projectClickCounter = 0;
+
 function clickfunction1(){
     projectClickCounter +=1;
         switch (projectClickCounter) {
             case 1:
                 document.getElementById("projektName").innerHTML = "Kurs Webdesign IIa";
+                document.getElementById("tn1").innerHTML = "Kim Lara Feller";
+                document.getElementById("tn2").innerHTML = "Louis Grümmer";
+                document.getElementById("tn3").innerHTML = "Benjamin Ansohn McDougall";
+                document.getElementById("tn4").className = "tnOFF";
+                document.getElementById("tn5").className = "tnOFF";
+                document.getElementById("tn6").className = "tnOFF";
+                document.getElementById("tn7").className = "tnOFF";
+                document.getElementById("tn8").className = "tnOFF";
+                document.getElementById("tn9").className = "tnOFF";
+
                 /*
                     @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
                  */
@@ -52,6 +63,7 @@ function clickfunction1(){
                 break;
         }
 }
+
 /*
 * Settingsbuttons visible machen
 */
