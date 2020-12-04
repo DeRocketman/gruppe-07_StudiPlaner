@@ -16,10 +16,8 @@ class CalendarEntry {
     terminAbfragen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
         const gespeicherterText = localStorage.getItem(datum);
         const isNotTerminOrValue = gespeicherterText === '' || gespeicherterText === null;
-        console.log(gespeicherterText + 'text gespeichert' + isNotTerminOrValue);
 
         if(isNotTerminOrValue) {
-            console.log('Noch kein Eintrag');
             this.textVeraendern(terminInfosTextArea);
         } else {
             terminInfosTextArea.value = gespeicherterText;
@@ -27,12 +25,11 @@ class CalendarEntry {
     }
 
     textVeraendern(terminInfosTextArea = this.terminInfosTextArea) {
-        console.log('Text wird verändert');
         terminInfosTextArea.value = '';
         terminInfosTextArea.placeholder = this.random_text(this.items);
     }
 
-    textFeldLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
+    terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
         localStorage.removeItem(datum);
         localStorage.setItem(datum, "");
         terminInfosTextArea.value = "";
@@ -46,7 +43,6 @@ class CalendarEntry {
 
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
-                console.log(datum);
                 localStorage.setItem(datum, terminInfos);
             } else {
                 alert('Sorry, Dein Browser kann nicht lokal speichern :-/');
@@ -70,7 +66,7 @@ window.onload = function () {
 
     const loeschenButton = document.getElementById('loeschenButton');
     loeschenButton.addEventListener('mousedown', () => {
-        calendarEntry.textFeldLoeschen(calendarEntry.terminInfosTextArea, datePicker.value);
+        calendarEntry.terminLoeschen(calendarEntry.terminInfosTextArea, datePicker.value);
     });
 
     const speichernButton = document.getElementById('speichernButton');

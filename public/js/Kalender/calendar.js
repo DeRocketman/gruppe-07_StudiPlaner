@@ -69,7 +69,6 @@ class Calendar {
         return numberOfDaysInMonth;
     }
 
-
     // Wechselt zum vorherigen Monat und berücksichtigt dabei Jahreswechsel
     prevMonth = function () {
         let isJanuary = cal.month === 0;
@@ -173,8 +172,6 @@ document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.pre
 document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
 
 // Nais to have in Version 3:
-// 1. Highlighting und mouse down, zieht infos zum Tag im Textfeld.
 // 2. Lieber neue Kind-Knoten im Kalender anlegen als leere Tabellenelemente im HTML zu haben.
 //    - Dynamisch erzeugen, ist irgendwie cooler und somit auch modularer einsetzbar ohne viel Aufwand.
-// 3. Klick auf Datum im Datepicker zeigt wie 1.
 
