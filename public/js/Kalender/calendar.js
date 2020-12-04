@@ -12,6 +12,7 @@ class Calendar {
         this.monthsName = this.nameOfMonth();
         this.daysName = this.nameOfDay();
         this.numberOfDaysMonth = this.daysOfMonth();
+        this.numberOfWeeks = this.calculateNumberOfWeeks();
         // wird in fillCalendar berechnet
         this.firstWeekdayOfMonth = 0;
     }
@@ -25,6 +26,17 @@ class Calendar {
     // Brauchen hier für den DatePicker im calendarEntry noch zur initialisierung noch einen vernünftigen Wert.
     toDatePickerString = () =>
         `${this.year}-${this.month}-${this.day}`;
+
+    calculateNumberOfWeeks = () => {
+        const totalNumberOfDays = this.firstWeekdayOfMonth + this.numberOfDaysMonth;
+        let numberOfWeeks = 5;
+        if(totalNumberOfDays === 28) {
+            numberOfWeeks--;
+        } else if (totalNumberOfDays > 35) {
+            numberOfWeeks++;
+        }
+        return numberOfWeeks;
+    }
 
     /*
     Ermittelt den aktuellen Monat, falls keine Parameter mitgegeben wird
@@ -69,7 +81,6 @@ class Calendar {
         return numberOfDaysInMonth;
     }
 
-
     // Wechselt zum vorherigen Monat und berücksichtigt dabei Jahreswechsel
     prevMonth = function () {
         let isJanuary = cal.month === 0;
@@ -92,7 +103,6 @@ class Calendar {
         if (isDecember) {
             cal.month = 0;
             cal.year += 1;
-            console.log(cal.year);
         } else {
             cal.month++;
         }
@@ -101,6 +111,29 @@ class Calendar {
         nextCalendar.clearCalendar();
         nextCalendar.fillCalendar();
     }
+
+
+    createWeek = (weekNumber = 5) => {
+        const parentNode = document.getElementById('kalenderzeug');
+        const newNode = document.createElement('tr');
+        newNode.className = 'kalenderKlasse';
+        parentNode.appendChild(newNode);
+        let dayOffset = weekNumber * 7;
+
+        for(let i = 0; i < 7; i++)
+        {
+            const newTableDataEntry = document.createElement('td');
+            newTableDataEntry.id = "kalender_eintrag_" + (i + dayOffset);
+            newTableDataEntry.innerHTML = i + 1 + dayOffset;
+            newNode.appendChild(newTableDataEntry);
+        }
+    }
+
+    createMonth = (numberOfWeeks) => {
+        for(let i; i < numberOfWeeks; i++) {
+            this.createWeek(i);
+        }
+    };
 
     // Füllt den Kalender mit Tagen, Monat und Jahresangabe
     fillCalendar = function () {
@@ -125,6 +158,12 @@ class Calendar {
             // setzt den Monat im Kalender zu: Monat Jahr, z.B. Oktober 2020
             kalenderMonat.innerHTML = `${this.monthsName} ${this.year}`;
             this.firstWeekdayOfMonth = calculateFirstDayOfMonth.call(this);
+
+            // TODO: Die Dynamisch erzeugten Werte fangen, vielleicht in einem Array?
+            // Oder den unteren Teil direkt in createMonth?
+            // this.createMonth(this.numberOfWeeks);
+
+
             // erstellt Liste mit mit Tagen des Monats
             const listOfDays = [...Array(this.numberOfDaysMonth).keys()];
             // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
@@ -173,8 +212,6 @@ document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.pre
 document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
 
 // Nais to have in Version 3:
-// 1. Highlighting und mouse down, zieht infos zum Tag im Textfeld.
 // 2. Lieber neue Kind-Knoten im Kalender anlegen als leere Tabellenelemente im HTML zu haben.
 //    - Dynamisch erzeugen, ist irgendwie cooler und somit auch modularer einsetzbar ohne viel Aufwand.
-// 3. Klick auf Datum im Datepicker zeigt wie 1.
 
