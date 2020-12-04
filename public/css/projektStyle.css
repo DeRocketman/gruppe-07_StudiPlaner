@@ -20,7 +20,18 @@ main {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 1em;
 }
-
+ #teilnehmerlisteID{
+    margin-left: 100px;
+}
+ #aufgabenID{
+     margin-left: 100px;
+ }
+ #literaturNotizenID{
+     margin-right: 100px;
+ }
+ #erinnerungsmail{
+     margin-right: 100px;
+ }
 legend {
     font-weight: 900;
 }
