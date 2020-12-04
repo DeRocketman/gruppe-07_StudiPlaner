@@ -214,3 +214,6 @@ ul, #literatur {
 .elementOFF{
     visibility: hidden;
 }
+.elementON{
+    visibility: visible;
+}
