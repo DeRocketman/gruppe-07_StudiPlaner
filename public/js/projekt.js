@@ -38,6 +38,8 @@ function clickfunction1(){
     projectClickCounter +=1;
         switch (projectClickCounter) {
             case 1:
+                projectswitcher();
+
                 document.getElementById("projektName").innerHTML = "Kurs Webdesign IIa";
                 document.getElementById("tn1").innerHTML = "Kim Lara Feller";
                 document.getElementById("tn2").innerHTML = "Louis Grümmer";
@@ -72,6 +74,7 @@ function clickfunction1(){
                  */
                 break;
             case 2:
+                projectswitcher();
                 document.getElementById("projektName").innerHTML = "Kurs Datenbanken";
                 document.getElementById("tn1").innerHTML = "Benjamin Ansohn McDougall";
                 document.getElementById("tn2").innerHTML = "Hans A. Rostock";
@@ -106,6 +109,7 @@ function clickfunction1(){
              */
                 break;
             case 3:
+                projectswitcher();
                 document.getElementById("projektName").innerHTML = "Projektseite JS";
                 document.getElementById("tn1").innerHTML = "Kim Lara Feller";
                 document.getElementById("tn2").innerHTML = "Louis Grümmer";
@@ -141,6 +145,7 @@ function clickfunction1(){
              */
                 break;
             case 4:
+                projectswitcher();
                 document.getElementById("projektName").innerHTML = "Häkeln mit der Omi";
                 document.getElementById("tn1").className = "elementOFF";
                 document.getElementById("tn2").className = "elementOFF";
@@ -179,6 +184,12 @@ function clickfunction1(){
                 document.getElementById("projektName").innerHTML = "PROJEKTNAME";
                 break;
         }
+}
+function projectswitcher(){
+        let classpart = document.getElementsByClassName("elementOFF");
+    for (let i = 0; i < document.getElementsByClassName("elementOFF").length ;i++){
+                classpart[i].className = "elementON";
+    }
 }
 
 /*
