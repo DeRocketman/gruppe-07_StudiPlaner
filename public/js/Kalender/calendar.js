@@ -12,6 +12,7 @@ class Calendar {
         this.monthsName = this.nameOfMonth();
         this.daysName = this.nameOfDay();
         this.numberOfDaysMonth = this.daysOfMonth();
+        this.numberOfWeeks = this.calculateNumberOfWeeks();
         // wird in fillCalendar berechnet
         this.firstWeekdayOfMonth = 0;
     }
@@ -25,6 +26,17 @@ class Calendar {
     // Brauchen hier für den DatePicker im calendarEntry noch zur initialisierung noch einen vernünftigen Wert.
     toDatePickerString = () =>
         `${this.year}-${this.month}-${this.day}`;
+
+    calculateNumberOfWeeks = () => {
+        const totalNumberOfDays = this.firstWeekdayOfMonth + this.numberOfDaysMonth;
+        let numberOfWeeks = 5;
+        if(totalNumberOfDays === 28) {
+            numberOfWeeks--;
+        } else if (totalNumberOfDays > 35) {
+            numberOfWeeks++;
+        }
+        return numberOfWeeks;
+    }
 
     /*
     Ermittelt den aktuellen Monat, falls keine Parameter mitgegeben wird
@@ -100,6 +112,29 @@ class Calendar {
         nextCalendar.fillCalendar();
     }
 
+
+    createWeek = (weekNumber = 5) => {
+        const parentNode = document.getElementById('kalenderzeug');
+        const newNode = document.createElement('tr');
+        newNode.className = 'kalenderKlasse';
+        parentNode.appendChild(newNode);
+        let dayOffset = weekNumber * 7;
+
+        for(let i = 0; i < 7; i++)
+        {
+            const newTableDataEntry = document.createElement('td');
+            newTableDataEntry.id = "kalender_eintrag_" + (i + dayOffset);
+            newTableDataEntry.innerHTML = i + 1 + dayOffset;
+            newNode.appendChild(newTableDataEntry);
+        }
+    }
+
+    createMonth = (numberOfWeeks) => {
+        for(let i; i < numberOfWeeks; i++) {
+            this.createWeek(i);
+        }
+    };
+
     // Füllt den Kalender mit Tagen, Monat und Jahresangabe
     fillCalendar = function () {
         // Interne Hilfsfunktion: Berechnet den ersten Tag des Monats
@@ -123,6 +158,12 @@ class Calendar {
             // setzt den Monat im Kalender zu: Monat Jahr, z.B. Oktober 2020
             kalenderMonat.innerHTML = `${this.monthsName} ${this.year}`;
             this.firstWeekdayOfMonth = calculateFirstDayOfMonth.call(this);
+
+            // TODO: Die Dynamisch erzeugten Werte fangen, vielleicht in einem Array?
+            // Oder den unteren Teil direkt in createMonth?
+            // this.createMonth(this.numberOfWeeks);
+
+
             // erstellt Liste mit mit Tagen des Monats
             const listOfDays = [...Array(this.numberOfDaysMonth).keys()];
             // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
