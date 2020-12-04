@@ -32,14 +32,12 @@ function mailsender3() {
 * Projektwechseln inkl. Pseudobearbeitungssstand!
 */
 document.getElementById("projektName").addEventListener('click', clickfunction1);
-let projectClickCounter = 0;
-
+var projectClickCounter = 0;
 function clickfunction1(){
     projectClickCounter +=1;
         switch (projectClickCounter) {
             case 1:
                 projectswitcher();
-
                 document.getElementById("projektName").innerHTML = "Kurs Webdesign IIa";
                 document.getElementById("tn1").innerHTML = "Kim Lara Feller";
                 document.getElementById("tn2").innerHTML = "Louis Grümmer";
@@ -176,10 +174,12 @@ function clickfunction1(){
                 document.getElementById("checkbox2").checked = true;
                 document.getElementById("checkbox3").checked = false;
                 /*
-                    @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
+                 *    @TODO Hier sollen Teilnehmer, Piechart, Literaturverweise, links, Notizen, Mailkontakte, Aufgaben wechseln
                  */
-                projectClickCounter = 0;
                 break;
+            case 5:
+                projectClickCounter = 0;
+                document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?"
             default:
                 document.getElementById("projektName").innerHTML = "PROJEKTNAME";
                 break;
@@ -190,6 +190,12 @@ function projectswitcher(){
     for (let i = 0; i < document.getElementsByClassName("elementOFF").length ;i++){
                 classpart[i].className = "elementON";
     }
+}
+/*
+Hier werden
+ */
+var projekt1 = {
+
 }
 
 /*
@@ -213,7 +219,7 @@ function dblclickfunction4() {
 }
 /*
 * Setting von Mailadressen
-* und make settings great (invisible) again
+* und settingeinstellung deaktivieren (invisible machen)
 */
 let settingONflag = false;
 
@@ -221,7 +227,7 @@ document.getElementById("mailsettings").addEventListener('click', mailsetfunctio
 function mailsetfunction(){
     document.getElementById("mailsettingsoki").className = "settingON";
     settingONflag = true;
-    if (settingONflag != false) {
+    if (settingONflag !== false) {
         document.getElementById("mail1").addEventListener('click', setmailname1);
         function setmailname1() {
             /*
