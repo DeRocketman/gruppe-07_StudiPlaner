@@ -91,7 +91,6 @@ class Calendar {
         if (isDecember) {
             cal.month = 0;
             cal.year += 1;
-            console.log(cal.year);
         } else {
             cal.month++;
         }

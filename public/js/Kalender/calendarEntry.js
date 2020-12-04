@@ -1,4 +1,3 @@
-
 class CalendarEntry {
     constructor() {
         this.terminInfosTextArea = document.getElementById('notizfeld');
@@ -51,7 +50,6 @@ class CalendarEntry {
             alert('Bitte gib etwas ein damit wir Den Termin speichern werden.');
         }
     }
-
 
     random_text(items)
     {
