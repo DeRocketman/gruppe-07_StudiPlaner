@@ -80,6 +80,7 @@ class Calendar {
         } else {
             cal.month--;
         }
+        // Nicht sehr performant, bessere Lösung ist hier eine Liste von Kalendern zu erstellen
         const previousCalendar = new Calendar(new Date(cal.year, cal.month, cal.day));
         previousCalendar.clearCalendar();
         previousCalendar.fillCalendar();
@@ -95,6 +96,7 @@ class Calendar {
         } else {
             cal.month++;
         }
+        // Nicht sehr performant, bessere Lösung ist hier eine Liste von Kalendern zu erstellen
         const nextCalendar = new Calendar(new Date(cal.year, cal.month, cal.day));
         nextCalendar.clearCalendar();
         nextCalendar.fillCalendar();
