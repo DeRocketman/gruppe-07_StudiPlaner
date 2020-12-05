@@ -7,9 +7,13 @@ Layout des Dokuments
   zartRosé: #F5D5F0
   dunkelRosa: #AB63A0
  */
+body{
+    margin: 0;
+}
 main {
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 canvas {
     position:absolute;
