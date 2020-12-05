@@ -14,6 +14,9 @@ Layout des Dokuments
     0% { transform: rotate(0); }
     100% { transform: rotate(360deg); }
 }
+#projektswitcher #projektName {
+    visibility: hidden;
+}
 main {
     display: grid;
     justify-content: center;
@@ -228,3 +231,5 @@ ul, #literatur {
 .elementON{
     visibility: visible;
 }
+
+
