@@ -44,7 +44,8 @@ function projektClickFunktion(){
         document.getElementById("neuesProjekt").addEventListener("click", neuesProjektFunktion);
         function neuesProjektFunktion(){
             document.getElementById("inputFeld").className = "elementON";
-            document.getElementById("projektName").replaceWith(document.getElementById("inputFeld"));
+            document.getElementById("projektuebernahme").className = "settingON";
+            document.getElementById("projektabrruch").className = "settingON";
         }
     }
 }
