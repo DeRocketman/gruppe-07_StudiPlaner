@@ -213,7 +213,11 @@ ul, #literatur {
 .active {
     display: block;
 }
-
+/* Lost Elements */
+#neuesProjekt{
+    max-height: 50px;
+    max-width:  50px;
+}
 /* Einstellungsstyles */
 .setting{
     max-height: 13px;
