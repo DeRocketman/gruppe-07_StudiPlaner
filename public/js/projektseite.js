@@ -33,20 +33,25 @@ function mailsender3() {
 * Projektwechseln
 */
 document.getElementById("projektName").addEventListener('click', projektClickFunktion);
+
 var projectClickCounter = 0;
 var projektAnzahl = 0;
 function projektClickFunktion(){
     projectClickCounter +=1;
     if (projektAnzahl <= projectClickCounter){
         document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
-        document.getElementById("neuesProjekt").className = "settingON";
+        document.getElementById("neuesProjekt").className = "elementON";
+        document.getElementById("neuesProjekt").addEventListener("click", neuesProjektFunktion);
+        function neuesProjektFunktion(){
+            document.getElementById("inputFeld").className = "elementON";
+            document.getElementById("projektName").replaceWith(document.getElementById("inputFeld"));
+        }
     }
 }
 function projectswitcher(){
         let classpart = document.getElementsByClassName("elementOFF");
     for (let i = 0; i < document.getElementsByClassName("elementOFF").length ;i++){
                 classpart[i].className = "elementON";
-
     }
 }
 /*
