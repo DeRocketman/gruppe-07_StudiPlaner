@@ -1,3 +1,6 @@
+// Projekt 1 ist als default angeklickt
+document.getElementById("defaultSelected").click();
+
 function selectedProject(event, project) {
 
     //Alle Elemente (Tabcontent) unsichtbar machen, damit nur ausgewähltes angezeigt wird
@@ -12,7 +15,7 @@ function selectedProject(event, project) {
         tablink[i].className = tablink[i].className.replace(" active", "");
     }
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
+    // Angeklicktes Element die Klasse active zuweisen
     document.getElementById(project).style.display = "block";
     event.currentTarget.className += " active";
 }

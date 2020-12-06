@@ -195,6 +195,7 @@ main article section:nth-child(3) {
     background-color: #AB63A0;
     color: #F8EFC8;
 }
+
 /* Aktiver Tab */
 .tabs button.active {
     display: block;
