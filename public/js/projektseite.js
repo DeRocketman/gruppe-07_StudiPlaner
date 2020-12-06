@@ -1,6 +1,4 @@
 
-
-
 /* Listenelemente auswählen zum ein- bzw. ausblenden */
 let toggle = document.getElementsByClassName('caret');
 let i;
@@ -19,7 +17,6 @@ let personAmail;
 let personBmail;
 let personCmail;
 let mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-
 function mailsender1() {
     location.href = "mailto:" + personAmail+mailbetreff;
 }
@@ -32,22 +29,34 @@ function mailsender3() {
 /*
 * Projektwechseln
 */
-document.getElementById("projektName").addEventListener('click', projektClickFunktion);
+document.getElementById("projektName").addEventListener('click', projektSwitchFunktion);
+document.getElementById("projektuebernahme").addEventListener("click", projektAnlegeFunktion);
+document.getElementById("projektabrruch").addEventListener("click", projektAbbruchFunktion);
+document.getElementById("neuesProjekt").addEventListener("click", neuesProjektFunktion);
 
 var projectClickCounter = 0;
 var projektAnzahl = 0;
-function projektClickFunktion(){
-    projectClickCounter +=1;
-    if (projektAnzahl <= projectClickCounter){
-        document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
-        document.getElementById("neuesProjekt").className = "elementON";
-        document.getElementById("neuesProjekt").addEventListener("click", neuesProjektFunktion);
-        function neuesProjektFunktion(){
-            document.getElementById("inputFeld").className = "elementON";
-            document.getElementById("projektuebernahme").className = "settingON";
-            document.getElementById("projektabrruch").className = "settingON";
+function projektSwitchFunktion(){
+    document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
+    document.getElementById("neuesProjekt").className = "elementON";
+    projectClickCounter++
+        if (projektAnzahl >0) {
+
         }
-    }
+}
+function neuesProjektFunktion() {
+    document.getElementById("inputFeld").className = "elementON";
+    document.getElementById("projektuebernahme").className = "settingON";
+    document.getElementById("projektabrruch").className = "settingON";
+}
+function projektAnlegeFunktion(){
+    document.getElementById("inputFeld").className = "elementOFF";
+    document.getElementById("projektuebernahme").className = "setting";
+    document.getElementById("projektabrruch").className = "setting";
+    projektAnzahl++;
+}
+function projektAbbruchFunktion(){
+    alert('Projekt wurde nicht angelegt');
 }
 function projectswitcher(){
         let classpart = document.getElementsByClassName("elementOFF");
