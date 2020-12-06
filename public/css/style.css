@@ -171,7 +171,6 @@ main article section:nth-child(3) {
     flex-flow: column wrap;
 }
 
-/* Register Grundlayout*/
 
 .tabs {
     display: flex;
@@ -179,8 +178,6 @@ main article section:nth-child(3) {
     justify-content: center;
 }
 
-
-/* ButtonDesign */
 .tabs button {
     background-color: #F5D5F0;
     border: black thin solid;
@@ -193,20 +190,20 @@ main article section:nth-child(3) {
     font-size: 9pt;
 }
 
-/* Ändert Hintergrund des buttons beim hover */
+/* Ändert Hintergrundfarbe des Tabs beim Hover */
 .tabs button:hover {
     background-color: #AB63A0;
     color: #F8EFC8;
 }
-
-/* Hintergrundauswahl faker*/
-.tabs button:nth-child(3) {
-    background-color: #AB63A0;
-    color: #F8EFC8;
+/* Aktiver Tab */
+.tabs button.active {
+    display: block;
+    padding: 8px 4px;
+    border: 1px solid #333333;
+    border-top: none;
 }
 
-/* Design des Inhalts Faker (implementiert mit JS) */
-.tabInhalt {
+.tabcontent {
     display: none;
     padding: 8px 4px;
     border: 1px solid #333333;
@@ -214,14 +211,6 @@ main article section:nth-child(3) {
     font-size: 9pt;
     margin: auto;
 }
-
-.tabInhalt.activeTab {
-    display: block;
-    padding: 8px 4px;
-    border: 1px solid #333333;
-    border-top: none;
-}
-
 /* Sektion Projekte Ende */
 
 /* Sektion Gruppen Start */
