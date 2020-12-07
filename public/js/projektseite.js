@@ -9,6 +9,41 @@ for (i = 0; i < toggle.length; i++) {
         this.classList.toggle('caret-down');
     });
 }
+/*
+Fuer die Beta der Seite eine festgelegte maximale Anzahl von Projekten (5)
+@TODO array für projekt? Wenn ja -> erübrigt sich begrenzte anzahl
+ */
+var projektarray = [projekt1];
+let projekt1 = {
+    //Anfangswerte für Projekte
+    "aktiviert" : false,
+    "projektname" : "", //
+    "teilnehmer1" : "",
+    "teilnehmer2" : "",
+    "teilnehmer3" : "",
+    "teilnehmer4" : "",
+    "teilnehmer5" : "",
+    "teilnehmer6" : "",
+    "teilnehmer7" : "",
+    "teilnehmer8" : "",
+    "teilnehmer9" : "",
+    "literatur1"  : "",
+    "literatur2"  : "",
+    "literatur3"  : "",
+    "notizen"     : "",
+    "aufgabe1text": "",
+    "aufgabe1box" : false,
+    "aufgabe2text": "",
+    "aufgabe2box" : false,
+    "aufgabe3text": "",
+    "aufgabe3box" : false,
+
+    // @TODO Eingabeaufforderung der Mailaddressen (3 Favorieten aus Teilnehmerliste!) implementieren
+    personAmail : "",
+    personBmail : "",
+    personCmail : "",
+
+}
 
 /*
         Mailfunktion
@@ -41,6 +76,7 @@ function projektSwitchFunktion(){
     document.getElementById("neuesProjekt").className = "elementON";
     projectClickCounter++
         if (projektAnzahl >0) {
+            document.getElementById("projektName").innerHTML = projekt1.projektname;
 
         }
 }
@@ -50,10 +86,17 @@ function neuesProjektFunktion() {
     document.getElementById("projektabrruch").className = "settingON";
 }
 function projektAnlegeFunktion(){
+    projektAnzahl++;
+    if (projektAnzahl <= 5){
+        switch (projektAnzahl) {
+            case 1:
+                projekt1.aktiviert = true;
+                projekt1.projektname = document.getElementById("inputFeld").value;
+        }
+    }
     document.getElementById("inputFeld").className = "elementOFF";
     document.getElementById("projektuebernahme").className = "setting";
     document.getElementById("projektabrruch").className = "setting";
-    projektAnzahl++;
 }
 function projektAbbruchFunktion(){
     alert('Projekt wurde nicht angelegt');
