@@ -1,23 +1,19 @@
-
-/* Listenelemente auswählen zum ein- bzw. ausblenden */
+//Listenelemente auswählen zum ein- bzw. ausblenden
 let toggle = document.getElementsByClassName('caret');
 let i;
-
 for (i = 0; i < toggle.length; i++) {
     toggle[i].addEventListener('click', function() {
         this.parentElement.querySelector(".nested").classList.toggle('active');
         this.classList.toggle('caret-down');
     });
 }
+//Fuer die Beta der Seite eine festgelegte maximale Anzahl von Projekten (5)
+//  @TODO array für projekt? Wenn ja -> erübrigt sich begrenzte anzahl
 /*
-Fuer die Beta der Seite eine festgelegte maximale Anzahl von Projekten (5)
-@TODO array für projekt? Wenn ja -> erübrigt sich begrenzte anzahl
+    deleter ist ein Objekt mit Anfangswerten für ein neues oder gelöschtes Projekt (Werte
+    sollen dabei einfach überschrieben werden und Ansicht zurück gesetzt werden)
  */
-/*
-    neuprojekt ist ein Objekt mit Anfangswerten für ein neues Projekt oder gelöschtes Projekt (Werte
-    sollen dabei einfach überschrieben werden)
- */
-let neuprojekt = {
+let deleter = {
     //Anfangswerte für neue Projekte oder nach löschen
     "aktiviert" : false,
     "projektname" : "", //
@@ -68,17 +64,367 @@ let neuprojekt = {
         document.getElementById("mailP1").innerHTML = "Person A";
         document.getElementById("mailP2").innerHTML = "Person B";
         document.getElementById("mailP3").innerHTML = "Person C";
-        document.getElementById("aufgabe_1").
+        document.getElementById("aufgabe_1").className ="elementOFF";
+        document.getElementById("aufgabe_2").className ="elementOFF";
+        document.getElementById("aufgabe_3").className ="elementOFF";
     }
 }
-
+//Projektspeicher 1-5:
 let projekt1 = {
-    "projektnummer1" : 1,
+    //Grunddaten
+    "projektnummer" : 1,
     "aktiviert" : false,
+    "projektbezeichnung" : "",
+
+    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "teilnehmer1vorname" : null,
+    "teilnehmer1name"    : null,
+    "teilnehmer1email"   : null,
+    "teilnehmer1favorit" : true,
+    "teilnehmer2vorname" : null,
+    "teilnehmer2name"    : null,
+    "teilnehmer2email"   : null,
+    "teilnehmer2favorit" : true,
+    "teilnehmer3vorname" : null,
+    "teilnehmer3name"    : null,
+    "teilnehmer3email"   : null,
+    "teilnehmer3favorit" : true,
+    "teilnehmer4vorname" : null,
+    "teilnehmer4name"    : null,
+    "teilnehmer4email"   : null,
+    "teilnehmer4favorit" : false,
+    "teilnehmer5vorname" : null,
+    "teilnehmer5name"    : null,
+    "teilnehmer5email"   : null,
+    "teilnehmer5favorit" : false,
+    "teilnehmer6vorname" : null,
+    "teilnehmer6name"    : null,
+    "teilnehmer6email"   : null,
+    "teilnehmer6favorit" : false,
+    "teilnehmer7vorname" : null,
+    "teilnehmer7name"    : null,
+    "teilnehmer7email"   : null,
+    "teilnehmer7favorit" : false,
+    "teilnehmer8vorname" : null,
+    "teilnehmer8name"    : null,
+    "teilnehmer8email"   : null,
+    "teilnehmer8favorit" : false,
+    "teilnehmer9vorname" : null,
+    "teilnehmer9name"    : null,
+    "teilnehmer9email"   : null,
+    "teilnehmer9favorit" : false,
+
+    //PieChart
+    //  @TODO Implementierung von Louis?
+
+    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "literatur1" : null,
+    "literatur2" : null,
+    "literatur3" : null,
+
+    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "link1href" : null,
+    "link1text" : null,
+    "link2href" : null,
+    "link2text" : null,
+    "link3href" : null,
+    "link3text" : null,
+
+    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "aufgabe1value" : null,
+    "aufgabe1box"   : false,
+    "aufhabe1boxtext" : null,
+    "aufgabe2value" : null,
+    "aufgabe2box"   : false,
+    "aufhabe2boxtext" : null,
+    "aufgabe3value" : null,
+    "aufgabe3box"   : false,
+    "aufhabe3boxtext" : null,
+
+    //  @TODO SPEICHER/LOAD-Funktion implementieren
 }
-/*
-        Mailfunktion
-*/
+let projekt2 = {
+    "projektnummer" : 2,
+    "aktiviert" : false,
+    "projektbezeichnung" : "",
+
+    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "teilnehmer1vorname" : null,
+    "teilnehmer1name"    : null,
+    "teilnehmer1email"   : null,
+    "teilnehmer1favorit" : true,
+    "teilnehmer2vorname" : null,
+    "teilnehmer2name"    : null,
+    "teilnehmer2email"   : null,
+    "teilnehmer2favorit" : true,
+    "teilnehmer3vorname" : null,
+    "teilnehmer3name"    : null,
+    "teilnehmer3email"   : null,
+    "teilnehmer3favorit" : true,
+    "teilnehmer4vorname" : null,
+    "teilnehmer4name"    : null,
+    "teilnehmer4email"   : null,
+    "teilnehmer4favorit" : false,
+    "teilnehmer5vorname" : null,
+    "teilnehmer5name"    : null,
+    "teilnehmer5email"   : null,
+    "teilnehmer5favorit" : false,
+    "teilnehmer6vorname" : null,
+    "teilnehmer6name"    : null,
+    "teilnehmer6email"   : null,
+    "teilnehmer6favorit" : false,
+    "teilnehmer7vorname" : null,
+    "teilnehmer7name"    : null,
+    "teilnehmer7email"   : null,
+    "teilnehmer7favorit" : false,
+    "teilnehmer8vorname" : null,
+    "teilnehmer8name"    : null,
+    "teilnehmer8email"   : null,
+    "teilnehmer8favorit" : false,
+    "teilnehmer9vorname" : null,
+    "teilnehmer9name"    : null,
+    "teilnehmer9email"   : null,
+    "teilnehmer9favorit" : false,
+
+    //PieChart
+    //  @TODO Implementierung PIECHART von Louis?
+
+    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "literatur1" : null,
+    "literatur2" : null,
+    "literatur3" : null,
+
+    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "link1href" : null,
+    "link1text" : null,
+    "link2href" : null,
+    "link2text" : null,
+    "link3href" : null,
+    "link3text" : null,
+
+    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "aufgabe1value" : null,
+    "aufgabe1box"   : false,
+    "aufhabe1boxtext" : null,
+    "aufgabe2value" : null,
+    "aufgabe2box"   : false,
+    "aufhabe2boxtext" : null,
+    "aufgabe3value" : null,
+    "aufgabe3box"   : false,
+    "aufhabe3boxtext" : null,
+}
+let projekt3 = {
+    "projektnummer" : 3,
+    "aktiviert" : false,
+    "projektbezeichnung" : "",
+
+    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "teilnehmer1vorname" : null,
+    "teilnehmer1name"    : null,
+    "teilnehmer1email"   : null,
+    "teilnehmer1favorit" : true,
+    "teilnehmer2vorname" : null,
+    "teilnehmer2name"    : null,
+    "teilnehmer2email"   : null,
+    "teilnehmer2favorit" : true,
+    "teilnehmer3vorname" : null,
+    "teilnehmer3name"    : null,
+    "teilnehmer3email"   : null,
+    "teilnehmer3favorit" : true,
+    "teilnehmer4vorname" : null,
+    "teilnehmer4name"    : null,
+    "teilnehmer4email"   : null,
+    "teilnehmer4favorit" : false,
+    "teilnehmer5vorname" : null,
+    "teilnehmer5name"    : null,
+    "teilnehmer5email"   : null,
+    "teilnehmer5favorit" : false,
+    "teilnehmer6vorname" : null,
+    "teilnehmer6name"    : null,
+    "teilnehmer6email"   : null,
+    "teilnehmer6favorit" : false,
+    "teilnehmer7vorname" : null,
+    "teilnehmer7name"    : null,
+    "teilnehmer7email"   : null,
+    "teilnehmer7favorit" : false,
+    "teilnehmer8vorname" : null,
+    "teilnehmer8name"    : null,
+    "teilnehmer8email"   : null,
+    "teilnehmer8favorit" : false,
+    "teilnehmer9vorname" : null,
+    "teilnehmer9name"    : null,
+    "teilnehmer9email"   : null,
+    "teilnehmer9favorit" : false,
+
+    //PieChart
+    //  @TODO Implementierung PIECHART von Louis?
+
+    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "literatur1" : null,
+    "literatur2" : null,
+    "literatur3" : null,
+
+    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "link1href" : null,
+    "link1text" : null,
+    "link2href" : null,
+    "link2text" : null,
+    "link3href" : null,
+    "link3text" : null,
+
+    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "aufgabe1value" : null,
+    "aufgabe1box"   : false,
+    "aufhabe1boxtext" : null,
+    "aufgabe2value" : null,
+    "aufgabe2box"   : false,
+    "aufhabe2boxtext" : null,
+    "aufgabe3value" : null,
+    "aufgabe3box"   : false,
+    "aufhabe3boxtext" : null,
+}
+let projekt4 = {
+    "projektnummer" :4,
+    "aktiviert" : false,
+    "projektbezeichnung" : "",
+
+    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "teilnehmer1vorname" : null,
+    "teilnehmer1name"    : null,
+    "teilnehmer1email"   : null,
+    "teilnehmer1favorit" : true,
+    "teilnehmer2vorname" : null,
+    "teilnehmer2name"    : null,
+    "teilnehmer2email"   : null,
+    "teilnehmer2favorit" : true,
+    "teilnehmer3vorname" : null,
+    "teilnehmer3name"    : null,
+    "teilnehmer3email"   : null,
+    "teilnehmer3favorit" : true,
+    "teilnehmer4vorname" : null,
+    "teilnehmer4name"    : null,
+    "teilnehmer4email"   : null,
+    "teilnehmer4favorit" : false,
+    "teilnehmer5vorname" : null,
+    "teilnehmer5name"    : null,
+    "teilnehmer5email"   : null,
+    "teilnehmer5favorit" : false,
+    "teilnehmer6vorname" : null,
+    "teilnehmer6name"    : null,
+    "teilnehmer6email"   : null,
+    "teilnehmer6favorit" : false,
+    "teilnehmer7vorname" : null,
+    "teilnehmer7name"    : null,
+    "teilnehmer7email"   : null,
+    "teilnehmer7favorit" : false,
+    "teilnehmer8vorname" : null,
+    "teilnehmer8name"    : null,
+    "teilnehmer8email"   : null,
+    "teilnehmer8favorit" : false,
+    "teilnehmer9vorname" : null,
+    "teilnehmer9name"    : null,
+    "teilnehmer9email"   : null,
+    "teilnehmer9favorit" : false,
+
+    //PieChart
+    //  @TODO Implementierung PIECHART von Louis?
+
+    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "literatur1" : null,
+    "literatur2" : null,
+    "literatur3" : null,
+
+    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "link1href" : null,
+    "link1text" : null,
+    "link2href" : null,
+    "link2text" : null,
+    "link3href" : null,
+    "link3text" : null,
+
+    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "aufgabe1value" : null,
+    "aufgabe1box"   : false,
+    "aufhabe1boxtext" : null,
+    "aufgabe2value" : null,
+    "aufgabe2box"   : false,
+    "aufhabe2boxtext" : null,
+    "aufgabe3value" : null,
+    "aufgabe3box"   : false,
+    "aufhabe3boxtext" : null,
+}
+let projekt5 = {
+    "projektnummer" : 5,
+    "aktiviert" : false,
+    "projektbezeichnung" : "",
+
+    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "teilnehmer1vorname" : null,
+    "teilnehmer1name"    : null,
+    "teilnehmer1email"   : null,
+    "teilnehmer1favorit" : true,
+    "teilnehmer2vorname" : null,
+    "teilnehmer2name"    : null,
+    "teilnehmer2email"   : null,
+    "teilnehmer2favorit" : true,
+    "teilnehmer3vorname" : null,
+    "teilnehmer3name"    : null,
+    "teilnehmer3email"   : null,
+    "teilnehmer3favorit" : true,
+    "teilnehmer4vorname" : null,
+    "teilnehmer4name"    : null,
+    "teilnehmer4email"   : null,
+    "teilnehmer4favorit" : false,
+    "teilnehmer5vorname" : null,
+    "teilnehmer5name"    : null,
+    "teilnehmer5email"   : null,
+    "teilnehmer5favorit" : false,
+    "teilnehmer6vorname" : null,
+    "teilnehmer6name"    : null,
+    "teilnehmer6email"   : null,
+    "teilnehmer6favorit" : false,
+    "teilnehmer7vorname" : null,
+    "teilnehmer7name"    : null,
+    "teilnehmer7email"   : null,
+    "teilnehmer7favorit" : false,
+    "teilnehmer8vorname" : null,
+    "teilnehmer8name"    : null,
+    "teilnehmer8email"   : null,
+    "teilnehmer8favorit" : false,
+    "teilnehmer9vorname" : null,
+    "teilnehmer9name"    : null,
+    "teilnehmer9email"   : null,
+    "teilnehmer9favorit" : false,
+
+    //PieChart
+    //  @TODO Implementierung PIECHART von Louis?
+
+    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "literatur1" : null,
+    "literatur2" : null,
+    "literatur3" : null,
+
+    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "link1href" : null,
+    "link1text" : null,
+    "link2href" : null,
+    "link2text" : null,
+    "link3href" : null,
+    "link3text" : null,
+
+    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "aufgabe1value" : null,
+    "aufgabe1box"   : false,
+    "aufhabe1boxtext" : null,
+    "aufgabe2value" : null,
+    "aufgabe2box"   : false,
+    "aufhabe2boxtext" : null,
+    "aufgabe3value" : null,
+    "aufgabe3box"   : false,
+    "aufhabe3boxtext" : null,
+}
+
+//Mailfunktionen
 let personAmail;
 let personBmail;
 let personCmail;
@@ -92,18 +438,16 @@ function mailsender2() {
 function mailsender3() {
     location.href = "mailto:" + personCmail+mailbetreff;
 }
-/*
-* Projektwechseln
-*/
-document.getElementById("projektName").addEventListener('click', projektSwitchFunktion);
-document.getElementById("projektuebernahme").addEventListener("click", projektAnlegeFunktion);
-document.getElementById("projektabrruch").addEventListener("click", projektAbbruchFunktion);
-document.getElementById("neuesProjekt").addEventListener("click", neuesProjektFunktion);
+//Mit dieser Funktion wird durch die einzelnen Projekte gewechselt
 
-var projectClickCounter = 0;
-var projektAnzahl = 0;
+
+
+
+
+
+document.getElementById("projektName").addEventListener('click', projektSwitchFunktion);
 function projektSwitchFunktion(){
-    projectClickCounter = 0;
+   var projectClickCounter = 0;
     document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
     document.getElementById("neuesProjekt").className = "elementON";
         if (projektAnzahl >0) {
@@ -111,7 +455,7 @@ function projektSwitchFunktion(){
             switch (projectClickCounter){
                 case 1:
                     if (projekt1.aktiviert===true) {
-                        document.getElementById("projektName").innerHTML = projekt1.projektname;
+                        document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
                     }
                     break;
             }
@@ -120,11 +464,16 @@ function projektSwitchFunktion(){
             document.getElementById("neuesProjekt").className = "elementON";
         }
 }
-function neuesProjektFunktion() {
+//Diese Funktion schaltet Option zum Anlegen eines Projekts frei
+document.getElementById("neuesProjekt").addEventListener("click", SchalteFreiFunktion);
+function SchalteFreiFunktion() {
     document.getElementById("inputFeld").className = "elementON";
     document.getElementById("projektuebernahme").className = "settingON";
     document.getElementById("projektabrruch").className = "settingON";
 }
+//Diese Funktion erstellt ein neues Projekt (Usersicht)\intern werden Projekte vorerst lediglich visible
+var projektAnzahl = 0;
+document.getElementById("projektuebernahme").addEventListener("click", projektAnlegeFunktion);
 function projektAnlegeFunktion(){
     projektAnzahl++;
     if (projektAnzahl <= 5){
@@ -132,27 +481,50 @@ function projektAnlegeFunktion(){
             case 1:
                 projekt1.aktiviert = true;
                 projekt1.projektname = document.getElementById("inputFeld").value;
-                neuprojekt.anleger();
+                deleter.anleger();
                 break;
+            case 2:
+                projekt2.aktiviert = true;
+                projekt2.projektname = document.getElementById("inputFeld").value;
+                deleter.anleger();
+            case 3:
+                projekt3.aktiviert = true;
+                projekt3.projektname = document.getElementById("inputFeld").value;
+                deleter.anleger();
+            case 4:
+                projekt4.aktiviert = true;
+                projekt4.projektname = document.getElementById("inputFeld").value;
+                deleter.anleger();
+            case 5:
+                projekt5.aktiviert = true;
+                projekt5.projektname = document.getElementById("inputFeld").value;
+                deleter.anleger();
         }
     }
+    //nach Anlegen des Projekts bzw. Abbruch wird alles wieder invisible -> Rückkehr zur normalen Ansicht
+    document.getElementById("inputFeld").value = null;
     document.getElementById("inputFeld").className = "elementOFF";
     document.getElementById("projektuebernahme").className = "setting";
     document.getElementById("projektabrruch").className = "setting";
     document.getElementById("neuesProjekt").className = "elementOFF";
 }
+//Diese Funktion ist der wird bei click des Abbruchbuttons ausgelöst
+document.getElementById("projektabrruch").addEventListener("click", projektAbbruchFunktion);
 function projektAbbruchFunktion(){
+    document.getElementById("inputFeld").className = "elementOFF";
+    document.getElementById("projektuebernahme").className = "setting";
+    document.getElementById("projektabrruch").className = "setting";
+    document.getElementById("neuesProjekt").className = "elementOFF";
     alert('Projekt wurde nicht angelegt');
 }
+//Diese Funktion soll bei Projekwechseln die Funktionen wieder reseten
 function projectswitcher(){
         let classpart = document.getElementsByClassName("elementOFF");
     for (let i = 0; i < document.getElementsByClassName("elementOFF").length ;i++){
                 classpart[i].className = "elementON";
     }
 }
-/*
-* Settingsbuttons visible machen
-*/
+//Diese Funktionen sollen die Einstellungsmöglichkeiten freischalten (visible machen)
 document.getElementById("teilnehmer").addEventListener('click', dblclickfunction1);
 function dblclickfunction1() {
         document.getElementById("teilnehmersetting").className = "settingON";
@@ -170,11 +542,11 @@ function dblclickfunction4() {
     document.getElementById("mailsettings").className = "settingON";
 }
 /*
-* Setting von Mailadressen
+* Setting von Mailadressen direkt
 * und settingeinstellung deaktivieren (invisible machen)
+* Vermutlich über Teilnehmerfavoriten gelöst.
 */
 let settingONflag = false;
-
 document.getElementById("mailsettings").addEventListener('click', mailsetfunction);
 function mailsetfunction(){
     document.getElementById("mailsettingsoki").className = "settingON";
@@ -182,9 +554,9 @@ function mailsetfunction(){
     if (settingONflag !== false) {
         document.getElementById("mail1").addEventListener('click', setmailname1);
         function setmailname1() {
-            /*
-               @TODO Implementieren, wie Name und E Mail von Person1 gesetzt werden
-             */
+
+            //  @TODO Implementieren, wie Name und E Mail von Person1 gesetzt werden
+
             document.getElementById("projektName").innerHTML = personAmail;
         }
     }
@@ -195,8 +567,7 @@ function mailsetokifunction() {
     document.getElementById("mailsettings").className = "setting";
     settingONflag = false;
 }
-
-/* Tooltip */
+//Mit dieser Funktion wird der Tooltip beim hovern ausgelöst DS: Tooltiptext in HTML zu finden (gut oder schlecht?)
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
