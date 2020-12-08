@@ -9,7 +9,73 @@ for (i = 0; i < toggle.length; i++) {
         this.classList.toggle('caret-down');
     });
 }
+/*
+Fuer die Beta der Seite eine festgelegte maximale Anzahl von Projekten (5)
+@TODO array für projekt? Wenn ja -> erübrigt sich begrenzte anzahl
+ */
+/*
+    neuprojekt ist ein Objekt mit Anfangswerten für ein neues Projekt oder gelöschtes Projekt (Werte
+    sollen dabei einfach überschrieben werden)
+ */
+let neuprojekt = {
+    //Anfangswerte für neue Projekte oder nach löschen
+    "aktiviert" : false,
+    "projektname" : "", //
+    "teilnehmer1" : "",
+    "teilnehmer2" : "",
+    "teilnehmer3" : "",
+    "teilnehmer4" : "",
+    "teilnehmer5" : "",
+    "teilnehmer6" : "",
+    "teilnehmer7" : "",
+    "teilnehmer8" : "",
+    "teilnehmer9" : "",
+    "literatur1"  : "",
+    "literatur2"  : "",
+    "literatur3"  : "",
+    "notizen"     : "",
+    "aufgabe1text": "",
+    "aufgabe1box" : false,
+    "aufgabe2text": "",
+    "aufgabe2box" : false,
+    "aufgabe3text": "",
+    "aufgabe3box" : false,
 
+    // @TODO Eingabeaufforderung der Mailaddressen (3 Favorieten aus Teilnehmerliste!) implementieren
+    personAmail : "",
+    personBmail : "",
+    personCmail : "",
+
+    anleger(){
+        document.getElementById("tn1").className = "elementOFF";
+        document.getElementById("tn2").className = "elementOFF";
+        document.getElementById("tn3").className = "elementOFF";
+        document.getElementById("tn4").className = "elementOFF";
+        document.getElementById("tn5").className = "elementOFF";
+        document.getElementById("tn6").className = "elementOFF";
+        document.getElementById("tn7").className = "elementOFF";
+        document.getElementById("tn8").className = "elementOFF";
+        document.getElementById("tn9").className = "elementOFF";
+
+        document.getElementById("piechart").className="elementOFF";
+        document.getElementById("lit1").className = "elementOFF";
+        document.getElementById("lit2").className = "elementOFF";
+        document.getElementById("lit3").className = "elementOFF";
+        document.getElementById("link1").className = "elementOFF";
+        document.getElementById("link2").className = "elementOFF";
+        document.getElementById("link3").className = "elementOFF";
+        document.getElementById("notizen").value = null;
+        document.getElementById("mailP1").innerHTML = "Person A";
+        document.getElementById("mailP2").innerHTML = "Person B";
+        document.getElementById("mailP3").innerHTML = "Person C";
+        document.getElementById("aufgabe_1").
+    }
+}
+
+let projekt1 = {
+    "projektnummer1" : 1,
+    "aktiviert" : false,
+}
 /*
         Mailfunktion
 */
@@ -37,11 +103,21 @@ document.getElementById("neuesProjekt").addEventListener("click", neuesProjektFu
 var projectClickCounter = 0;
 var projektAnzahl = 0;
 function projektSwitchFunktion(){
+    projectClickCounter = 0;
     document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
     document.getElementById("neuesProjekt").className = "elementON";
-    projectClickCounter++
         if (projektAnzahl >0) {
-
+            projectClickCounter++
+            switch (projectClickCounter){
+                case 1:
+                    if (projekt1.aktiviert===true) {
+                        document.getElementById("projektName").innerHTML = projekt1.projektname;
+                    }
+                    break;
+            }
+        } else {
+            document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
+            document.getElementById("neuesProjekt").className = "elementON";
         }
 }
 function neuesProjektFunktion() {
@@ -50,10 +126,20 @@ function neuesProjektFunktion() {
     document.getElementById("projektabrruch").className = "settingON";
 }
 function projektAnlegeFunktion(){
+    projektAnzahl++;
+    if (projektAnzahl <= 5){
+        switch (projektAnzahl) {
+            case 1:
+                projekt1.aktiviert = true;
+                projekt1.projektname = document.getElementById("inputFeld").value;
+                neuprojekt.anleger();
+                break;
+        }
+    }
     document.getElementById("inputFeld").className = "elementOFF";
     document.getElementById("projektuebernahme").className = "setting";
     document.getElementById("projektabrruch").className = "setting";
-    projektAnzahl++;
+    document.getElementById("neuesProjekt").className = "elementOFF";
 }
 function projektAbbruchFunktion(){
     alert('Projekt wurde nicht angelegt');
