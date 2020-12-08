@@ -7,6 +7,7 @@ Layout des Dokuments
   zartRosé: #F5D5F0
   dunkelRosa: #AB63A0
  */
+
 #mainLogo:hover {
     animation: animation 1000ms linear backwards alternate-reverse;
 }
@@ -23,7 +24,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 1em;
 }
-canvas {
+#canvasHintergrund {
     position:absolute;
     top:0;
     left:0;
@@ -31,6 +32,7 @@ canvas {
     height:100%;
     z-index:-1;
 }
+
  #teilnehmerlisteID{
     margin-left: 100px;
 }
@@ -67,9 +69,10 @@ main article:first-child ul li::marker {
 
 /* Beginn Kreisdiagramm-Projekte */
 #piechart {
-    position: relative;
+    position: center;
     left: -10%;
     top: 50px;
+
 }
 
 .piece {
@@ -110,7 +113,11 @@ main article:first-child ul li::marker {
     background: #F5D5F0;
     transform: rotate(168deg);
 }
+#piechartID{
+    margin-right: 200px;
 
+
+}
 .oberhaus:nth-child(3) {
     display: grid;
     grid-template-columns: 1fr;
