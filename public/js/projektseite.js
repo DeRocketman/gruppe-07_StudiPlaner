@@ -15,8 +15,8 @@ for (i = 0; i < toggle.length; i++) {
  */
 let deleter = {
     //Anfangswerte für neue Projekte oder nach löschen
-    "aktiviert" : false,
-    "projektname" : "", //
+    //"aktiviert" : false,
+    //"projektname" : "",
     "teilnehmer1" : "",
     "teilnehmer2" : "",
     "teilnehmer3" : "",
@@ -424,7 +424,7 @@ let projekt5 = {
     "aufhabe3boxtext" : null,
 }
 
-//Mailfunktionen
+//Mailfunktionenen
 let personAmail;
 let personBmail;
 let personCmail;
@@ -439,39 +439,72 @@ function mailsender3() {
     location.href = "mailto:" + personCmail+mailbetreff;
 }
 //Mit dieser Funktion wird durch die einzelnen Projekte gewechselt
-
-
-
-
-
-
+//  @TODO Loaderfunktion implemtieren!
 document.getElementById("projektName").addEventListener('click', projektSwitchFunktion);
+var projectClickCounter = 0;
 function projektSwitchFunktion(){
-   var projectClickCounter = 0;
+    switch (projectClickCounter){
+        case 0:
+            if (projektAnzahl <=5) {
+                document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
+                document.getElementById("neuesProjekt").className = "elementON";
+            } else {
+                document.getElementById("projektName").innerHTML = "Max Anzahl Projekte erreicht"
+                document.getElementById("infoH2").innerHTML = "Projekte löschen?"
+
+            }
+            projectClickCounter++
+            break;
+        case 1:
+            if (projekt1.aktiviert===true) {
+                document.getElementById("neuesProjekt").className = "elementOFF";
+                document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
+                projectClickCounter++
+                break;
+            }
+        case 2:
+            if (projekt2.aktiviert===true) {
+                document.getElementById("neuesProjekt").className = "elementOFF";
+                document.getElementById("projektName").innerHTML = projekt2.projektbezeichnung;
+                projectClickCounter++
+                break;
+            }
+        case 3:
+            if (projekt3.aktiviert===true) {
+                document.getElementById("neuesProjekt").className = "elementOFF";
+                document.getElementById("projektName").innerHTML = projekt3.projektbezeichnung;
+                projectClickCounter++
+                break;
+            }
+        case 4:
+            if (projekt4.aktiviert===true) {
+                document.getElementById("neuesProjekt").className = "elementOFF";
+                document.getElementById("projektName").innerHTML = projekt4.projektbezeichnung;
+                projectClickCounter++
+                break;
+            }
+        case 5:
+            projectClickCounter=0;
+            if (projekt5.aktiviert===true) {
+                document.getElementById("neuesProjekt").className = "elementOFF";
+                document.getElementById("projektName").innerHTML = projekt5.projektbezeichnung;
+                break;
+            }
+    }
+}
+//1. Diese Funktion schafft die Vorrausetzung zum Anlegen eines neuen Projekts
+function frageNachProjektFunktion(){
     document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
     document.getElementById("neuesProjekt").className = "elementON";
-        if (projektAnzahl >0) {
-            projectClickCounter++
-            switch (projectClickCounter){
-                case 1:
-                    if (projekt1.aktiviert===true) {
-                        document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
-                    }
-                    break;
-            }
-        } else {
-            document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
-            document.getElementById("neuesProjekt").className = "elementON";
-        }
 }
-//Diese Funktion schaltet Option zum Anlegen eines Projekts frei
+//2. Diese Funktion schaltet Option zum Anlegen eines Projekts frei
 document.getElementById("neuesProjekt").addEventListener("click", SchalteFreiFunktion);
 function SchalteFreiFunktion() {
     document.getElementById("inputFeld").className = "elementON";
     document.getElementById("projektuebernahme").className = "settingON";
     document.getElementById("projektabrruch").className = "settingON";
 }
-//Diese Funktion erstellt ein neues Projekt (Usersicht)\intern werden Projekte vorerst lediglich visible
+//3. Diese Funktion erstellt ein neues Projekt (Usersicht)\intern werden Projekte vorerst lediglich visible
 var projektAnzahl = 0;
 document.getElementById("projektuebernahme").addEventListener("click", projektAnlegeFunktion);
 function projektAnlegeFunktion(){
@@ -480,24 +513,24 @@ function projektAnlegeFunktion(){
         switch (projektAnzahl) {
             case 1:
                 projekt1.aktiviert = true;
-                projekt1.projektname = document.getElementById("inputFeld").value;
+                projekt1.projektbezeichnung = document.getElementById("inputFeld").value;
                 deleter.anleger();
                 break;
             case 2:
                 projekt2.aktiviert = true;
-                projekt2.projektname = document.getElementById("inputFeld").value;
+                projekt2.projektbezeichnung = document.getElementById("inputFeld").value;
                 deleter.anleger();
             case 3:
                 projekt3.aktiviert = true;
-                projekt3.projektname = document.getElementById("inputFeld").value;
+                projekt3.projektbezeichnung = document.getElementById("inputFeld").value;
                 deleter.anleger();
             case 4:
                 projekt4.aktiviert = true;
-                projekt4.projektname = document.getElementById("inputFeld").value;
+                projekt4.projektbezeichnung = document.getElementById("inputFeld").value;
                 deleter.anleger();
             case 5:
                 projekt5.aktiviert = true;
-                projekt5.projektname = document.getElementById("inputFeld").value;
+                projekt5.projektbezeichnung = document.getElementById("inputFeld").value;
                 deleter.anleger();
         }
     }
@@ -508,7 +541,7 @@ function projektAnlegeFunktion(){
     document.getElementById("projektabrruch").className = "setting";
     document.getElementById("neuesProjekt").className = "elementOFF";
 }
-//Diese Funktion ist der wird bei click des Abbruchbuttons ausgelöst
+//3. Alternativ: Diese Funktion ist der wird bei click des Abbruchbuttons ausgelöst
 document.getElementById("projektabrruch").addEventListener("click", projektAbbruchFunktion);
 function projektAbbruchFunktion(){
     document.getElementById("inputFeld").className = "elementOFF";
