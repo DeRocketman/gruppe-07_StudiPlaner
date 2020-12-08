@@ -55,15 +55,15 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
             this.velociraptorY = -this.velociraptorY;
         }
         //*zufällige Geschwindigkeit mit der sich die Kreise in x und y Richtung bewegen
-        this.x += this.velociraptorX;
-        this.y += this.velociraptorY;
+        this.x += this.velociraptorX/3;
+        this.y += this.velociraptorY/3;
 
         //Interaktivität mit der Maus
         if (mouse.x - this.x < 50 && mouse.x - this.x > -50
             && mouse.y -this.y < 50 && mouse.y - this.y > -50
             ){
             if(this.radius < maxRadius){
-                this.radius += 1;
+                this.radius += 0.5;
             }
         } else if (this.radius > this.minRadius) {
             this.radius -= 1;

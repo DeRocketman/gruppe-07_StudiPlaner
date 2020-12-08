@@ -35,15 +35,23 @@ main {
 
  #teilnehmerlisteID{
     margin-left: 100px;
+     background: white;
+     border-radius: 10px;
 }
  #aufgabenID{
      margin-left: 100px;
+     background: white;
+     border-radius: 10px;
  }
  #literaturNotizenID{
      margin-right: 100px;
+     background: white;
+     border-radius: 10px;
  }
  #erinnerungsmail{
      margin-right: 100px;
+     background: white;
+     border-radius: 10px;
  }
 legend {
     font-weight: 900;

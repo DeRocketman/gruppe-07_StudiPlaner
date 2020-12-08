@@ -259,6 +259,7 @@ brauchten wir noch die Bezeichner. Es wurde ansonsten zu kompliziert. */
     text-align: center;
     padding: 0 2% 0 2%;
     margin: 0;
+    background: white;
 }
 #kalenderZeugStartseite{
     border: 1px black solid;
@@ -343,6 +344,18 @@ um die Tabellen Aufgabe auszuhebeln
 #kalenderK{
     margin-top: 0;
 }
+.usability{
+    background: white;
+}
+/*
+#aufgabenID{
+    border-radius: 5px 0 0 0;
+}
+#projekteID{
+    border-radius: 0 0 0 5px;
+}
+
+ */
 /* Ende Kalender */
 
 
