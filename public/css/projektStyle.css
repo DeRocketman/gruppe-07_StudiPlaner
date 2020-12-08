@@ -7,7 +7,9 @@ Layout des Dokuments
   zartRosé: #F5D5F0
   dunkelRosa: #AB63A0
  */
-
+#projektName {
+    cursor: pointer;
+}
 #mainLogo:hover {
     animation: animation 1000ms linear backwards alternate-reverse;
 }
