@@ -7,7 +7,9 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/projektStyle.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/piestyle.css">
     <script src="js/projektseite.js" defer async></script>
+
 </head>
 <body>
 <canvas id="canvasHintergrund"></canvas>
@@ -53,10 +55,13 @@
         </section>
         <img class="setting" id="teilnehmersetting" src="images/zahnradschwarz.svg" alt="zahnradschwarz"/>
     </article>
-    <article class="oberhaus">
-        <section>
+    <article class="oberhaus" id="piechartID">
+     <section>
             <div data-toggle="tooltip" title="Klick mich zum Anpassen!" id="piechart">
-                <div id="piece1" class="piece">
+
+
+
+               <!-- <div id="piece1" class="piece">
                     <div class="piece-inner"></div>
                 </div>
                 <div id="piece2" class="piece">
@@ -64,10 +69,14 @@
                 </div>
                 <div id="piece3" class="piece">
                     <div class="piece-inner"></div>
-                </div>
+                </div> -->
+
                 <img class="setting" id="piechartsetting" src="images/zahnradschwarz.svg" alt="zahnradschwarz"/>
             </div>
+
         </section>
+        <canvas id="canvasPie"></canvas>
+        <script src="js/piechart.js"></script>
     </article>
     <article class="oberhaus" id="literaturNotizenID">
         <section>
