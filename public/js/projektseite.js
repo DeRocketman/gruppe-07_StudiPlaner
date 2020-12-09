@@ -16,7 +16,7 @@ for (i = 0; i < toggle.length; i++) {
 let projektvorlage = {
     //Ausgangswerte für zurückgesetzte/gelöschte Projekte
     //Grunddaten
-    "aktivier"           : false,
+    "aktiviert"          : false,
     "projektbezeichnung" : null,
     //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "teilnehmer1name"    : "Unbesetzt",
@@ -69,20 +69,31 @@ let projektvorlage = {
     personBmail : null,
     personCmail : null,
 }
-//Projekte 1-5 JSON:
+//Pseudoprojekte 1 und 2
 let projekt1 = {
     //Grunddaten
     "projektnummer" : 1,
     "aktiviert" : true,
     "projektbezeichnung" : "Webprogrammierung (PP1)",
     //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "teilnehmer1vorname" : "Benjamin Ansohn McDoughall",
+    "teilnehmer1name"    : "Benjamin Ansohn McDoughall",
     "teilnehmer1email"   : "benjamim.ansohn.mcdougall@stud.th-luebeck.de",
-    "teilnehmer2vorname" : "Kim Lara Feller",
-    "teilnehmer2name"    : "Feller",
+    "teilnehmer2name"    : "Kim Lara Feller",
     "teilnehmer2email"   : "kim.lara.feller@stud.th-luebeck.de",
-    "teilnehmer3vorname" : "Louis Grümmer",
+    "teilnehmer3name"    : "Louis Grümmer",
     "teilnehmer3email"   : "louis.gruemmer@stud.th-luebeck.de",
+    "teilnehmer4name"    : "Unbesetzt",
+    "teilnehmer4email"   : null,
+    "teilnehmer5name"    : "Unbesetzt",
+    "teilnehmer5email"   : null,
+    "teilnehmer6name"    : "Unbesetzt",
+    "teilnehmer6email"   : null,
+    "teilnehmer7name"    : "Unbesetzt",
+    "teilnehmer7email"   : null,
+    "teilnehmer8name"    : "Unbesetzt",
+    "teilnehmer8email"   : null,
+    "teilnehmer9name"    : "Unbesetzt",
+    "teilnehmer9email"   : null,
     //PieChart
     "piechartdone" : 100,
     "piechartdo"   : 100,
@@ -107,6 +118,9 @@ let projekt1 = {
     "aufgabe2boxtext" : "DL: 31.12.2020",
     "aufgabe3value" : null,
     "aufgabe3box"   : false,
+    "mailperson1"   : "Person A",
+    "mailperson2"   : "Person B",
+    "mailperson3"   : "Person C",
 }
 let projekt2 = {
     //Grunddaten
@@ -116,36 +130,22 @@ let projekt2 = {
     //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "teilnehmer1vorname" : "Hans A. Rostock",
     "teilnehmer1email"   : "info@hansa.de",
-    "teilnehmer2vorname" : "Mike",
-    "teilnehmer2name"    : "Werner",
+    "teilnehmer2name"    : "Mike Werner",
     "teilnehmer2email"   : "mike.werner@fukhuhila.de",
-    "teilnehmer3vorname" : "Werner",
     "teilnehmer3name"    : "Beinhart",
     "teilnehmer3email"   : "dasmusskesseln@boelkstoff.de",
-    "teilnehmer4vorname" : "Martin",
     "teilnehmer4name"    : "Piekenhagen",
     "teilnehmer4email"   : "Martin.Piekenhagen@hansa.de",
-    "teilnehmer4favorit" : false,
-    "teilnehmer5vorname" : null,
-    "teilnehmer5name"    : null,
+    "teilnehmer5name"    : "Unbesetzt",
     "teilnehmer5email"   : null,
-    "teilnehmer5favorit" : false,
-    "teilnehmer6vorname" : null,
-    "teilnehmer6name"    : null,
+    "teilnehmer6name"    : "Unbesetzt",
     "teilnehmer6email"   : null,
-    "teilnehmer6favorit" : false,
-    "teilnehmer7vorname" : null,
-    "teilnehmer7name"    : null,
+    "teilnehmer7name"    : "Unbesetzt",
     "teilnehmer7email"   : null,
-    "teilnehmer7favorit" : false,
-    "teilnehmer8vorname" : null,
-    "teilnehmer8name"    : null,
+    "teilnehmer8name"    : "Unbesetzt",
     "teilnehmer8email"   : null,
-    "teilnehmer8favorit" : false,
-    "teilnehmer9vorname" : null,
-    "teilnehmer9name"    : null,
+    "teilnehmer9name"    : "Unbesetzt",
     "teilnehmer9email"   : null,
-    "teilnehmer9favorit" : false,
     //PieChart
     "piechartdone" : 100,
     "piechartdo"   : 100,
@@ -174,230 +174,69 @@ let projekt2 = {
     "aufgabe3box"   : true,
     "aufgabe3boxtext" : "01.12.2012",
 }
-//Speicherfunktionen der Projekte in localStorage
-function saveALL() {
-    window.localStorage.setItem('savedprojekt1', JSON.stringify(projekt1));
-    window.localStorage.setItem('savedprojekt2', JSON.stringify(projekt2));
-    window.localStorage.setItem('savedprojekt3', JSON.stringify(projekt3));
-    window.localStorage.setItem('savedprojekt4', JSON.stringify(projekt4));
-    window.localStorage.setItem('savedprojekt5', JSON.stringify(projekt5));
-}
 //Diese Funktion verbindet Daten der Projekte mit der Ansicht
 //TODO code den/die Connector
-function dataViewConnector1(){
+function dataViewConnector(){
+    let projektloader;
+    switch (projektnummer){
+        case 1:
+            projektloader = JSON.parse(window.localStorage.getItem('savedprojekt1'));
+            break;
+        case 2:
+            projektloader = JSON.parse(window.localStorage.getItem('savedprojekt2'));
+            break;
+        case 3:
+            projektloader = JSON.parse(window.localStorage.getItem('savedprojekt3'));
+            break;
+        case 4:
+            projektloader = JSON.parse(window.localStorage.getItem('savedprojekt4'));
+            break;
+        case 5:
+            projektloader = JSON.parse(window.localStorage.getItem('savedprojekt5'));
+            break;
+        default:
+            alert("projekloader hat ein Problem")
+    }
     //Connection zu Projektbezeichnung
-    document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
+    document.getElementById("projektName").innerHTML = projektloader.projektbezeichnung;
     //Connection zu Teilnehmer
-    document.getElementById("tn1").innerHTML = projekt1.teilnehmer1vorname+" "+projekt1.teilnehmer1name;
-    document.getElementById("tn2").innerHTML = projekt1.teilnehmer2vorname+" "+projekt1.teilnehmer2name;
-    document.getElementById("tn3").innerHTML = projekt1.teilnehmer3vorname+" "+projekt1.teilnehmer3name;
-    document.getElementById("tn4").innerHTML = projekt1.teilnehmer4vorname+" "+projekt1.teilnehmer4name;
-    document.getElementById("tn5").innerHTML = projekt1.teilnehmer5vorname+" "+projekt1.teilnehmer5name;
-    document.getElementById("tn6").innerHTML = projekt1.teilnehmer6vorname+" "+projekt1.teilnehmer6name;
-    document.getElementById("tn7").innerHTML = projekt1.teilnehmer7vorname+" "+projekt1.teilnehmer7name;
-    document.getElementById("tn8").innerHTML = projekt1.teilnehmer8vorname+" "+projekt1.teilnehmer8name;
-    document.getElementById("tn9").innerHTML = projekt1.teilnehmer9vorname+" "+projekt1.teilnehmer9name;
+    document.getElementById("tn1").innerHTML = projektloader.teilnehmer1name;
+    document.getElementById("tn2").innerHTML = projektloader.teilnehmer2name;
+    document.getElementById("tn3").innerHTML = projektloader.teilnehmer3name;
+    document.getElementById("tn4").innerHTML = projektloader.teilnehmer4name;
+    document.getElementById("tn5").innerHTML = projektloader.teilnehmer5name;
+    document.getElementById("tn6").innerHTML = projektloader.teilnehmer6name;
+    document.getElementById("tn7").innerHTML = projektloader.teilnehmer7name;
+    document.getElementById("tn8").innerHTML = projektloader.teilnehmer8name;
+    document.getElementById("tn9").innerHTML = projektloader.teilnehmer9name;
     //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
     //Piechartdatenconnection
     //Connection zu Literatur
-    document.getElementById("lit1").innerHTML = projekt1.literatur1;
-    document.getElementById("lit2").innerHTML = projekt1.literatur2;
-    document.getElementById("lit3").innerHTML = projekt1.literatur3;
+    document.getElementById("lit1").innerHTML = projektloader.literatur1;
+    document.getElementById("lit2").innerHTML = projektloader.literatur2;
+    document.getElementById("lit3").innerHTML = projektloader.literatur3;
     //Connection zu Links
-    document.getElementById("link1").firstChild.href = projekt1.link1href;
-    document.getElementById("link1").firstChild.innerHTML = projekt1.link1text;
-    document.getElementById("link2").firstChild.href = projekt1.link2href;
-    document.getElementById("link2").firstChild.innerHTML = projekt1.link2text;
-    document.getElementById("link3").firstChild.href = projekt1.link3href;
-    document.getElementById("link3").firstChild.innerHTML = projekt1.link3text;
+    document.getElementById("link1").firstChild.href = projektloader.link1href;
+    document.getElementById("link1").firstChild.innerHTML = projektloader.link1text;
+    document.getElementById("link2").firstChild.href = projektloader.link2href;
+    document.getElementById("link2").firstChild.innerHTML = projektloader.link2text;
     //Notizen
-    document.getElementById("notizen").value = projekt1.notizen;
+    document.getElementById("notizen").value = projektloader.notizen;
     //Connection zu Aufgaben
-    document.getElementById("aufgabe_1").value = projekt1.aufgabe1value;
-    document.getElementById("checkbox1").checked = projekt1.aufgabe1box;
-    //document.getElementById("labelchkbox1").innerHTML= projekt1.aufgabe1boxtext;
-    document.getElementById("aufgabe_2").value = projekt1.aufgabe2value;
-    document.getElementById("checkbox2").checked = projekt1.aufgabe2box;
-    //document.getElementById("labelchkbox2").innerHTML=projekt1.aufgabe2boxtext;
-    document.getElementById("aufgabe_3").value = projekt1.aufgabe3value;
-    document.getElementById("checkbox3").checked = projekt1.aufgabe3box;
-    //document.getElementById("labelchkbox3").innerHTML = projekt1.aufgabe3boxtext;
+    document.getElementById("aufgabe_1").value = projektloader.aufgabe1value;
+    document.getElementById("checkbox1").checked = projektloader.aufgabe1box;
+    //document.getElementById("labelchkbox1").innerHTML= projektloader.aufgabe1boxtext;
+    document.getElementById("aufgabe_2").value = projektloader.aufgabe2value;
+    document.getElementById("checkbox2").checked = projektloader.aufgabe2box;
+    //document.getElementById("labelchkbox2").innerHTML=projektloader.aufgabe2boxtext;
+    document.getElementById("aufgabe_3").value = projektloader.aufgabe3value;
+    document.getElementById("checkbox3").checked = projektloader.aufgabe3box;
+    //document.getElementById("labelchkbox3").innerHTML = projektloader.aufgabe3boxtext;
     //Connection zu mail
-    personAmail = projekt1.teilnehmer1email;
-    personBmail = projekt1.teilnehmer2email;
-    personCmail = projekt1.teilnehmer3email;
-}
-function dataViewConnector2(){
-    //Connection zu Projektbezeichnung
-    document.getElementById("projektName").innerHTML = projekt2.projektbezeichnung;
-    //Connection zu Teilnehmer
-    document.getElementById("tn1").innerHTML = projekt2.teilnehmer1vorname+" "+projekt2.teilnehmer1name;
-    document.getElementById("tn2").innerHTML = projekt2.teilnehmer2vorname+" "+projekt2.teilnehmer2name;
-    document.getElementById("tn3").innerHTML = projekt2.teilnehmer3vorname+" "+projekt2.teilnehmer3name;
-    document.getElementById("tn4").innerHTML = projekt2.teilnehmer4vorname+" "+projekt2.teilnehmer4name;
-    document.getElementById("tn5").innerHTML = projekt2.teilnehmer5vorname+" "+projekt2.teilnehmer5name;
-    document.getElementById("tn6").innerHTML = projekt2.teilnehmer6vorname+" "+projekt2.teilnehmer6name;
-    document.getElementById("tn7").innerHTML = projekt2.teilnehmer7vorname+" "+projekt2.teilnehmer7name;
-    document.getElementById("tn8").innerHTML = projekt2.teilnehmer8vorname+" "+projekt2.teilnehmer8name;
-    document.getElementById("tn9").innerHTML = projekt2.teilnehmer9vorname+" "+projekt2.teilnehmer9name;
-    //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
-    //Piechartdatenconnection
-    //Connection zu Literatur
-    document.getElementById("lit1").innerHTML = projekt2.literatur1;
-    document.getElementById("lit2").innerHTML = projekt2.literatur2;
-    document.getElementById("lit3").innerHTML = projekt2.literatur3;
-    //Connection zu Links
-    document.getElementById("link1").firstChild.href = projekt2.link1href;
-    document.getElementById("link1").firstChild.innerHTML = projekt2.link1text;
-    document.getElementById("link2").firstChild.href = projekt2.link2href;
-    document.getElementById("link2").firstChild.innerHTML = projekt2.link2text;
-    document.getElementById("link3").firstChild.href = projekt2.link3href;
-    document.getElementById("link3").firstChild.innerHTML = projekt2.link3text;
-    //Notizen
-    document.getElementById("notizen").value = projekt2.notizen;
-    //Connection zu Aufgaben
-    document.getElementById("aufgabe_1").value = projekt2.aufgabe1value;
-    document.getElementById("checkbox1").checked = projekt2.aufgabe1box;
-    //document.getElementById("labelchkbox1").innerHTML= projekt2.aufgabe1boxtext;
-    document.getElementById("aufgabe_2").value = projekt2.aufgabe2value;
-    document.getElementById("checkbox2").checked = projekt2.aufgabe2box;
-    //document.getElementById("labelchkbox2").innerHTML=projekt2.aufgabe2boxtext;
-    document.getElementById("aufgabe_3").value = projekt2.aufgabe3value;
-    document.getElementById("checkbox3").checked = projekt2.aufgabe3box;
-    //document.getElementById("labelchkbox3").innerHTML = projekt2.aufgabe3boxtext;
-    //Connection zu mail
-    personAmail = projekt2.teilnehmer1email;
-    personBmail = projekt2.teilnehmer2email;
-    personCmail = projekt2.teilnehmer3email;
-}
-function dataViewConnector3(){
-    //Connection zu Projektbezeichnung
-    document.getElementById("projektName").innerHTML = projekt3.projektbezeichnung;
-    //Connection zu Teilnehmer
-    document.getElementById("tn1").innerHTML = projekt3.teilnehmer1vorname+" "+projekt3.teilnehmer1name;
-    document.getElementById("tn2").innerHTML = projekt3.teilnehmer2vorname+" "+projekt3.teilnehmer2name;
-    document.getElementById("tn3").innerHTML = projekt3.teilnehmer3vorname+" "+projekt3.teilnehmer3name;
-    document.getElementById("tn4").innerHTML = projekt3.teilnehmer4vorname+" "+projekt3.teilnehmer4name;
-    document.getElementById("tn5").innerHTML = projekt3.teilnehmer5vorname+" "+projekt3.teilnehmer5name;
-    document.getElementById("tn6").innerHTML = projekt3.teilnehmer6vorname+" "+projekt3.teilnehmer6name;
-    document.getElementById("tn7").innerHTML = projekt3.teilnehmer7vorname+" "+projekt3.teilnehmer7name;
-    document.getElementById("tn8").innerHTML = projekt3.teilnehmer8vorname+" "+projekt3.teilnehmer8name;
-    document.getElementById("tn9").innerHTML = projekt3.teilnehmer9vorname+" "+projekt3.teilnehmer9name;
-    //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
-    //Piechartdatenconnection
-    //Connection zu Literatur
-    document.getElementById("lit1").innerHTML = projekt3.literatur1;
-    document.getElementById("lit2").innerHTML = projekt3.literatur2;
-    document.getElementById("lit3").innerHTML = projekt3.literatur3;
-    //Connection zu Links
-    document.getElementById("link1").firstChild.href = projekt3.link1href;
-    document.getElementById("link1").firstChild.innerHTML = projekt3.link1text;
-    document.getElementById("link2").firstChild.href = projekt3.link2href;
-    document.getElementById("link2").firstChild.innerHTML = projekt3.link2text;
-    document.getElementById("link3").firstChild.href = projekt3.link3href;
-    document.getElementById("link3").firstChild.innerHTML = projekt3.link3text;
-    //Notizen
-    document.getElementById("notizen").value = projekt3.notizen;
-    //Connection zu Aufgaben
-    document.getElementById("aufgabe_1").value = projekt3.aufgabe1value;
-    document.getElementById("checkbox1").checked = projekt3.aufgabe1box;
-    //document.getElementById("labelchkbox1").innerHTML= projekt3.aufgabe3boxtext;
-    document.getElementById("aufgabe_2").value = projekt3.aufgabe2value;
-    document.getElementById("checkbox2").checked = projekt3.aufgabe2box;
-    //document.getElementById("labelchkbox2").innerHTML=projekt3.aufgabe3boxtext;
-    document.getElementById("aufgabe_3").value = projekt3.aufgabe3value;
-    document.getElementById("checkbox3").checked = projekt3.aufgabe3box;
-    //document.getElementById("labelchkbox3").innerHTML = projekt3.aufgabe3boxtext;
-    //Connection zu mail
-    personAmail = projekt3.teilnehmer1email;
-    personBmail = projekt3.teilnehmer2email;
-    personCmail = projekt3.teilnehmer3email;
-}
-function dataViewConnector4(){
-    //Connection zu Projektbezeichnung
-    document.getElementById("projektName").innerHTML = projekt4.projektbezeichnung;
-    //Connection zu Teilnehmer
-    document.getElementById("tn1").innerHTML = projekt4.teilnehmer1vorname+" "+projekt4.teilnehmer1name;
-    document.getElementById("tn2").innerHTML = projekt4.teilnehmer2vorname+" "+projekt4.teilnehmer2name;
-    document.getElementById("tn3").innerHTML = projekt4.teilnehmer3vorname+" "+projekt4.teilnehmer3name;
-    document.getElementById("tn4").innerHTML = projekt4.teilnehmer4vorname+" "+projekt4.teilnehmer4name;
-    document.getElementById("tn5").innerHTML = projekt4.teilnehmer5vorname+" "+projekt4.teilnehmer5name;
-    document.getElementById("tn6").innerHTML = projekt4.teilnehmer6vorname+" "+projekt4.teilnehmer6name;
-    document.getElementById("tn7").innerHTML = projekt4.teilnehmer7vorname+" "+projekt4.teilnehmer7name;
-    document.getElementById("tn8").innerHTML = projekt4.teilnehmer8vorname+" "+projekt4.teilnehmer8name;
-    document.getElementById("tn9").innerHTML = projekt4.teilnehmer9vorname+" "+projekt4.teilnehmer9name;
-    //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
-    //Piechartdatenconnection
-    //Connection zu Literatur
-    document.getElementById("lit1").innerHTML = projekt4.literatur1;
-    document.getElementById("lit2").innerHTML = projekt4.literatur2;
-    document.getElementById("lit3").innerHTML = projekt4.literatur3;
-    //Connection zu Links
-    document.getElementById("link1").firstChild.href = projekt4.link1href;
-    document.getElementById("link1").firstChild.innerHTML = projekt4.link1text;
-    document.getElementById("link2").firstChild.href = projekt4.link2href;
-    document.getElementById("link2").firstChild.innerHTML = projekt4.link2text;
-    document.getElementById("link3").firstChild.href = projekt4.link3href;
-    document.getElementById("link3").firstChild.innerHTML = projekt4.link3text;
-    //Notizen
-    document.getElementById("notizen").value = projekt4.notizen;
-    //Connection zu Aufgaben
-    document.getElementById("aufgabe_1").value = projekt4.aufgabe1value;
-    document.getElementById("checkbox1").checked = projekt4.aufgabe1box;
-    //document.getElementById("labelchkbox1").innerHTML= projekt4.aufgabe1boxtext;
-    document.getElementById("aufgabe_2").value = projekt4.aufgabe2value;
-    document.getElementById("checkbox2").checked = projekt4.aufgabe2box;
-    //document.getElementById("labelchkbox2").innerHTML=projekt4.aufgabe2boxtext;
-    document.getElementById("aufgabe_3").value = projekt4.aufgabe3value;
-    document.getElementById("checkbox3").checked = projekt4.aufgabe3box;
-    //document.getElementById("labelchkbox3").innerHTML = projekt4.aufgabe3boxtext;
-    //Connection zu mail
-    personAmail = projekt4.teilnehmer1email;
-    personBmail = projekt4.teilnehmer2email;
-    personCmail = projekt4.teilnehmer3email;
-}
-function dataViewConnector5(){
-    //Connection zu Projektbezeichnung
-    document.getElementById("projektName").innerHTML = projekt5.projektbezeichnung;
-    //Connection zu Teilnehmer
-    document.getElementById("tn1").innerHTML = projekt5.teilnehmer1vorname+" "+projekt5.teilnehmer1name;
-    document.getElementById("tn2").innerHTML = projekt5.teilnehmer2vorname+" "+projekt5.teilnehmer2name;
-    document.getElementById("tn3").innerHTML = projekt5.teilnehmer3vorname+" "+projekt5.teilnehmer3name;
-    document.getElementById("tn4").innerHTML = projekt5.teilnehmer4vorname+" "+projekt5.teilnehmer4name;
-    document.getElementById("tn5").innerHTML = projekt5.teilnehmer5vorname+" "+projekt5.teilnehmer5name;
-    document.getElementById("tn6").innerHTML = projekt5.teilnehmer6vorname+" "+projekt5.teilnehmer6name;
-    document.getElementById("tn7").innerHTML = projekt5.teilnehmer7vorname+" "+projekt5.teilnehmer7name;
-    document.getElementById("tn8").innerHTML = projekt5.teilnehmer8vorname+" "+projekt5.teilnehmer8name;
-    document.getElementById("tn9").innerHTML = projekt5.teilnehmer9vorname+" "+projekt5.teilnehmer9name;
-    //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
-    //Piechartdatenconnection
-    //Connection zu Literatur
-    document.getElementById("lit1").innerHTML = projekt5.literatur1;
-    document.getElementById("lit2").innerHTML = projekt5.literatur2;
-    document.getElementById("lit3").innerHTML = projekt5.literatur3;
-    //Connection zu Links
-    document.getElementById("link1").firstChild.href = projekt5.link1href;
-    document.getElementById("link1").firstChild.innerHTML = projekt5.link1text;
-    document.getElementById("link2").firstChild.href = projekt5.link2href;
-    document.getElementById("link2").firstChild.innerHTML = projekt5.link2text;
-    document.getElementById("link3").firstChild.href = projekt5.link3href;
-    document.getElementById("link3").firstChild.innerHTML = projekt5.link3text;
-    //Notizen
-    document.getElementById("notizen").value = projekt5.notizen;
-    //Connection zu Aufgaben
-    document.getElementById("aufgabe_1").value = projekt5.aufgabe1value;
-    document.getElementById("checkbox1").checked = projekt5.aufgabe1box;
-    //document.getElementById("labelchkbox1").innerHTML= projekt5.aufgabe1boxtext;
-    document.getElementById("aufgabe_2").value = projekt5.aufgabe2value;
-    document.getElementById("checkbox2").checked = projekt5.aufgabe2box;
-    //document.getElementById("labelchkbox2").innerHTML=projekt5.aufgabe2boxtext;
-    document.getElementById("aufgabe_3").value = projekt5.aufgabe3value;
-    document.getElementById("checkbox3").checked = projekt5.aufgabe3box;
-    //document.getElementById("labelchkbox3").innerHTML = projekt5.aufgabe3boxtext;
-    //Connection zu mail
-    personAmail = projekt5.teilnehmer1email;
-    personBmail = projekt5.teilnehmer2email;
-    personCmail = projekt5.teilnehmer3email;
+    personAmail = projektloader.teilnehmer1email;
+    personBmail = projektloader.teilnehmer2email;
+    personCmail = projektloader.teilnehmer3email;
+    //Verborgene Attribute
 }
 //Mailfunktionenen
 let personAmail;
@@ -417,6 +256,7 @@ function mailsender3() {
 //  @TODO Loaderfunktion implemtieren!
 document.getElementById("projektName").addEventListener('click', projektSwitchFunktion);
 var projectClickCounter = 0;
+var projektnummer;
 function projektSwitchFunktion(){
     switch (projectClickCounter){
         case 0:
@@ -430,44 +270,44 @@ function projektSwitchFunktion(){
             projectClickCounter++
             break;
         case 1:
-            if (projekt1.aktiviert===true) {
+            projektnummer = 1;
+            let aktivloader = JSON.parse(window.localStorage.getItem('savedprojekt1'))
+            if (aktivloader.aktiviert===true) {
                 document.getElementById("neuesProjekt").className = "elementOFF";
-                dataViewConnector1();
-                saveALL();
+                dataViewConnector(projektnummer=1);
                 projectClickCounter++;
                 break;
             }
         case 2:
-            if (projekt2.aktiviert===true) {
-                //dataViewConnector2();
-                var loadproject = JSON.parse(window.localStorage.getItem('savedprojekt2'));
-                document.getElementById("notizen").value = loadproject.notizen;
-                document.getElementById("projektName").innerHTML = loadproject.projektbezeichnung;
-                saveALL();
+            projektnummer = 2;
+            let aktivloader2 = JSON.parse(window.localStorage.getItem('savedprojekt2'))
+            if (aktivloader2.aktiviert===true) {
                 projectClickCounter++;
+                dataViewConnector(projektnummer=2);
                 break;
             }
         case 3:
-            if (projekt3.aktiviert===true) {
-                //dataViewConnector3();
-                loadproject = JSON.parse(window.localStorage.getItem('savedprojekt3'));
-                document.getElementById("notizen").value = loadproject.notizen;
-                document.getElementById("projektName").innerHTML = loadproject.projektbezeichnung;
-                saveALL();
+            projektnummer = 3;
+            let aktivloader3 = JSON.parse(window.localStorage.getItem('savedprojekt3'))
+            if (aktivloader3.aktiviert===true) {
+                dataViewConnector(projektnummer=3)
                 projectClickCounter++;
                 break;
             }
         case 4:
-            if (projekt4.aktiviert===true) {
-                //dataViewConnector4();
-                saveALL();
+            projektnummer = 4;
+            let aktivloader4 = JSON.parse(window.localStorage.getItem('savedprojekt4'))
+            if (aktivloader4.aktiviert===true) {
+                dataViewConnector(projektnummer=4);
                 projectClickCounter++;
                 break;
             }
         case 5:
+            projektnummer = 5;
             projectClickCounter=0;
-            if (projekt5.aktiviert===true) {
-                saveALL();
+            let aktivloader5 = JSON.parse(window.localStorage.getItem('savedprojekt5'))
+            if (aktivloader5.aktiviert===true) {
+                dataViewConnector(projektnummer=5);
                 break;
             }
     }
@@ -485,46 +325,41 @@ function SchalteFreiFunktion() {
     document.getElementById("projektabrruch").className = "settingON";
 }
 //3. Diese Funktion erstellt ein neues Projekt (Usersicht)\intern werden Projekte vorerst lediglich visible
-var projektAnzahl = 2;
+var projektAnzahl = 0;
 document.getElementById("projektuebernahme").addEventListener("click", projektAnlegeFunktion);
 function projektAnlegeFunktion(){
     projektAnzahl++;
     if (projektAnzahl <= 5){
         switch (projektAnzahl) {
             case 1:
-                dataViewConnector1();
                 projekt1.aktiviert = true;
-                projekt1.projektbezeichnung = document.getElementById("inputFeld").value;
+                //projekt1.projektbezeichnung = document.getElementById("inputFeld").value;
                 window.localStorage.setItem('savedprojekt1', JSON.stringify(projekt1));
                 document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
                 break;
             case 2:
-                dataViewConnector2();
                 projekt2.aktiviert = true;
-                projekt2.projektbezeichnung = document.getElementById("inputFeld").value;
-                document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
+                //projekt2.projektbezeichnung = document.getElementById("inputFeld").value;
+                document.getElementById("projektName").innerHTML = projekt2.projektbezeichnung;
                 window.localStorage.setItem('savedprojekt2', JSON.stringify(projekt2));
                 break;
             case 3:
-                dataViewConnector3();
-                projekt3.aktiviert = true;
-                projekt3.projektbezeichnung = document.getElementById("inputFeld").value;
-                document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
-                window.localStorage.setItem('savedprojekt3', JSON.stringify(projekt3));
+                projektvorlage.aktiviert = true;
+                projektvorlage.projektbezeichnung = document.getElementById("inputFeld").value;
+                document.getElementById("projektName").innerHTML = projektvorlage.projektbezeichnung;
+                window.localStorage.setItem('savedprojekt3', JSON.stringify(projektvorlage));
                 break;
             case 4:
-                dataViewConnector4();
-                projekt4.aktiviert = true;
-                projekt4.projektbezeichnung = document.getElementById("inputFeld").value;
-                document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
-                window.localStorage.setItem('savedprojekt4', JSON.stringify(projekt4));
+                projektvorlage.aktiviert = true;
+                projektvorlage.projektbezeichnung = document.getElementById("inputFeld").value;
+                document.getElementById("projektName").innerHTML = projektvorlage.projektbezeichnung;
+                window.localStorage.setItem('savedprojekt4', JSON.stringify(projektvorlage));
                 break;
             case 5:
-                dataViewConnector5();
-                projekt5.aktiviert = true;
-                projekt5.projektbezeichnung = document.getElementById("inputFeld").value;
-                document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
-                window.localStorage.setItem('savedprojekt5', JSON.stringify(projekt5));
+                projektvorlage.aktiviert = true;
+                projektvorlage.projektbezeichnung = document.getElementById("inputFeld").value;
+                document.getElementById("projektName").innerHTML = projektvorlage.projektbezeichnung;
+                window.localStorage.setItem('savedprojekt5', JSON.stringify(projektvorlage));
                 break;
         }
     }
@@ -581,10 +416,7 @@ function mailsetfunction(){
     if (settingONflag !== false) {
         document.getElementById("mail1").addEventListener('click', setmailname1);
         function setmailname1() {
-
             //  @TODO Implementieren, wie Name und E Mail von Person1 gesetzt werden
-
-            document.getElementById("projektName").innerHTML = personAmail;
         }
     }
 }
@@ -598,9 +430,4 @@ function mailsetokifunction() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
-//Loader für Später das wird Mega!
-$(document).ready(JSON.parse(window.localStorage.getItem('savedprojekt1')));
-$(document).ready(JSON.parse(window.localStorage.getItem('savedprojekt2')));
-$(document).ready(JSON.parse(window.localStorage.getItem('savedprojekt3')));
-$(document).ready(JSON.parse(window.localStorage.getItem('savedprojekt4')));
-$(document).ready(JSON.parse(window.localStorage.getItem('savedprojekt5')));
+
