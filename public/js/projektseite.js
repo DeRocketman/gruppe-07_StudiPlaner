@@ -14,33 +14,103 @@ for (i = 0; i < toggle.length; i++) {
     sollen dabei einfach überschrieben werden und Ansicht zurück gesetzt werden)
  */
 let deleter = {
-    //Anfangswerte für neue Projekte oder nach löschen
-    //"aktiviert" : false,
-    //"projektname" : "",
-    "teilnehmer1" : "",
-    "teilnehmer2" : "",
-    "teilnehmer3" : "",
-    "teilnehmer4" : "",
-    "teilnehmer5" : "",
-    "teilnehmer6" : "",
-    "teilnehmer7" : "",
-    "teilnehmer8" : "",
-    "teilnehmer9" : "",
-    "literatur1"  : "",
-    "literatur2"  : "",
-    "literatur3"  : "",
-    "notizen"     : "",
-    "aufgabe1text": "",
-    "aufgabe1box" : false,
-    "aufgabe2text": "",
-    "aufgabe2box" : false,
-    "aufgabe3text": "",
-    "aufgabe3box" : false,
-
+    //Ausgangswerte für zurückgesetzte/gelöschte Projekte
+    //Grunddaten
+    "projektnummer" : 5,
+    "aktiviert" : false,
+    "projektbezeichnung" : "",
+    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "teilnehmer1vorname" : null,
+    "teilnehmer1name"    : null,
+    "teilnehmer1email"   : null,
+    "teilnehmer1favorit" : true,
+    "teilnehmer2vorname" : null,
+    "teilnehmer2name"    : null,
+    "teilnehmer2email"   : null,
+    "teilnehmer2favorit" : true,
+    "teilnehmer3vorname" : null,
+    "teilnehmer3name"    : null,
+    "teilnehmer3email"   : null,
+    "teilnehmer3favorit" : true,
+    "teilnehmer4vorname" : null,
+    "teilnehmer4name"    : null,
+    "teilnehmer4email"   : null,
+    "teilnehmer4favorit" : false,
+    "teilnehmer5vorname" : null,
+    "teilnehmer5name"    : null,
+    "teilnehmer5email"   : null,
+    "teilnehmer5favorit" : false,
+    "teilnehmer6vorname" : null,
+    "teilnehmer6name"    : null,
+    "teilnehmer6email"   : null,
+    "teilnehmer6favorit" : false,
+    "teilnehmer7vorname" : null,
+    "teilnehmer7name"    : null,
+    "teilnehmer7email"   : null,
+    "teilnehmer7favorit" : false,
+    "teilnehmer8vorname" : null,
+    "teilnehmer8name"    : null,
+    "teilnehmer8email"   : null,
+    "teilnehmer8favorit" : false,
+    "teilnehmer9vorname" : null,
+    "teilnehmer9name"    : null,
+    "teilnehmer9email"   : null,
+    "teilnehmer9favorit" : false,
+    //PieChart
+    "piechartdone" : 0,
+    "piechartdo"   : 0,
+    "piecharttodo" : 0,
+    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "literatur1" : null,
+    "literatur2" : null,
+    "literatur3" : null,
+    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "link1href" : null,
+    "link1text" : null,
+    "link2href" : null,
+    "link2text" : null,
+    "link3href" : null,
+    "link3text" : null,
+    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    "aufgabe1value" : null,
+    "aufgabe1box"   : false,
+    "aufgabe1boxtext" : null,
+    "aufgabe2value" : null,
+    "aufgabe2box"   : false,
+    "aufgabe2boxtext" : null,
+    "aufgabe3value" : null,
+    "aufgabe3box"   : false,
+    "aufgabe3boxtext" : null,
+    "tn1klasse"     : "elementOFF",
+    "tn2klasse"     : "elementOFF",
+    "tn3klasse"     : "elementOFF",
+    "tn4klasse"     : "elementOFF",
+    "tn5klasse"     : "elementOFF",
+    "tn6klasse"     : "elementOFF",
+    "tn7klasse"     : "elementOFF",
+    "tn8klasse"     : "elementOFF",
+    "tn9klasse"     : "elementOFF",
+    //Piechart
+    "piechartklasse": "elementOFF",
+    //Literatur
+    "lit1klasse"    : "elementOFF",
+    "lit2klasse"    : "elementOFF",
+    "lit3klasse"    : "elementOFF",
+    //Links
+    "link1klasse"   : "elementOFF",
+    "link2klasse"   : "elementOFF",
+    "link3klasse"   : "elementOFF",
+    //
+    "aufgabe1klasse"      : "elementOFF",
+    "aufgabe1boxklasse"   : "elementOFF",
+    "aufgabe2klasse"      : "elementOFF",
+    "aufgabe2boxklasse"   : "elementOFF",
+    "aufgabe3klasse"      : "elementOFF",
+    "aufgabe3boxklasse"   : "elementOFF",
     // @TODO Eingabeaufforderung der Mailaddressen (3 Favorieten aus Teilnehmerliste!) implementieren
-    personAmail : "",
-    personBmail : "",
-    personCmail : "",
+    personAmail : null,
+    personBmail : null,
+    personCmail : null,
 
     anleger(){
         document.getElementById("tn1").className = "elementOFF";
@@ -133,7 +203,7 @@ let projekt1 = {
     // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "aufgabe1value" : "Projektseite abschließen",
     "aufgabe1box"   : true,
-    "aufgabe1boxtext" : "08.12.2020",
+    "aufgabe1boxtext" : "DO: 08.12.2020",
     "aufgabe2value" : "Impressum abschließen",
     "aufgabe2box"   : false,
     "aufgabe2boxtext" : "DL: 31.12.2020",
@@ -172,7 +242,7 @@ let projekt1 = {
 let projekt2 = {
     //Grunddaten
     "projektnummer" : 2,
-    "aktiviert" : false,
+    "aktiviert" : true,
     "projektbezeichnung" : "PP2: Aufstieg 2020",
     //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "teilnehmer1vorname" : "Hans A.",
@@ -549,15 +619,127 @@ let projekt5 = {
     "aufgabe3boxklasse"   : "elementOFF",
 }
 //Speicherfunktionen der Projekte in localStorage
-window.localStorage.setItem('projekt1', JSON.stringify(projekt1));
-window.localStorage.setItem('projekt2', JSON.stringify(projekt2));
-window.localStorage.setItem('projekt3', JSON.stringify(projekt3));
-window.localStorage.setItem('projekt4', JSON.stringify(projekt4));
-window.localStorage.setItem('projekt5', JSON.stringify(projekt5));
+function saveMEall() {
+    window.localStorage.setItem('projekt1', JSON.stringify(projekt1));
+    window.localStorage.setItem('projekt2', JSON.stringify(projekt2));
+    window.localStorage.setItem('projekt3', JSON.stringify(projekt3));
+    window.localStorage.setItem('projekt4', JSON.stringify(projekt4));
+    window.localStorage.setItem('projekt5', JSON.stringify(projekt5));
+}
 //Diese Funktion verbindet Daten der Projekte mit der Ansicht
 //TODO code den/die Connector
 function dataViewConnector1(){
-    //MEGA
+    //Klassenconnections
+    document.getElementById("tn1").className = projekt1.tn1klasse;
+    document.getElementById("tn2").className = projekt1.tn2klasse;
+    document.getElementById("tn3").className = projekt1.tn3klasse;
+    document.getElementById("tn4").className = projekt1.tn4klasse;
+    document.getElementById("tn5").className = projekt1.tn5klasse;
+    document.getElementById("tn6").className = projekt1.tn6klasse;
+    document.getElementById("tn7").className = projekt1.tn7klasse;
+    document.getElementById("tn8").className = projekt1.tn8klasse;
+    document.getElementById("tn9").className = projekt1.tn9klasse;
+    document.getElementById("piechart").className = projekt1.piechartklasse;
+    document.getElementById("lit1").className = projekt1.lit1klasse;
+    document.getElementById("lit2").className = projekt1.lit2klasse;
+    document.getElementById("lit3").className = projekt1.lit3klasse;
+    document.getElementById("link1").className = projekt1.link1klasse;
+    document.getElementById("link2").className = projekt1.link2klasse;
+    document.getElementById("link3").className = projekt1.link3klasse;
+    document.getElementById("aufgabe_1").className = projekt1.aufgabe1klasse;
+    document.getElementById("checkbox1").className = projekt1.aufgabe1boxklasse;
+    document.getElementById("aufgabe_2").className = projekt1.aufgabe2klasse;
+    document.getElementById("checkbox2").className = projekt1.aufgabe2boxklasse;
+    document.getElementById("aufgabe_3").className = projekt1.aufgabe3klasse
+    document.getElementById("checkbox3").className = projekt1.aufgabe3boxklasse;
+    //Connection zu Projektbezeichnung
+    document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
+    //Connection zu Teilnehmer
+    document.getElementById("tn1").innerHTML = projekt1.teilnehmer1vorname+" "+projekt1.teilnehmer1name;
+    document.getElementById("tn2").innerHTML = projekt1.teilnehmer2vorname+" "+projekt1.teilnehmer2name;
+    document.getElementById("tn3").innerHTML = projekt1.teilnehmer3vorname+" "+projekt1.teilnehmer3name;
+    document.getElementById("tn4").innerHTML = projekt1.teilnehmer4vorname+" "+projekt1.teilnehmer4name;
+    document.getElementById("tn5").innerHTML = projekt1.teilnehmer5vorname+" "+projekt1.teilnehmer5name;
+    document.getElementById("tn6").innerHTML = projekt1.teilnehmer6vorname+" "+projekt1.teilnehmer6name;
+    document.getElementById("tn7").innerHTML = projekt1.teilnehmer7vorname+" "+projekt1.teilnehmer7name;
+    document.getElementById("tn8").innerHTML = projekt1.teilnehmer8vorname+" "+projekt1.teilnehmer8name;
+    document.getElementById("tn9").innerHTML = projekt1.teilnehmer9vorname+" "+projekt1.teilnehmer9name;
+    //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
+    //Piechartdatenconnection
+    //Connection zu Literatur
+    document.getElementById("lit1").innerHTML = projekt1.literatur1;
+    document.getElementById("lit2").innerHTML = projekt1.literatur2;
+    document.getElementById("lit3").innerHTML = projekt1.literatur3;
+    //Connection zu Links
+    document.getElementById("link1").firstChild.href = projekt1.link1href;
+    document.getElementById("link1").firstChild.innerHTML = projekt1.link1text;
+    document.getElementById("link2").firstChild.href = projekt1.link2href;
+    document.getElementById("link2").firstChild.innerHTML = projekt1.link2text;
+    document.getElementById("link3").firstChild.href = projekt1.link3href;
+    document.getElementById("link3").firstChild.innerHTML = projekt1.link3text;
+    //Connection zu Aufgaben
+    document.getElementById("aufgabe_1").value = projekt1.aufgabe1value;
+    document.getElementById("checkbox1").checked = projekt1.aufgabe1box;
+    document.getElementById("labelchkbox1").innerHTML= projekt1.aufgabe1boxtext;
+    document.getElementById("aufgabe_2").value = projekt1.aufgabe2value;
+    document.getElementById("checkbox2").checked = projekt1.aufgabe2box;
+    document.getElementById("labelchkbox2").innerHTML=projekt1.aufgabe2boxtext;
+    document.getElementById("aufgabe_3").value = projekt1.aufgabe3value;
+    document.getElementById("checkbox3").checked = projekt1.aufgabe3box;
+    document.getElementById("labelchkbox3").innerHTML = projekt1.aufgabe3boxtext;
+    //Connection zu mail
+    personAmail = projekt1.teilnehmer1email;
+    personBmail = projekt1.teilnehmer2email;
+    personCmail = projekt1.teilnehmer3email;
+}
+/*
+    "aufgabe1klasse"      : "elementON",
+    "aufgabe1boxklasse"   : "elementON",
+    "aufgabe2klasse"      : "elementON",
+    "aufgabe2boxklasse"   : "elementON",
+    "aufgabe3klasse"      : "elementOFF",
+    "aufgabe3boxklasse"   : "elementOFF",
+ */
+function dataViewConnector2(){
+    //Connection zu Projektbezeichnung
+    document.getElementById("projektName").innerHTML = projekt2.projektbezeichnung;
+    //Connection zu Teilnehmer
+    document.getElementById("tn1").innerHTML = projekt2.teilnehmer1vorname+" "+projekt2.teilnehmer1name;
+    document.getElementById("tn2").innerHTML = projekt2.teilnehmer2vorname+" "+projekt2.teilnehmer2name;
+    document.getElementById("tn3").innerHTML = projekt2.teilnehmer3vorname+" "+projekt2.teilnehmer3name;
+    document.getElementById("tn4").innerHTML = projekt2.teilnehmer4vorname+" "+projekt2.teilnehmer4name;
+    document.getElementById("tn5").innerHTML = projekt2.teilnehmer5vorname+" "+projekt2.teilnehmer5name;
+    document.getElementById("tn6").innerHTML = projekt2.teilnehmer6vorname+" "+projekt2.teilnehmer6name;
+    document.getElementById("tn7").innerHTML = projekt2.teilnehmer7vorname+" "+projekt2.teilnehmer7name;
+    document.getElementById("tn8").innerHTML = projekt2.teilnehmer8vorname+" "+projekt2.teilnehmer8name;
+    document.getElementById("tn9").innerHTML = projekt2.teilnehmer9vorname+" "+projekt2.teilnehmer9name;
+    //TODO Piechart abgreifen und hier mit Daten verbinden (vielleicht automatisiert und verknüpft mit Aufgaben)
+    //Piechartdatenconnection
+    //Connection zu Literatur
+    document.getElementById("lit1").innerHTML = projekt2.literatur1;
+    document.getElementById("lit2").innerHTML = projekt2.literatur2;
+    document.getElementById("lit3").innerHTML = projekt2.literatur3;
+    //Connection zu Links
+    document.getElementById("link1").firstChild.href = projekt2.link1href;
+    document.getElementById("link1").firstChild.innerHTML = projekt2.link1text;
+    document.getElementById("link2").firstChild.href = projekt2.link2href;
+    document.getElementById("link2").firstChild.innerHTML = projekt2.link2text;
+    document.getElementById("link3").firstChild.href = projekt2.link3href;
+    document.getElementById("link3").firstChild.innerHTML = projekt2.link3text;
+    //Connection zu Aufgaben
+    document.getElementById("aufgabe_1").value = projekt2.aufgabe1value;
+    document.getElementById("checkbox1").checked = projekt2.aufgabe1box;
+    document.getElementById("labelchkbox1").innerHTML=projekt2.aufgabe1boxtext;
+    document.getElementById("aufgabe_2").value = projekt2.aufgabe2value;
+    document.getElementById("checkbox2").checked = projekt2.aufgabe2box;
+    document.getElementById("labelchkbox2").innerHTML=projekt2.aufgabe2boxtext;
+    document.getElementById("aufgabe_3").value = projekt2.aufgabe3value;
+    document.getElementById("checkbox3").checked = projekt2.aufgabe3box;
+    document.getElementById("labelchkbox3").innerHTML=projekt2.aufgabe3boxtext;
+    //Connection zu mail
+    personAmail = projekt2.teilnehmer1email;
+    personBmail = projekt2.teilnehmer2email;
+    personCmail = projekt2.teilnehmer3email;
 }
 //Mailfunktionenen
 let personAmail;
@@ -586,36 +768,34 @@ function projektSwitchFunktion(){
             } else {
                 document.getElementById("projektName").innerHTML = "Max Anzahl Projekte erreicht"
                 document.getElementById("infoH2").innerHTML = "Projekte löschen?"
-
             }
             projectClickCounter++
             break;
         case 1:
             if (projekt1.aktiviert===true) {
                 document.getElementById("neuesProjekt").className = "elementOFF";
-                document.getElementById("projektName").innerHTML = projekt1.projektbezeichnung;
-                projectClickCounter++
+                dataViewConnector1();
+                projectClickCounter++;
                 break;
             }
         case 2:
             if (projekt2.aktiviert===true) {
-                document.getElementById("neuesProjekt").className = "elementOFF";
-                document.getElementById("projektName").innerHTML = projekt2.projektbezeichnung;
-                projectClickCounter++
+                dataViewConnector2();
+                projectClickCounter++;
                 break;
             }
         case 3:
             if (projekt3.aktiviert===true) {
                 document.getElementById("neuesProjekt").className = "elementOFF";
                 document.getElementById("projektName").innerHTML = projekt3.projektbezeichnung;
-                projectClickCounter++
+                projectClickCounter++;
                 break;
             }
         case 4:
             if (projekt4.aktiviert===true) {
                 document.getElementById("neuesProjekt").className = "elementOFF";
                 document.getElementById("projektName").innerHTML = projekt4.projektbezeichnung;
-                projectClickCounter++
+                projectClickCounter++;
                 break;
             }
         case 5:
@@ -657,19 +837,19 @@ function projektAnlegeFunktion(){
                 //deleter.anleger(); Pseudoprojekt 2
                 break;
             case 3:
-                projekt3.aktiviert = true;
+                projekt3.aktiviert = false;
                 projekt3.projektbezeichnung = document.getElementById("inputFeld").value;
-                deleter.anleger();
+                //deleter.anleger();
                 break;
             case 4:
-                projekt4.aktiviert = true;
+                projekt4.aktiviert = false;
                 projekt4.projektbezeichnung = document.getElementById("inputFeld").value;
-                deleter.anleger();
+                //deleter.anleger();
                 break;
             case 5:
-                projekt5.aktiviert = true;
+                projekt5.aktiviert = false;
                 projekt5.projektbezeichnung = document.getElementById("inputFeld").value;
-                deleter.anleger();
+                //deleter.anleger();
                 break;
         }
     }
