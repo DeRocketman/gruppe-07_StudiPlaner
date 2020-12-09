@@ -46,7 +46,7 @@ let projektvorlage = {
     "literatur2" : "Keine Angabe",
     "literatur3" : "Keine Angabe",
     // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "link1href" : null
+    "link1href" : null,
     "link1text" : "Keine Angabe",
     "link2href" : null,
     "link2text" : "Keine Angabe",
@@ -82,7 +82,7 @@ let projekt1 = {
     "teilnehmer2name"    : "Feller",
     "teilnehmer2email"   : "kim.lara.feller@stud.th-luebeck.de",
     "teilnehmer3vorname" : "Louis Grümmer",
-    "teilnehmer3email"   : "louis.gruemmer@stud.th-luebeck.de"
+    "teilnehmer3email"   : "louis.gruemmer@stud.th-luebeck.de",
     //PieChart
     "piechartdone" : 100,
     "piechartdo"   : 100,
