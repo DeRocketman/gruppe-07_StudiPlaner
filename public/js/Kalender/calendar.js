@@ -170,7 +170,7 @@ class Calendar {
             listOfDays.map(day => document.getElementById('kalender_eintrag_'
                 + (this.firstWeekdayOfMonth + day)).innerHTML = day + 1);
         }
-    }
+    };
 
     /*
     Leert alle Einträge aus dem HTML Kalender um einen neuen Kalender zu füllen, damit keine einzelnen Tage
@@ -181,7 +181,7 @@ class Calendar {
         const kalenderTableDataEntries = [...Array(answerToTheUltimateQuestionOfLifeTheUniverseAndEverything).keys()];
         kalenderTableDataEntries.map(kalenderEntryTableData =>
             document.getElementById('kalender_eintrag_' + kalenderEntryTableData).innerHTML = '');
-    }
+    };
 
     /*
     Hebt die position des aktuellen Tages im Kalender hervor.
@@ -193,7 +193,7 @@ class Calendar {
         const todaysEntry = document.getElementById('kalender_eintrag_' + calendarOffsetForToday);
         todaysEntry.style.color = '#AB63A0';
         todaysEntry.style.fontWeight = 'bold';
-    }
+    };
 
     setAppointment = function(appointmentDate) {
         // siehe highlightToday
@@ -202,14 +202,16 @@ class Calendar {
         appointmentEntry.className = 'aktiverEintrag';
         // calendarEntry Klasse bauen wird knackig
         appointmentEntry.addEventListener('mousedown', getTodaysAppointment);
-    }
+    };
 }
+
 
 const cal = new Calendar();
 cal.fillCalendar();
 cal.highlightToday();
 document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.prevMonth);
 document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
+
 
 // Nais to have in Version 3:
 // 2. Lieber neue Kind-Knoten im Kalender anlegen als leere Tabellenelemente im HTML zu haben.
