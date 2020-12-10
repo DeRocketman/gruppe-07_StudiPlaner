@@ -1,3 +1,5 @@
+import { Termin } from './domain/Termin'
+
 class CalendarEntry {
     constructor() {
         this.terminInfosTextArea = document.getElementById('notizfeld');
