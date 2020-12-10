@@ -1,3 +1,6 @@
+import { ProjektService} from "./projekt/services/projektService.mjs";
+import {Projekt} from "./projekt/domain/projekt.mjs";
+
 //Listenelemente auswählen zum ein- bzw. ausblenden
 let toggle = document.getElementsByClassName('caret');
 let i;
@@ -13,9 +16,11 @@ for (i = 0; i < toggle.length; i++) {
     Projektvorlage ist ein Objekt mit Anfangswerten für ein neues oder gelöschtes Projekt (Werte
     sollen dabei einfach überschrieben werden und Ansicht zurück gesetzt werden)
  */
+
 let projektvorlage = {
     //Ausgangswerte für zurückgesetzte/gelöschte Projekte
     //Grunddaten
+    "projektnummer"      : 23,
     "aktiviert"          : false,
     "projektbezeichnung" : null,
     //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
@@ -45,7 +50,7 @@ let projektvorlage = {
     "literatur1" : "Keine Angabe",
     "literatur2" : "Keine Angabe",
     "literatur3" : "Keine Angabe",
-    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    // Link    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "link1href" : null,
     "link1text" : "Keine Angabe",
     "link2href" : null,
@@ -76,7 +81,7 @@ let projekt1 = {
     "aktiviert" : true,
     "projektbezeichnung" : "Webprogrammierung (PP1)",
     //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "teilnehmer1name"    : "Benjamin Ansohn McDoughall",
+    "teilnehmer1name"    : "Benjamin Ansohn McDougall",
     "teilnehmer1email"   : "benjamim.ansohn.mcdougall@stud.th-luebeck.de",
     "teilnehmer2name"    : "Kim Lara Feller",
     "teilnehmer2email"   : "kim.lara.feller@stud.th-luebeck.de",
@@ -102,7 +107,7 @@ let projekt1 = {
     "literatur1" : "HTML 5 und CSS3, Rheinwerk",
     "literatur2" : "JavaScript for Dummies",
     "literatur3" : "Ist kopierter Code wirklich gestohlen?!, Ratgeber",
-    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    // Link    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "link1href" : "http://www.gidf.de/",
     "link1text" : "Google ist dein Freund",
     "link2href" : "http://www.fc-hansa.de/",
@@ -154,7 +159,7 @@ let projekt2 = {
     "literatur1" : "Bundesligaaufsteiger leicht gemacht",
     "literatur2" : "11 Freunde",
     "literatur3" : "Erfolgreich im Sport",
-    // Links    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
+    // Link    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
     "link1href" : "http://www.hansa.de",
     "link1text" : "FC HANSA",
     "link2href" : "https://www.youtube.com/watch?v=fCZVL_8D048",
@@ -174,6 +179,7 @@ let projekt2 = {
     "aufgabe3box"   : true,
     "aufgabe3boxtext" : "01.12.2012",
 }
+
 //Diese Funktion verbindet Daten der Projekte mit der Ansicht
 //TODO code den/die Connector
 function dataViewConnector(){
@@ -198,8 +204,9 @@ function dataViewConnector(){
             alert("projekloader hat ein Problem")
     }
     //Connection zu Projektbezeichnung
-    document.getElementById("projektName").innerHTML = projektloader.projektbezeichnung;
-    //Connection zu Teilnehmer
+
+    // document.getElementById("projektName").innerHTML = projektloader.projektbezeichnung;
+    //Connection zu Teilnehmern
     document.getElementById("tn1").innerHTML = projektloader.teilnehmer1name;
     document.getElementById("tn2").innerHTML = projektloader.teilnehmer2name;
     document.getElementById("tn3").innerHTML = projektloader.teilnehmer3name;
@@ -215,7 +222,7 @@ function dataViewConnector(){
     document.getElementById("lit1").innerHTML = projektloader.literatur1;
     document.getElementById("lit2").innerHTML = projektloader.literatur2;
     document.getElementById("lit3").innerHTML = projektloader.literatur3;
-    //Connection zu Links
+    //Connection zu Link
     document.getElementById("link1").firstChild.href = projektloader.link1href;
     document.getElementById("link1").firstChild.innerHTML = projektloader.link1text;
     document.getElementById("link2").firstChild.href = projektloader.link2href;
@@ -255,8 +262,8 @@ function mailsender3() {
 //Mit dieser Funktion wird durch die einzelnen Projekte gewechselt
 //  @TODO Loaderfunktion implemtieren!
 document.getElementById("projektName").addEventListener('click', projektSwitchFunktion);
-var projectClickCounter = 0;
-var projektnummer;
+let projectClickCounter = 0;
+let projektnummer;
 function projektSwitchFunktion(){
     switch (projectClickCounter){
         case 0:
@@ -274,7 +281,7 @@ function projektSwitchFunktion(){
             let aktivloader = JSON.parse(window.localStorage.getItem('savedprojekt1'))
             if (aktivloader.aktiviert===true) {
                 document.getElementById("neuesProjekt").className = "elementOFF";
-                dataViewConnector(projektnummer=1);
+                dataViewConnector(projektnummer);
                 projectClickCounter++;
                 break;
             }
@@ -283,14 +290,14 @@ function projektSwitchFunktion(){
             let aktivloader2 = JSON.parse(window.localStorage.getItem('savedprojekt2'))
             if (aktivloader2.aktiviert===true) {
                 projectClickCounter++;
-                dataViewConnector(projektnummer=2);
+                dataViewConnector(projektnummer);
                 break;
             }
         case 3:
             projektnummer = 3;
             let aktivloader3 = JSON.parse(window.localStorage.getItem('savedprojekt3'))
             if (aktivloader3.aktiviert===true) {
-                dataViewConnector(projektnummer=3)
+                dataViewConnector(projektnummer)
                 projectClickCounter++;
                 break;
             }
@@ -403,6 +410,7 @@ document.getElementById("erinnerungsmailset").addEventListener('click', dblclick
 function dblclickfunction4() {
     document.getElementById("mailsettings").className = "settingON";
 }
+
 /*
 * Setting von Mailadressen direkt
 * und settingeinstellung deaktivieren (invisible machen)
@@ -426,8 +434,16 @@ function mailsetokifunction() {
     document.getElementById("mailsettings").className = "setting";
     settingONflag = false;
 }
-//Mit dieser Funktion wird der Tooltip beim hovern ausgelöst DS: Tooltiptext in HTML zu finden (gut oder schlecht?)
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
+
+const projektService = new ProjektService();
+projektService.fillWindow();
+
+const projektService2 = new ProjektService(new Projekt(2, true, 'Projekt 2'));
+projektService2.fillWindow();
+
+// TODO: @Dirk Du wolltest etwas machen
+// //Mit dieser Funktion wird der Tooltip beim hovern ausgelöst DS: Tooltiptext in HTML zu finden (gut oder schlecht?)
+// $(document).ready(function(){
+//     $('[data-toggle="tooltip"]').tooltip();
+// });
 
