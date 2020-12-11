@@ -1,13 +1,18 @@
-let x = 0;
+//Variabeln Spiel
+ x = 0;
 let y = 0;
 let xZiel = Math.floor(Math.random()*28)*20+20;
 let yZiel = Math.floor(Math.random()*22)*20+20;
+//Variabeln Punktestandsanzeige / Zeit
 let punkte = 0;
+let startzeit = new Date();
+let zeit = 5;
+let restzeit = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
 
     //Takt mit setInterval erzeugen, um die Funktion Taktung zu wiederholen
-    takt = window.setInterval(taktung, 40);
+    takt = window.setInterval(taktung, 45);
 
     let spielfeld = document.getElementById('spielflaeche');
     spiel = spielfeld.getContext('2d');
@@ -48,6 +53,20 @@ document.addEventListener('DOMContentLoaded', function() {
         zeichneZiel();
         spiel.drawImage(papierflieger,x,y);
         zielErreicht();
+
+        let zeitAktuell = new Date();
+        //Zeit durch 1000 da ms
+        restzeit = zeit - Math.floor((zeitAktuell.getTime()-startzeit.getTime())/1000);
+        document.getElementById('zeit').innerHTML = 'Zeit: ' + restzeit;
+
+        if (restzeit <=0){
+            beendeSpiel();
+        }
+    }
+
+    function beendeSpiel() {
+        clearInterval(takt);
+        document.getElementById('spielende').style.display = 'block';
     }
 
     document.addEventListener('keydown', (evt) => {
