@@ -1,4 +1,6 @@
-window.onload = () => {
+/*
+    Ein Versuch den Kalender auch mal komplett funktional zu programmieren aus Lust und Laune ;)
+ */
 const fp_calendar = (date = new Date()) => ({
     year : date.getUTCFullYear(),
     month : date.getMonth(),
@@ -74,7 +76,8 @@ const prevMonth = obj => {
         obj = setMonth(obj, obj.month-=1);
     }
     clear();
-    fillCalendar(fp_calendar(new Date(obj.year, obj.month, obj.day)));
+    fp = fp_calendar(new Date(obj.year, obj.month, obj.day));
+    fillCalendar(fp);
 };
 
 const nextMonth = obj => {
@@ -87,7 +90,8 @@ const nextMonth = obj => {
         obj = setMonth(obj, obj.month+=1);
     }
     clear(obj);
-    fillCalendar(fp_calendar(new Date(obj.year, obj.month, obj.day)));
+    fp = fp_calendar(new Date(obj.year, obj.month, obj.day));
+    fillCalendar(fp);
 };
 
 const clear = () => {
@@ -103,10 +107,8 @@ const toDatePickerString = obj => {
 };
 const toFullString = obj => `Heute ist ${nameOfDay(obj.weekday)} der ${obj.day}. ${nameOfMonth(obj.month)} ${obj.year} mit ${daysOfMonth(obj)} Tagen`;
 
-// let fp = fp_calendar();
-// fillCalendarMonth(fp);
-// fillCalendar(fp);
-// document.getElementById('vorherigerMonat').addEventListener('mousedown', () => prevMonth(fp));
-// document.getElementById('naechsterMonat').addEventListener('mousedown', () => nextMonth(fp));
-
-};
+let fp = fp_calendar();
+fillCalendarMonth(fp);
+fillCalendar(fp);
+document.getElementById('vorherigerMonat').addEventListener('mousedown', () => prevMonth(fp));
+document.getElementById('naechsterMonat').addEventListener('mousedown', () => nextMonth(fp));

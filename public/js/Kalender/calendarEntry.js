@@ -1,10 +1,17 @@
+/*
+    Klasse die sich um die Termineinträge kümmert - noch ein rough Draft.
+ */
+import {Termin} from "./domain/Termin.mjs";
+
 class CalendarEntry {
-    constructor() {
+    constructor(date = new Date()) {
         this.terminInfosTextArea = document.getElementById('notizfeld');
         this.datePicker = document.getElementById('aktuellesDatum');
-        this.IsoDatumOhneZeitStempel = new Date().toISOString().substr(0, 10);
+        this.IsoDatumOhneZeitStempel = date.toISOString().substr(0, 10);
         this.datePicker.value = this.IsoDatumOhneZeitStempel;
-        this.items = Array("Yolo!", "Nutze den Tag sonst nutzt dieser Dich", "Morgens ist mir immer zu hell",
+        this.termin = new Termin();
+        this.items = Array(
+            "Yolo!", "Nutze den Tag sonst nutzt dieser Dich", "Morgens ist mir immer zu hell",
             "Jetzt ne schöne Pommes und dann lernen...",
             "Wer ist eigentlich diese Uni?",
             "Ein hoch auf die Schule",

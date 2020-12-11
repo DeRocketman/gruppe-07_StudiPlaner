@@ -159,11 +159,6 @@ class Calendar {
             kalenderMonat.innerHTML = `${this.monthsName} ${this.year}`;
             this.firstWeekdayOfMonth = calculateFirstDayOfMonth.call(this);
 
-            // TODO: Die Dynamisch erzeugten Werte fangen, vielleicht in einem Array?
-            // Oder den unteren Teil direkt in createMonth?
-            // this.createMonth(this.numberOfWeeks);
-
-
             // erstellt Liste mit mit Tagen des Monats
             const listOfDays = [...Array(this.numberOfDaysMonth).keys()];
             // setzt den ersten Tag am entsprechenden Wochentag, wobei die Liste bei Null beginnt, hence day + 1.
