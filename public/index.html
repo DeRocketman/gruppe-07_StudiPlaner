@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="css/kalenderStyle.css">
     <link rel="stylesheet" href="css/header.css">
 
+
     <script type= text/javascript src="js/index.js" defer></script>
+
 </head>
 
 <body>
@@ -69,20 +71,22 @@
         </section>
         <section class="usability">
             <h3>Fortschritt</h3>
-            <!-- Prozessschrittanzeige in Form einer Liste, soll mit CSS Pseudoelementen umgesetzt werden. -->
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            <!-- Prozessschrittanzeige mit Buttons umgesetzt und mit hardcoded Werten gefüllt. -->
+            <div class="progressField">
 
-            <!-- haben hier selbst ein progress bar gebaut, da die mitgegebenen auf mdn nicht empfohlen wurden,
-                 ein bisschen 'old-school' css gehake :) -->
-            <div>
-                <span></span>
+                <button class="buttonClass" id="button1ID">1</button>
+                <button class="buttonClass" id="button2ID">2</button>
+                <button class="buttonClass" id="button3ID">3</button>
+                <button class="buttonClass" id="button4ID">4</button>
+                <button class="buttonClass" id="button5ID">5</button>
+
+                <div class="bar">
+                    <div class="fill"></div>
+                </div>
+                <div class="counter">0%</div>
+
             </div>
+            <script type= text/javascript src="js/ProgressbarJS.js"></script>
         </section>
         <section id="projekteID" class="usability">
             <h3>Projekte</h3>

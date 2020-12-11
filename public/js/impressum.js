@@ -7,7 +7,7 @@ let punkte = 0;
 document.addEventListener('DOMContentLoaded', function() {
 
     //Takt mit setInterval erzeugen, um die Funktion Taktung zu wiederholen
-    takt = window.setInterval(taktung, 1200);
+    takt = window.setInterval(taktung, 40);
 
     let spielfeld = document.getElementById('spielflaeche');
     spiel = spielfeld.getContext('2d');
