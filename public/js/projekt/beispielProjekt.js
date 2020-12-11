@@ -1,10 +1,10 @@
-import {Teilnehmerin} from "./domain/teilnehmerin.mjs";
-import {Literatur} from "./domain/literatur.mjs";
-import {Literaturverzeichnis} from "./aggregate/literaturverzeichnis.mjs";
-import {Link} from "./domain/link.mjs";
-import {LinkVerzeichnis} from "./aggregate/linkVerzeichnis.mjs";
-import {Aufgabe} from "./domain/aufgabe.mjs";
-import {Projekt} from "./domain/projekt.mjs";
+import {Teilnehmerin} from "./domain/teilnehmerin.js";
+import {Literatur} from "./domain/literatur.js";
+import {Literaturverzeichnis} from "./aggregate/literaturverzeichnis.js";
+import {Link} from "./domain/link.js";
+import {LinkVerzeichnis} from "./aggregate/linkVerzeichnis.js";
+import {Aufgabe} from "./domain/aufgabe.js";
+import {Projekt} from "./domain/projekt.js";
 
 export const BeispielProjekt = () => {
     const t1 = new Teilnehmerin('Dirk Stricker', 'ds@web.de');

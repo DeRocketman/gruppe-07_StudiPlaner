@@ -1,7 +1,7 @@
 /*
     Baut Projekte ins Frontend ein.
  */
-import {Projekt} from "../domain/projekt.mjs";
+import {Projekt} from "../domain/projekt.js";
 
 export class ProjektService {
     _projekt;

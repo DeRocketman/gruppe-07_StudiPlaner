@@ -1,7 +1,7 @@
 /*
     Linkverzeichnis - Link für Projekte, dürfen maximal zwei sein
  */
-import {Link} from "../domain/link.mjs";
+import {Link} from "../domain/link.js";
 
 export class LinkVerzeichnis {
     _verzeichnis;

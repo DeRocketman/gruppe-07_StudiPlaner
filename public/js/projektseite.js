@@ -1,7 +1,7 @@
-import { ProjektService} from "./projekt/services/projektService.mjs";
-import {Projekt} from "./projekt/domain/projekt.mjs";
-import {BeispielProjekt} from "./projekt/beispielProjekt.mjs";
-import {BeispielProjekt2} from "./projekt/beispielProjekt2.mjs";
+import { ProjektService} from "./projekt/services/projektService.js";
+import {Projekt} from "./projekt/domain/projekt.js";
+import {BeispielProjekt} from "./projekt/beispielProjekt.js";
+import {BeispielProjekt2} from "./projekt/beispielProjekt2.js";
 
 //Listenelemente auswählen zum ein- bzw. ausblenden
 let toggle = document.getElementsByClassName('caret');
@@ -297,7 +297,6 @@ document.addEventListener('keydown', (evt) => {
 
     if (key === "ArrowLeft") {
         counter--;
-        console.log(counter);
         if (counter <= 0) {
             counter = projektVerzeichnis.length - 1;
         }

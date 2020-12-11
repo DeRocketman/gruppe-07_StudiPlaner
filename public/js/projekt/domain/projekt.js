@@ -1,10 +1,10 @@
 /*
    Klasse zum anlegen eines neuen Projekts der Projektseite
  */
-import {Teilnehmerin} from "./teilnehmerin.mjs";
-import {Aufgabe} from "./aufgabe.mjs";
-import {Literaturverzeichnis} from "../aggregate/literaturverzeichnis.mjs";
-import {LinkVerzeichnis} from "../aggregate/linkVerzeichnis.mjs";
+import {Teilnehmerin} from "./teilnehmerin.js";
+import {Aufgabe} from "./aufgabe.js";
+import {Literaturverzeichnis} from "../aggregate/literaturverzeichnis.js";
+import {LinkVerzeichnis} from "../aggregate/linkVerzeichnis.js";
 
 export class Projekt {
     _nummer;

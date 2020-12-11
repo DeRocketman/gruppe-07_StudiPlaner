@@ -1,7 +1,7 @@
 /*
     Literaturverzeichnis - Literaturangaben für Projekte, dürfen maximal drei sein
  */
-import {Literatur} from "../domain/literatur.mjs";
+import {Literatur} from "../domain/literatur.js";
 
 export class Literaturverzeichnis {
     _verzeichnis = new Array(3);
