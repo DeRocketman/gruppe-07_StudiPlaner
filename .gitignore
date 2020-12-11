@@ -97,3 +97,4 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/phpstorm
+/doku/WP20_Gr07_EA2.pdf
