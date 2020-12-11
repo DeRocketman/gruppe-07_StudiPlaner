@@ -160,7 +160,7 @@ main article section:nth-child(3) {
     border-bottom: none;
     border-spacing: 0;
     cursor: pointer;
-    transition: 1.3s;
+    transition: 1.0s;
     line-height: 25px;
     font-size: 9pt;
 }
@@ -188,6 +188,12 @@ main article section:nth-child(3) {
 /* Sektion Projekte Ende */
 
 /* Sektion Gruppen Start */
+
+.group {
+    background-color: #F5D5F0;
+    border-top: 1px solid black;
+    text-align: left;
+}
 /*  Einbetten der TreeView für Design */
 #groups {
     margin-left: 8%;
@@ -196,11 +202,17 @@ main article section:nth-child(3) {
     border-left: 1px solid black;
     border-right: 1px solid black;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 details summary {
     font-size: 11pt;
     padding: 5px;
+}
+
+details[open] summary{
+    color: #F8EFC8;
+    background-color: #AB63A0;
 }
 
 details summary:not(:last-child) {
@@ -211,17 +223,6 @@ details summary:not(:last-child) {
 details summary::-webkit-details-marker {
     display: none;
 }
-
-.Gruppen {
-    background-color: #F5D5F0;
-    border-top: 1px solid black;
-}
-
-.Gruppen.active {
-    color: #F8EFC8;
-    background-color: #AB63A0;
-}
-
 
 /* Kalender section, hier sind recht viele Ids und Klassen aufgrund von Javascript
 Entwicklung, wollen mal schauen ob es auch ohne geht, allerdings im ersten Wurf

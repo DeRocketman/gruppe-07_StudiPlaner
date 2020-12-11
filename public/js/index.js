@@ -1,3 +1,5 @@
+/*Start Tabs */
+
 // Projekt 1 ist als default angeklickt
 document.getElementById("defaultSelected").click();
 
@@ -21,3 +23,4 @@ function selectedProject(evt, project) {
     document.getElementById(project).style.display = "block";
     evt.classList.add("active");
 }
+/* Ende Tabs */
