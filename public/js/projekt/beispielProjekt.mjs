@@ -1,8 +1,8 @@
 import {Teilnehmerin} from "./domain/teilnehmerin.mjs";
 import {Literatur} from "./domain/literatur.mjs";
-import {Literaturverzeichnis} from "./aggregates/literaturverzeichnis.mjs";
+import {Literaturverzeichnis} from "./aggregate/literaturverzeichnis.mjs";
 import {Link} from "./domain/link.mjs";
-import {LinkVerzeichnis} from "./aggregates/linkVerzeichnis.mjs";
+import {LinkVerzeichnis} from "./aggregate/linkVerzeichnis.mjs";
 import {Aufgabe} from "./domain/aufgabe.mjs";
 import {Projekt} from "./domain/projekt.mjs";
 

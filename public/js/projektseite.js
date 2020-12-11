@@ -336,7 +336,7 @@ var projektAnzahl = 0;
 document.getElementById("projektuebernahme").addEventListener("click", projektAnlegeFunktion);
 function projektAnlegeFunktion(){
     projektAnzahl++;
-    if (projektAnzahl <= 5){
+    if (projektAnzahl <= 5) {
         switch (projektAnzahl) {
             case 1:
                 projekt1.aktiviert = true;

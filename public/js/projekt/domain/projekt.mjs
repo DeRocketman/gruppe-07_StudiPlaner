@@ -3,8 +3,8 @@
  */
 import {Teilnehmerin} from "./teilnehmerin.mjs";
 import {Aufgabe} from "./aufgabe.mjs";
-import {Literaturverzeichnis} from "../aggregates/literaturverzeichnis.mjs";
-import {LinkVerzeichnis} from "../aggregates/linkVerzeichnis.mjs";
+import {Literaturverzeichnis} from "../aggregate/literaturverzeichnis.mjs";
+import {LinkVerzeichnis} from "../aggregate/linkVerzeichnis.mjs";
 
 export class Projekt {
     _nummer;
