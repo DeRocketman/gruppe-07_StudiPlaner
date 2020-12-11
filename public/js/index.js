@@ -20,5 +20,4 @@ function selectedProject(evt, project) {
     // Angeklicktes Element die Klasse active zuweisen
     document.getElementById(project).style.display = "block";
     evt.classList.add("active");
-
 }

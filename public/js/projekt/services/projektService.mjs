@@ -13,8 +13,21 @@ export class ProjektService {
         document.getElementById("projektName").innerHTML = this._projekt._name;
 
         const teilnehmerListe = this._projekt._teilnehmerListe;
+        const parentNode = document.getElementById('teilnehmerliste');
+        removeChildren(parentNode);
         for(let i = 1; i <= teilnehmerListe.length; i++) {
-            document.getElementById('tn' + i).innerHTML = teilnehmerListe[i - 1]._name;
+            const teilnehmerNode = document.createElement('li');
+            teilnehmerNode.innerHTML = teilnehmerListe[i - 1]._name;
+            parentNode.appendChild(teilnehmerNode);
+        }
+
+        function removeChildren(parentNode) {
+            const anzahlKinder = parentNode.children.length;
+            if (anzahlKinder !== 0) {
+                for (let i = 0; i < anzahlKinder; i++) {
+                    parentNode.removeChild(parentNode.children[0]);
+                }
+            }
         }
 
         const literaturListe = this._projekt._literaturVerzeichnis._verzeichnis;

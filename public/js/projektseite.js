@@ -1,5 +1,7 @@
 import { ProjektService} from "./projekt/services/projektService.mjs";
 import {Projekt} from "./projekt/domain/projekt.mjs";
+import {BeispielProjekt} from "./projekt/beispielProjekt.mjs";
+import {BeispielProjekt2} from "./projekt/beispielProjekt2.mjs";
 
 //Listenelemente auswählen zum ein- bzw. ausblenden
 let toggle = document.getElementsByClassName('caret');
@@ -9,175 +11,6 @@ for (i = 0; i < toggle.length; i++) {
         this.parentElement.querySelector(".nested").classList.toggle('active');
         this.classList.toggle('caret-down');
     });
-}
-//Fuer die Beta der Seite eine festgelegte maximale Anzahl von Projekten (5)
-//  @TODO array für projekt? Wenn ja -> erübrigt sich begrenzte anzahl
-/*
-    Projektvorlage ist ein Objekt mit Anfangswerten für ein neues oder gelöschtes Projekt (Werte
-    sollen dabei einfach überschrieben werden und Ansicht zurück gesetzt werden)
- */
-
-let projektvorlage = {
-    //Ausgangswerte für zurückgesetzte/gelöschte Projekte
-    //Grunddaten
-    "projektnummer"      : 23,
-    "aktiviert"          : false,
-    "projektbezeichnung" : null,
-    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "teilnehmer1name"    : "Unbesetzt",
-    "teilnehmer1email"   : null,
-    "teilnehmer2name"    : "Unbesetzt",
-    "teilnehmer2email"   : null,
-    "teilnehmer3name"    : "Unbesetzt",
-    "teilnehmer3email"   : null,
-    "teilnehmer4name"    : "Unbesetzt",
-    "teilnehmer4email"   : null,
-    "teilnehmer5name"    : "Unbesetzt",
-    "teilnehmer5email"   : null,
-    "teilnehmer6name"    : "Unbesetzt",
-    "teilnehmer6email"   : null,
-    "teilnehmer7name"    : "Unbesetzt",
-    "teilnehmer7email"   : null,
-    "teilnehmer8name"    : "Unbesetzt",
-    "teilnehmer8email"   : null,
-    "teilnehmer9name"    : "Unbesetzt",
-    "teilnehmer9email"   : null,
-    //PieChart
-    "piechartdone" : 0,
-    "piechartdo"   : 0,
-    "piecharttodo" : 0,
-    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "literatur1" : "Keine Angabe",
-    "literatur2" : "Keine Angabe",
-    "literatur3" : "Keine Angabe",
-    // Link    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "link1href" : null,
-    "link1text" : "Keine Angabe",
-    "link2href" : null,
-    "link2text" : "Keine Angabe",
-    "link3href" : null,
-    "link3text" : "Keine Angabe",
-    //Notizen
-    "notizen"   : null,
-    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "aufgabe1value" : null,
-    "aufgabe1box"   : false,
-    "aufgabe2value" : null,
-    "aufgabe2box"   : false,
-    "aufgabe3value" : null,
-    "aufgabe3box"   : false,
-    "mailperson1"   : "Person A",
-    "mailperson2"   : "Person B",
-    "mailperson3"   : "Person C",
-    // @TODO Eingabeaufforderung der Mailaddressen (3 Favorieten aus Teilnehmerliste!) implementieren
-    personAmail : null,
-    personBmail : null,
-    personCmail : null,
-}
-//Pseudoprojekte 1 und 2
-let projekt1 = {
-    //Grunddaten
-    "projektnummer" : 1,
-    "aktiviert" : true,
-    "projektbezeichnung" : "Webprogrammierung (PP1)",
-    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "teilnehmer1name"    : "Benjamin Ansohn McDougall",
-    "teilnehmer1email"   : "benjamim.ansohn.mcdougall@stud.th-luebeck.de",
-    "teilnehmer2name"    : "Kim Lara Feller",
-    "teilnehmer2email"   : "kim.lara.feller@stud.th-luebeck.de",
-    "teilnehmer3name"    : "Louis Grümmer",
-    "teilnehmer3email"   : "louis.gruemmer@stud.th-luebeck.de",
-    "teilnehmer4name"    : "Unbesetzt",
-    "teilnehmer4email"   : null,
-    "teilnehmer5name"    : "Unbesetzt",
-    "teilnehmer5email"   : null,
-    "teilnehmer6name"    : "Unbesetzt",
-    "teilnehmer6email"   : null,
-    "teilnehmer7name"    : "Unbesetzt",
-    "teilnehmer7email"   : null,
-    "teilnehmer8name"    : "Unbesetzt",
-    "teilnehmer8email"   : null,
-    "teilnehmer9name"    : "Unbesetzt",
-    "teilnehmer9email"   : null,
-    //PieChart
-    "piechartdone" : 100,
-    "piechartdo"   : 100,
-    "piecharttodo" : 200,
-    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "literatur1" : "HTML 5 und CSS3, Rheinwerk",
-    "literatur2" : "JavaScript for Dummies",
-    "literatur3" : "Ist kopierter Code wirklich gestohlen?!, Ratgeber",
-    // Link    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "link1href" : "http://www.gidf.de/",
-    "link1text" : "Google ist dein Freund",
-    "link2href" : "http://www.fc-hansa.de/",
-    "link2text" : "eis.de",
-    //Notizen
-    "notizen"   : "Tritratralala \nDer Placeholder war lustiger",
-    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "aufgabe1value" : "Projektseite abschließen",
-    "aufgabe1box"   : true,
-    "aufgabe1boxtext" : "DO: 08.12.2020",
-    "aufgabe2value" : "Impressum abschließen",
-    "aufgabe2box"   : false,
-    "aufgabe2boxtext" : "DL: 31.12.2020",
-    "aufgabe3value" : null,
-    "aufgabe3box"   : false,
-    "mailperson1"   : "Person A",
-    "mailperson2"   : "Person B",
-    "mailperson3"   : "Person C",
-}
-let projekt2 = {
-    //Grunddaten
-    "projektnummer" : 2,
-    "aktiviert" : true,
-    "projektbezeichnung" : "Aufstieg 2021 (PP2)",
-    //Teilnehmerdaten <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "teilnehmer1vorname" : "Hans A. Rostock",
-    "teilnehmer1email"   : "info@hansa.de",
-    "teilnehmer2name"    : "Mike Werner",
-    "teilnehmer2email"   : "mike.werner@fukhuhila.de",
-    "teilnehmer3name"    : "Beinhart",
-    "teilnehmer3email"   : "dasmusskesseln@boelkstoff.de",
-    "teilnehmer4name"    : "Piekenhagen",
-    "teilnehmer4email"   : "Martin.Piekenhagen@hansa.de",
-    "teilnehmer5name"    : "Unbesetzt",
-    "teilnehmer5email"   : null,
-    "teilnehmer6name"    : "Unbesetzt",
-    "teilnehmer6email"   : null,
-    "teilnehmer7name"    : "Unbesetzt",
-    "teilnehmer7email"   : null,
-    "teilnehmer8name"    : "Unbesetzt",
-    "teilnehmer8email"   : null,
-    "teilnehmer9name"    : "Unbesetzt",
-    "teilnehmer9email"   : null,
-    //PieChart
-    "piechartdone" : 100,
-    "piechartdo"   : 100,
-    "piecharttodo" : 200,
-    //Literatur <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "literatur1" : "Bundesligaaufsteiger leicht gemacht",
-    "literatur2" : "11 Freunde",
-    "literatur3" : "Erfolgreich im Sport",
-    // Link    <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "link1href" : "http://www.hansa.de",
-    "link1text" : "FC HANSA",
-    "link2href" : "https://www.youtube.com/watch?v=fCZVL_8D048",
-    "link2text" : "Jerusalema",
-    "link3href" : null,
-    "link3text" : null,
-    //Notizen
-    "notizen"   : null,
-    // Aufgaben <-Sammlung, eventuell in einem bzw. mehreren Arrays zusammenfassen
-    "aufgabe1value" : "Tabellenerster nach Hinrunde",
-    "aufgabe1box"   : false,
-    "aufgabe1boxtext" : "DL: 23.12.2020",
-    "aufgabe2value" : "Tabellenerster nach Rückrunde",
-    "aufgabe2box"   : false,
-    "aufgabe2boxtext" : "DL: 30.07.2021",
-    "aufgabe3value" : "Party auf dem Rathausbalkon",
-    "aufgabe3box"   : true,
-    "aufgabe3boxtext" : "01.12.2012",
 }
 
 //Diese Funktion verbindet Daten der Projekte mit der Ansicht
@@ -435,15 +268,37 @@ function mailsetokifunction() {
     settingONflag = false;
 }
 
+// Alles neu
 const projektService = new ProjektService();
 projektService.fillWindow();
+const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 2'));
+const projektService2 = new ProjektService(BeispielProjekt());
+const projektService3 = new ProjektService(BeispielProjekt2());
+const projektVerzeichnis = [projektService, projektService1, projektService2, projektService3];
 
-const projektService2 = new ProjektService(new Projekt(2, true, 'Projekt 2'));
-projektService2.fillWindow();
 
-// TODO: @Dirk Du wolltest etwas machen
-// //Mit dieser Funktion wird der Tooltip beim hovern ausgelöst DS: Tooltiptext in HTML zu finden (gut oder schlecht?)
-// $(document).ready(function(){
-//     $('[data-toggle="tooltip"]').tooltip();
-// });
+// TODO: REFACTOR THIS AFTER CRUNCH
+let counter = 0;
+
+document.addEventListener('keydown', (evt) => {
+    let key = evt.key;
+
+    if (key === "ArrowLeft") {
+        counter--;
+        console.log(counter);
+        if (counter <= 0) {
+            counter = projektVerzeichnis.length - 1;
+        }
+        console.log('ProjektService ' + counter);
+        projektVerzeichnis[counter].fillWindow();
+    }
+
+    if (key === "ArrowRight") {
+        counter++;
+        if(counter >= projektVerzeichnis.length) {
+            counter = 0;
+        }
+        projektVerzeichnis[counter].fillWindow();
+    }
+});
 

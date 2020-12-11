@@ -6,11 +6,11 @@ import {LinkVerzeichnis} from "./aggregate/linkVerzeichnis.mjs";
 import {Aufgabe} from "./domain/aufgabe.mjs";
 import {Projekt} from "./domain/projekt.mjs";
 
-export const beispielProjekt = () => {
+export const BeispielProjekt = () => {
     const t1 = new Teilnehmerin('Dirk Stricker', 'ds@web.de');
     const t2 = new Teilnehmerin('Kim Lara Feller', 'klf@web.de');
     const t3 = new Teilnehmerin('Louis Grümmer', 'lg@web.de');
-    const t4 = new Teilnehmerin('Kim Lara Feller', 'bam@web.de');
+    const t4 = new Teilnehmerin('Ben Ansohn McDougall', 'bam@web.de');
 
     const teilnehmerListe = [t1, t2, t3, t4];
 

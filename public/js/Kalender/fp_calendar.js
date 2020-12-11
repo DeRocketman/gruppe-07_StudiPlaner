@@ -167,5 +167,6 @@ fillCalendar(fp);
 heutigenTagHervorheben(fp);
 termine = alleMonatsTermineHolen(fp);
 console.log(termineToString(termine));
+
 document.getElementById('vorherigerMonat').addEventListener('mousedown', () => prevMonth(fp));
 document.getElementById('naechsterMonat').addEventListener('mousedown', () => nextMonth(fp));

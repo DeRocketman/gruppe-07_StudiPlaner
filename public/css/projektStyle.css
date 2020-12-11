@@ -126,9 +126,8 @@ main article:first-child ul li::marker {
 }
 #piechartID{
     margin-right: 200px;
-
-
 }
+
 .oberhaus:nth-child(3) {
     display: grid;
     grid-template-columns: 1fr;
