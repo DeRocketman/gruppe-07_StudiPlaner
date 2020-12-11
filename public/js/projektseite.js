@@ -280,6 +280,18 @@ const projektVerzeichnis = [projektService, projektService1, projektService2, pr
 // TODO: REFACTOR THIS AFTER CRUNCH
 let counter = 0;
 
+function toggleProjekt() {
+    counter++;
+    if(counter >= projektVerzeichnis.length) {
+        counter = 0;
+    }
+    projektVerzeichnis[counter].fillWindow();
+}
+
+document.getElementById("projektName").addEventListener('click', toggleProjekt);
+
+
+
 document.addEventListener('keydown', (evt) => {
     let key = evt.key;
 
@@ -289,7 +301,6 @@ document.addEventListener('keydown', (evt) => {
         if (counter <= 0) {
             counter = projektVerzeichnis.length - 1;
         }
-        console.log('ProjektService ' + counter);
         projektVerzeichnis[counter].fillWindow();
     }
 

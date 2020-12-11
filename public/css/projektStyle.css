@@ -9,6 +9,7 @@ Layout des Dokuments
  */
 #projektName {
     cursor: pointer;
+    user-select: none;
 }
 #mainLogo:hover {
     animation: animation 1000ms linear backwards alternate-reverse;
