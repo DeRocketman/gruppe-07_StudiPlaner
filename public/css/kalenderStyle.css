@@ -77,11 +77,14 @@ hier evtl. noch grid oder flex einbauen
     padding: 0;
 }
 
-/* Neuer SprintKram */
+.heute {
+    color: #AB63A0;
+    fontWeight: bold;
+}
 
-.aktiverEintrag {
-    border: 1px solid magenta;
-    /* TODO: Klf, bam: Geiler aussehen lassen, nur prototyp */
+.hinterlegterTermin {
+    color: whitesmoke;
+    background-color: #C3F7F4;
 }
 
 
