@@ -1,7 +1,7 @@
 /*
     Klasse die sich um die Termineinträge kümmert - noch ein rough Draft.
  */
-import {Termin} from "./domain/Termin.mjs";
+import {Termin} from "./domain/Termin.js";
 
 class CalendarEntry {
     constructor(date = new Date()) {
