@@ -1,5 +1,3 @@
-import { Termin } from './domain/Termin'
-
 class CalendarEntry {
     constructor() {
         this.terminInfosTextArea = document.getElementById('notizfeld');
@@ -59,23 +57,20 @@ class CalendarEntry {
     }
 }
 
-window.onload = function () {
+const calendarEntry = new CalendarEntry();
+calendarEntry.terminAbfragen();
 
-    const calendarEntry = new CalendarEntry();
-    calendarEntry.terminAbfragen();
+const loeschenButton = document.getElementById('loeschenButton');
+loeschenButton.addEventListener('mousedown', () => {
+    calendarEntry.terminLoeschen(calendarEntry.terminInfosTextArea, datePicker.value);
+});
 
-    const loeschenButton = document.getElementById('loeschenButton');
-    loeschenButton.addEventListener('mousedown', () => {
-        calendarEntry.terminLoeschen(calendarEntry.terminInfosTextArea, datePicker.value);
-    });
+const speichernButton = document.getElementById('speichernButton');
+speichernButton.addEventListener('mousedown', () => {
+    calendarEntry.terminSpeichern(calendarEntry.terminInfosTextArea, datePicker.value);
+});
 
-    const speichernButton = document.getElementById('speichernButton');
-    speichernButton.addEventListener('mousedown', () => {
-        calendarEntry.terminSpeichern(calendarEntry.terminInfosTextArea, datePicker.value);
-    });
-
-    const datePicker = document.querySelector("input[type='date']");
-    datePicker.addEventListener('change', () => {
-        calendarEntry.terminAbfragen(calendarEntry.terminInfosTextArea, datePicker.value);
-    });
-};
+const datePicker = document.querySelector("input[type='date']");
+datePicker.addEventListener('change', () => {
+    calendarEntry.terminAbfragen(calendarEntry.terminInfosTextArea, datePicker.value);
+});
