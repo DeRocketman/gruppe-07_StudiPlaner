@@ -268,6 +268,8 @@ function mailsetokifunction() {
     settingONflag = false;
 }
 
+
+// TODO!: für das Projekt die IndexDB am besten WP01 nennen, siehe Video zu IndexDB.!
 // Alles neu
 const projektService = new ProjektService();
 projektService.fillWindow();

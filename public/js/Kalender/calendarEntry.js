@@ -4,20 +4,42 @@
 import {Termin} from "./domain/Termin.js";
 
 class CalendarEntry {
+    items;
     constructor(date = new Date()) {
         this.terminInfosTextArea = document.getElementById('notizfeld');
         this.datePicker = document.getElementById('aktuellesDatum');
         this.IsoDatumOhneZeitStempel = date.toISOString().substr(0, 10);
         this.datePicker.value = this.IsoDatumOhneZeitStempel;
         this.termin = new Termin();
-        this.items = Array(
-            "Yolo!", "Nutze den Tag sonst nutzt dieser Dich", "Morgens ist mir immer zu hell",
-            "Jetzt ne schöne Pommes und dann lernen...",
-            "Wer ist eigentlich diese Uni?",
-            "Ein hoch auf die Schule",
-            "Die schönste Jahreszeit ist Urlaub",
-            "Man kann nicht immer nur lernen....aber fast immer.");
+        this.items = Array("leider keine Sprüche");
     }
+
+    spruchDesTages() {
+        const url = 'sprueche.txt';
+
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(xhr.response);
+                } else {
+                    reject({
+                        status: xhr.status,
+                        statusText: xhr.statusText
+                    });
+                }
+            };
+
+            xhr.onerror = () => {
+                reject({
+                    status: xhr.status,
+                    statusText: xhr.statusText
+                });
+            };
+            xhr.send(null);
+        });
+    };
 
     terminAbfragen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
         const gespeicherterText = localStorage.getItem(datum);
@@ -32,7 +54,7 @@ class CalendarEntry {
 
     textVeraendern(terminInfosTextArea = this.terminInfosTextArea) {
         terminInfosTextArea.value = '';
-        terminInfosTextArea.placeholder = this.random_text(this.items);
+        terminInfosTextArea.placeholder = this.randomText(this.items);
     }
 
     terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
@@ -58,14 +80,21 @@ class CalendarEntry {
         }
     }
 
-    random_text(items)
+    randomText(items)
     {
         return items[Math.floor(Math.random()*items.length)];
     }
 }
 
+window.addEventListener('load', async () => {
+    console.log('Sprüche werden asynchron geladen');
+    calendarEntry.items = await calendarEntry.spruchDesTages().then(value => { return value.split('\n'); });
+    console.log('Sprüche wurden erfolgreich geladen.');
+    calendarEntry.terminAbfragen();
+}, false);
+
 const calendarEntry = new CalendarEntry();
-calendarEntry.terminAbfragen();
+
 
 const loeschenButton = document.getElementById('loeschenButton');
 loeschenButton.addEventListener('mousedown', () => {
