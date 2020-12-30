@@ -21,11 +21,29 @@
 
 <header>
     <nav>
-        <a href="#">Startseite</a>
-        <a href="projekte.html">Projekte</a>
-        <a href="kalender.html">Kalender</a>
-        <a href="#">Hilfe</a>
-        <a href="impressum.html">Impressum</a>
+        <! burgermenü ggf. erstmal nur als Platzhalter, können gerne ein passenderes Symbol benutzen>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="navPoints">
+            <li>
+                <a href="#">Startseite</a>
+            </li>
+            <li>
+                <a href="projekte.html">Projekte</a>
+            </li>
+            <li>
+                <a href="kalender.html">Kalender</a>
+            </li>
+            <li>
+                <a href="#">Hilfe</a>
+            </li>
+            <li>
+                <a href="impressum.html">Impressum</a>
+            </li>
+        </ul>
     </nav>
     <section>
         <img id="mainLogo" src="images/papierflieger_logo_350x200.png" alt="Papierflieger Logo"
@@ -212,7 +230,9 @@
         </table>
         <!-- calendar.js erst hier laden nachdem html geladen hat. -->
         <script type="application/javascript" src="js/Kalender/calendar.js"></script>
+
     </section>
 </main>
+<script type= text/javascript src="js/navbar.js" ></script>
 </body>
 </html>

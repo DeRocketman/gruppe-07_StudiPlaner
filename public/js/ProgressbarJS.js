@@ -6,11 +6,17 @@ let clickC = document.querySelector("#button3ID");
 let clickD = document.querySelector("#button4ID");
 let clickE = document.querySelector("#button5ID");
 
+
 let progressA = 100;
 let progressB = 10;
 let progressC = 20;
 let progressD = 60;
 let progressE = 40;
+
+/*
+for (int i = 0; i < document.getElementsByClassName('buttonClass').length ; i++)
+ { document.getElementsByClassName('buttonClass')[i].innerHTML = "Knopf " + i; }
+ */
 
 clickA.addEventListener('click',()=>{
     clickB.style.backgroundColor='#F5D5F0'
@@ -23,19 +29,7 @@ clickA.addEventListener('click',()=>{
     clickE.style.color='#AB63A0'
     clickA.style.backgroundColor='#AB63A0'
     clickA.style.color= '#fff'
-    var a = 0;
-    var run = setInterval(frames,10);
-    function frames(){
-        a = a+1;
-        if(a== progressA+1){
-            clearInterval(run);
-        }
-        else{
-            var counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " optionaler Projektname";
-            fill.style.width = a +"%";
-        }
-    }
+    lalelu()
 })
 
 
@@ -143,3 +137,18 @@ clickE.addEventListener('click',()=>{
         }
     }
 })
+function lalelu() {
+    var a = 0;
+    var run = setInterval(frames, 10);
+
+    function frames() {
+        a = a + 1;
+        if (a == progressA + 1) {
+            clearInterval(run);
+        } else {
+            var counter = document.querySelector(".counter");
+            counter.textContent = a + "%" + " optionaler Projektname";
+            fill.style.width = a + "%";
+        }
+    }
+}
