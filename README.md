@@ -22,4 +22,4 @@ Ein Dashboard bietet eine sinnvolle Übersicht über alle laufenden Projekte. Wa
 
 ## Build-Prozess und Docker
 
-Sobald an dem master-Branch dieses Repositories Veründerungen vorgenommen bzw. gepusht werden, wird automatisch ein Build-Prozess angestoüen, welcher das [Deployment Ihres Projektes](https://gruppe-07.wp20.mylab.th-luebeck.de) aktualisiert. Die Dateien `Dockerfile` und `.gitlab-ci.yml` steuern diesen Build-Prozess, und sollten von Ihnen in der Regel nicht veründert werden! Bei Interesse finden Sie weitergehende Informationen und Anleitungen zu Docker z.B. [hier](https://doku.mylab.th-luebeck.de/docs/docker/).
+Sobald an dem master-Branch dieses Repositories Veründerungen vorgenommen bzw. gepusht werden, wird automatisch ein Build-Prozess angestoüen, welcher das [Deployment Ihres Projektes](https://gruppe-07.wp20.mylab.th-luebeck.de) aktualisiert. Die Dateien `Dockerfile` und `.gitlab-ci.yml` steuern diesen Build-Prozess, und sollten von Ihnen in der Regel nicht verändert werden! Bei Interesse finden Sie weitergehende Informationen und Anleitungen zu Docker z.B. [hier](https://doku.mylab.th-luebeck.de/docs/docker/).
