@@ -1,7 +1,7 @@
 const navbarAction = ()=>{
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.navPoints');
-    const navLinks = document.querySelectorAll('.navPoints li')
+    const navLinks = document.querySelectorAll('.navPoints_li')
 
 
     burger.addEventListener('click',() =>{

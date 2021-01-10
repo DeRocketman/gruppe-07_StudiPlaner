@@ -6,13 +6,15 @@ body {
     font-weight: normal;
     color: #333333;
 }
-.menue123{
+
+.navBarTotal{
     display: flex;
     background-color: #C3F7F4;
     text-align: center;
     align-items: center;
     padding: .1em;
     justify-content: space-around;
+    height: 50px;
 }
 .submenu1{
     display: none;
@@ -22,27 +24,29 @@ body {
     font-size: large;
     font-weight: bold;
     color: #ABA27D;
+    list-style: none;
 
 
 }
 
-.menue123 ul li:hover .submenu1{
+
+.navBarTotal ul li:hover .submenu1{
     display: block;
     position: absolute;
     background: #C3F7F4;
     margin-top: 15px;
-    margin-left: -15px;
+    margin-left: -60px;
+
 }
-.menue123 ul li:hover .submenu1 ul{
+.navBarTotal ul li:hover .submenu1 ul{
     display: block;
     margin: 10px;
 }
-.menue123 ul li:hover .submenu1 ul li{
+.navBarTotal ul li:hover .submenu1 ul li{
     width: 100px;
     padding: 10px;
-    text-align: left;
+    text-align: left
 }
-
 
 
 .navPoints{
@@ -52,19 +56,18 @@ body {
     left: 0px;
     transform: translateX(-150%);
     transition: transform 0.1s ease-in;
-
-
-
 }
+
 .navPoints a{
     text-decoration: none;
     font-size: large;
     font-weight: bold;
     color: #ABA27D;
 }
-.navPoints li{
+.navPoints_li {
     list-style: none;
     opacity: 0;
+    padding: 15px;
 }
 
 .navbarActive{
