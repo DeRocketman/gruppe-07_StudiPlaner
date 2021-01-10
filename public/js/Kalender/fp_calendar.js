@@ -1,5 +1,10 @@
 /*
     Ein Versuch den Kalender auch mal komplett funktional zu programmieren aus Lust und Laune ;)
+    Anstatt das übliche OOP Vorgehen zu verfolgen, siehe calendar.js.
+    Im Prinzip die Ideen aus der eben genannten Datei jedoch deutlich kürzer implementiert und dadurch weniger Bug
+    anfällig, sowie leichter zu verstehen, da weniger Text und unnötiger Bootstrap-Code.
+
+    Entwicklerin: Ben Ansohn McDougall
  */
 const fp_calendar = (date = new Date()) => ({
     year : date.getUTCFullYear(),
@@ -56,6 +61,7 @@ const firstDayOfMonth = obj => {
 
 /*
     Function mit Seiteneffekten und ohne Rückgabewert
+    Füllt den Monat im Titel des Kalenders
  */
 const fillCalendarMonth = obj => {
     let kalenderMonat = document.getElementById('kalender_monat');
@@ -68,6 +74,7 @@ const fillCalendarMonth = obj => {
 
 /*
     Function mit Seiteneffekten und ohne Rückgabewert
+    Füllt den Tabellenkörper des Kalenders
  */
 const fillCalendar = obj => {
     fillCalendarMonth(obj);
@@ -81,6 +88,7 @@ const fillCalendar = obj => {
     });
 };
 
+// Hier nutzen wir die Kurzhand Schreibweise ...obj, day. D.h. aus dem mitgegebenen objekt, nur das Attribut mit day nutzen.
 const setDay = (obj, day = 1) => ({...obj, day});
 const setMonth = (obj, month = 0) => ({...obj, month});
 const setYear = (obj, year = new Date().getUTCFullYear()) => ({...obj, year});
@@ -135,6 +143,7 @@ const heutigenTagHervorheben = obj => {
     todaysEntry.className = 'heute';
 };
 
+// Diese Funktion funktioniert noch nicht zuverlässig. BUGFIX
 const alleMonatsTermineHolen = obj => {
     const anzahlDerTageDesMonats = daysOfMonth(obj);
     const tageDesMonats = [...Array(anzahlDerTageDesMonats).keys()];
@@ -152,6 +161,7 @@ const alleMonatsTermineHolen = obj => {
     return aktuelleTerminListe;
 }
 
+// Erzeugt ein String, für das DatePicker Element um es direkt ausfüllen zu können.
 const toDatePickerString = obj => {
     let day = obj.day < 10 ? '0' + obj.day : obj.day;
     return `${obj.year}-${obj.month}-${day}`;
