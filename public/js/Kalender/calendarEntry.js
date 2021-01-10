@@ -65,9 +65,14 @@ class CalendarEntry {
 
     terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
     {
-        localStorage.removeItem(datum);
-        localStorage.setItem(datum, "");
-        terminInfosTextArea.value = "";
+        const terminInfos = terminInfosTextArea.value;
+        const terminInfosWurdenEingegeben = terminInfos !== '';
+        if(terminInfosWurdenEingegeben) {
+            console.log('Deleting entry');
+            localStorage.removeItem(datum);
+            localStorage.setItem(datum, "");
+            terminInfosTextArea.value = "";
+        }
     }
 
     terminSpeichern(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
@@ -79,6 +84,7 @@ class CalendarEntry {
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
                 localStorage.setItem(datum, terminInfos);
+                alert('Termin wurde gespeichert');
             } else {
                 alert('Sorry, Dein Browser kann nicht lokal speichern :-/');
             }
