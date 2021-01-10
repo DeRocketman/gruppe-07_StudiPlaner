@@ -293,7 +293,6 @@ function toggleProjekt() {
 document.getElementById("projektName").addEventListener('click', toggleProjekt);
 
 
-
 document.addEventListener('keydown', (evt) => {
     let key = evt.key;
 
