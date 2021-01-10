@@ -13,7 +13,7 @@ const navbarAction = ()=>{
             if(link.style.animation) {
                 link.style.animation = ''
             }else{
-                link.style.animation =  link.style.animation = `navbarFadeIn 0.5s ease forwards ${index / 2 + 1.0}s`;
+                link.style.animation =  link.style.animation = `navbarFadeIn 0.3s ease forwards ${index / 2}s`;
             }
         });
         //Animation für das Burgermenü
