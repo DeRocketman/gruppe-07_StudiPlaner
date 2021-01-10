@@ -3,8 +3,6 @@
  */
 //
 // Let us open our database
-
-
 const DB_VERSION = 2;
 const DB_NAME = "WPGruppe07";
 
