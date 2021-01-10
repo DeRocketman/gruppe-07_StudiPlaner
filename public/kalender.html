@@ -56,13 +56,43 @@
     <section>
 <fieldset id="unserFieldset">
     <legend>Termineingabe</legend>
+    <form>
+
     <div id="datumsSelektion">
+        <label for="aktuellesDatum">Datumseingabe</label>
         <input id="aktuellesDatum" type="date">
     </div>
-        <textarea id="notizfeld" cols="30" rows="20"></textarea>
+    <div>
+        <input type="radio" id="auswahl1" value="vorlesung" name="terminart" checked>
+        <label for="auswahl1">Vorlesung</label>
+        <input type="radio" id="auswahl2" value="gruppenarbeit" name="terminart">
+        <label for="auswahl2">Gruppenarbeit</label>
+        <input type="radio" id="auswahl3" value="klausur" name="terminart">
+        <label for="auswahl3">Klausur</label>
+    </div>
+
+    <label for="teilnehmer"></label>
+    <select name="teilnehmer" id="teilnehmer" multiple>
+        <option value="">--Teilnehmerinnen auswählen--</option>
+        <option value="teilnehmerin1">Teilnehmerin 1</option>
+        <option value="teilnehmerin2">Teilnehmerin 2</option>
+        <option value="teilnehmerin3">Teilnehmerin 3</option>
+        <option value="teilnehmerin4">Teilnehmerin 4</option>
+    </select>
+
+    <label for="einzeltermin">Einzeltermin
+    <input id="einzeltermin" type="checkbox" value="einzelTermin">
+    </label>
+
+    <label for="notizfeld">Notizen für den Termin<br/>
+        <textarea id="notizfeld" cols="45" rows="10"></textarea>
+    </label>
     <br>
-    <button type="button" id="speichernButton" class="button">Speichern</button>
-    <button type="reset" id="loeschenButton" class="button">L&#246schen</button>
+    <div class="buttons">
+        <button type="button" id="speichernButton" class="button">Speichern</button>
+        <button type="reset" id="loeschenButton" class="button">L&#246schen</button>
+    </div>
+    </form>
 </fieldset>
     </section>
     <section class="kalender" id="kalenderK">

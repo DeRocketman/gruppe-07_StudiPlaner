@@ -93,14 +93,15 @@ class CalendarEntry {
         }
     }
 
+    // Gibt random Sprüche im Textfeld aus, wenn kein Termin eingetragen ist.
     randomText(items)
     {
         return items[Math.floor(Math.random()*items.length)];
     }
 }
 
+// Beim Laden der Seite wird dieser Eventlistener aufgerufen
 window.addEventListener('load', async () => {
-    console.log('Sprüche werden asynchron geladen');
     // müssen hier aufgrund der Asynchronen Natur der Seite auf die items warten -> await
     calendarEntry.items = await calendarEntry.spruchDesTages().then(value => { return JSON.parse(value).sprueche });
     calendarEntry.terminAbfragen();
