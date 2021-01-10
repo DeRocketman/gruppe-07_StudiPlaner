@@ -10,10 +10,15 @@ Layout des Dokuments
 thead th a {
     cursor: pointer;
 }
+
+main section fieldset {
+    display: flex;
+    flex-flow: column wrap;
+}
+
 #unserFieldset{
     height: 560px;
     background: white;
-
 }
 
 .aktuellesDatum {
@@ -27,7 +32,6 @@ thead th a {
 #datumsSelektion {
     display: flex;
     flex-flow: row wrap;
-    background-color: #F8EFC8;
     margin-bottom: 1em;
 }
 
@@ -36,6 +40,11 @@ thead th a {
     width: 98%;
     background-color: #F8EFC8;
     border-radius: 4px;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .button {
@@ -62,6 +71,10 @@ hier evtl. noch grid oder flex einbauen
     background-color: #C3F7F4;
 }
 
+#speichernButton:hover {
+    background-color: #AB63A0;
+}
+
 #loeschenButton {
     background-color: #adadad;
     margin-left: 32px;
@@ -71,6 +84,7 @@ hier evtl. noch grid oder flex einbauen
 #loeschenButton:hover {
     background-color: #AB63A0;
 }
+
 #kalenderzeug {
     width: 700px;
     margin-top: 10px;

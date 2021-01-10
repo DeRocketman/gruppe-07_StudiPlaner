@@ -1,5 +1,10 @@
 /*
-    Klasse die sich um die Termineinträge kümmert - noch ein rough Draft.
+    Klasse die sich um die Termineinträge kümmert, sprich um die Persistierung und das Laden
+    Nutzt die Klasse Termin.
+
+    Als Gimmick und POC wurde noch ein randomisierter Sprüche 'generator' implementiert durch Louis Grümmer und Ben Ansohn McDougall
+
+    Ansonsten wurde der Hauptteil dieser Klasse von Ben Ansohn McDougall implementiert.
  */
 import {Termin} from "./domain/Termin.js";
 
@@ -15,7 +20,7 @@ class CalendarEntry {
     }
 
     spruchDesTages() {
-        const url = 'sprueche.txt';
+        const url = 'data/sprueche.json';
 
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
@@ -52,15 +57,22 @@ class CalendarEntry {
         }
     }
 
-    textVeraendern(terminInfosTextArea = this.terminInfosTextArea) {
+    textVeraendern(terminInfosTextArea = this.terminInfosTextArea)
+    {
         terminInfosTextArea.value = '';
         terminInfosTextArea.placeholder = this.randomText(this.items);
     }
 
-    terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
-        localStorage.removeItem(datum);
-        localStorage.setItem(datum, "");
-        terminInfosTextArea.value = "";
+    terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
+    {
+        const terminInfos = terminInfosTextArea.value;
+        const terminInfosWurdenEingegeben = terminInfos !== '';
+        if(terminInfosWurdenEingegeben) {
+            console.log('Deleting entry');
+            localStorage.removeItem(datum);
+            localStorage.setItem(datum, "");
+            terminInfosTextArea.value = "";
+        }
     }
 
     terminSpeichern(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
@@ -72,6 +84,7 @@ class CalendarEntry {
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
                 localStorage.setItem(datum, terminInfos);
+                alert('Termin wurde gespeichert');
             } else {
                 alert('Sorry, Dein Browser kann nicht lokal speichern :-/');
             }
@@ -80,16 +93,17 @@ class CalendarEntry {
         }
     }
 
+    // Gibt random Sprüche im Textfeld aus, wenn kein Termin eingetragen ist.
     randomText(items)
     {
         return items[Math.floor(Math.random()*items.length)];
     }
 }
 
+// Beim Laden der Seite wird dieser Eventlistener aufgerufen
 window.addEventListener('load', async () => {
-    console.log('Sprüche werden asynchron geladen');
-    calendarEntry.items = await calendarEntry.spruchDesTages().then(value => { return value.split('\n'); });
-    console.log('Sprüche wurden erfolgreich geladen.');
+    // müssen hier aufgrund der Asynchronen Natur der Seite auf die items warten -> await
+    calendarEntry.items = await calendarEntry.spruchDesTages().then(value => { return JSON.parse(value).sprueche });
     calendarEntry.terminAbfragen();
 }, false);
 
