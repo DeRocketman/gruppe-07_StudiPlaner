@@ -78,7 +78,6 @@ hier evtl. noch grid oder flex einbauen
 #loeschenButton {
     background-color: #adadad;
     margin-left: 32px;
-    margin-top: 15px;
 }
 
 #loeschenButton:hover {
@@ -93,7 +92,7 @@ hier evtl. noch grid oder flex einbauen
 
 .heute {
     color: #AB63A0;
-    fontWeight: bold;
+    font-weight: bold;
 }
 
 .hinterlegterTermin {
