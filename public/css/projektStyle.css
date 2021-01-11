@@ -264,7 +264,7 @@ ul, #literatur {
 
 #projektformular{
     background-color: #F8EFC8;
-    border: 5px solid #ABA27D;
+    border: 2px solid #ABA27D;
     border-radius: 10px;
     text-align: left;
     height: 500px;
@@ -275,3 +275,6 @@ ul, #literatur {
     top: 50%;
     left: 50%;
 }
+
+#projektformular label {clear: both; float: left;}
+#projektformular input {display: block;}
