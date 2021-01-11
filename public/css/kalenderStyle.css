@@ -11,9 +11,13 @@ thead th a {
     cursor: pointer;
 }
 
-main section fieldset {
+main section fieldset form {
     display: flex;
     flex-flow: column wrap;
+}
+
+main section fieldset form div:nth-child(n+2) {
+    margin-top: 1em;
 }
 
 #unserFieldset{
