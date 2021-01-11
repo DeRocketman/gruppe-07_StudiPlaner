@@ -1,7 +1,7 @@
 /*
     js-Datei fuer die IndexedDB
  */
-//
+
 // Let us open our database
 const DB_VERSION = 2;
 const DB_NAME = "WPGruppe07";
@@ -31,15 +31,17 @@ export async function openDB() {
 
 //#region Migrations
 function initialize(db) {
+
     const objectStore = db.createObjectStore("Projekte", {
-        keyPath: "id",
+        keyPath: "pid",
         autoIncrement: true,
     });
+
 
     //Grunddaten
     objectStore.createIndex("nummer", "nummer", { unique: true });
     objectStore.createIndex("projektbezeichnung", "projektbezeichnung", { unique: false });
-//Teilenehmer
+    //Teilenehmer
     objectStore.createIndex("tn1name", "tn1name", { unique: false });
     objectStore.createIndex("tn1mail", "tn1mail", { unique: false });
     objectStore.createIndex("tn2name", "tn2name", { unique: false });
@@ -58,22 +60,22 @@ function initialize(db) {
     objectStore.createIndex("tn8mail", "tn8mail", { unique: false });
     objectStore.createIndex("tn9name", "tn9name", { unique: false });
     objectStore.createIndex("tn9mail", "tn9mail", { unique: false });
-//PieChart
+    //PieChart
     objectStore.createIndex("piechartdone", "piechartdone", { unique: false });
     objectStore.createIndex("piechartdo", "piechartdo", { unique: false });
     objectStore.createIndex("piecharttodo", "piecharttodo", { unique: false });
-//Literatur
+    //Literatur
     objectStore.createIndex("lit1", "lit1", { unique: false });
     objectStore.createIndex("lit2", "lit2", { unique: false });
     objectStore.createIndex("lit3", "lit3", { unique: false });
-//Links
+    //Links
     objectStore.createIndex("link1ref", "link1ref",{ unique: false });
     objectStore.createIndex("link1text", "link1text",{ unique: false });
     objectStore.createIndex("link2ref", "link3ref",{ unique: false });
     objectStore.createIndex("link2text", "link3text",{ unique: false });
     objectStore.createIndex("link3ref", "link3ref",{ unique: false });
     objectStore.createIndex("link3text", "link3text",{ unique: false });
-//Aufgabe
+    //Aufgabe
     objectStore.createIndex("aufgabe1text", "aufgabe1text", { unique: false })
     objectStore.createIndex("aufgabe1box", "aufgabe1box", { unique: false })
     objectStore.createIndex("aufgabe2text", "aufgabe2text", { unique: false })
@@ -86,8 +88,8 @@ function initialize(db) {
  * @param {IDBTransaction} transaction
  */
 function to1(db, transaction) {
-    const todoStore = transaction.objectStore("Projekte");
-    todoStore.createIndex("done", "done", { unique: false });
+    const projectStore = transaction.objectStore("Projekte");
+    projectStore.createIndex("done", "done", { unique: false });
 }
 /**
  * These are the migrations that need to be run from version X to current Version
