@@ -262,4 +262,16 @@ ul, #literatur {
     visibility: visible;
 }
 
-
+#projektformular{
+    background-color: #F8EFC8;
+    border: 5px solid #ABA27D;
+    border-radius: 10px;
+    text-align: left;
+    height: 500px;
+    width: 500px;
+    margin-top: -400px;
+    margin-left: -150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
