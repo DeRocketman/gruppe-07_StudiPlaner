@@ -2,7 +2,11 @@
 Stellt einen Termin - Tag im Kalender dar
  */
 export class Termin {
-    constructor(datum = '2021-12-04', text = 'Hier könnte ihr Termin stehen') {
+    constructor(datum = '2021-12-04', veranstaltungsArt = 'Vorlesung', teilnehmer = [],
+                einzelTerminOderSerie = false,  text = 'Hier könnte ihr Termin stehen') {
+        this.teilnehmer = teilnehmer;
+        this.einzelTerminOderSerie = einzelTerminOderSerie;
+        this.veranstaltungsArt = veranstaltungsArt;
         this.datum = datum;
         this.text = text;
     }

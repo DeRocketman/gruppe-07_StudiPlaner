@@ -20,6 +20,11 @@ main section fieldset form div:nth-child(n+2) {
     margin-top: 1em;
 }
 
+main section fieldset form div input {
+    align-items: center;
+    justify-content: center;
+}
+
 #unserFieldset{
     height: 560px;
     background: white;

@@ -11,8 +11,13 @@ import {Termin} from "./domain/Termin.js";
 class CalendarEntry {
     items;
     constructor(date = new Date()) {
-        this.terminInfosTextArea = document.getElementById('notizfeld');
         this.datePicker = document.getElementById('aktuellesDatum');
+        this.einzelterminCheckbox = document.getElementById('einzeltermin');
+        this.teilnehmerListeSelect = document.querySelectorAll('#teilnehmerListe option:checked');
+        this.veranstaltungsart1 = document.getElementById('auswahl1');
+        this.veranstaltungsart2 = document.getElementById('auswahl2');
+        this.veranstaltungsart3 = document.getElementById('auswahl3');
+        this.terminInfosTextArea = document.getElementById('notizfeld');
         this.IsoDatumOhneZeitStempel = date.toISOString().substr(0, 10);
         this.datePicker.value = this.IsoDatumOhneZeitStempel;
         this.termin = new Termin();
@@ -57,6 +62,16 @@ class CalendarEntry {
         }
     }
 
+    veranstaltungsArtErmitteln() {
+        if(this.veranstaltungsart1.checked) {
+            this.termin.veranstaltungsArt = this.veranstaltungsart1.value;
+        } else if (this.veranstaltungsart2.checked) {
+            this.termin.veranstaltungsArt = this.veranstaltungsart2.value;
+        } else {
+            this.termin.veranstaltungsArt = this.veranstaltungsart3.value;
+        }
+    }
+
     textVeraendern(terminInfosTextArea = this.terminInfosTextArea)
     {
         terminInfosTextArea.value = '';
@@ -80,6 +95,12 @@ class CalendarEntry {
         const terminInfos = terminInfosTextArea.value;
         const terminInfosWurdenEingegeben = terminInfos !== '';
         const browserKannLokalSpeichern = typeof(Storage) !== "undefined";
+        this.veranstaltungsArtErmitteln();
+        this.termin.einzelTerminOderSerie = this.einzelterminCheckbox.checked;
+
+        // TODO: Das hier funzt noch nicht so richtig.
+        console.log(this.teilnehmerListeSelect);
+        this.termin.teilnehmer = [...this.teilnehmerListeSelect].map(option => option.value);
 
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
