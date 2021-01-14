@@ -52,6 +52,7 @@ class CalendarEntry {
     };
 
     terminAbfragen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
+        // TODO: Falls nötig hier den Termin abarbeiten anstelle des Textareas.
         const gespeicherterText = localStorage.getItem(datum);
         const isNotTerminOrValue = gespeicherterText === '' || gespeicherterText === null;
 
