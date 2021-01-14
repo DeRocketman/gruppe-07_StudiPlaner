@@ -349,7 +349,7 @@ function projektSpeichern() {
 
 }
 
-/* https://stackoverflow.com/questions/940577/javascript-regular-expression-email-validation
+/* https://stackoverrun.com/de/q/1227734
     einfacher regulärer Ausdruck zum Überprüfen des Formats einer E-Mail (patternMail)
 
     https://regexr.com/37i6s
@@ -362,7 +362,7 @@ function projektEingabenValidieren() {
 
     let projektbezeichnung = document.getElementById("projektbezeichnung");
     let tn1mail = document.getElementById("tn1mail");
-    let patternMail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    let patternMail = /(^$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]/;
     let patternLink = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     let link1ref = document.getElementById("link1ref");
 
