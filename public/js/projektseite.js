@@ -246,7 +246,7 @@ function dblclickfunction4() {
 
 /*
 * Setting von Mailadressen direkt
-* und settingeinstellung deaktivieren (invisible machen)
+* und setting einstellung deaktivieren (invisible machen)
 * Vermutlich über Teilnehmerfavoriten gelöst.
 */
 let settingONflag = false;
@@ -269,8 +269,7 @@ function mailsetokifunction() {
 }
 
 
-// TODO!: für das Projekt die IndexDB am besten WP01 nennen, siehe Video zu IndexDB.!
-// Alles neu
+// TODO!: für das Projekt die IndexedDB am besten WP01 nennen, siehe Video zu IndexDB.!
 const projektService = new ProjektService();
 projektService.fillWindow();
 const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));
@@ -331,8 +330,14 @@ function projektLoeschen() {
     //@TODO: Funktion zum loeschen des aktuell angezeigten Projekts
 }
 
+
 //Funktion zum speichern der eingegebenen Formulardaten fuer das Projekt
-document.getElementById("projektSpeichern").addEventListener('click', projektSpeichern);
+document.getElementById("projektSpeichern").addEventListener('click', () => {
+    projektEingabenValidieren();
+    projektSpeichern();
+});
+
+
 function projektSpeichern() {
 
     var email = document.getElementById("tn1mail").value;
@@ -342,7 +347,32 @@ function projektSpeichern() {
         return re.test(email);
     }
 
+}
 
+/* https://stackoverflow.com/questions/940577/javascript-regular-expression-email-validation
+    einfacher regulärer Ausdruck zum Überprüfen des Formats einer E-Mail (patternMail)
 
+    https://regexr.com/37i6s
+    regulärer Ausdruck zum Überprüfen des Formats einer URL, in dem Fall mit https (patternLink)
+ */
+function projektEingabenValidieren() {
 
+    let projektbezeichnung = document.getElementById("projektbezeichnung");
+    let tn1mail = document.getElementById("tn1mail");
+    let patternMail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    let patternLink = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    let link1ref = document.getElementById("link1ref");
+
+    if(projektbezeichnung.value === ""){
+        alert("Dein Projekt braucht einen Namen!")
+        return false
+    } else if(!(patternMail.test(tn1mail.value))){
+        alert("Ups! Das war keine Emailadresse.")
+        return false
+    } else if(!(patternLink.test(link1ref.value))){
+        alert("Der Link bringt dir nichts. Inkorrektes Format!")
+        return false
+    } else {
+        return true
+    }
 }

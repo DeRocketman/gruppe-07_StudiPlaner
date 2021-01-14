@@ -187,23 +187,26 @@
         <button type="button" id="projektLoeschen">L&#246schen</button>
     </div>
     </article>
-    <form id="projektformular" class="elementOFF">
+
+    <!-- Formular zum Anlegen eines Projektes
+    Validierung durch required und types email/url sowie projektEingabenValidieren() -->
+    <form id="projektformular"  class="elementOFF">
     <fieldset><legend>Projektinfo</legend>
         <label for="projektbezeichnung">Projektbezeichnung</label>
-        <input id="projektbezeichnung" type="text" maxlength="25" placeholder="Projektnamen eingeben">
+        <input id="projektbezeichnung" type="text" maxlength="25" placeholder="Projektnamen eingeben" required>
     </fieldset>
     <fieldset><legend>Gruppenmitglieder</legend>
         <label for="tn1name">Teilnehmer</label>
         <input id="tn1name" type="text" maxlength="25" placeholder="Bitte Namen eingeben">
         <label for="tn1mail">E-Mail</label>
-        <input id="tn1mail" type="text" maxlength="25" placeholder="E-Mail des Teilnehmers">
+        <input id="tn1mail" type="email" placeholder="E-Mail des Teilnehmers">
     </fieldset>
     <fieldset><legend>Literatur und Links</legend>
-        <label for="lit1">Literatur 1</label>
+        <label for="litForm1">Literatur 1</label>
         <input id="litForm1" type="text" maxlength="25" placeholder="Literatur 1">
-        <label for="lit2">Literatur 2</label>
+        <label for="litForm2">Literatur 2</label>
         <input id="litForm2" type="text" maxlength="25" placeholder="Literatur 2">
-        <label for="lit3">Literatur 3</label>
+        <label for="litForm3">Literatur 3</label>
         <input id="litForm3" type="text" maxlength="25" placeholder="Literatur 3">
         <label for="link1text">Linkbezeichnung 1</label>
         <input id="link1text" type="text" placeholder="Bezeichnung Link 1">
