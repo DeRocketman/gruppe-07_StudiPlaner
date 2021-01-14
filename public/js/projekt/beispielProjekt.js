@@ -39,7 +39,7 @@ export const BeispielProjekt = () => {
 
     const aufgaben = [aufgabe1, aufgabe2, aufgabe3];
 
-    return new Projekt(1, true, 'Gruppe7',
+    return new Projekt(1, true, 'DemoProjekt1',
         teilnehmerListe, literaturVerzeichnis, linkVerzeichnis,
         'Hier kommen Notizen hin', aufgaben);
 };
