@@ -354,6 +354,9 @@ function projektSpeichern() {
 
     https://regexr.com/37i6s
     regulärer Ausdruck zum Überprüfen des Formats einer URL, in dem Fall mit https (patternLink)
+
+    test() Methode sucht nach einem Pattern, also Muster, in einem String.
+    Liefert true zurück, wenn eine Übereinstimmung da ist.
  */
 function projektEingabenValidieren() {
 
