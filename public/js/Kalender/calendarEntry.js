@@ -13,7 +13,7 @@ class CalendarEntry {
     constructor(date = new Date()) {
         this.datePicker = document.getElementById('aktuellesDatum');
         this.einzelterminCheckbox = document.getElementById('einzeltermin');
-        this.teilnehmerListeSelect = document.querySelectorAll('#teilnehmerListe option:checked');
+        this.teilnehmerListeSelect = document.getElementById('teilnehmerListe');
         this.veranstaltungsart1 = document.getElementById('auswahl1');
         this.veranstaltungsart2 = document.getElementById('auswahl2');
         this.veranstaltungsart3 = document.getElementById('auswahl3');
@@ -96,11 +96,11 @@ class CalendarEntry {
         const terminInfosWurdenEingegeben = terminInfos !== '';
         const browserKannLokalSpeichern = typeof(Storage) !== "undefined";
         this.veranstaltungsArtErmitteln();
-        this.termin.einzelTerminOderSerie = this.einzelterminCheckbox.checked;
+        this.termin.einzelTerminOderSerie = this.einzelterminCheckbox.selected;
 
         // TODO: Das hier funzt noch nicht so richtig.
-        console.log(this.teilnehmerListeSelect);
-        this.termin.teilnehmer = [...this.teilnehmerListeSelect].map(option => option.value);
+        this.termin.teilnehmer = [...this.teilnehmerListeSelect.selectedOptions].map(option => option.innerText);
+        console.log(`${this.termin.teilnehmer} -> Teilnehmer`);
 
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
