@@ -10,5 +10,6 @@ export class Termin {
         this.datum = datum;
         this.text = text;
     }
-    toString = () => `Termin für den ${this.datum}: ${this.text}`;
+    toString = () => `Termin für den ${this.datum}: nehmen ${this.teilnehmer} an einer ${this.veranstaltungsArt} 
+    teil mit dieser Information: ${this.text}`;
 }

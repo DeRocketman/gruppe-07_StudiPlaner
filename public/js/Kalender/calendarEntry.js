@@ -92,15 +92,16 @@ class CalendarEntry {
 
     terminSpeichern(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
     {
+        this.termin.text = terminInfosTextArea.value;
         const terminInfos = terminInfosTextArea.value;
         const terminInfosWurdenEingegeben = terminInfos !== '';
         const browserKannLokalSpeichern = typeof(Storage) !== "undefined";
         this.veranstaltungsArtErmitteln();
         this.termin.einzelTerminOderSerie = this.einzelterminCheckbox.selected;
 
-        // TODO: Das hier funzt noch nicht so richtig.
-        this.termin.teilnehmer = [...this.teilnehmerListeSelect.selectedOptions].map(option => option.innerText);
-        console.log(`${this.termin.teilnehmer} -> Teilnehmer`);
+        const selektierteTeilnehmerinnen = this.teilnehmerListeSelect.selectedOptions;
+        this.termin.teilnehmer = [...selektierteTeilnehmerinnen].map(option => option.innerText);
+        console.log(`${this.termin.toString()}`);
 
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
