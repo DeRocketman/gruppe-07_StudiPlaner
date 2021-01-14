@@ -44,7 +44,7 @@ export const BeispielProjekt2 = () => {
 
     const aufgaben = [aufgabe1, aufgabe2, aufgabe3];
 
-    return new Projekt(4, true, 'MISSON Impossible',
+    return new Projekt(4, true, 'DemoProjekt2',
         teilnehmerListe, literaturVerzeichnis, linkVerzeichnis,
         'Schüler:\n' +
         '\n' +

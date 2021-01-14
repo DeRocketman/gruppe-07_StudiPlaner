@@ -273,7 +273,7 @@ function mailsetokifunction() {
 // Alles neu
 const projektService = new ProjektService();
 projektService.fillWindow();
-const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 2'));
+const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));
 const projektService2 = new ProjektService(BeispielProjekt());
 const projektService3 = new ProjektService(BeispielProjekt2());
 const projektVerzeichnis = [projektService, projektService1, projektService2, projektService3];
@@ -313,3 +313,36 @@ document.addEventListener('keydown', (evt) => {
     }
 });
 
+//Funktion zum Aufruf des Anlegeformulars
+document.getElementById("projektAnlegen").addEventListener('click', projektAnlegen);
+function projektAnlegen() {
+    document.getElementById("projektformular").className = "elementON";
+}
+
+//Funktion zum Schließen des Formulars
+document.getElementById("projektAbbrechen").addEventListener('click', projektAbbrechen);
+function projektAbbrechen() {
+    document.getElementById("projektformular").className = "elementOFF";
+}
+
+//Funktion zum Loeschen eines Projekts
+document.getElementById("projektLoeschen").addEventListener('click', projektLoeschen);
+function projektLoeschen() {
+    //@TODO: Funktion zum loeschen des aktuell angezeigten Projekts
+}
+
+//Funktion zum speichern der eingegebenen Formulardaten fuer das Projekt
+document.getElementById("projektSpeichern").addEventListener('click', projektSpeichern);
+function projektSpeichern() {
+
+    var email = document.getElementById("tn1mail").value;
+
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+
+
+
+}
