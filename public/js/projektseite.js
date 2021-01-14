@@ -331,7 +331,7 @@ function projektLoeschen() {
 }
 
 
-//Funktion zum speichern der eingegebenen Formulardaten fuer das Projekt
+//Funktion zum Speichern der eingegebenen Formulardaten fuer das Projekt
 document.getElementById("projektSpeichern").addEventListener('click', () => {
     projektEingabenValidieren();
     projektSpeichern();
@@ -339,14 +339,7 @@ document.getElementById("projektSpeichern").addEventListener('click', () => {
 
 
 function projektSpeichern() {
-
-    var email = document.getElementById("tn1mail").value;
-
-    function validateEmail(email) {
-        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
-
+    //Hier sollen die Werte bei Validierung in die DB geschrieben werden
 }
 
 /* https://stackoverrun.com/de/q/1227734
