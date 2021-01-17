@@ -6,6 +6,9 @@ import {Aufgabe} from "./aufgabe.js";
 import {Literaturverzeichnis} from "../aggregate/literaturverzeichnis.js";
 import {LinkVerzeichnis} from "../aggregate/linkVerzeichnis.js";
 
+
+// TODO: Aktiviert muss refactored werden.
+//       Nummer automatisch in db generieren.
 export class Projekt {
     _nummer;
     _aktiviert;

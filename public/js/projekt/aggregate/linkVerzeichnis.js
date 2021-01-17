@@ -13,6 +13,7 @@ export class LinkVerzeichnis {
         this._verzeichnis[2] = new Link('Keine Url hinterlegt', 'Keine Beschreibung');
     }
 
+    // TODO: hier ist nochmal ein Bug
     add = (link) => {
         const istLinkVerzeichnisVoll = this._verzeichnis.length === 3;
         if(istLinkVerzeichnisVoll) {

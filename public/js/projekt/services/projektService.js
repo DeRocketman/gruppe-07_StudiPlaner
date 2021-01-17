@@ -3,12 +3,17 @@
  */
 import {Projekt} from "../domain/projekt.js";
 
+
+// TODO: bessere Kommentare
 export class ProjektService {
     _projekt;
     constructor(projekt = new Projekt()) {
         this._projekt = projekt;
     }
 
+    /*
+        Füllt das Projekt auf die Projektseite.
+     */
     fillWindow = () => {
         document.getElementById("projektName").innerHTML = this._projekt._name;
 

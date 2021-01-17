@@ -11,6 +11,7 @@ export class Literaturverzeichnis {
         this._verzeichnis[2] = new Literatur('Leer')
     }
 
+    // TODO: hier ist noch ein Bug
     add = (literatur) => {
         const istLiteraturVerzeichnisVoll = this._verzeichnis.length === 3;
         if(istLiteraturVerzeichnisVoll) {
