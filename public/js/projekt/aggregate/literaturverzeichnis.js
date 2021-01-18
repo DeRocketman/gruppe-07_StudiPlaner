@@ -4,7 +4,9 @@
 import {Literatur} from "../domain/literatur.js";
 
 export class Literaturverzeichnis {
+
     _verzeichnis = new Array(3);
+
     constructor(literatur = new Literatur()) {
         this._verzeichnis[0] = literatur;
         this._verzeichnis[1] = new Literatur('Leer')
@@ -12,15 +14,26 @@ export class Literaturverzeichnis {
     }
 
     // TODO: hier ist noch ein Bug
+
     add = (literatur) => {
         const istLiteraturVerzeichnisVoll = this._verzeichnis.length === 3;
-        if(istLiteraturVerzeichnisVoll) {
+        if (istLiteraturVerzeichnisVoll) {
             this._verzeichnis.pop();
+
+             this._verzeichnis[2] = this._verzeichnis[1];
+             this._verzeichnis[1] = this._verzeichnis[0];
+             this._verzeichnis[0] = literatur;
+
+
         }
-        return this._verzeichnis.push(literatur);
+
+
+        return this._verzeichnis;
     }
 
-    erstes = () => this._verzeichnis[0];
-    zweites = () => this._verzeichnis[1];
-    drittes = () => this._verzeichnis[2];
+
 }
+// for( let i = 0; i<=_verzeichnis.length; i++){
+//    _verzeichnis.push(_verzeichnis[i]);
+//}
+

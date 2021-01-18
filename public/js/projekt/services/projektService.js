@@ -36,6 +36,7 @@ export class ProjektService {
         }
 
         const literaturListe = this._projekt._literaturVerzeichnis._verzeichnis;
+        console.log(literaturListe);
         for(let i = 1; i <= literaturListe.length; i++) {
             document.getElementById('lit' + i).innerHTML = literaturListe[i-1]._titel;
         }
