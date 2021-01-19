@@ -29,7 +29,7 @@ clickA.addEventListener('click',()=>{
     clickE.style.color='#AB63A0'
     clickA.style.backgroundColor='#AB63A0'
     clickA.style.color= '#fff'
-    lalelu()
+    activateButton(progressA, "Projekt 1")
 })
 
 
@@ -45,19 +45,7 @@ clickB.addEventListener('click',()=>{
     clickE.style.color='#AB63A0'
     clickB.style.backgroundColor='#AB63A0'
     clickB.style.color='#fff'
-    var a = 0;
-    var run = setInterval(frames,10);
-    function frames(){
-        a = a+1;
-        if(a== progressB+1){
-            clearInterval(run);
-        }
-        else{
-            var counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " Projektname2";
-            fill.style.width = a +"%";
-        }
-    }
+    activateButton(progressB, "Projekt 2")
 })
 
 clickC.addEventListener('click',()=>{
@@ -71,19 +59,7 @@ clickC.addEventListener('click',()=>{
     clickE.style.color='#AB63A0'
     clickC.style.backgroundColor='#AB63A0'
     clickC.style.color='#fff'
-    var a = 0;
-    var run = setInterval(frames,10);
-    function frames(){
-        a = a+1;
-        if(a== progressC+1){
-            clearInterval(run);
-        }
-        else{
-            var counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " Projektname3";
-            fill.style.width = a +"%";
-        }
-    }
+    activateButton(progressC,"Projekt 3")
 })
 
 clickD.addEventListener('click',()=>{
@@ -97,19 +73,7 @@ clickD.addEventListener('click',()=>{
     clickE.style.color='#AB63A0'
     clickD.style.backgroundColor='#AB63A0'
     clickD.style.color='#fff'
-    var a = 0;
-    var run = setInterval(frames,10);
-    function frames(){
-        a = a+1;
-        if(a== progressD+1){
-            clearInterval(run);
-        }
-        else{
-            var counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " Projektname4";
-            fill.style.width = a +"%";
-        }
-    }
+    activateButton(progressD, "Projekt 4")
 })
 
 clickE.addEventListener('click',()=>{
@@ -123,31 +87,19 @@ clickE.addEventListener('click',()=>{
     clickD.style.color='#AB63A0'
     clickE.style.backgroundColor='#AB63A0'
     clickE.style.color='#fff'
-    var a = 0;
-    var run = setInterval(frames,10);
-    function frames(){
-        a = a+1;
-        if(a== progressE+1){
-            clearInterval(run);
-        }
-        else{
-            var counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " Projektname5";
-            fill.style.width = a +"%";
-        }
-    }
+    activateButton(progressE, "Projekt 5")
 })
-function lalelu() {
-    var a = 0;
-    var run = setInterval(frames, 10);
+function activateButton(progress, projektname) {
+    let a = 0;
+    let run = setInterval(frames, 10);
 
     function frames() {
         a = a + 1;
-        if (a == progressA + 1) {
+        if (a == progress + 1) {
             clearInterval(run);
         } else {
-            var counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " optionaler Projektname";
+            let counter = document.querySelector(".counter");
+            counter.textContent = a + "%" + projektname;
             fill.style.width = a + "%";
         }
     }

@@ -8,6 +8,7 @@ import {Literatur} from "./projekt/domain/literatur.js";
 import {LinkVerzeichnis} from "./projekt/aggregate/linkVerzeichnis.js";
 import {Link} from "./projekt/domain/link.js";
 import {Aufgabe} from "./projekt/domain/aufgabe.js";
+import {Aufgabenverzeichnis} from "./projekt/aggregate/aufgabenverzeichnis.js";
 
 //Listenelemente auswählen zum ein- bzw. ausblenden
 let toggle = document.getElementsByClassName('caret');
@@ -369,10 +370,10 @@ function projektSpeichern() {
     linkVerzeichnis.add(new Link(document.getElementById('link3ref').value,
         document.getElementById('link3text').value));
 
-    const aufgabenListe = [];
-    aufgabenListe[0] = new Aufgabe(document.getElementById('aufgabe1text').value);
-    aufgabenListe[1] = new Aufgabe(document.getElementById('aufgabe2text').value);
-    aufgabenListe[2] = new Aufgabe(document.getElementById('aufgabe3text').value);
+    const aufgabenListe = new Aufgabenverzeichnis();
+    aufgabenListe.add(new Aufgabe(document.getElementById('aufgabe1text').value));
+    aufgabenListe.add(new Aufgabe(document.getElementById('aufgabe2text').value));
+    aufgabenListe.add(new Aufgabe(document.getElementById('aufgabe3text').value));
 
     const zuSpeicherndesProjekt = new Projekt(
         Math.random(999999999999),

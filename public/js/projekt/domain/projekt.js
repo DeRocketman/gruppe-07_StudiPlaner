@@ -5,6 +5,7 @@ import {Teilnehmerin} from "./teilnehmerin.js";
 import {Aufgabe} from "./aufgabe.js";
 import {Literaturverzeichnis} from "../aggregate/literaturverzeichnis.js";
 import {LinkVerzeichnis} from "../aggregate/linkVerzeichnis.js";
+import {Aufgabenverzeichnis} from "../aggregate/aufgabenverzeichnis.js";
 
 
 // TODO: Aktiviert muss refactored werden.
@@ -23,8 +24,7 @@ export class Projekt {
                 literaturverzeichnis = new Literaturverzeichnis(),
                 links = new LinkVerzeichnis(),
                 notizen = 'Notizen zum Projekt',
-                aufgaben = [new Aufgabe(), new Aufgabe('Dingens', true),
-                new Aufgabe('Dritte Aufgabe', false)]) {
+                aufgaben = new Aufgabenverzeichnis()){
         this._nummer = nummer;
         this._aktiviert = aktiviert;
         this._name = name;

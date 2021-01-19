@@ -36,7 +36,6 @@ export class ProjektService {
         }
 
         const literaturListe = this._projekt._literaturVerzeichnis._verzeichnis;
-        console.log(literaturListe);
         for(let i = 1; i <= literaturListe.length; i++) {
             document.getElementById('lit' + i).innerHTML = literaturListe[i-1]._titel;
         }
@@ -48,7 +47,8 @@ export class ProjektService {
         }
         document.getElementById('notizen').value = this._projekt._notizen;
 
-        const aufgaben = this._projekt._aufgaben;
+        const aufgaben = this._projekt._aufgaben._verzeichnis;
+
         for(let i = 1; i <= aufgaben.length; i++) {
             document.getElementById('aufgabe_' + i).value = aufgaben[i - 1]._beschreibung;
             document.getElementById('checkbox' + i).checked = aufgaben[i - 1]._istErledigt;
