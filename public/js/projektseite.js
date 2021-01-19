@@ -343,8 +343,12 @@ const savedProject = new Projekt();
 //Funktion zum Speichern der eingegebenen Formulardaten fuer das Projekt
 document.getElementById("projektSpeichern").addEventListener('click', function(e) {
     e.preventDefault();
-    projektEingabenValidieren();
+    do {
+        projektEingabenValidieren();
+    } while (projektEingabenValidieren() !== true)
+
     projektSpeichern();
+
     document.getElementById("projektformular").className = "elementOFF";
     document.getElementById("projektformular").reset();
 
@@ -404,14 +408,16 @@ function projektEingabenValidieren() {
     let projektbezeichnung = document.getElementById("projektbezeichnung");
     let tn1mail = document.getElementById("tn1mail");
     let patternMail = /(^$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]))/;
-    let patternLink = /(^$|^(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))/;
+    //let patternLink = /(^$|^(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))/;
     let link1ref = document.getElementById("link1ref");
 
     if(projektbezeichnung.value === "") {
         alert("Dein Projekt braucht einen Namen!");
+        document.getElementById("projektbezeichnung");
         return false
     } else if(!(patternMail.test(tn1mail.value) || tn1mail === "")) {
         alert("Ups! Das war keine Emailadresse.");
+        tn1mail.reset();
         return false
     } //else if(!(patternLink.test(link1ref.value))){
         //alert("Der Link bringt dir nichts. Inkorrektes Format!");
