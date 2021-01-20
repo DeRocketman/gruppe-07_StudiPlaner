@@ -24,6 +24,12 @@ class CalendarEntry {
         this.items = Array("leider keine Sprüche");
     }
 
+    /*
+        Lädt asynchron per XMLHttpRequest Sprüche aus einer lokalen Textdatei.
+        Ajax Zugriff auf eine TextDatei um Sprüche abzufragen.
+        Grob nach den Best Practises auf:
+        https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started
+     */
     spruchDesTages() {
         const url = 'data/sprueche.json';
 
