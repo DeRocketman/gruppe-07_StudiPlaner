@@ -19,7 +19,7 @@ export class Projekt {
     _notizen;
     _links;
     _aufgaben;
-    constructor(nummer = 1, aktiviert = true, name = 'Klick hier',
+    constructor(nummer, aktiviert = true, name = 'Klick hier',
                 teilnehmerListe = [new Teilnehmerin()],
                 literaturverzeichnis = new Literaturverzeichnis(),
                 links = new LinkVerzeichnis(),

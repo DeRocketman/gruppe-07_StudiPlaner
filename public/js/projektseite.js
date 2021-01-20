@@ -9,6 +9,7 @@ import {LinkVerzeichnis} from "./projekt/aggregate/linkVerzeichnis.js";
 import {Link} from "./projekt/domain/link.js";
 import {Aufgabe} from "./projekt/domain/aufgabe.js";
 import {Aufgabenverzeichnis} from "./projekt/aggregate/aufgabenverzeichnis.js";
+import {IndexedDB} from "./indexedDB.js";
 
 //Listenelemente auswählen zum ein- bzw. ausblenden
 let toggle = document.getElementsByClassName('caret');
@@ -277,7 +278,12 @@ function SchalteFreiFunktion() {
 // }
 
 
-// TODO!: für das Projekt die IndexedDB am besten WP01 nennen, siehe Video zu IndexDB.!
+
+const db = new IndexedDB();
+db.initialize();
+const dbProjekt = db.retrieve("1");
+console.log(dbProjekt);
+
 const projektService = new ProjektService();
 projektService.fillWindow();
 const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));

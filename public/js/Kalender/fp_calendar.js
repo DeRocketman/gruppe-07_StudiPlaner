@@ -4,7 +4,7 @@
     Im Prinzip die Ideen aus der eben genannten Datei jedoch deutlich kürzer implementiert und dadurch weniger Bug
     anfällig, sowie leichter zu verstehen, da weniger Text und unnötiger Bootstrap-Code.
 
-    Entwicklerin: Ben Ansohn McDougall
+    Entwickler: Ben Ansohn McDougall
  */
 const fp_calendar = (date = new Date()) => ({
     year : date.getUTCFullYear(),
