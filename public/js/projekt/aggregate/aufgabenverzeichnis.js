@@ -1,5 +1,8 @@
 /*
     Aufgabenverzeichnis - Aufgaben für Projekt dürfen maximal 3 sein.
+    Können leider nicht genutzt werden wie hier vorgesehen, da ansonsten nicht in der IndexedDB speicherbar.
+    Müssten eine dto (Data transfer Object) bauen, damit die serialisierung funktionieren kann.
+    Zeit ist dafür zu knapp und passt nicht in das Zeitfenster und dem Umfang dieses Projekts
  */
 import {Aufgabe} from "../domain/aufgabe.js";
 
@@ -14,6 +17,9 @@ export class Aufgabenverzeichnis {
     }
 
 
+    /*
+        IndexedDB können keine Funktionen speichern, weswegen wir auf diese Klasse verzichten müssen.
+     */
     add = (aufgaben) => {
         const istAufgabenVerzeichnisVoll = this._verzeichnis.length === 3;
         if(istAufgabenVerzeichnisVoll) {

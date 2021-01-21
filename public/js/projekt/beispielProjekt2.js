@@ -1,8 +1,6 @@
 import {Teilnehmerin} from "./domain/teilnehmerin.js";
 import {Literatur} from "./domain/literatur.js";
-import {Literaturverzeichnis} from "./aggregate/literaturverzeichnis.js";
 import {Link} from "./domain/link.js";
-import {LinkVerzeichnis} from "./aggregate/linkVerzeichnis.js";
 import {Aufgabe} from "./domain/aufgabe.js";
 import {Projekt} from "./domain/projekt.js";
 
@@ -21,19 +19,13 @@ export const BeispielProjekt2 = () => {
     const l2 = new Literatur('EcmaScript 8');
     const l3 = new Literatur('Batterien für die Umwelt');
 
-    const literaturVerzeichnis = new Literaturverzeichnis();
-    literaturVerzeichnis.add(l1);
-    literaturVerzeichnis.add(l2);
-    literaturVerzeichnis.add(l3);
+    const literaturVerzeichnis = [l1, l2, l3];
 
     const link1 = new Link();
     const link2 = new Link('https://beispiel.com', 'Hier ist eine andere Beschreibung');
     const link3 = new Link('https://bible.com', 'Hier ist eine andere Beschreibung');
 
-    const linkVerzeichnis = new LinkVerzeichnis();
-    linkVerzeichnis.add(link1);
-    linkVerzeichnis.add(link2);
-    linkVerzeichnis.add(link3);
+    const linkVerzeichnis = [link1, link2, link3];
 
     const aufgabe1 = new Aufgabe('Security Workout', true,
         new Date('2020-12-21'), teilnehmerListe);

@@ -1,8 +1,6 @@
 import {Teilnehmerin} from "./domain/teilnehmerin.js";
 import {Literatur} from "./domain/literatur.js";
-import {Literaturverzeichnis} from "./aggregate/literaturverzeichnis.js";
 import {Link} from "./domain/link.js";
-import {LinkVerzeichnis} from "./aggregate/linkVerzeichnis.js";
 import {Aufgabe} from "./domain/aufgabe.js";
 import {Projekt} from "./domain/projekt.js";
 
@@ -18,17 +16,12 @@ export const BeispielProjekt = () => {
     const l2 = new Literatur('Java ist eine Archipelago');
     const l3 = new Literatur('HTML 9');
 
-    const literaturVerzeichnis = new Literaturverzeichnis();
-    literaturVerzeichnis.add(l1);
-    literaturVerzeichnis.add(l2);
-    literaturVerzeichnis.add(l3);
+    const literaturVerzeichnis = [l1, l2, l3];
 
     const link1 = new Link();
     const link2 = new Link('https://beispiel.com', 'Hier ist eine andere Beschreibung')
 
-    const linkVerzeichnis = new LinkVerzeichnis();
-    linkVerzeichnis.add(link1);
-    linkVerzeichnis.add(link2);
+    const linkVerzeichnis = [link1, link2];
 
     const aufgabe1 = new Aufgabe('Projektmanagement erledigen', false,
         new Date('2020-12-21'), teilnehmerListe);

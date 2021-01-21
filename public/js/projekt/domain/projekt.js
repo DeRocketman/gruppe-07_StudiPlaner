@@ -3,9 +3,8 @@
  */
 import {Teilnehmerin} from "./teilnehmerin.js";
 import {Aufgabe} from "./aufgabe.js";
-import {Literaturverzeichnis} from "../aggregate/literaturverzeichnis.js";
-import {LinkVerzeichnis} from "../aggregate/linkVerzeichnis.js";
-import {Aufgabenverzeichnis} from "../aggregate/aufgabenverzeichnis.js";
+import {Literatur} from "./literatur.js";
+import {Link} from "./link.js";
 
 
 // TODO: Aktiviert muss refactored werden.
@@ -19,12 +18,13 @@ export class Projekt {
     _notizen;
     _links;
     _aufgaben;
+
     constructor(nummer, aktiviert = true, name = 'Klick hier',
                 teilnehmerListe = [new Teilnehmerin()],
-                literaturverzeichnis = new Literaturverzeichnis(),
-                links = new LinkVerzeichnis(),
+                literaturverzeichnis = [new Literatur()],
+                links = [new Link()],
                 notizen = 'Notizen zum Projekt',
-                aufgaben = new Aufgabenverzeichnis()){
+                aufgaben = [new Aufgabe()]) {
         this._nummer = nummer;
         this._aktiviert = aktiviert;
         this._name = name;

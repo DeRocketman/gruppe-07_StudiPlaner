@@ -35,19 +35,19 @@ export class ProjektService {
             }
         }
 
-        const literaturListe = this._projekt._literaturVerzeichnis._verzeichnis;
+        const literaturListe = this._projekt._literaturVerzeichnis;
         for(let i = 1; i <= literaturListe.length; i++) {
             document.getElementById('lit' + i).innerHTML = literaturListe[i-1]._titel;
         }
 
-        const links = this._projekt._links._verzeichnis;
+        const links = this._projekt._links;
         for(let i = 1; i <= links.length; i++) {
             document.getElementById('link' + i).firstChild.href = links[i - 1]._url;
             document.getElementById('link' + i).firstChild.innerHTML = links[i - 1]._beschreibung;
         }
         document.getElementById('notizen').value = this._projekt._notizen;
 
-        const aufgaben = this._projekt._aufgaben._verzeichnis;
+        const aufgaben = this._projekt._aufgaben;
 
         for(let i = 1; i <= aufgaben.length; i++) {
             document.getElementById('aufgabe_' + i).value = aufgaben[i - 1]._beschreibung;

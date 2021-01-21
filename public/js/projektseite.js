@@ -280,9 +280,8 @@ function SchalteFreiFunktion() {
 
 
 const db = new IndexedDB();
+console.log(BeispielProjekt2());
 db.initialize();
-const dbProjekt = db.retrieve("1");
-console.log(dbProjekt);
 
 const projektService = new ProjektService();
 projektService.fillWindow();
@@ -367,23 +366,23 @@ function projektSpeichern() {
     const name = document.getElementById('tn1name').value;
     const mail = document.getElementById('tn1mail').value;
 
-    const litVerzeichnis = new Literaturverzeichnis();
-    litVerzeichnis.add(new Literatur(document.getElementById('litForm1').value));
-    litVerzeichnis.add(new Literatur(document.getElementById('litForm2').value));
-    litVerzeichnis.add(new Literatur(document.getElementById('litForm3').value));
+    const litVerzeichnis = [];
+    litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
+    litVerzeichnis[1] = new Literatur(document.getElementById('litForm2').value);
+    litVerzeichnis[2] = new Literatur(document.getElementById('litForm3').value);
 
-    const linkVerzeichnis = new LinkVerzeichnis();
-    linkVerzeichnis.add(new Link(document.getElementById('link1ref').value,
-        document.getElementById('link1text').value));
-    linkVerzeichnis.add(new Link(document.getElementById('link2ref').value,
-        document.getElementById('link2text').value));
-    linkVerzeichnis.add(new Link(document.getElementById('link3ref').value,
-        document.getElementById('link3text').value));
+    const linkVerzeichnis = [];
+    linkVerzeichnis[0] = new Link(document.getElementById('link1ref').value,
+        document.getElementById('link1text').value);
+    linkVerzeichnis[1] = new Link(document.getElementById('link2ref').value,
+        document.getElementById('link2text').value);
+    linkVerzeichnis[2] = new Link(document.getElementById('link3ref').value,
+        document.getElementById('link3text').value);
 
-    const aufgabenListe = new Aufgabenverzeichnis();
-    aufgabenListe.add(new Aufgabe(document.getElementById('aufgabe1text').value));
-    aufgabenListe.add(new Aufgabe(document.getElementById('aufgabe2text').value));
-    aufgabenListe.add(new Aufgabe(document.getElementById('aufgabe3text').value));
+    const aufgabenListe = [];
+    aufgabenListe[0] = new Aufgabe(document.getElementById('aufgabe1text').value);
+    aufgabenListe[1] = new Aufgabe(document.getElementById('aufgabe2text').value);
+    aufgabenListe[2] = new Aufgabe(document.getElementById('aufgabe3text').value);
 
     const zuSpeicherndesProjekt = new Projekt(
         Math.random(999999999999),
