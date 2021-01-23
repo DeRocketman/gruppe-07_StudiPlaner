@@ -1,5 +1,6 @@
 /*
-Ein Kalender Jahr, aggregat aller Monate und entsprechender Termine
+    Ein Kalender Jahr, aggregat aller Monate und entsprechender Termine
+    Author: Benjamin Ansohn McDougall
  */
 import {Monat} from "./monat.js";
 

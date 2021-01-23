@@ -1,5 +1,7 @@
 /*
-Stellt einen Termin - Tag im Kalender dar
+    Stellt einen Termin - Tag im Kalender dar
+
+    Author: Ben Ansohn McDougall
  */
 export class Termin {
     constructor(datum = '2021-12-04', veranstaltungsArt = 'Vorlesung', teilnehmer = [],

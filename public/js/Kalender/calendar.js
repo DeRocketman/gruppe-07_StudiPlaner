@@ -1,6 +1,10 @@
 /*
 Klasse um grundlegende Kalender Eigenschaften zu definieren.
 params: Date, default derzeitige Datum
+
+    Erster Wurf der allerdings durch fp_calendar.js ersetzt.
+
+    Author: Benjamin Ansohn McDougall
  */
 class Calendar {
     constructor(date = new Date()) {

@@ -1,5 +1,5 @@
 /*
-    Link für die jeweiligen Projekte
+    Fachwert - Link für die jeweiligen Projekte
  */
 export class Link {
     _url;

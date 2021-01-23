@@ -1,5 +1,5 @@
 /*
-    Literatur für ein Projekt
+    Fachwert - Literatur für ein Projekt
  */
 export class Literatur {
     _titel;

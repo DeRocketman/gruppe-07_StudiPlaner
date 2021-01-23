@@ -3,8 +3,9 @@
     Anstatt das übliche OOP Vorgehen zu verfolgen, siehe calendar.js.
     Im Prinzip die Ideen aus der eben genannten Datei jedoch deutlich kürzer implementiert und dadurch weniger Bug
     anfällig, sowie leichter zu verstehen, da weniger Text und unnötiger Bootstrap-Code.
+    Leider noch nicht ganz Seiteneffektfrei. :D
 
-    Entwickler: Ben Ansohn McDougall
+    Author: Ben Ansohn McDougall
  */
 const fp_calendar = (date = new Date()) => ({
     year : date.getUTCFullYear(),
@@ -23,6 +24,9 @@ const terminListe = () => ({
     anzahl : 0
 });
 
+/*
+    Helper Methoden die Zahlen auf Strings mappt.
+ */
 const nameOfMonth = month => ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli'
     , 'August', 'September', 'Oktober', 'November', 'Dezember'][month];
 const nameOfDay = weekday => ['fehlerInNameOfDay', 'Montag', 'Dienstag', 'Mittwoch',
@@ -42,6 +46,10 @@ const daysOfMonth = obj => {
     return numberOfDaysInMonth;
 };
 
+/*
+    Ermittelt den ersten Tag im Monat.
+    Ist wichtig um zu Wissen
+ */
 const firstDayOfMonth = obj => {
     let earliestDay = obj.day % 7;
     let dayOfWeek = obj.weekday;

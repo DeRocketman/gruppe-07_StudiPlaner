@@ -1,7 +1,7 @@
 import { ProjektService} from "./projekt/services/projektService.js";
 import {Projekt} from "./projekt/domain/projekt.js";
-import {BeispielProjekt} from "./projekt/beispielProjekt.js";
-import {BeispielProjekt2} from "./projekt/beispielProjekt2.js";
+import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
+import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 import {Teilnehmerin} from "./projekt/domain/teilnehmerin.js";
 import {Literaturverzeichnis} from "./projekt/aggregate/literaturverzeichnis.js";
 import {Literatur} from "./projekt/domain/literatur.js";

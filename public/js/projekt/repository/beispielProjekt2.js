@@ -1,9 +1,13 @@
-import {Teilnehmerin} from "./domain/teilnehmerin.js";
-import {Literatur} from "./domain/literatur.js";
-import {Link} from "./domain/link.js";
-import {Aufgabe} from "./domain/aufgabe.js";
-import {Projekt} from "./domain/projekt.js";
+import {Teilnehmerin} from "../domain/teilnehmerin.js";
+import {Literatur} from "../domain/literatur.js";
+import {Link} from "../domain/link.js";
+import {Aufgabe} from "../domain/aufgabe.js";
+import {Projekt} from "../domain/projekt.js";
 
+/*
+    Repository Klasse mit einem BeispielProjekt
+    Autoren im Pair: Dirk Stricker, Benjamin Ansohn McDougall
+ */
 export const BeispielProjekt2 = () => {
     const t1 = new Teilnehmerin('Hans A. Rostock', 'info@hansa.de');
     const t2 = new Teilnehmerin('Henriette Acker', 'h.acker@hacker.net');

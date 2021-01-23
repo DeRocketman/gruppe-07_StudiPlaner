@@ -27,7 +27,7 @@ class CalendarEntry {
     /*
         Lädt asynchron per XMLHttpRequest Sprüche aus einer lokalen Textdatei.
         Ajax Zugriff auf eine TextDatei um Sprüche abzufragen.
-        Grob nach den Best Practises auf:
+        Vorgehen nach den Best Practices auf:
         https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started
      */
     spruchDesTages() {
@@ -57,7 +57,11 @@ class CalendarEntry {
         });
     };
 
-    terminAbfragen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel) {
+    /*
+        Schaut im Localstorage, ob ein Termin für ein Datum vorhanden ist.
+     */
+    terminAbfragen(terminInfosTextArea = this.terminInfosTextArea,
+                   datum = this.IsoDatumOhneZeitStempel) {
         // TODO: Falls nötig hier den Termin abarbeiten anstelle des Textareas.
         const gespeicherterText = localStorage.getItem(datum);
         const isNotTerminOrValue = gespeicherterText === '' || gespeicherterText === null;
@@ -69,6 +73,9 @@ class CalendarEntry {
         }
     }
 
+    /*
+        Ermittelt welche Art von Veranstaltung der Termin ist
+     */
     veranstaltungsArtErmitteln() {
         if(this.veranstaltungsart1.checked) {
             this.termin.veranstaltungsArt = this.veranstaltungsart1.value;
@@ -79,12 +86,18 @@ class CalendarEntry {
         }
     }
 
+    /*
+        Hilfsmethode um die Textarea zu befüllen.
+     */
     textVeraendern(terminInfosTextArea = this.terminInfosTextArea)
     {
         terminInfosTextArea.value = '';
         terminInfosTextArea.placeholder = this.randomText(this.items);
     }
 
+    /*
+        Löscht einen Termin aus dem LocalStorage
+     */
     terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
     {
         const terminInfos = terminInfosTextArea.value;
@@ -97,6 +110,9 @@ class CalendarEntry {
         }
     }
 
+    /*
+        Speichert Termine aus dem Formular in die LocalStorage
+     */
     terminSpeichern(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
     {
         this.termin.text = terminInfosTextArea.value;
