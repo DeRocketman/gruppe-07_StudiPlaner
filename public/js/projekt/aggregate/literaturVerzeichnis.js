@@ -1,5 +1,5 @@
 /*
-    Literaturverzeichnis - Literaturangaben für Projekte, dürfen maximal drei sein
+    LiteraturVerzeichnis - Literaturangaben für Projekte, dürfen maximal drei sein
     Können leider nicht genutzt werden wie hier vorgesehen, da ansonsten nicht in der IndexedDB speicherbar.
     Müssten eine dto (Data transfer Object) bauen, damit die serialisierung funktionieren kann.
     Zeit ist dafür zu knapp und passt nicht in das Zeitfenster und dem Umfang dieses Projekts
@@ -8,7 +8,7 @@
  */
 import {Literatur} from "../domain/literatur.js";
 
-export class Literaturverzeichnis {
+export class LiteraturVerzeichnis {
 
     _verzeichnis = new Array(3);
 

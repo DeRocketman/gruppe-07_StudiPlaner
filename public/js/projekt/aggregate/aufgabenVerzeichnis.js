@@ -1,5 +1,5 @@
 /*
-    Aufgabenverzeichnis - Aufgaben für Projekt dürfen maximal 3 sein.
+    AufgabenVerzeichnis - Aufgaben für Projekt dürfen maximal 3 sein.
     Können leider nicht genutzt werden wie hier vorgesehen, da ansonsten nicht in der IndexedDB speicherbar.
     Müssten eine dto (Data transfer Object) bauen, damit die serialisierung funktionieren kann.
     Zeit ist dafür zu knapp und passt nicht in das Zeitfenster und dem Umfang dieses Projekts
@@ -8,7 +8,7 @@
  */
 import {Aufgabe} from "../domain/aufgabe.js";
 
-export class Aufgabenverzeichnis {
+export class AufgabenVerzeichnis {
     _verzeichnis = new Array(3);
 
     constructor(aufgaben = new Aufgabe()) {
