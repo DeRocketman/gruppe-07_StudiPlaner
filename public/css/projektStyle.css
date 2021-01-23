@@ -208,7 +208,7 @@ Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
 }
 
 .erinnerungsmails img {
-    min-height: 30px;
+    max-height: 30px;
 }
 
 .erinnerungsmails div {
