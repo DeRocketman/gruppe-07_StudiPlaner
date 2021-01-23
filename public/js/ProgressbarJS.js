@@ -1,5 +1,10 @@
+/*
+    Autor: Louis Grümmer
+    Inspiration: https://www.youtube.com/watch?v=gR8gb_wWEnY
+ */
 
-//import {Projekt} from "../projekt/domain/projekt.js";
+
+//import {Projekt} from "./projekt/domain/projekt.js";
 
 let fill = document.querySelector(".fill");
 let clickA = document.getElementById("button1ID");
@@ -9,23 +14,24 @@ let clickD = document.getElementById("button4ID");
 let clickE = document.getElementById("button5ID");
 
 
-let clickAll = [clickA, clickB, clickC, clickD, clickE ];
-
-let progressAll = [progressA= 5, progressB= 10, progressC= 20, progressD= 30, progressE= 40];
-let projektnameAll = ["Projekt 1", "Projekt 2", "Projekt 3","Projekt 4","Projekt 5",]
+const clickAll = [clickA, clickB, clickC, clickD, clickE ];
+//const pro = new Projekt();
+let progressAll = [5, 10, 20,  30, 40];
+let projektnameAll = ["pro._name", "Projekt 2", "Projekt 3","Projekt 4","Projekt 5",]
 /*
 for (int i = 0; i < document.getElementsByClassName('buttonClass').length ; i++)
  { document.getElementsByClassName('buttonClass')[i].innerHTML = "Knopf " + i; }
  */
 
 function progressbarStart(){
-    for (let i = 0; i <= clickAll.length; i++){
+    for (let i = 0; i < clickAll.length; i++)
+        console.log(clickAll[i])
         clickAll[i].addEventListener('click',() =>{
             activateButton(progressAll[i], projektnameAll[i])
             activateClick(clickAll[i])
         })
     }
-        }
+
 
 function activateButton(progress, projektname) {
    /*
@@ -54,6 +60,7 @@ function activateButton(progress, projektname) {
         }
     }
 }
+//TODO CSS Active klasse
 function activateClick(click) {
     for (let i = 0; i <= clickAll.length; i++) {
         clickAll[i].style.backgroundColor = '#F5D5F0'

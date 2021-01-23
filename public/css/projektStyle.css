@@ -1,4 +1,9 @@
 /*
+    Stylesheet von Gruppe07 fuer Projektseite
+    Autoren: Dirk Stricker, Benjamin Ansohn McDougall, Kim Lara Feller, Louis Grümmer>
+ */
+
+/*
 Layout des Dokuments
   Farbschema:
   cookieCrema: #ABA27D
@@ -14,6 +19,7 @@ Layout des Dokuments
 #mainLogo:hover {
     animation: animation 1000ms linear backwards alternate-reverse;
 }
+
 @keyframes  animation {
     0% { transform: rotate(0); }
     100% { transform: rotate(360deg); }
@@ -79,12 +85,15 @@ main article:first-child ul li::marker {
 
 /*Ende Personen */
 
-/* Beginn Kreisdiagramm-Projekte */
+/*
+Beginn Kreisdiagramm-Projekte
+Autor: Louis Grümmer
+Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
+*/
 #piechart {
     position: center;
     left: -10%;
     top: 50px;
-
 }
 
 .piece {
@@ -128,6 +137,7 @@ main article:first-child ul li::marker {
 #piechartID{
     margin-right: 200px;
 }
+/* Ende Kreisdiagramm */
 
 .oberhaus:nth-child(3) {
     display: grid;
