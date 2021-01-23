@@ -1,5 +1,6 @@
 /*
     Fachwert - Link für die jeweiligen Projekte
+    Author: Benjamin McDougall
  */
 export class Link {
     _url;
