@@ -1,3 +1,6 @@
+/*
+    Autor: Kim Lara Feller
+ */
 /*Start Tabs */
 
 // Projekt 1 ist als default angeklickt
