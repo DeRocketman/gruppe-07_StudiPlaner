@@ -1,3 +1,7 @@
+/*
+    Autor: Kim Lara Feller
+ */
+
 //Variabeln Spiel
  x = 0;
 let y = 0;

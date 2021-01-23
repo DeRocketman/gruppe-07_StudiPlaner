@@ -1,3 +1,9 @@
+/*
+    Stylesheet von Gruppe07 fuer Header und Navigationsleiste
+    Autoren: Dirk Stricker, Benjamin Ansohn McDougall, Kim Lara Feller, Louis Grümmer>
+ */
+
+
 body {
     padding: 0;
     margin: 0 0 1em 0;
@@ -6,7 +12,14 @@ body {
     font-weight: normal;
     color: #333333;
 }
+/*
+    Start Navigationsleiste
 
+    Autor: Louis Grümmer
+    Inspiration: https://www.youtube.com/watch?v=gXkqy0b4M5g
+                 https://www.youtube.com/watch?v=wHFflWvii3M&t=880s
+
+ */
 .navBarTotal{
     display: flex;
     background-color: #C3F7F4;
@@ -25,10 +38,7 @@ body {
     font-weight: bold;
     color: #ABA27D;
     list-style: none;
-
-
 }
-
 
 .navBarTotal ul li:hover .submenu1{
     display: block;
@@ -36,18 +46,18 @@ body {
     background: #C3F7F4;
     margin-top: 15px;
     margin-left: -60px;
-
 }
+
 .navBarTotal ul li:hover .submenu1 ul{
     display: block;
     margin: 10px;
 }
+
 .navBarTotal ul li:hover .submenu1 ul li{
     width: 100px;
     padding: 10px;
     text-align: left
 }
-
 
 .navPoints{
     display: inline-flex;
@@ -64,6 +74,15 @@ body {
     font-weight: bold;
     color: #ABA27D;
 }
+
+#unassigned{
+    opacity: 50%;
+}
+
+#unassigned:hover{
+    opacity: 50%;
+}
+
 .navPoints_li {
     list-style: none;
     opacity: 0;
@@ -73,6 +92,8 @@ body {
 .navbarActive{
     transform: translateX(0%);
 }
+/* Implementierung der Animation für die Navigationsleiste*/
+
 @keyframes navbarFadeIn{
     from{
         opacity: 0;
@@ -82,11 +103,12 @@ body {
         opacity: 1;
         transform: translateX(0px);
     }
-
 }
+
 .burgerToX .line1{
     transform: rotate(-45deg) translate(-5px,6px);
 }
+
 .burgerToX .line2{
     opacity: 0;
 }
@@ -109,9 +131,12 @@ nav a:hover {
     border-radius: 5px;
     transition: all 0.3s ease;
 }
+/* Navigationsleiste Ende */
 
-
-/* Logo mit Gruß-Formel und Unterschrift */
+/*
+    Logo mit Gruß-Formel und Unterschrift
+    Autor:
+*/
 header section {
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;

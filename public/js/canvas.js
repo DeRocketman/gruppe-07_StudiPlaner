@@ -1,9 +1,17 @@
+
+/*
+    Datei wurde implementiert, um den Umgang mit Canvas zu lernen und die Weissraeume der Seite zu verschönern.
+    Autor: Louis Grümmer
+    Quelle: https://www.youtube.com/watch?v=vxljFhP2krI&t=1275s
+ */
+
+
     const background = document.querySelector('canvas');
 
     background.width = window.innerWidth;
     background.height = window.innerHeight;
 
-    const godparticle = background.getContext('2d')
+    const cnvs = background.getContext('2d')
 
     const mouse ={
     x: undefined,
@@ -38,23 +46,23 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
     this.minRadius = minRadius;
     this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
     //erzeugt einen Kreis auf dem Bildschirm
-    this.generate = function () {
-        godparticle.beginPath();
-        godparticle.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
-        godparticle.fillStyle = this.color;
-        godparticle.fill();
+    this.generate = () => {
+        cnvs.beginPath();
+        cnvs.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+        cnvs.fillStyle = this.color;
+        cnvs.fill();
     }
 
-    this.movement = function (){
-        //*damit die Kreise auch im Bild bleiben :P
-        // *(+/-this.radius damit der Rand des Kreises vom Bildschirmrand abprallt und nicht der Mittelpunkt)
+    this.movement = () =>{
+        //damit die Kreise im Bild bleiben
+        //(+/-this.radius damit der Rand des Kreises vom Bildschirmrand abprallt und nicht der Mittelpunkt)
         if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
             this.velociraptorX = -this.velociraptorX;
         }
         if(this.y + this.radius > innerHeight || this.y - this.radius < 0){
             this.velociraptorY = -this.velociraptorY;
         }
-        //*zufällige Geschwindigkeit mit der sich die Kreise in x und y Richtung bewegen
+        //zufällige Geschwindigkeit mit der sich die Kreise in x und y Richtung bewegen
         this.x += this.velociraptorX/3;
         this.y += this.velociraptorY/3;
 
@@ -71,9 +79,6 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
         this.generate();
     }
 }
-
-
-
     const circleArray = [];
 
     //erzeugt die angegebene Anzahl an Kreisen mit einer zufälligen Größe, Bewegungsgeschwindigkeit
@@ -81,29 +86,28 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
 
     for (let i = 0; i < circleCount; i++){
         const radius = Math.random() * 3 +1;
-        //*damit die Kreise nicht am Bildschirmrand "steckenbleiben"
+        //damit die Kreise nicht am Bildschirmrand "steckenbleiben"
         const x = Math.random() * (innerWidth - radius * 2) + radius;
         const y = Math.random() * (innerHeight - radius * 2) + radius;
         const velociraptorX = (Math.random() - 0.5); //*höchster Wert Math.random=1-0.5=0.5, kleinster Wert Math.random=0-0.5=-0.5
         const velociraptorY = (Math.random() - 0.5);
-        //*die zufälligen Werte werden übergeben um bei jedem For-Loop ein neues Circle Objekt zu erzeugen
+        //die zufälligen Werte werden übergeben um bei jedem For-Loop ein neues Circle Objekt zu erzeugen
         circleArray.push(new Circle(x, y, velociraptorX, velociraptorY, radius));
     }
 
 
-    function magic() {
-        requestAnimationFrame(magic);
-        //*damit die Kreise sich "nur" bewegen und keine Striche erzeugen
-        godparticle.clearRect(0, 0, innerWidth, innerHeight);
+    function circlemovement() {
+        requestAnimationFrame(circlemovement);
+        //damit die Kreise sich "nur" bewegen und keine Striche erzeugen
+        cnvs.clearRect(0, 0, innerWidth, innerHeight);
 
         for (let i = 0; i < circleArray.length; i++){
             circleArray[i].movement();
         }
 
-
     }
 
-    magic();
+    circlemovement();
 
 
 
