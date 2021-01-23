@@ -1,5 +1,7 @@
 /*
     js-Datei für die IndexedDB
+
+    Authorin: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
  */
 
 import {Projekt} from "./projekt/domain/projekt.js";
