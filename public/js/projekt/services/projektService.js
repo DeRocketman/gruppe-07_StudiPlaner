@@ -1,10 +1,9 @@
-/*
-    Baut Projekte ins Frontend ein.
- */
 import {Projekt} from "../domain/projekt.js";
 
-
-// TODO: bessere Kommentare
+/*
+    Eine Decorator Klasse die Projektinformationen auf der Projektseite dynamisch hinzufügt.
+    Autoren im Pair: Dirk Stricker, Benjamin Ansohn McDougall
+ */
 export class ProjektService {
     _projekt;
     constructor(projekt = new Projekt()) {
@@ -12,7 +11,7 @@ export class ProjektService {
     }
 
     /*
-        Füllt das Projekt auf die Projektseite.
+        Füllt die Werte aus dem Projekt auf die Projektseite.
      */
     fillWindow = () => {
         document.getElementById("projektName").innerHTML = this._projekt._name;

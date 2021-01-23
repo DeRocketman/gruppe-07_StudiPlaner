@@ -3,6 +3,8 @@
     Können leider nicht genutzt werden wie hier vorgesehen, da ansonsten nicht in der IndexedDB speicherbar.
     Müssten eine dto (Data transfer Object) bauen, damit die serialisierung funktionieren kann.
     Zeit ist dafür zu knapp und passt nicht in das Zeitfenster und dem Umfang dieses Projekts
+
+    Author: Benjamin McDougall, nachträgliches Refactoring mit Louis Grümmer.
  */
 import {Literatur} from "../domain/literatur.js";
 

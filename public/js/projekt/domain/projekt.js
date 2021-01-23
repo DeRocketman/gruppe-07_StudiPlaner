@@ -1,5 +1,7 @@
 /*
-   Klasse zum anlegen eines neuen Projekts der Projektseite
+   Material - Klasse zum anlegen eines neuen Projekts der Projektseite
+   Author: Benjamin McDougall
+
  */
 import {Teilnehmerin} from "./teilnehmerin.js";
 import {Aufgabe} from "./aufgabe.js";

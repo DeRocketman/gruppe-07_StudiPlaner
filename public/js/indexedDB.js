@@ -1,10 +1,11 @@
 /*
     js-Datei für die IndexedDB
- */
 
+    Authorin: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
+ */
 import {Projekt} from "./projekt/domain/projekt.js";
-import {BeispielProjekt} from "./projekt/beispielProjekt.js";
-import {BeispielProjekt2} from "./projekt/beispielProjekt2.js";
+import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
+import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 
 export class IndexedDB {
     _db
@@ -40,7 +41,7 @@ export class IndexedDB {
                 const db = event.target.result;
 
                 const objectStore = db.createObjectStore(this.objectStoreName,
-                    {keyPath: "nummer", autoIncrement: true});
+                    {keyPath: "projektNummer", autoIncrement: true});
 
                 // Damit wir die db besser durchsuchen können, legen wir
                 // hier einen Index für die Namen an.
@@ -51,7 +52,6 @@ export class IndexedDB {
                     const projekteObjectStore = db.transaction(this.objectStoreName, "readwrite")
                         .objectStore(this.objectStoreName);
                     this.projekte.forEach((projekt) => {
-                        console.log(`Fügt ${projekt._literaturVerzeichnis} hinzu`);
                         projekteObjectStore.add(projekt);
                     });
                 }
