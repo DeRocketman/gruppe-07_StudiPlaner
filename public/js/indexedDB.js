@@ -3,7 +3,6 @@
 
     Authorin: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
  */
-
 import {Projekt} from "./projekt/domain/projekt.js";
 import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
