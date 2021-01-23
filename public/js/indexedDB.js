@@ -7,7 +7,6 @@ import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 
 export class IndexedDB {
-    _db
     constructor(dbName = 'WPGruppe07', dbVersion = 3, objectStore = "Projekte") {
         this.dbName = dbName;
         this.dbVersion = dbVersion;

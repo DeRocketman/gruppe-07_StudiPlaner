@@ -1,6 +1,5 @@
 import {Projekt} from "../domain/projekt.js";
 
-
 /*
     Eine Decorator Klasse die Projektinformationen auf der Projektseite dynamisch hinzufügt.
     Autoren im Pair: Dirk Stricker, Benjamin Ansohn McDougall
