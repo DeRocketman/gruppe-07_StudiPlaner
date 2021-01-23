@@ -1,3 +1,9 @@
+/*
+Erzeugt ein Kreisdiagramm
+Autor: Louis Grümmer
+Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
+*/
+
     let pie = document.getElementById('canvasPie');
 
     pie.width = 500;

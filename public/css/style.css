@@ -137,6 +137,10 @@ Beginn Fortschrittsleiste
     border-radius: 50px;
     margin-top: 0;
 }
+button.activeProgress {
+    background-color: #AB63A0;
+    color: white;
+}
 
 /* Article Projekte  */
 

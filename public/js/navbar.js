@@ -1,3 +1,10 @@
+/*
+    Autor: Louis Grümmer
+    Inspiration: https://www.youtube.com/watch?v=gXkqy0b4M5g
+    https://www.youtube.com/watch?v=wHFflWvii3M&t=880s
+
+ */
+
 const navbarAction = ()=>{
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.navPoints');
@@ -19,7 +26,6 @@ const navbarAction = ()=>{
         //Animation für das Burgermenü
         burger.classList.toggle('burgerToX');
     });
-
 
 }
 
