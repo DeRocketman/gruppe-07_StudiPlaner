@@ -9,6 +9,7 @@ import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 
 export class IndexedDB {
+    _db
     constructor(dbName = 'WPGruppe07', dbVersion = 3, objectStore = "Projekte") {
         this.dbName = dbName;
         this.dbVersion = dbVersion;
@@ -41,7 +42,7 @@ export class IndexedDB {
                 const db = event.target.result;
 
                 const objectStore = db.createObjectStore(this.objectStoreName,
-                    {keyPath: "nummer", autoIncrement: true});
+                    {keyPath: "projektNummer", autoIncrement: true});
 
                 // Damit wir die db besser durchsuchen können, legen wir
                 // hier einen Index für die Namen an.
@@ -52,7 +53,6 @@ export class IndexedDB {
                     const projekteObjectStore = db.transaction(this.objectStoreName, "readwrite")
                         .objectStore(this.objectStoreName);
                     this.projekte.forEach((projekt) => {
-                        console.log(`Fügt ${projekt._literaturVerzeichnis} hinzu`);
                         projekteObjectStore.add(projekt);
                     });
                 }
