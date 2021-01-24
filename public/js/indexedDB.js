@@ -1,7 +1,7 @@
 /*
     js-Datei für die IndexedDB
 
-    Authorin: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
+    Autoren: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
  */
 import {Projekt} from "./projekt/domain/projekt.js";
 import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
@@ -65,8 +65,8 @@ export class IndexedDB {
 
                 // Abfangen ob die Verbindung erfolgreich war.
                 requestToOpenDb.onsuccess = (event) => {
-                    const db = requestToOpenDb.result.name;
-                    console.log(`IndexedDb ${this.dbName} mit der Version ${this.dbVersion}: ${db}`);
+                    const db = requestToOpenDb.result;
+                    console.log(`IndexedDb ${this.dbName} mit der Version ${this.dbVersion}: ${db.name}`);
                     resolve(db);
                 };
             }
@@ -148,59 +148,3 @@ export class IndexedDB {
         }
     }
 }
-
-
-// /**
-//  * @returns {Promise<IDBDatabase>}
-//  */
-// export async function openDB() {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.open(DB_NAME, DB_VERSION);
-//
-//         request.onerror = reject;
-//
-//         request.onupgradeneeded = (ev) => {
-//             const { oldVersion, newVersion } = ev;
-//             const db = ev.target.result;
-//             const versionChangeTransaction = ev.target.transaction;
-//
-//             migrations
-//                 .slice(oldVersion, newVersion)
-//                 .forEach((migration) => migration(db, versionChangeTransaction));
-//         };
-//
-//         request.onsuccess = () => resolve(request.result);
-//     });
-// }
-//
-// //#region Migrations
-// function initialize(db) {
-//
-//     const objectStoreName = db.createObjectStore("Projekte", {
-//         keyPath: "pid",
-//         autoIncrement: true,
-//     });
-//
-//     //Grunddaten
-//     objectStoreName.createIndex("nummer", "nummer", { unique: true });
-// }
-//
-// /**
-//  * @param {IDBDatabase} db
-//  * @param {IDBTransaction} transaction
-//  */
-// function to1(db, transaction) {
-//     const projectStore = transaction.objectStoreName("Projekte");
-//     projectStore.createIndex("done", "done", { unique: false });
-// }
-// /**
-//  * These are the migrations that need to be run from version X to current Version
-//  */
-// const migrations = [initialize, to1];
-// //#endregion Migrations
-//
-// openDB().then((db) => {
-//     const objectStoreName = db
-//         .transaction(["Projekte"], "readwrite")
-//         .objectStoreName("Projekte");
-// });

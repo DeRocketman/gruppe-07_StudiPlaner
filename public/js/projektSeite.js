@@ -47,32 +47,31 @@ function mailsender3() {
     IndexedDb: Dirk Stricker und Benjamin Ansohn McDougall
 */
 
+let projektVerzeichnis = [];
 const indexedDB = new IndexedDB();
+// erstmal die Datenbank initialisieren
+const openDb = indexedDB.initialize();
 
-async function init(iDb) {
-    return iDb.initialize();
-}
-
-const db = init(indexedDB);
-
-async function get(indexedDb, db, key) {
-    return indexedDB.retrieveOneItemVia_nummer(db, key);
-}
-
-get(indexedDB, db,1);
-
-
-
-
+// Promise abholen, falls möglich und die Connection nutzen um etwas auszufüllen.
+openDb.then((db) => {
+    const objectStore = db.transaction([indexedDB.objectStoreName], 'readonly')
+        .objectStore(indexedDB.objectStoreName);
+    const objectStoreRequest = objectStore.getAll();
+    objectStoreRequest.onsuccess = (event) => {
+        const pjs = new ProjektService().fillWindow();
+        setListeners();
+        event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
+    }
+});
 
 // const projekteInDerDb = db.retrieveAllProjekts();
 
-const projektService = new ProjektService();
-projektService.fillWindow();
-const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));
-const projektService2 = new ProjektService(BeispielProjekt());
-const projektService3 = new ProjektService(BeispielProjekt2());
-const projektVerzeichnis = [projektService, projektService1, projektService2, projektService3];
+// const projektService = new ProjektService();
+// projektService.fillWindow();
+// const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));
+// const projektService2 = new ProjektService(BeispielProjekt());
+// const projektService3 = new ProjektService(BeispielProjekt2());
+// const projektVerzeichnis = [projektService, projektService1, projektService2, projektService3];
 
 
 // TODO: REFACTOR THIS AFTER CRUNCH
@@ -86,28 +85,30 @@ function toggleProjekt() {
     projektVerzeichnis[counter].fillWindow();
 }
 
-document.getElementById("projektName").addEventListener('click', toggleProjekt);
+function setListeners() {
+    document.getElementById("projektName").addEventListener('click', toggleProjekt);
 
 
-document.addEventListener('keydown', (evt) => {
-    let key = evt.key;
+    document.addEventListener('keydown', (evt) => {
+        let key = evt.key;
 
-    if (key === "ArrowLeft") {
-        counter--;
-        if (counter <= 0) {
-            counter = projektVerzeichnis.length - 1;
+        if (key === "ArrowLeft") {
+            counter--;
+            if (counter <= 0) {
+                counter = projektVerzeichnis.length - 1;
+            }
+            projektVerzeichnis[counter].fillWindow();
         }
-        projektVerzeichnis[counter].fillWindow();
-    }
 
-    if (key === "ArrowRight") {
-        counter++;
-        if (counter >= projektVerzeichnis.length) {
-            counter = 0;
+        if (key === "ArrowRight") {
+            counter++;
+            if (counter >= projektVerzeichnis.length) {
+                counter = 0;
+            }
+            projektVerzeichnis[counter].fillWindow();
         }
-        projektVerzeichnis[counter].fillWindow();
-    }
-});
+    });
+}
 
 //Funktion zum Aufruf des Anlegeformulars
 document.getElementById("projektAnlegen").addEventListener('click', projektAnlegen);
