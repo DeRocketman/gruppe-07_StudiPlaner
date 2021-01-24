@@ -18,11 +18,31 @@ export class ProjektService {
 
         const teilnehmerListe = this._projekt._teilnehmerListe;
         const parentNode = document.getElementById('teilnehmerliste');
+        document.getElementById("mailP1").innerHTML = "Person A";
+        document.getElementById("mailP2").innerHTML = "Person B";
+        document.getElementById("mailP3").innerHTML = "Person C";
         removeChildren(parentNode);
         for(let i = 1; i <= teilnehmerListe.length; i++) {
             const teilnehmerNode = document.createElement('li');
             teilnehmerNode.innerHTML = teilnehmerListe[i - 1]._name;
             parentNode.appendChild(teilnehmerNode);
+
+            if(teilnehmerListe[i-1]._name !== 'Unbesetzt' || teilnehmerListe[i-1]._email !== '' || teilnehmerListe[i-1] !== null) {
+                switch (i - 1) {
+                    case 0:
+                        const personAmail = teilnehmerListe[i - 1]._email;
+                        document.getElementById("mailP1").innerHTML = teilnehmerListe[i - 1]._name;
+                        break;
+                    case 1:
+                        document.getElementById("mailP2").innerHTML = teilnehmerListe[i - 1]._name;
+                        const personBmail = teilnehmerListe[i - 1]._email;
+                        break;
+                    case 2:
+                        document.getElementById("mailP3").innerHTML = teilnehmerListe[i - 1]._name;
+                        const personCmail = teilnehmerListe[i - 1]._email;
+                        break;
+                }
+            }
         }
 
         function removeChildren(parentNode) {
