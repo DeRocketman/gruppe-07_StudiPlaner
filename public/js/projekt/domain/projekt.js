@@ -21,7 +21,7 @@ export class Projekt {
     _links;
     _aufgaben;
 
-    constructor(nummer, aktiviert = true, name = 'Klick hier',
+    constructor(nummer = Math.round(Math.random() * 100000000), aktiviert = true, name = 'Klick hier',
                 teilnehmerListe = [new Teilnehmerin()],
                 literaturverzeichnis = [new Literatur()],
                 links = [new Link()],

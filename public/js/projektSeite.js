@@ -60,9 +60,26 @@ function SchalteFreiFunktion() {
     Formular zur Eingabe: Kim Lara Feller & Louis Grümmer
     IndexedDb: Dirk Stricker und Benjamin Ansohn McDougall
 */
-const db = new IndexedDB();
-console.log(BeispielProjekt2());
-db.initialize();
+
+const indexedDB = new IndexedDB();
+
+async function init(iDb) {
+    return iDb.initialize();
+}
+
+const db = init(indexedDB);
+
+async function get(indexedDb, db, key) {
+    return indexedDB.retrieveOneItemVia_nummer(db, key);
+}
+
+get(indexedDB, db,1);
+
+
+
+
+
+// const projekteInDerDb = db.retrieveAllProjekts();
 
 const projektService = new ProjektService();
 projektService.fillWindow();
