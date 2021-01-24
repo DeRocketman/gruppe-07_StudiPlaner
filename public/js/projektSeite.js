@@ -61,7 +61,9 @@ function SchalteFreiFunktion() {
     IndexedDb: Dirk Stricker und Benjamin Ansohn McDougall
 */
 
+// Hält die Projekte der Datenbank im Speicher
 let projektVerzeichnis = [];
+
 const indexedDB = new IndexedDB();
 // erstmal die Datenbank initialisieren
 const openDb = indexedDB.initialize();
@@ -76,6 +78,7 @@ openDb.then((db) => {
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
     }
+    objectStore.transaction.oncomplete = db.close();
 });
 
 // const projekteInDerDb = db.retrieveAllProjekts();

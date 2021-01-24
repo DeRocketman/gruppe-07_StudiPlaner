@@ -59,7 +59,7 @@ export class IndexedDB {
 
                 // Abfangen ob die Verbindung nicht erfolgreich war
                 requestToOpenDb.onerror = (event) => {
-                    console.log(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
+                    reject(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
                 ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
                 };
 
