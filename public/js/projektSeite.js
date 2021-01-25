@@ -1,7 +1,5 @@
 import {ProjektService} from "./projekt/services/projektService.js";
 import {Projekt} from "./projekt/domain/projekt.js";
-import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
-import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 import {Teilnehmerin} from "./projekt/domain/teilnehmerin.js";
 import {Literatur} from "./projekt/domain/literatur.js";
 import {Link} from "./projekt/domain/link.js";
@@ -17,24 +15,28 @@ for (i = 0; i < toggle.length; i++) {
         this.classList.toggle('caret-down');
     });
 }
-//@TODO: Mailfunktionen an neue Situation (IndexedDB) anpassen
-//Mailfunktionenen
 
+//Mailfunktionen
 document.getElementById("mail1").addEventListener('click', mailsender1);
+
 function mailsender1() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + mailbetreff;
+    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[0]._email + mailbetreff;
 }
+
 document.getElementById("mail2").addEventListener('click', mailsender2);
+
 function mailsender2() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + mailbetreff;
+    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email +mailbetreff;
 
 }
+
 document.getElementById("mail3").addEventListener('click', mailsender3);
+
 function mailsender3() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" +  mailbetreff;
+    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[2]._email + mailbetreff;
 }
 
 /*
@@ -60,7 +62,6 @@ openDb.then((db) => {
         .objectStore(indexedDB.objectStoreName);
     const objectStoreRequest = objectStore.getAll();
     objectStoreRequest.onsuccess = (event) => {
-        const pjs = new ProjektService().fillWindow();
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
     }
@@ -88,9 +89,11 @@ function toggleProjekt() {
     projektVerzeichnis[counter].fillWindow();
 }
 
+/*
+    Initialisiert Listener die auf die Daten aus der Datenbank angewiesen sind.
+ */
 function setListeners() {
     document.getElementById("projektName").addEventListener('click', toggleProjekt);
-
 
     document.addEventListener('keydown', (evt) => {
         let key = evt.key;
@@ -111,6 +114,10 @@ function setListeners() {
             projektVerzeichnis[counter].fillWindow();
         }
     });
+
+    document.getElementById("mail1").addEventListener('click', mailsender1);
+    document.getElementById("mail2").addEventListener('click', mailsender2);
+    document.getElementById("mail3").addEventListener('click', mailsender3);
 }
 
 //Funktion zum Aufruf des Anlegeformulars
@@ -175,6 +182,8 @@ function projektSpeichern() {
     aufgabenListe[1] = new Aufgabe(document.getElementById('aufgabe2text').value);
     aufgabenListe[2] = new Aufgabe(document.getElementById('aufgabe3text').value);
 
+    const notizen = document.getElementById('notizen').value;
+
     const zuSpeicherndesProjekt = new Projekt(
         Math.random(999999999999),
         true,
@@ -182,7 +191,7 @@ function projektSpeichern() {
         [new Teilnehmerin(name, mail)],
         litVerzeichnis,
         linkVerzeichnis,
-        "",
+        notizen,
         aufgabenListe);
 
     projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
