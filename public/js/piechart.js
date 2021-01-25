@@ -19,7 +19,7 @@ let pieData = [
 ];
 
 function start(projekt) {
-
+    ctx.clearRect(0,0,pie.width,pie.height);
     pieData.forEach((piechart, key) => {
         piechart.piecesize = projekt._pieSize[key];
     });
