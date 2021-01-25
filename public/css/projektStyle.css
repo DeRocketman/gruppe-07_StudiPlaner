@@ -12,10 +12,11 @@ Layout des Dokuments
   zartRosé: #F5D5F0
   dunkelRosa: #AB63A0
  */
-#projektName {
+#projektName, #mail1, #mail2, #mail3 {
     cursor: pointer;
     user-select: none;
 }
+
 #mainLogo:hover {
     animation: animation 1000ms linear backwards alternate-reverse;
 }
@@ -24,9 +25,7 @@ Layout des Dokuments
     0% { transform: rotate(0); }
     100% { transform: rotate(360deg); }
 }
-#projektswitcher #projektName {
-    visibility: hidden;
-}
+
 main {
     display: grid;
     justify-content: center;

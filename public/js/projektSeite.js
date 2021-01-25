@@ -19,36 +19,22 @@ for (i = 0; i < toggle.length; i++) {
 }
 //@TODO: Mailfunktionen an neue Situation (IndexedDB) anpassen
 //Mailfunktionenen
-let personAmail;
-let personBmail;
-let personCmail;
-let mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
 
+document.getElementById("mail1").addEventListener('click', mailsender1);
 function mailsender1() {
-    location.href = "mailto:" + personAmail + mailbetreff;
+    const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+    location.href = "mailto:" + mailbetreff;
 }
-
+document.getElementById("mail2").addEventListener('click', mailsender2);
 function mailsender2() {
-    location.href = "mailto:" + personBmail + mailbetreff;
-}
+    const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+    location.href = "mailto:" + mailbetreff;
 
+}
+document.getElementById("mail3").addEventListener('click', mailsender3);
 function mailsender3() {
-    location.href = "mailto:" + personCmail + mailbetreff;
-}
-
-//1. Diese Funktion schafft die Vorrausetzung zum Anlegen eines neuen Projekts
-function frageNachProjektFunktion() {
-    document.getElementById("projektName").innerHTML = "Neues Projekt anlegen?";
-    document.getElementById("neuesProjekt").className = "elementON";
-}
-
-//2. Diese Funktion schaltet Option zum Anlegen eines Projekts frei
-document.getElementById("neuesProjekt").addEventListener("click", SchalteFreiFunktion);
-
-function SchalteFreiFunktion() {
-    document.getElementById("inputFeld").className = "elementON";
-    document.getElementById("projektuebernahme").className = "settingON";
-    document.getElementById("projektabrruch").className = "settingON";
+    const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
+    location.href = "mailto:" +  mailbetreff;
 }
 
 /*
