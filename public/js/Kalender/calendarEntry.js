@@ -1,3 +1,5 @@
+
+import {Termin} from "./domain/Termin.js";
 /*
     Klasse die sich um die Termineinträge kümmert, sprich um die Persistierung und das Laden
     Nutzt die Klasse Termin.
@@ -6,8 +8,6 @@
 
     Ansonsten wurde der Hauptteil dieser Klasse von Ben Ansohn McDougall implementiert.
  */
-import {Termin} from "./domain/Termin.js";
-
 class CalendarEntry {
     items;
     constructor(date = new Date()) {
@@ -27,8 +27,10 @@ class CalendarEntry {
     /*
         Lädt asynchron per XMLHttpRequest Sprüche aus einer lokalen Textdatei.
         Ajax Zugriff auf eine TextDatei um Sprüche abzufragen.
-        Vorgehen nach den Best Practices auf:
+        Loses Vorgehen nach den Best Practices auf: Hauptsächlich die Variablen Bezeichnung.
         https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started
+
+        Autor: Benjamin Ansohn McDougall
      */
     spruchDesTages() {
         const url = 'data/sprueche.json';
@@ -59,6 +61,8 @@ class CalendarEntry {
 
     /*
         Schaut im Localstorage, ob ein Termin für ein Datum vorhanden ist.
+
+        Autor: Benjamin Ansohn McDougall
      */
     terminAbfragen(terminInfosTextArea = this.terminInfosTextArea,
                    datum = this.IsoDatumOhneZeitStempel) {
@@ -75,6 +79,8 @@ class CalendarEntry {
 
     /*
         Ermittelt welche Art von Veranstaltung der Termin ist
+
+        Autor: Benjamin Ansohn McDougall
      */
     veranstaltungsArtErmitteln() {
         if(this.veranstaltungsart1.checked) {
@@ -88,6 +94,8 @@ class CalendarEntry {
 
     /*
         Hilfsmethode um die Textarea zu befüllen.
+
+        Autor: Benjamin Ansohn McDougall
      */
     textVeraendern(terminInfosTextArea = this.terminInfosTextArea)
     {
@@ -97,6 +105,8 @@ class CalendarEntry {
 
     /*
         Löscht einen Termin aus dem LocalStorage
+
+        Autor: Benjamin Ansohn McDougall
      */
     terminLoeschen(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
     {
@@ -112,6 +122,8 @@ class CalendarEntry {
 
     /*
         Speichert Termine aus dem Formular in die LocalStorage
+
+        Autor: Benjamin Ansohn McDougall
      */
     terminSpeichern(terminInfosTextArea = this.terminInfosTextArea, datum = this.IsoDatumOhneZeitStempel)
     {
@@ -139,6 +151,9 @@ class CalendarEntry {
     }
 
     // Gibt random Sprüche im Textfeld aus, wenn kein Termin eingetragen ist.
+    /*
+        Autor: Louis Grümmer
+     */
     randomText(items)
     {
         return items[Math.floor(Math.random()*items.length)];
@@ -152,6 +167,7 @@ window.addEventListener('load', async () => {
     calendarEntry.terminAbfragen();
 }, false);
 
+// Erstellt das CalendarEntry
 const calendarEntry = new CalendarEntry();
 
 
