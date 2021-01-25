@@ -4,31 +4,35 @@ Autor: Louis Grümmer
 Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
 */
 
-    let pie = document.getElementById('canvasPie');
+let pie = document.getElementById('canvasPie');
 
-    pie.width = 500;
-    pie.height = 300;
+pie.width = 500;
+pie.height = 300;
 
-    let ctx = pie.getContext('2d');
+let ctx = pie.getContext('2d');
 
 
-    let pieData = [
-        {name:'Done', piecesize:500,color: '#AB63A0' },
-        {name:'Doing', piecesize:400, color: '#C3F7F4'},
-        {name:'To-Do', piecesize:300, color: '#F5D5F0'}
-        ];
+let pieData = [
+    {name: 'Done', piecesize: 500, color: '#AB63A0'},
+    {name: 'Doing', piecesize: 400, color: '#C3F7F4'},
+    {name: 'To-Do', piecesize: 300, color: '#F5D5F0'}
+];
 
-    function start(){
+function start(projekt) {
+
+    pieData.forEach((piechart, key) => {
+        piechart.piecesize = projekt._pieSize[key];
+    });
 
     let total = pieData.reduce(function (together, pieceOfCake) {
         return together + pieceOfCake.piecesize
-    },0);
+    }, 0);
     let startAngle = 0;
     let radius = 120;
-    let centerX = pie.width/2;
-    let centerY = pie.height/2;
+    let centerX = pie.width / 2;
+    let centerY = pie.height / 2;
 
-    pieData.forEach( function(pieceOfCake) {
+    pieData.forEach(function (pieceOfCake) {
 
         //Styleeinstellung
         ctx.fillStyle = pieceOfCake.color;
@@ -54,12 +58,10 @@ Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
         let theta = (startAngle + endAngle) / 2;
         let labelPosY = Math.sin(theta) * 1.2 * radius;
         let labelPosX = Math.cos(theta) * 1.2 * radius;
-        
-        ctx.fillText(pieceOfCake.name, labelPosX+centerX, labelPosY+centerY);
+
+        ctx.fillText(pieceOfCake.name, labelPosX + centerX, labelPosY + centerY);
         ctx.closePath();
 
         startAngle = endAngle;
-
     })
 }
-start();

@@ -64,6 +64,7 @@ openDb.then((db) => {
     objectStoreRequest.onsuccess = (event) => {
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
+        start(projektVerzeichnis[0]._projekt);
     }
     objectStore.transaction.oncomplete = db.close();
 });
@@ -87,6 +88,7 @@ function toggleProjekt() {
         counter = 0;
     }
     projektVerzeichnis[counter].fillWindow();
+    start(projektVerzeichnis[counter]._projekt);
 }
 
 /*
@@ -104,6 +106,7 @@ function setListeners() {
                 counter = projektVerzeichnis.length - 1;
             }
             projektVerzeichnis[counter].fillWindow();
+            start(projektVerzeichnis[counter]._projekt);
         }
 
         if (key === "ArrowRight") {
@@ -112,6 +115,7 @@ function setListeners() {
                 counter = 0;
             }
             projektVerzeichnis[counter].fillWindow();
+            start(projektVerzeichnis[counter]._projekt);
         }
     });
 

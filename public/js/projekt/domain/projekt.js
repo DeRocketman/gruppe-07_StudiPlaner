@@ -20,13 +20,15 @@ export class Projekt {
     _notizen;
     _links;
     _aufgaben;
+    _pieSize;
 
     constructor(nummer = Math.round(Math.random() * 100000000), aktiviert = true, name = 'Klick hier',
                 teilnehmerListe = [new Teilnehmerin()],
                 literaturverzeichnis = [new Literatur()],
                 links = [new Link()],
                 notizen = 'Notizen zum Projekt',
-                aufgaben = [new Aufgabe()]) {
+                aufgaben = [new Aufgabe()],
+                pieSize = [500,400,300]) {
         this._nummer = nummer;
         this._aktiviert = aktiviert;
         this._name = name;
@@ -35,5 +37,6 @@ export class Projekt {
         this._links = links;
         this._notizen = notizen;
         this._aufgaben = aufgaben;
+        this._pieSize = pieSize;
     }
 }
