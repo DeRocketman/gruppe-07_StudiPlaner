@@ -204,6 +204,7 @@ main article section:nth-child(3) {
 }
 /*  Einbetten der TreeView für Design */
 #groups {
+    max-width: 225px;
     margin-left: 8%;
     margin-right: 8%;
     border-top: 1px solid black;
