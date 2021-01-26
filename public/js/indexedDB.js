@@ -1,12 +1,15 @@
-/*
-    js-Datei für die IndexedDB
 
-    Autoren: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
- */
 import {Projekt} from "./projekt/domain/projekt.js";
 import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
+/*
+    Erstellt ein neues IndexedDb Object.
+    Zudem werden zu Testzwecken zudem noch einige Objekte zu Testzwecken angelegt.
 
+    Felder: dbName = Name der Datenbank, dbVersion = Version der Datenbank, objectStore  = Tabellenname
+
+    Autoren: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
+ */
 export class IndexedDB {
     constructor(dbName = 'WPGruppe07', dbVersion = 3, objectStore = "Projekte") {
         this.dbName = dbName;
@@ -25,6 +28,10 @@ export class IndexedDB {
         Grob orientiert an den Best-Pratices von den MDN Seiten:
         https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
         https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+
+        Returns (onsuccess) => IDBDatabase
+
+        Autor: Benjamin Ansohn McDougall, POC: Dirk Stricker
      */
     initialize = () => {
         return new Promise(((resolve, reject) => {
@@ -74,7 +81,9 @@ export class IndexedDB {
     }
 
     /*
-        Gibt anhand eines Schlüssels das entsprechnede Objekt zurück
+        Gibt anhand eines Schlüssels das entsprechende Objekt zurück
+
+
      */
     retrieveOneItemVia_nummer = function (db, nummer) {
         return new Promise((resolve, reject) => {
