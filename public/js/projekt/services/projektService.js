@@ -21,6 +21,7 @@ export class ProjektService {
         document.getElementById("mailP1").innerHTML = "Person A";
         document.getElementById("mailP2").innerHTML = "Person B";
         document.getElementById("mailP3").innerHTML = "Person C";
+
         removeChildren(parentNode);
         for(let i = 1; i <= teilnehmerListe.length; i++) {
             const teilnehmerNode = document.createElement('li');
