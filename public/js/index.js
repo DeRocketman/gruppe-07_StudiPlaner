@@ -32,26 +32,37 @@ function selectedProject(evt, project) {
 /* Ende Tabs */
 
 /*
-    Füllt die GruppenTabs mit den tatsächlichen Einträgen aus den Projekten aus.
+    Füllt die GruppenTabs mit den Einträgen aus den Projekten der IndexedDb aus.
+    Limitiert auf die ersten vier, da das Mockup dahingehend eingeschränkt war.
+
+    param: Liste von Projekten
+
     Autor: Ben Ansohn McDougall
  */
 function GruppenAusfuellen(projektVerzeichnis) {
-    const teilnehmerinnenString1 = formatiereTeilnehmerInnen(projektVerzeichnis[0]._teilnehmerListe);
-    const teilnehmerinnenString2 = formatiereTeilnehmerInnen(projektVerzeichnis[1]._teilnehmerListe);
-    const teilnehmerinnenString3 = formatiereTeilnehmerInnen(projektVerzeichnis[2]._teilnehmerListe);
-    const teilnehmerinnenString4 = formatiereTeilnehmerInnen(projektVerzeichnis[3]._teilnehmerListe);
-
-    document.getElementById('group1').innerHTML =`${projektVerzeichnis[0]._name} <br/> ${teilnehmerinnenString1}`;
-    document.getElementById('group2').innerHTML = `${projektVerzeichnis[1]._name} <br/> ${teilnehmerinnenString2}`;
-    document.getElementById('group3').innerHTML = `${projektVerzeichnis[2]._name} <br/> ${teilnehmerinnenString3}`;
-    document.getElementById('group4').innerHTML = `${projektVerzeichnis[3]._name} <br/> ${teilnehmerinnenString4}`;
+    const hatVierProjekte = projektVerzeichnis.length === 4;
+    if(hatVierProjekte) {
+        projektVerzeichnis.forEach((projekt, schluessel) => {
+            const teilnehmerString = TeilnehmerinnenListeToCsv(projekt._teilnehmerListe);
+            document.getElementById('group' + schluessel)
+                .innerHTML = `${projekt._name} <br/> ${teilnehmerString
+                // entfernt das lästige Komma am Ende
+                .substr(0, teilnehmerString.length - 2)}`;
+        });
+    } else {
+        console.error("GruppenAusfuellen nur als Helfermethode für die ersten vier Elemente aus der IndexedDb nutzen");
+    }
 }
 
 /*
     Hilfsfunktion um die Teilnehmerinnen auszupacken.
+    Reduziert das Array zu einem komma getrennten String.
+
+    param: Liste von Teilnehmerinnen.
+
     Autor: Ben Ansohn McDougall
  */
-function formatiereTeilnehmerInnen(teilnehmerinnnenListe) {
+function TeilnehmerinnenListeToCsv(teilnehmerinnnenListe) {
     return teilnehmerinnnenListe.reduce((string, teilnehmer) =>  string + teilnehmer._name + ', ', "");
 }
 
