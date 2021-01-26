@@ -18,22 +18,17 @@ for (i = 0; i < toggle.length; i++) {
 
 //Mailfunktionen
 document.getElementById("mail1").addEventListener('click', mailsender1);
-
 function mailsender1() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[0]._email + mailbetreff;
 }
-
 document.getElementById("mail2").addEventListener('click', mailsender2);
-
 function mailsender2() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email +mailbetreff;
 
 }
-
 document.getElementById("mail3").addEventListener('click', mailsender3);
-
 function mailsender3() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[2]._email + mailbetreff;
@@ -144,7 +139,6 @@ function projektAbbrechen() {
 
 //Funktion zum Loeschen eines Projekts
 document.getElementById("projektLoeschen").addEventListener('click', projektLoeschen);
-
 function projektLoeschen() {
     //@TODO: Funktion zum loeschen des aktuell angezeigten Projekts
 }
@@ -164,7 +158,6 @@ document.getElementById("projektSpeichern").addEventListener('click', function (
     document.getElementById("projektformular").reset();
 
 });
-
 
 function projektSpeichern() {
     const bezeichnung = document.getElementById('projektbezeichnung').value;
@@ -205,6 +198,19 @@ function projektSpeichern() {
     projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
     const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt)
     const projektAufSeiteAnzeigen = projektImHtmlFormat.fillWindow();
+}
+/*
+    Funktion zum Bearbeiten eines bestehenden Projekts
+ */
+document.getElementById("projektBearbeiten").addEventListener("click", projektBearbeiten)
+function projektBearbeiten(){
+
+    document.getElementById("projektformular").className = "elementON";
+    projektVerzeichnis[counter].fillForm();
+
+
+
+
 }
 
 /* https://stackoverrun.com/de/q/1227734
