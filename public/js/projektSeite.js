@@ -58,15 +58,19 @@ const openDb = indexedDB.initialize();
 
 // Promise abholen, falls möglich und die Connection nutzen um etwas auszufüllen.
 openDb.then((db) => {
-    const objectStore = db.transaction([indexedDB.objectStoreName], 'readonly')
-        .objectStore(indexedDB.objectStoreName);
-    const objectStoreRequest = objectStore.getAll();
+    const objectStoreRequest = indexedDB.retrieveAllProjekts(db);
+
     objectStoreRequest.onsuccess = (event) => {
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
         start(projektVerzeichnis[0]._projekt);
+        db.close(event);
     }
-    objectStore.transaction.oncomplete = db.close();
+
+    objectStoreRequest.onerror = (event) => {
+        console.log(`Bei der Übertragung ist etwas schiefgelaufen:
+                    ${event.target.errorCode} ${event.target.errorDetail}`);
+    };
 });
 
 // const projekteInDerDb = db.retrieveAllProjekts();

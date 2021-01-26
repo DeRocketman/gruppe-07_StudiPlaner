@@ -1,18 +1,22 @@
-/*
-    js-Datei für die IndexedDB
-
-    Autoren: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
- */
 import {Projekt} from "./projekt/domain/projekt.js";
 import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
+import {BeispielProjekt3} from "./projekt/repository/beispielProjekt3.js";
 
+/*
+    Erstellt ein neues IndexedDb Object.
+    Zudem werden zu Testzwecken zudem noch einige Objekte zu Testzwecken angelegt.
+
+    Felder: dbName = Name der Datenbank, dbVersion = Version der Datenbank, objectStore  = Tabellenname
+
+    Autoren: Dirk Stricker, Louis Grümmer und Benjamin Ansohn McDougall
+ */
 export class IndexedDB {
     constructor(dbName = 'WPGruppe07', dbVersion = 3, objectStore = "Projekte") {
         this.dbName = dbName;
         this.dbVersion = dbVersion;
         this.objectStoreName = objectStore;
-        this.projekte = [new Projekt(), BeispielProjekt(), BeispielProjekt2()];
+        this.projekte = [new Projekt(), BeispielProjekt(), BeispielProjekt2(), BeispielProjekt3()];
     }
 
     /*
@@ -25,6 +29,10 @@ export class IndexedDB {
         Grob orientiert an den Best-Pratices von den MDN Seiten:
         https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
         https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+
+        Returns (onsuccess) => IDBDatabase
+
+        Autor: Benjamin Ansohn McDougall, POC: Dirk Stricker
      */
     initialize = () => {
         return new Promise(((resolve, reject) => {
@@ -74,55 +82,29 @@ export class IndexedDB {
     }
 
     /*
-        Gibt anhand eines Schlüssels das entsprechnede Objekt zurück
+        Holt N Objekte via Cursor aus dem ObjectStore.
+        In dieser Funktion nutzen wir den Cursor um im besten Fall n Elemente
+        aus der Datenbank zu lesen. Falls nicht genügend Elemente in dem ObjectStore
+        vorhanden sind, werden die maximal verfügbaren Objekte returned.
+
+        returns IDBRequest(IDBCursor)
+
+        Autor: Ben Ansohn McDougall
      */
-    retrieveOneItemVia_nummer = function (db, nummer) {
-        return new Promise((resolve, reject) => {
-                // Vertrag Schutz vor falschen Daten
-                const parameterIsANumber = !Number.isNaN(nummer);
-                if (parameterIsANumber) {
-                    const objectStore = db.transaction([this.objectStoreName], 'readonly')
-                        .objectStore(this.objectStoreName);
-                    const objectStoreRequest = objectStore.get(nummer);
-
-                    objectStoreRequest.onerror = () => {
-                        console.log(`Bei der Übertragung ist etwas schiefgelaufen:
-                    ${objectStoreRequest.errorCode} ${objectStoreRequest.errorDetail}`);
-                        reject(`Siehe Console log`);
-                    };
-
-                    objectStoreRequest.onsuccess = (event) => {
-                        resolve(objectStoreRequest.result);
-                        db.close();
-                    };
-                }
-
-            }
-        );
+    retrieveItemsWithCursor = (db) => {
+        const objectStore = db.transaction([this.objectStoreName], 'readonly').objectStore(this.objectStoreName);
+        return objectStore.openCursor();
     }
 
     /*
-        Gibt anhand eines Schlüssels das entsprechnede Objekt zurück
+        Holt alle Objekte aus einem ObjectStore
      */
-    retrieveAllProjekts = () => {
-        const requestToOpenDb = window.indexedDB.open(this.dbName, this.dbVersion);
+    retrieveAllProjekts = db => {
+        const objectStore = db.transaction([this.objectStoreName], 'readonly')
+            .objectStore(this.objectStoreName);
+        return objectStore.getAll();
+    };
 
-        requestToOpenDb.onsuccess = (event) => {
-            const db = requestToOpenDb.result;
-            const objectStore = db.transaction([this.objectStoreName], 'readonly')
-                .objectStore(this.objectStoreName);
-            const objectStoreRequest = objectStore.getAll();
-
-            objectStoreRequest.onerror = () => {
-                console.log(`Bei der Übertragung ist etwas schiefgelaufen:
-                    ${objectStoreRequest.errorCode} ${objectStoreRequest.errorDetail}`);
-            };
-
-            objectStoreRequest.onsuccess = (event) => {
-                console.log(objectStoreRequest.result);
-            };
-        }
-    }
 
     speichern = (object) => {
         if (object != null) {
