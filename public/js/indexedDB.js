@@ -87,7 +87,7 @@ export class IndexedDB {
         aus der Datenbank zu lesen. Falls nicht genügend Elemente in dem ObjectStore
         vorhanden sind, werden die maximal verfügbaren Objekte returned.
 
-        returns [Objekte aus dem jeweiligen ObjectStore]
+        returns IDBRequest(IDBCursor)
 
         Autor: Ben Ansohn McDougall
      */
