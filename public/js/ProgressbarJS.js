@@ -3,12 +3,13 @@
     Inspiration: https://www.youtube.com/watch?v=gR8gb_wWEnY
  */
 
-
+import {ProjektService} from "./projekt/services/projektService.js";
 import {Projekt} from "./projekt/domain/projekt.js";
 
 const fill = document.querySelector(".fill");
 const buttons = document.querySelectorAll('button.buttonClass');
 const pro = new Projekt();
+
 
 buttons.forEach((button, key) => button.addEventListener('click', () => {
 
