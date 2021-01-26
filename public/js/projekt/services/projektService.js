@@ -83,6 +83,11 @@ export class ProjektService {
     fillForm = () => {
         document.getElementById("projektbezeichnung").value = this._projekt._name;
         const teilnehmerListe = this._projekt._teilnehmerListe;
+        const literaturListe = this._projekt._literaturVerzeichnis;
+        const links = this._projekt._links;
+        const aufgaben = this._projekt._aufgaben;
+
+        //Laden der Teilnehmerliste des Formulars
         switch (teilnehmerListe.length-1) {
             case 8:
                 document.getElementById("tn9name").value = teilnehmerListe[8]._name;
@@ -111,10 +116,48 @@ export class ProjektService {
             case 0:
                 document.getElementById("tn1name").value = teilnehmerListe[0]._name;
                 document.getElementById("tn1mail").value = teilnehmerListe[0]._email;
+                break;
             default:
                 break;
         }
-
-        //@todo DS: Literaturliste, Links, Aufgaben implementieren!
+        //Laden des Literaturteils des Formulars
+        switch (literaturListe.length-1) {
+            case 2:
+                document.getElementById("litForm3").value = literaturListe[2];
+            case 1:
+                document.getElementById("litForm2").value = literaturListe[1];
+            case 0:
+                document.getElementById("litForm1").value = literaturListe[0];
+                break;
+            default:
+                break;
+        }
+        //Laden des Linkteils des Formulars
+        switch (links.length-1) {
+            case 2:
+                document.getElementById("link3ref").value = links[2]._url
+                document.getElementById("link3text").value = links[2]._beschreibung
+            case 1:
+                document.getElementById("link2ref").value = links[1]._url
+                document.getElementById("link2text").value = links[1]._beschreibung
+            case 0:
+                document.getElementById("link1ref").value = links[0]._url
+                document.getElementById("link1text").value = links[0]._beschreibung;
+                break;
+            default:
+                break;
+        }
+        //Laden der Aufgaben ins Formular
+        switch (aufgaben.length-1){
+            case 2:
+                document.getElementById("aufgabe3text").value = aufgaben[2]._beschreibung
+            case 1:
+                document.getElementById("aufgabe2text").value = aufgaben[1]._beschreibung
+            case 0:
+                document.getElementById("aufgabe1text").value = aufgaben[0]._beschreibung;
+                break;
+            default:
+                break;
+        }
     }
 }
