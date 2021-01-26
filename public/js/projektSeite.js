@@ -147,15 +147,15 @@ const savedProject = new Projekt();
 
 //Funktion zum Speichern der eingegebenen Formulardaten fuer das Projekt
 document.getElementById("projektSpeichern").addEventListener('click', function (e) {
-    e.preventDefault();
+    //e.preventDefault();
     do {
         projektEingabenValidieren();
     } while (projektEingabenValidieren() !== true)
 
     projektSpeichern();
 
-    document.getElementById("projektformular").className = "elementOFF";
-    document.getElementById("projektformular").reset();
+    //document.getElementById("projektformular").className = "elementOFF";
+    //document.getElementById("projektformular").reset();
 
 });
 
@@ -225,6 +225,7 @@ function projektBearbeiten(){
 function projektEingabenValidieren() {
 
     let projektbezeichnung = document.getElementById("projektbezeichnung");
+    let tn1name = document.getElementById("tn1name");
     let tn1mail = document.getElementById("tn1mail");
     let patternMail = /(^$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]))/;
     //let patternLink = /(^$|^(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))/;
@@ -233,16 +234,45 @@ function projektEingabenValidieren() {
     if (projektbezeichnung.value === "") {
         alert("Dein Projekt braucht einen Namen!");
         document.getElementById("projektbezeichnung");
+        projektbezeichnung.reset();
+        return false
+    } else if(tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === ""){
+        alert("Teilnehmer und E-Mail bitte immer zusammen angeben.")
+        tn1name.reset();
+        tn1mail.reset();
         return false
     } else if (!(patternMail.test(tn1mail.value) || tn1mail === "")) {
         alert("Ups! Das war keine Emailadresse.");
         tn1mail.reset();
         return false
-    } //else if(!(patternLink.test(link1ref.value))){
-        //alert("Der Link bringt dir nichts. Inkorrektes Format!");
-    //return false
-    else {
+    } else {
         return true
     }
 }
 
+/*Beispiel aus den Vorlesungen
+
+function initiate(){
+    document.projektformular.addEventListener("invalid", validation, true);
+    document.projektformular.addEventListener("input", checkval, false);
+    //document.getElementById("projektSpeichern").addEventListener ("click", sendit, false);
+}
+function validation(e){
+    var elem=e.target;
+    elem.style.background='#FFDDDD';
+}
+function sendit(){
+    var valid=document.projektformular.checkValidity();
+    if(valid){
+        document.projektformular.submit();
+    }
+}
+function checkval(e){
+    var elem=e.target;
+    if(elem.validity.valid){
+        elem.style.background='#FFFFFF';
+    }else{
+        elem.style.background='#ff2574';
+    }
+}
+window.addEventListener("load", initiate, false); */
