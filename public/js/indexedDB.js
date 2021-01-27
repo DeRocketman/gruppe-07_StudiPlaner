@@ -109,27 +109,15 @@ export class IndexedDB {
     };
 
 
-    speichern = (object) => {
-        if (object != null) {
-            const request = window.indexedDB.open(this.dbName, this.dbVersion);
+    speichern = (db, object) => {
+        const isObject = object != null;
+        console.log("Speicherung beginnt " + object + ' ' + db);
+        if (isObject) {
 
-            request.onsuccess = (event) => {
-                const openDb = request.result;
+            const transaction = db.transaction(this.objectStoreName, "readwrite");
+            const objectStore = transaction.objectStore(this.objectStoreName);
 
-                const transaction = openDb.transaction(this.objectStoreName, "readwrite");
-                const objectStore = transaction.objectStore(this.objectStoreName);
-
-                objectStore.put(object);
-
-                openDb.transaction.oncomplete = () => {
-                    console.log(`${object} wurde in ${this.objectStoreName} erfolgreich gespeichert.`);
-                }
-
-                openDb.onerror = () => {
-                    console.log(`Beim Speichern des Projekts: ${object} in ${this.objectStoreName} 
-                    ist folgender Fehler aufgetreten: ${openDb.errorCode}`);
-                }
-            }
+            return objectStore.put(object);
         }
     }
 }

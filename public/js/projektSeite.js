@@ -214,9 +214,28 @@ function projektSpeichern() {
         notizen,
         aufgabenListe);
 
-    projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
-    const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt)
-    const projektAufSeiteAnzeigen = projektImHtmlFormat.fillWindow();
+    let erfolgreichGespeichert = false;
+
+    indexedDB.initialize().then((db) => {
+        const idbRequest = indexedDB.speichern(db, zuSpeicherndesProjekt);
+        idbRequest.transaction.oncomplete = () => {
+            console.log(`${zuSpeicherndesProjekt} wurde in ${this.objectStoreName} erfolgreich gespeichert.`);
+            db.close;
+            erfolgreichGespeichert = true;
+        }
+
+        idbRequest.onerror = () => {
+            console.log(`Beim Speichern des Projekts: ${object} in ${this.objectStoreName} 
+                    ist folgender Fehler aufgetreten: ${openDb.errorCode}`);
+        }
+    });
+
+    if(erfolgreichGespeichert) {
+        projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
+        const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt);
+        const projektAufSeiteAnzeigen = () => projektImHtmlFormat.fillWindow();
+        projektAufSeiteAnzeigen();
+    }
 }
 
 /*
