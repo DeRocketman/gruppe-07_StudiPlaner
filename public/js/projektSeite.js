@@ -268,7 +268,7 @@ function projektEingabenValidieren() {
         tn1name.reset();
         tn1mail.reset();
         return false
-    } else if (!(patternMail.test(tn1mail.value) || tn1mail === "")) {
+    } else if (!(patternMail.test(tn1mail.value) || tn1mail.value === "")) {
         alert("Ups! Das war keine Emailadresse.");
         tn1mail.reset();
         return false
