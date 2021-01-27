@@ -6,8 +6,8 @@ import {initListeners} from "./ProgressbarJS.js";
 /*
     Autor: Kim Lara Feller
  */
-// Projekt 1 ist als default angeklickt
-//document.getElementById("defaultSelected").click();
+//Projekt 1 ist als default angeklickt
+document.getElementById("defaultSelected").classList.add("active");
 
 const buttons = document.querySelectorAll('button.tablink');
 
