@@ -121,6 +121,14 @@ export class IndexedDB {
         }
     }
 
+    /*
+        Ruft Einträge aus der IndexedDb, anhand des Projektnamens ab.
+
+        params: db = IDBDatabase, projektName = Projekt._name
+        Returns IDBRequest
+
+        Author: Benjamin Ansohn McDougall
+     */
     get = (db, projektName) => {
         const isNotProjektNameEmpty = projektName.length > 0;
         if(isNotProjektNameEmpty) {
@@ -130,12 +138,20 @@ export class IndexedDB {
         }
     }
 
-    delete = (db, projektName) => {
-        const isNotProjektNameEmpty = projektName.length > 0;
-        if(isNotProjektNameEmpty) {
+    /*
+        Sucht Einträge aus der IndexDb, anhand des Projektnamens
+
+        params: db = IDBDatabase, projektName = Projekt._name
+        Returns IDBIndex
+
+        Author: Benjamin Ansohn McDougall
+     */
+    searchViaIndex = (db, projektName, indexName) => {
+        const areParamsNotEmpty = projektName.length > 0 && indexName.length > 0;
+        if(areParamsNotEmpty) {
             const objectStore = db.transaction([this.objectStoreName], 'readwrite')
                 .objectStore(this.objectStoreName);
-            return objectStore.delete(projektName);
+            return objectStore.index(indexName);
         }
     }
 }

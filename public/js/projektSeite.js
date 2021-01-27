@@ -1,9 +1,9 @@
 import {ProjektService} from "./projekt/services/projektService.js";
-import {Projekt} from "./projekt/domain/projekt.js";
 import {Teilnehmerin} from "./projekt/domain/teilnehmerin.js";
 import {Literatur} from "./projekt/domain/literatur.js";
-import {Link} from "./projekt/domain/link.js";
 import {Aufgabe} from "./projekt/domain/aufgabe.js";
+import {Projekt} from "./projekt/domain/projekt.js";
+import {Link} from "./projekt/domain/link.js";
 import {IndexedDB} from "./indexedDB.js";
 
 //Listenelemente auswählen zum ein- bzw. ausblenden
@@ -18,17 +18,22 @@ for (i = 0; i < toggle.length; i++) {
 
 //Mailfunktionen
 document.getElementById("mail1").addEventListener('click', mailsender1);
+
 function mailsender1() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[0]._email + mailbetreff;
 }
+
 document.getElementById("mail2").addEventListener('click', mailsender2);
+
 function mailsender2() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email +mailbetreff;
+    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email + mailbetreff;
 
 }
+
 document.getElementById("mail3").addEventListener('click', mailsender3);
+
 function mailsender3() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[2]._email + mailbetreff;
@@ -59,6 +64,7 @@ openDb.then((db) => {
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
         start(projektVerzeichnis[0]._projekt);
+        projektVerzeichnis[0].fillWindow()
         db.close(event);
     }
 
@@ -139,8 +145,55 @@ function projektAbbrechen() {
 
 //Funktion zum Loeschen eines Projekts
 document.getElementById("projektLoeschen").addEventListener('click', projektLoeschen);
+
+
+/*
+    Nutzt searchViaIndex um Projekte nach ihren Titeln aus der Datenbank zu löschen.
+    Löscht auch das ELement aus dem lokal gespeichertem Projektverzeichnis.
+    Hier nutzen wir einen CursorWithValue nachdem wir den Index nach dem Namen anstatt der Projektnummer
+    durchsucht. Der CursorWithValue durchläuft den Index anstatt des ObjectStores.
+
+    Autor: Benjamin Ansohn McDougall
+ */
 function projektLoeschen() {
-    //@TODO: Funktion zum loeschen des aktuell angezeigten Projekts
+    indexedDB.initialize().then((db) => {
+            const projektName = document.getElementById('projektName').innerHTML;
+            const idbIndex = indexedDB.searchViaIndex(db, projektName, "_name");
+            const idbRequest = idbIndex.openCursor();
+            console.log(idbRequest);
+            idbRequest.onsuccess = () => {
+                const cursor = idbRequest.result;
+                if (cursor && cursor.key !== projektName) {
+                    cursor.continue();
+                } else if (cursor && cursor.key === projektName) {
+                    cursor.delete().onsuccess = () => {
+                        console.log(`${projektName} wurde gelöscht`);
+                        // TODO: hier muss noch das Projekt aus dem Projektverzeichnis gelöscht werden.
+                        //      leider nicht so einfach, da ProjektServices im ProjektVerzeichnis sind. Refactor Name
+                    };
+                } else {
+                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`)
+                }
+            }
+        }
+    );
+}
+
+/*
+    Suche nach einem Projekt nach dem Projektnamen und manipuliert HtmlElemente.
+
+    params: projektName
+
+    Autor Benjamin Ansohn McDougall
+ */
+function projektSuchen(projektName) {
+    indexedDB.initialize().then((db) => {
+            const IdbIndex = indexedDB.searchViaIndex(db, projektName, "_name");
+            IdbIndex.get(projektName).onsuccess = (event) => {
+                // HTML Elemente von hier aus ausfüllen oder Hilfsfunktionen basteln.
+            }
+        }
+    );
 }
 
 const savedProject = new Projekt();
@@ -198,7 +251,7 @@ function projektSpeichern() {
             linkVerzeichnis,
             notizen,
             aufgabenListe,
-            [100,0,0],
+            [100, 0, 0],
             1);
         return zuSpeicherndesProjekt;
     }
@@ -223,18 +276,20 @@ function projektSpeichern() {
     const zuSpeicherndesProjekt = projektVonDerHtmlSeiteExtrahieren();
     let erfolgreichGespeichert = false;
 
-    if(erfolgreichGespeichert) {
+    if (erfolgreichGespeichert) {
         projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
         const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt);
         const projektAufSeiteAnzeigen = () => projektImHtmlFormat.fillWindow();
         projektAufSeiteAnzeigen();
     }
 }
+
 /*
     Funktion zum Bearbeiten eines bestehenden Projekts
  */
 document.getElementById("projektBearbeiten").addEventListener("click", projektBearbeiten)
-function projektBearbeiten(){
+
+function projektBearbeiten() {
 
     document.getElementById("projektformular").className = "elementON";
     projektVerzeichnis[counter].fillForm();
@@ -250,7 +305,6 @@ function projektBearbeiten(){
     Liefert true zurück, wenn eine Übereinstimmung da ist.
  */
 function projektEingabenValidieren() {
-
     let projektbezeichnung = document.getElementById("projektbezeichnung");
     let tn1name = document.getElementById("tn1name");
     let tn1mail = document.getElementById("tn1mail");
@@ -263,7 +317,7 @@ function projektEingabenValidieren() {
         document.getElementById("projektbezeichnung");
         projektbezeichnung.reset();
         return false
-    } else if(tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === ""){
+    } else if (tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === "") {
         alert("Teilnehmer und E-Mail bitte immer zusammen angeben.")
         tn1name.reset();
         tn1mail.reset();
