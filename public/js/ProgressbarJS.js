@@ -32,7 +32,7 @@ function activateButton(progress, projektname) {
 
     function fillBar() {
         a = a + 1;
-        if (a == progress + 1) {
+        if (a === progress + 1) {
             clearInterval(run);
         } else {
             let counter = document.querySelector(".counter");

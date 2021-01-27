@@ -4,15 +4,20 @@ import {initListeners} from "./ProgressbarJS.js";
 
 /*Start Tabs */
 /*
-    Autor: Kim Lara Feller
+    Autor: Kim Lara Feller nachträgliches Refactoring mit Louis Grümmer.
  */
 //Projekt 1 ist als default angeklickt
 document.getElementById("defaultSelected").classList.add("active");
-
+const tab1 = document.getElementById("Project1")
+const tab2 = document.getElementById("Project2")
+const tab3 = document.getElementById("Project3")
+const tab4 = document.getElementById("Project4")
+const tabArray = [tab1, tab2, tab3, tab4];
+tabArray[0].classList.add("tabActive");
 const buttons = document.querySelectorAll('button.tablink');
 
 
-    buttons.forEach((button) => button.addEventListener('click', () => {
+    buttons.forEach((button,key) => button.addEventListener('click', () => {
 
     const className = "active";
     const isNotButtonAlreadyActive = !button.classList.contains(className);
@@ -23,6 +28,10 @@ const buttons = document.querySelectorAll('button.tablink');
             activeButtons.forEach(activeButton => activeButton.classList.remove(className));
         }
         button.classList.add(className);
+        for(let i = 0; i<tabArray.length; i++){
+            tabArray[i].classList.remove("tabActive");
+        }
+        tabArray[key].classList.add("tabActive");
     }
     }));
 

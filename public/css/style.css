@@ -193,6 +193,14 @@ button.active {
     font-size: 9pt;
     margin: auto;
 }
+.tabActive {
+    display: block;
+    padding: 8px 4px;
+    border: 1px solid #333333;
+    width: 236px;
+    font-size: 9pt;
+    margin: auto;
+}
 /* Sektion Projekte Ende */
 
 /* Sektion Gruppen Start */
