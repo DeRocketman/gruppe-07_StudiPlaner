@@ -67,23 +67,22 @@ function TeilnehmerinnenListeToCsv(teilnehmerinnnenListe) {
 
 /*
     IndexedDb Operation, initialisiert und holt alle Projekte per Cursor anstatt per getAll().
-    (Anmerkung: Wollten ursprünglich nur vier Projekte holen, allerdings macht der Cursor hier Dinge die wir nicht
-    nachvollziehen können. :-/ )
+    Das hat den Vorteil, das wir nicht durch alle vorhandenen Projekte iterieren müssen.
 
     Diese Projekte werden direkt an die Elemente im Frontend weitergereicht.
 
-    param: anzahlDerBenoetigtenProjekte => Anzahl der zu ladenden Projekte
+    param: anzahlZuHolendenProjekte => Anzahl der zu ladenden Projekte
 
     Autor: Ben Ansohn McDougall
  */
-const nProjekteAusDbLaden = () => {
+const nProjekteAusDbLaden = (anzahlZuHolendenProjekte) => {
     const indexedDb = new IndexedDB();
     indexedDb.initialize().then((db) => {
         const projektVerzeichnis = [];
         const cursorRequest = indexedDb.retrieveItemsWithCursor(db);
         cursorRequest.onsuccess = (event) => {
             const cursor = event.target.result;
-            if (cursor) {
+            if (cursor && projektVerzeichnis.length < anzahlZuHolendenProjekte) {
                 projektVerzeichnis.push(cursor.value);
                 cursor.continue();
             } else {
@@ -101,7 +100,7 @@ const nProjekteAusDbLaden = () => {
         }
     });
 }
-nProjekteAusDbLaden();
+nProjekteAusDbLaden(5);
 
 
 /*
