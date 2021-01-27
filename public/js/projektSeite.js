@@ -18,17 +18,22 @@ for (i = 0; i < toggle.length; i++) {
 
 //Mailfunktionen
 document.getElementById("mail1").addEventListener('click', mailsender1);
+
 function mailsender1() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[0]._email + mailbetreff;
 }
+
 document.getElementById("mail2").addEventListener('click', mailsender2);
+
 function mailsender2() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email +mailbetreff;
+    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email + mailbetreff;
 
 }
+
 document.getElementById("mail3").addEventListener('click', mailsender3);
+
 function mailsender3() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
     location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[2]._email + mailbetreff;
@@ -51,14 +56,27 @@ const indexedDB = new IndexedDB();
 // erstmal die Datenbank initialisieren
 const openDb = indexedDB.initialize();
 
+
 // Promise abholen, falls möglich und die Connection nutzen um etwas auszufüllen.
 openDb.then((db) => {
     const objectStoreRequest = indexedDB.retrieveAllProjekts(db);
 
     objectStoreRequest.onsuccess = (event) => {
         setListeners();
-        event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
-        start(projektVerzeichnis[0]._projekt);
+        event.target.result.forEach((project, key) => projektVerzeichnis[key] = new ProjektService(project));
+        initInitialPageValues(projektVerzeichnis[0]);
+
+        /*
+            Private Hilfsfunktion zum besseren Verständnis welche Werte beim ersten Laden der Seite
+            initialisiert werden müssen.
+        */
+        function initInitialPageValues(firstProjekt) {
+            const initPieChart = () => start(firstProjekt._projekt);
+            const initFirstProjekt = () => firstProjekt.fillWindow();
+            initPieChart();
+            initFirstProjekt();
+        }
+
         db.close(event);
     }
 
@@ -139,6 +157,7 @@ function projektAbbrechen() {
 
 //Funktion zum Loeschen eines Projekts
 document.getElementById("projektLoeschen").addEventListener('click', projektLoeschen);
+
 function projektLoeschen() {
     //@TODO: Funktion zum loeschen des aktuell angezeigten Projekts
 }
@@ -199,16 +218,16 @@ function projektSpeichern() {
     const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt)
     const projektAufSeiteAnzeigen = projektImHtmlFormat.fillWindow();
 }
+
 /*
     Funktion zum Bearbeiten eines bestehenden Projekts
  */
 document.getElementById("projektBearbeiten").addEventListener("click", projektBearbeiten)
-function projektBearbeiten(){
+
+function projektBearbeiten() {
 
     document.getElementById("projektformular").className = "elementON";
     projektVerzeichnis[counter].fillForm();
-
-
 
 
 }
@@ -236,7 +255,7 @@ function projektEingabenValidieren() {
         document.getElementById("projektbezeichnung");
         projektbezeichnung.reset();
         return false
-    } else if(tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === ""){
+    } else if (tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === "") {
         alert("Teilnehmer und E-Mail bitte immer zusammen angeben.")
         tn1name.reset();
         tn1mail.reset();
