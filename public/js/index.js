@@ -14,10 +14,9 @@ const tab3 = document.getElementById("Project3")
 const tab4 = document.getElementById("Project4")
 const tabArray = [tab1, tab2, tab3, tab4];
 tabArray[0].classList.add("tabActive");
+
 const buttons = document.querySelectorAll('button.tablink');
-
-
-    buttons.forEach((button,key) => button.addEventListener('click', () => {
+buttons.forEach((button, key) => button.addEventListener('click', () => {
 
     const className = "active";
     const isNotButtonAlreadyActive = !button.classList.contains(className);
@@ -28,12 +27,29 @@ const buttons = document.querySelectorAll('button.tablink');
             activeButtons.forEach(activeButton => activeButton.classList.remove(className));
         }
         button.classList.add(className);
-        for(let i = 0; i<tabArray.length; i++){
+        for (let i = 0; i < tabArray.length; i++) {
             tabArray[i].classList.remove("tabActive");
         }
         tabArray[key].classList.add("tabActive");
     }
-    }));
+}));
+
+
+/*
+    Füllt die Tabs mit dem Titel der jeweiligen Projekte und den passenden Notizen
+    auf 150 Zeichen beschränkt.
+
+    Autor: Benjamin Ansohn McDougall
+ */
+function tabsAusDbFüllen(projektVerzeichnis) {
+    projektVerzeichnis.forEach((projekt, schluessel) => {
+        const nochNichtMehrAlsVierProjekte = schluessel <= 3;
+        if (nochNichtMehrAlsVierProjekte) {
+            tabArray[schluessel].innerHTML =
+                `<h4>${projekt._name}</h4> <br/> <p>${projekt._notizen.substr(0, 150)}...</p>`;
+        }
+    });
+}
 
 /* Ende Tabs */
 
@@ -96,6 +112,7 @@ const nProjekteAusDbLaden = (anzahlZuHolendenProjekte) => {
                 // TODO: Dinge die man nun auf der index.html initialisiseren kann, z.B. Tabs, Fortschritt
                 initListeners(projektVerzeichnis);
                 GruppenAusfuellen(projektVerzeichnis);
+                tabsAusDbFüllen(projektVerzeichnis);
             }
         }
 
