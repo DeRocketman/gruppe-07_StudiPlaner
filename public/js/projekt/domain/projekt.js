@@ -1,8 +1,4 @@
-/*
-   Material - Klasse zum anlegen eines neuen Projekts der Projektseite
-   Author: Benjamin McDougall
 
- */
 import {Teilnehmerin} from "./teilnehmerin.js";
 import {Aufgabe} from "./aufgabe.js";
 import {Literatur} from "./literatur.js";
@@ -11,6 +7,11 @@ import {Link} from "./link.js";
 
 // TODO: Aktiviert muss refactored werden.
 //       Nummer automatisch in db generieren.
+/*
+   Material - Klasse zum anlegen eines neuen Projekts der Projektseite
+   Author: Benjamin McDougall
+
+ */
 export class Projekt {
     _nummer;
     _aktiviert;
@@ -21,6 +22,7 @@ export class Projekt {
     _links;
     _aufgaben;
     _pieSize;
+    _progress;
 
     constructor(nummer = Math.round(Math.random() * 100000000), aktiviert = true, name = 'Klick hier',
                 teilnehmerListe = [new Teilnehmerin()],
@@ -28,7 +30,8 @@ export class Projekt {
                 links = [new Link()],
                 notizen = 'Notizen zum Projekt',
                 aufgaben = [new Aufgabe()],
-                pieSize = [500,400,300]) {
+                pieSize = [500,400,300],
+                progress = 0) {
         this._nummer = nummer;
         this._aktiviert = aktiviert;
         this._name = name;
@@ -38,5 +41,6 @@ export class Projekt {
         this._notizen = notizen;
         this._aufgaben = aufgaben;
         this._pieSize = pieSize;
+        this._progress = progress;
     }
 }

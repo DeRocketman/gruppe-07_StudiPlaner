@@ -1,4 +1,5 @@
 import {IndexedDB} from "./indexedDB.js";
+import {initListeners} from "./ProgressbarJS.js";
 
 
 /*Start Tabs */
@@ -40,18 +41,16 @@ function selectedProject(evt, project) {
     Autor: Ben Ansohn McDougall
  */
 function GruppenAusfuellen(projektVerzeichnis) {
-    const hatVierProjekte = projektVerzeichnis.length === 4;
-    if(hatVierProjekte) {
-        projektVerzeichnis.forEach((projekt, schluessel) => {
+    projektVerzeichnis.forEach((projekt, schluessel) => {
+        const nochNichtMehrAlsVierProjekte = schluessel <= 3;
+        if (nochNichtMehrAlsVierProjekte) {
             const teilnehmerString = TeilnehmerinnenListeToCsv(projekt._teilnehmerListe);
             document.getElementById('group' + schluessel)
                 .innerHTML = `${projekt._name} <br/> ${teilnehmerString
                 // entfernt das lästige Komma am Ende
                 .substr(0, teilnehmerString.length - 2)}`;
-        });
-    } else {
-        console.error("GruppenAusfuellen nur als Helfermethode für die ersten vier Elemente aus der IndexedDb nutzen");
-    }
+        }
+    });
 }
 
 /*
@@ -63,13 +62,13 @@ function GruppenAusfuellen(projektVerzeichnis) {
     Autor: Ben Ansohn McDougall
  */
 function TeilnehmerinnenListeToCsv(teilnehmerinnnenListe) {
-    return teilnehmerinnnenListe.reduce((string, teilnehmer) =>  string + teilnehmer._name + ', ', "");
+    return teilnehmerinnnenListe.reduce((string, teilnehmer) => string + teilnehmer._name + ', ', "");
 }
 
 /*
-    IndexedDb Operation, initialisiert und holt alle Projekte per Cursor anstatt per getAll()
-    Vorteil hierbei ist, das wir durch die Datenbank iterieren können und nur die benötigte Anzahl der Projekte
-    holen können.
+    IndexedDb Operation, initialisiert und holt alle Projekte per Cursor anstatt per getAll().
+    (Anmerkung: Wollten ursprünglich nur vier Projekte holen, allerdings macht der Cursor hier Dinge die wir nicht
+    nachvollziehen können. :-/ )
 
     Diese Projekte werden direkt an die Elemente im Frontend weitergereicht.
 
@@ -77,7 +76,7 @@ function TeilnehmerinnenListeToCsv(teilnehmerinnnenListe) {
 
     Autor: Ben Ansohn McDougall
  */
-const nProjekteAusDbLaden = (anzahlDerBenoetigtenProjekte) => {
+const nProjekteAusDbLaden = () => {
     const indexedDb = new IndexedDB();
     indexedDb.initialize().then((db) => {
         const projektVerzeichnis = [];
@@ -85,17 +84,15 @@ const nProjekteAusDbLaden = (anzahlDerBenoetigtenProjekte) => {
         cursorRequest.onsuccess = (event) => {
             const cursor = event.target.result;
             if (cursor) {
-                if (projektVerzeichnis.length < anzahlDerBenoetigtenProjekte) {
-                    projektVerzeichnis.push(cursor.value);
-                    cursor.continue();
-                }
+                projektVerzeichnis.push(cursor.value);
+                cursor.continue();
             } else {
                 // Da keine Elemente mehr im ObjectStore sind können wir abbrechen.
                 console.log(`Es wurden ${projektVerzeichnis.length} ${indexedDb.objectStoreName} per Cursor geholt`);
+                // TODO: Dinge die man nun auf der index.html initialisiseren kann, z.B. Tabs, Fortschritt
+                initListeners(projektVerzeichnis);
                 GruppenAusfuellen(projektVerzeichnis);
             }
-            // TODO: Dinge die man nun auf der index.html initialisiseren kann, z.B. Tabs, Aufgaben
-            // Tabs initialisieren
         }
 
         cursorRequest.onerror = (event) => {
@@ -104,7 +101,7 @@ const nProjekteAusDbLaden = (anzahlDerBenoetigtenProjekte) => {
         }
     });
 }
-nProjekteAusDbLaden(4);
+nProjekteAusDbLaden();
 
 
 /*

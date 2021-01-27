@@ -40,5 +40,6 @@ export const BeispielProjekt = () => {
 
     return new Projekt(1, true, 'DemoProjekt1',
         teilnehmerListe, literaturVerzeichnis, linkVerzeichnis,
-        'Hier kommen Notizen hin', aufgaben, piechartSize);
+        'Hier kommen Notizen hin', aufgaben, piechartSize,
+        20);
 };

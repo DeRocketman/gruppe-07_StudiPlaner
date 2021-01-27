@@ -2,6 +2,7 @@ import {Projekt} from "./projekt/domain/projekt.js";
 import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 import {BeispielProjekt3} from "./projekt/repository/beispielProjekt3.js";
+import {BeispielProjekt4} from "./projekt/repository/beispielProjekt4.js";
 
 /*
     Erstellt ein neues IndexedDb Object.
@@ -16,7 +17,7 @@ export class IndexedDB {
         this.dbName = dbName;
         this.dbVersion = dbVersion;
         this.objectStoreName = objectStore;
-        this.projekte = [new Projekt(), BeispielProjekt(), BeispielProjekt2(), BeispielProjekt3()];
+        this.projekte = [new Projekt(), BeispielProjekt(), BeispielProjekt2(), BeispielProjekt3(), BeispielProjekt4()];
     }
 
     /*
@@ -67,6 +68,8 @@ export class IndexedDB {
 
                 // Abfangen ob die Verbindung nicht erfolgreich war
                 requestToOpenDb.onerror = (event) => {
+                    console.error(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
+                ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
                     reject(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
                 ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
                 };

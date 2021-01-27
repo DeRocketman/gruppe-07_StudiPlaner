@@ -9,7 +9,7 @@ import {Projekt} from "../domain/projekt.js";
     Autoren im Pair: Dirk Stricker, Benjamin Ansohn McDougall
  */
 export const BeispielProjekt3 = () => {
-    const teilnehmerListe = [4];
+    const teilnehmerListe = [];
     teilnehmerListe[0] = new Teilnehmerin('Stirk Dicker', 'sd@web.de');
     teilnehmerListe[1] = new Teilnehmerin('Fara Lim Keller', 'flk@gmail.de');
     teilnehmerListe[2] = new Teilnehmerin('Grouis Lümmer', 'gl@bing-mail.de');
@@ -40,5 +40,6 @@ export const BeispielProjekt3 = () => {
 
     return new Projekt(3, true, 'DemoProjekt3',
         teilnehmerListe, literaturVerzeichnis, linkVerzeichnis,
-        'Hier kommen Notizen hin', aufgaben, piechartSize);
+        'Hier kommen Notizen hin', aufgaben, piechartSize,
+        75);
 };

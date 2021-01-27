@@ -3,7 +3,6 @@
     Inspiration: https://www.youtube.com/watch?v=gR8gb_wWEnY
  */
 
-import {ProjektService} from "./projekt/services/projektService.js";
 import {Projekt} from "./projekt/domain/projekt.js";
 
 const fill = document.querySelector(".fill");
@@ -11,25 +10,21 @@ const buttons = document.querySelectorAll('button.buttonClass');
 const pro = new Projekt();
 
 
-buttons.forEach((button, key) => button.addEventListener('click', () => {
+export function initListeners(projekte) {
+    buttons.forEach((button, key) => button.addEventListener('click', () => {
+        const className = "activeProgress";
+        const isNotButtonAlreadyActive = !button.classList.contains(className);
 
-    const className = "activeProgress";
-    const isNotButtonAlreadyActive = !button.classList.contains(className);
-
-    if(isNotButtonAlreadyActive) {
-        activateButton(progressAll[key], projektnameAll[key]);
-        const activeButtons = document.querySelectorAll(`button.${className}`);
-        if(activeButtons.length !== 0) {
-            activeButtons.forEach(activeButton => activeButton.classList.remove(className));
+        if (isNotButtonAlreadyActive) {
+            activateButton(projekte[key]._progress, projekte[key]._name);
+            const activeButtons = document.querySelectorAll(`button.${className}`);
+            if (activeButtons.length !== 0) {
+                activeButtons.forEach(activeButton => activeButton.classList.remove(className));
+            }
+            button.classList.add(className);
         }
-        button.classList.add(className);
-    }
-
-}));
-
-let progressAll = [80, 10, 20,  30, 40];
-let projektnameAll = [pro._name, "Projekt 2", "Projekt 3","Projekt 4","Projekt 5",]
-
+    }));
+}
 
 function activateButton(progress, projektname) {
     let a = 0;

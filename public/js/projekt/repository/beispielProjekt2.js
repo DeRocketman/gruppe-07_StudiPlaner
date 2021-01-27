@@ -42,7 +42,7 @@ export const BeispielProjekt2 = () => {
 
     const piechartSize = [900,300,100];
 
-    return new Projekt(4, true, 'DemoProjekt2',
+    return new Projekt(2, true, 'DemoProjekt2',
         teilnehmerListe, literaturVerzeichnis, linkVerzeichnis,
         'Schüler:\n' +
         '\n' +
@@ -65,5 +65,6 @@ export const BeispielProjekt2 = () => {
         '\'s ist meine Nachbarin dabei;\n' +
         'Ich bin dem Mädchen sehr gewogen.\n' +
         'Sie gehen ihren stillen Schritt\n' +
-        'Und nehmen uns doch auch am Ende mit.', aufgaben, piechartSize);
+        'Und nehmen uns doch auch am Ende mit.', aufgaben, piechartSize,
+        40);
 };
