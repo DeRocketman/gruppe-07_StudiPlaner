@@ -123,11 +123,11 @@ export class ProjektService {
         //Laden des Literaturteils des Formulars
         switch (literaturListe.length-1) {
             case 2:
-                document.getElementById("litForm3").value = literaturListe[2];
+                document.getElementById("litForm3").value = literaturListe[2]._titel;
             case 1:
-                document.getElementById("litForm2").value = literaturListe[1];
+                document.getElementById("litForm2").value = literaturListe[1]._titel;
             case 0:
-                document.getElementById("litForm1").value = literaturListe[0];
+                document.getElementById("litForm1").value = literaturListe[0]._titel;
                 break;
             default:
                 break;
