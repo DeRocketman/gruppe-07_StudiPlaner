@@ -120,4 +120,22 @@ export class IndexedDB {
             return objectStore.put(object);
         }
     }
+
+    get = (db, projektName) => {
+        const isNotProjektNameEmpty = projektName.length > 0;
+        if(isNotProjektNameEmpty) {
+            const objectStore = db.transaction([this.objectStoreName], 'readonly')
+                .objectStore(this.objectStoreName);
+            return objectStore.get(projektName);
+        }
+    }
+
+    delete = (db, projektName) => {
+        const isNotProjektNameEmpty = projektName.length > 0;
+        if(isNotProjektNameEmpty) {
+            const objectStore = db.transaction([this.objectStoreName], 'readwrite')
+                .objectStore(this.objectStoreName);
+            return objectStore.delete(projektName);
+        }
+    }
 }

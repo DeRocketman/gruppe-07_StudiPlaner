@@ -159,57 +159,69 @@ document.getElementById("projektSpeichern").addEventListener('click', function (
 
 });
 
+/*
+    Speichert das aktuell in dem Formular angezeigte Projekt
+ */
 function projektSpeichern() {
-    const bezeichnung = document.getElementById('projektbezeichnung').value;
+    function projektVonDerHtmlSeiteExtrahieren() {
+        const bezeichnung = document.getElementById('projektbezeichnung').value;
 
-    const name = document.getElementById('tn1name').value;
-    const mail = document.getElementById('tn1mail').value;
+        const name = document.getElementById('tn1name').value;
+        const mail = document.getElementById('tn1mail').value;
 
-    const litVerzeichnis = [];
-    litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
-    litVerzeichnis[1] = new Literatur(document.getElementById('litForm2').value);
-    litVerzeichnis[2] = new Literatur(document.getElementById('litForm3').value);
+        const litVerzeichnis = [];
+        litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
+        litVerzeichnis[1] = new Literatur(document.getElementById('litForm2').value);
+        litVerzeichnis[2] = new Literatur(document.getElementById('litForm3').value);
 
-    const linkVerzeichnis = [];
-    linkVerzeichnis[0] = new Link(document.getElementById('link1ref').value,
-        document.getElementById('link1text').value);
-    linkVerzeichnis[1] = new Link(document.getElementById('link2ref').value,
-        document.getElementById('link2text').value);
-    linkVerzeichnis[2] = new Link(document.getElementById('link3ref').value,
-        document.getElementById('link3text').value);
+        const linkVerzeichnis = [];
+        linkVerzeichnis[0] = new Link(document.getElementById('link1ref').value,
+            document.getElementById('link1text').value);
+        linkVerzeichnis[1] = new Link(document.getElementById('link2ref').value,
+            document.getElementById('link2text').value);
+        linkVerzeichnis[2] = new Link(document.getElementById('link3ref').value,
+            document.getElementById('link3text').value);
 
-    const aufgabenListe = [];
-    aufgabenListe[0] = new Aufgabe(document.getElementById('aufgabe1text').value);
-    aufgabenListe[1] = new Aufgabe(document.getElementById('aufgabe2text').value);
-    aufgabenListe[2] = new Aufgabe(document.getElementById('aufgabe3text').value);
+        const aufgabenListe = [];
+        aufgabenListe[0] = new Aufgabe(document.getElementById('aufgabe1text').value);
+        aufgabenListe[1] = new Aufgabe(document.getElementById('aufgabe2text').value);
+        aufgabenListe[2] = new Aufgabe(document.getElementById('aufgabe3text').value);
 
-    const notizen = document.getElementById('notizen').value;
+        const notizen = document.getElementById('notizen').value;
 
-    const zuSpeicherndesProjekt = new Projekt(
-        Math.random(999999999999),
-        true,
-        bezeichnung,
-        [new Teilnehmerin(name, mail)],
-        litVerzeichnis,
-        linkVerzeichnis,
-        notizen,
-        aufgabenListe);
+        const zuSpeicherndesProjekt = new Projekt(
+            Math.random() * 10000000,
+            true,
+            bezeichnung,
+            [new Teilnehmerin(name, mail)],
+            litVerzeichnis,
+            linkVerzeichnis,
+            notizen,
+            aufgabenListe,
+            [100,0,0],
+            1);
+        return zuSpeicherndesProjekt;
+    }
 
+    function projektInIndexedDbSpeichern() {
+        indexedDB.initialize().then((db) => {
+            const idbRequest = indexedDB.speichern(db, zuSpeicherndesProjekt);
+            idbRequest.transaction.oncomplete = () => {
+                console.log(`${zuSpeicherndesProjekt} wurde in ${indexedDB.objectStoreName} erfolgreich gespeichert.`);
+                db.close;
+                erfolgreichGespeichert = true;
+            }
+
+            idbRequest.onerror = () => {
+                console.log(`Beim Speichern des Projekts: ${zuSpeicherndesProjekt} in ${indexedDB.objectStoreName} 
+                    ist folgender Fehler aufgetreten: ${db.errorCode}`);
+            }
+        });
+    }
+
+    projektInIndexedDbSpeichern.call(this);
+    const zuSpeicherndesProjekt = projektVonDerHtmlSeiteExtrahieren();
     let erfolgreichGespeichert = false;
-
-    indexedDB.initialize().then((db) => {
-        const idbRequest = indexedDB.speichern(db, zuSpeicherndesProjekt);
-        idbRequest.transaction.oncomplete = () => {
-            console.log(`${zuSpeicherndesProjekt} wurde in ${this.objectStoreName} erfolgreich gespeichert.`);
-            db.close;
-            erfolgreichGespeichert = true;
-        }
-
-        idbRequest.onerror = () => {
-            console.log(`Beim Speichern des Projekts: ${object} in ${this.objectStoreName} 
-                    ist folgender Fehler aufgetreten: ${openDb.errorCode}`);
-        }
-    });
 
     if(erfolgreichGespeichert) {
         projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
@@ -226,10 +238,6 @@ function projektBearbeiten(){
 
     document.getElementById("projektformular").className = "elementON";
     projektVerzeichnis[counter].fillForm();
-
-
-
-
 }
 
 /* https://stackoverrun.com/de/q/1227734
