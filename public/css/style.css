@@ -180,7 +180,7 @@ main article section:nth-child(3) {
 }
 
 /* Aktiver Tab */
-.tabs button.active {
+button.active {
     background-color: #AB63A0;
     color: #F8EFC8;
 }
