@@ -276,8 +276,6 @@ ul, #literatur {
     border: 2px solid #ABA27D;
     border-radius: 10px;
     text-align: left;
-    height: 845px;
-    width: 500px;
     margin-top: -400px;
     margin-left: -150px;
     position: absolute;
@@ -285,5 +283,21 @@ ul, #literatur {
     left: 50%;
 }
 
-#projektformular label {clear: both; float: left;}
-#projektformular input {display: block;}
+#projektformular label {
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+#projektformular input {
+    height:20px;
+    width:220px;
+    padding:5px 5px;
+}
+
+#projektformular button {
+    margin-left: 30px;
+    padding:8px;
+    width:250px;
+}
