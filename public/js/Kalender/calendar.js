@@ -1,4 +1,6 @@
 /*
+DEPRECATED - NICHT MEHR NUTZEN.
+
 Klasse um grundlegende Kalender Eigenschaften zu definieren.
 params: Date, default derzeitige Datum
 

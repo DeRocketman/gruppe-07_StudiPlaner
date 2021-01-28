@@ -14,11 +14,25 @@ const fp_calendar = (date = new Date()) => ({
     weekday : date.getDay()
 });
 
+/*
+    Termin Objekt, anstatt die Termin.js Klasse zu nutzen.
+    Ganz im Sinne der funktionalen Programmierung.
+
+    param: datePickerDatum -> DatumsFormat wie beim Datepicker Html Element.
+           terminText -> Text der zum termin eingegeben werden kann.
+
+    Autor: Benjaimin Ansohn McDougall
+ */
 const termin = (datePickerDatum = toDatePickerString(fp_calendar()), terminText = 'TerminInhalt') => ({
     datum : datePickerDatum,
     text : terminText
 });
 
+/*
+    Helper Array um alle Termine des Moants erfassen zu können.
+
+    Autor: Benjamin Ansohn McDougall
+ */
 const terminListe = () => ({
     termine : [],
     anzahl : 0
@@ -26,11 +40,26 @@ const terminListe = () => ({
 
 /*
     Helper Methoden die Zahlen auf Strings mappt.
+
+    param: month -> Monatsziffer
  */
 const nameOfMonth = month => ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli'
     , 'August', 'September', 'Oktober', 'November', 'Dezember'][month];
+/*
+    Helper Methoden die Zahlen auf Strings mappt.
+
+    param: month -> JavaScript Weekday
+ */
 const nameOfDay = weekday => ['fehlerInNameOfDay', 'Montag', 'Dienstag', 'Mittwoch',
         'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'][weekday];
+
+/*
+    Errechnet die Anzahl der Tage in einem Monat.
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
+ */
 const daysOfMonth = obj => {
     // Setzt die Anzahl der Tage direkt auf 31, da die meisten Monate diese Anzahl an Tagen hat.
     let numberOfDaysInMonth = 31;
@@ -48,7 +77,11 @@ const daysOfMonth = obj => {
 
 /*
     Ermittelt den ersten Tag im Monat.
-    Ist wichtig um zu Wissen
+    Ist wichtig um zu Wissen wie der Monat einzutragen ist. Geht hier um den weekday von Javascript.
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
  */
 const firstDayOfMonth = obj => {
     let earliestDay = obj.day % 7;
@@ -68,8 +101,11 @@ const firstDayOfMonth = obj => {
 };
 
 /*
-    Function mit Seiteneffekten und ohne Rückgabewert
-    Füllt den Monat im Titel des Kalenders
+    Füllt den Monatsstring im Titel des Kalenders
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
  */
 const fillCalendarMonth = obj => {
     let kalenderMonat = document.getElementById('kalender_monat');
@@ -81,8 +117,11 @@ const fillCalendarMonth = obj => {
 };
 
 /*
-    Function mit Seiteneffekten und ohne Rückgabewert
     Füllt den Tabellenkörper des Kalenders
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
  */
 const fillCalendar = obj => {
     fillCalendarMonth(obj);
@@ -97,12 +136,17 @@ const fillCalendar = obj => {
 };
 
 // Hier nutzen wir die Kurzhand Schreibweise ...obj, day. D.h. aus dem mitgegebenen objekt, nur das Attribut mit day nutzen.
+// Sind nur Setter
 const setDay = (obj, day = 1) => ({...obj, day});
 const setMonth = (obj, month = 0) => ({...obj, month});
 const setYear = (obj, year = new Date().getUTCFullYear()) => ({...obj, year});
 
 /*
-    Function mit Seiteneffekten und ohne Rückgabewert
+    Toggle für den vorherigen Monat
+
+    param: obj -> fp_calendar
+
+    Autor: Benjamin Ansohn McDougall
  */
 const prevMonth = obj => {
     let isJanuary = obj.month === 0;
@@ -119,7 +163,11 @@ const prevMonth = obj => {
 };
 
 /*
-    Function mit Seiteneffekten und ohne Rückgabewert
+    Toggle für den nächsten Monat
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
  */
 const nextMonth = obj => {
     let isDecember = obj.month === 11;
@@ -136,7 +184,10 @@ const nextMonth = obj => {
 };
 
 /*
-    Function mit Seiteneffekten und ohne Rückgabewert
+    Löscht alle Einträge in dem Kalender, wichtig bei der dynamischen Befüllung, da gerne ein paar Doppelte Tage
+    auftauchen ;)
+
+    Autor: Benjamin Ansohn McDougall
  */
 const clear = () => {
     const answerToTheUltimateQuestionOfLifeTheUniverseAndEverything = 42;
@@ -145,6 +196,13 @@ const clear = () => {
         document.getElementById('kalender_eintrag_' + kalenderEntryTableData).innerHTML = '');
 };
 
+/*
+    Hebt das heutige Datum im Kalender hervor.
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
+ */
 const heutigenTagHervorheben = obj => {
     const calendarOffsetForToday = firstDayOfMonth(obj) + obj.day - 1;
     const todaysEntry = document.getElementById('kalender_eintrag_' + calendarOffsetForToday);
@@ -152,6 +210,13 @@ const heutigenTagHervorheben = obj => {
 };
 
 // Diese Funktion funktioniert noch nicht zuverlässig. BUGFIX
+/*
+    Ermittelt alle für den aktuellen Monat eingetragenen Termine.
+
+    param: obj -> fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
+ */
 const alleMonatsTermineHolen = obj => {
     const anzahlDerTageDesMonats = daysOfMonth(obj);
     const tageDesMonats = [...Array(anzahlDerTageDesMonats).keys()];
@@ -169,16 +234,36 @@ const alleMonatsTermineHolen = obj => {
     return aktuelleTerminListe;
 }
 
-// Erzeugt ein String, für das DatePicker Element um es direkt ausfüllen zu können.
+/*
+    Erzeugt ein String, für das DatePicker Element um es direkt ausfüllen zu können.
+
+    param: obj => fp_Calendar
+
+    Autor: Benjamin Ansohn McDougall
+ */
 const toDatePickerString = obj => {
     let day = obj.day < 10 ? '0' + obj.day : obj.day;
     return `${obj.year}-${obj.month}-${day}`;
 };
 
+/*
+    toString Methode.
+
+    param: obj => fp_Calendar
+ */
 const toString = obj => `Heute ist ${nameOfDay(obj.weekday)} der ${obj.day}. ${nameOfMonth(obj.month)} ${obj.year} mit ${daysOfMonth(obj)} Tagen`;
 
+/*
+    Zeigt die Anzahl der Termine des Monats als String an.
+
+    param: termine => Liste von Terminen
+
+    Autor: Benjamin Ansohn McDougall.
+ */
 const termineToString = termine => `Es sind derzeit ${termine.anzahl} für diesen Monat eingetragen.`
 
+
+// Ausfüherender Code.
 let fp = fp_calendar();
 fillCalendarMonth(fp);
 fillCalendar(fp);
