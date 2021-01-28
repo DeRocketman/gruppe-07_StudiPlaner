@@ -111,4 +111,3 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
 
 
 
-    //Velociraptor wegen velocity^^

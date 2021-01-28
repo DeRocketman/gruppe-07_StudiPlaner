@@ -7,7 +7,7 @@ import {Projekt} from "./projekt/domain/projekt.js";
 
 const fill = document.querySelector(".fill");
 const buttons = document.querySelectorAll('button.buttonClass');
-const pro = new Projekt();
+
 
 
 export function initListeners(projekte) {

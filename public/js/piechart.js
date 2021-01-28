@@ -1,7 +1,7 @@
 /*
 Erzeugt ein Kreisdiagramm
 Autor: Louis Grümmer
-Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
+Quelle: https://stackoverflow.com/questions/28067153/html5-and-canvas-to-plot-pie-chart
 */
 
 let pie = document.getElementById('canvasPie');
@@ -9,7 +9,7 @@ let pie = document.getElementById('canvasPie');
 pie.width = 500;
 pie.height = 300;
 
-let ctx = pie.getContext('2d');
+let pieChart = pie.getContext('2d');
 
 
 let pieData = [
@@ -17,51 +17,52 @@ let pieData = [
     {name: 'Doing', piecesize: 400, color: '#C3F7F4'},
     {name: 'To-Do', piecesize: 300, color: '#F5D5F0'}
 ];
+let startingpoint = 0;
+let pieRadius = 120;
+let centerX = pie.width / 2;
+let centerY = pie.height / 2;
+
+function drawingPie(pieceOfCake){
+    let wholePie = pieData.reduce(function (passedIn, pieceOfCake)
+    {
+        return passedIn + pieceOfCake.piecesize
+    }, 0);
+    //Styleeinstellung
+    pieChart.fillStyle = pieceOfCake.color;
+    pieChart.lineWidth = 1;
+    pieChart.strokeStyle = '#000';
+
+    let shareOfPie = pieceOfCake.piecesize / wholePie;
+    let endingpoint = startingpoint + shareOfPie * Math.PI * 2;
+    // Einzelnen Teile des Diagramms "malen"
+    pieChart.beginPath();
+    pieChart.moveTo(centerX, centerY);
+    pieChart.arc(centerX, centerY, pieRadius, startingpoint, endingpoint, false);
+    pieChart.lineTo(centerX, centerY);
+    pieChart.fill();
+    pieChart.stroke();
+
+    // Beschriftung hinzufügen
+    // Mittelpunkt der Winkel
+    let midpoint = (startingpoint + endingpoint) / 2;
+    // Abstand der Beschriftung
+    let labelPosY = pieRadius * Math.sin(midpoint) * 1.2;
+    let labelPosX = pieRadius * Math.cos(midpoint) * 1.2;
+        pieChart.beginPath();
+        pieChart.textAlign = 'center';
+        pieChart.fillStyle = 'black';
+        pieChart.fillText(pieceOfCake.name, labelPosX + centerX, labelPosY + centerY);
+        pieChart.closePath();
+
+    startingpoint = endingpoint;
+}
 
 function start(projekt) {
-    ctx.clearRect(0,0,pie.width,pie.height);
+    pieChart.clearRect(0,0,pie.width,pie.height);
     pieData.forEach((piechart, key) => {
         piechart.piecesize = projekt._pieSize[key];
     });
-
-    let total = pieData.reduce(function (together, pieceOfCake) {
-        return together + pieceOfCake.piecesize
-    }, 0);
-    let startAngle = 0;
-    let radius = 120;
-    let centerX = pie.width / 2;
-    let centerY = pie.height / 2;
-
     pieData.forEach(function (pieceOfCake) {
-
-        //Styleeinstellung
-        ctx.fillStyle = pieceOfCake.color;
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = '#333';
-        ctx.beginPath();
-
-        // Einzelnen Teile des Diagramms "malen"
-        let endAngle = ((pieceOfCake.piecesize / total) * Math.PI * 2) + startAngle;
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, startAngle, endAngle, false);
-        ctx.lineTo(centerX, centerY);
-        ctx.fill();
-        ctx.stroke();
-        ctx.closePath();
-
-        // Beschriftung hinzufügen
-        ctx.beginPath();
-        ctx.textAlign = 'center';
-        ctx.fillStyle = 'black';
-        // Mittelpunkt der Winkel
-        // 1.2 * radius ist der Abstand der Beschriftung
-        let theta = (startAngle + endAngle) / 2;
-        let labelPosY = Math.sin(theta) * 1.2 * radius;
-        let labelPosX = Math.cos(theta) * 1.2 * radius;
-
-        ctx.fillText(pieceOfCake.name, labelPosX + centerX, labelPosY + centerY);
-        ctx.closePath();
-
-        startAngle = endAngle;
+        drawingPie(pieceOfCake);
     })
 }

@@ -17,9 +17,10 @@ body {
 
     Autor: Louis Grümmer
     Inspiration: https://www.youtube.com/watch?v=gXkqy0b4M5g
-                 https://www.youtube.com/watch?v=wHFflWvii3M&t=880s
+                 https://youtu.be/wHFflWvii3M
 
  */
+
 .navBarTotal{
     display: flex;
     background-color: #C3F7F4;
@@ -29,18 +30,18 @@ body {
     justify-content: space-around;
     height: 50px;
 }
-.submenu1{
+.secondeStage{
     display: none;
     border-radius: 0 0 5px 5px;
 }
-.submenu1 ul li{
+.secondeStage ul li{
     font-size: large;
     font-weight: bold;
     color: #ABA27D;
     list-style: none;
 }
 
-.navBarTotal ul li:hover .submenu1{
+.navBarTotal ul li:hover .secondeStage{
     display: block;
     position: absolute;
     background: #C3F7F4;
@@ -48,12 +49,12 @@ body {
     margin-left: -60px;
 }
 
-.navBarTotal ul li:hover .submenu1 ul{
+.navBarTotal ul li:hover .secondeStage ul{
     display: block;
     margin: 10px;
 }
 
-.navBarTotal ul li:hover .submenu1 ul li{
+.navBarTotal ul li:hover .secondeStage ul li{
     width: 100px;
     padding: 10px;
     text-align: left
@@ -63,7 +64,6 @@ body {
     display: inline-flex;
     justify-content: space-around;
     width: 80%;
-    left: 0px;
     transform: translateX(-150%);
     transition: transform 0.1s ease-in;
 }
@@ -75,14 +75,6 @@ body {
     color: #ABA27D;
 }
 
-#unassigned{
-    opacity: 50%;
-}
-
-#unassigned:hover{
-    opacity: 50%;
-}
-
 .navPoints_li {
     list-style: none;
     opacity: 0;
@@ -91,10 +83,19 @@ body {
 
 .navbarActive{
     transform: translateX(0%);
+
+}
+
+#unassigned{
+    opacity: 50%;
+}
+
+#unassigned:hover{
+    opacity: 50%;
 }
 /* Implementierung der Animation für die Navigationsleiste*/
 
-@keyframes navbarFadeIn{
+@keyframes blendInNavbar{
     from{
         opacity: 0;
         transform: translateX(100px);
@@ -105,31 +106,35 @@ body {
     }
 }
 
-.burgerToX .line1{
-    transform: rotate(-45deg) translate(-5px,6px);
+.switchToArrow .line1{
+    transform: rotate(-25deg) translate(-6px,3px);
 }
 
-.burgerToX .line2{
+.switchToArrow .line2{
     opacity: 0;
 }
-.burgerToX .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
+.switchToArrow .line3 {
+    transform: rotate(25deg) translate(-6px, -3px);
 }
 
 nav a:hover {
     color: #AB63A0;
 }
 
-.burger{
+.navSwitch{
     cursor: pointer;
 }
-.burger div{
+.navSwitch div{
     width: 25px;
     height: 3px;
     background-color: #ABA27D;
-    margin: 5px;
+    margin: -3px;
     border-radius: 5px;
     transition: all 0.3s ease;
+}
+
+.navSwitch div:nth-child(2){
+    transform:rotate(90deg);
 }
 /* Navigationsleiste Ende */
 
