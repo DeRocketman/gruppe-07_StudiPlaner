@@ -4,7 +4,8 @@ import {Termin} from "./domain/Termin.js";
     Klasse die sich um die Termineinträge kümmert, sprich um die Persistierung und das Laden
     Nutzt die Klasse Termin.
 
-    Als Gimmick und POC wurde noch ein randomisierter Sprüche 'generator' implementiert durch Louis Grümmer und Ben Ansohn McDougall
+    Als Gimmick und POC wurde noch ein randomisierter Sprüche 'generator' implementiert durch Louis Grümmer
+    und Ben Ansohn McDougall
 
     Ansonsten wurde der Hauptteil dieser Klasse von Ben Ansohn McDougall implementiert.
  */
@@ -136,7 +137,6 @@ class CalendarEntry {
 
         const selektierteTeilnehmerinnen = this.teilnehmerListeSelect.selectedOptions;
         this.termin.teilnehmer = [...selektierteTeilnehmerinnen].map(option => option.innerText);
-        console.log(`${this.termin.toString()}`);
 
         if(terminInfosWurdenEingegeben) {
             if (browserKannLokalSpeichern) {
@@ -163,7 +163,7 @@ class CalendarEntry {
 // Beim Laden der Seite wird dieser Eventlistener aufgerufen
 window.addEventListener('load', async () => {
     // müssen hier aufgrund der Asynchronen Natur der Seite auf die items warten -> await
-    calendarEntry.items = await calendarEntry.spruchDesTages().then(value => { return JSON.parse(value).sprueche });
+    calendarEntry.items = calendarEntry.spruchDesTages().then(value => { return JSON.parse(value).sprueche });
     calendarEntry.terminAbfragen();
 }, false);
 
