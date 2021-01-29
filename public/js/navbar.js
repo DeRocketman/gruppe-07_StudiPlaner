@@ -20,7 +20,7 @@ function navbarAction(){
             if(PointsOfNav.style.animation) {
                 PointsOfNav.style.animation = ''
             }else{
-               PointsOfNav.style.animation = `navbarFadeIn 0.3s ease forwards ${navOrder / 2}s`;
+               PointsOfNav.style.animation = `blendInNavbar 0.3s ease forwards ${navOrder / 2}s`;
             }
         });
         //Animation für den Navigationsschalter
