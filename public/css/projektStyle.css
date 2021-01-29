@@ -308,13 +308,20 @@ ul, #literatur {
 }
 
 #projektformular input:focus:invalid {
-    background: #fff /*url(images/invalid.png)*/ no-repeat 98% center;
+    background: #ffffff url("images/invalid.jpg") no-repeat 98% center;
     box-shadow: 0 0 5px #d45252;
     border-color: #b03535
 }
 
-.contact_form input:required:valid {
-    background: #ffffff /*url(images/valid.png)*/ no-repeat 98% center;
+#projektformular input:invalid {
+    background:url("images/invalid.jpg") no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535
+}
+
+#projektformular input:valid {
     box-shadow: 0 0 5px #5cd053;
     border-color: #28921f;
+    content: +"✔";
+    color: green;
 }
