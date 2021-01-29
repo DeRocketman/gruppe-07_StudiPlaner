@@ -309,14 +309,24 @@ ul, #literatur {
     border-radius: 5px;
 
 }
-#projektSpeichern{
-    background-color: #C3F7F4 ;
+#projektSpeichern {
+    background-color: #C3F7F4;
 }
+
+#bearbeitungSpeichern {
+    background-color: #C3F7F4;
+    z-index: -1;
+}
+
+#bearbeitungSpeichern:hover{
+    background-color: #AB63A0;
+}
+
 #projektSpeichern:hover{
     background-color: #AB63A0;
 }
 #projektAbbrechen:hover{
-    background-color: #adadad ;
+    background-color: #adadad;
 }
 #projektformular input:focus:invalid {
     background: #ffffff url("images/invalid.jpg") no-repeat 98% center;

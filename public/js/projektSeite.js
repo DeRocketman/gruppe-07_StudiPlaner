@@ -134,6 +134,7 @@ document.getElementById("projektAnlegen").addEventListener('click', projektAnleg
 
 function projektAnlegen() {
     document.getElementById("projektformular").className = "elementON";
+    document.getElementById("projektSpeichern").className = "elementON";
 }
 
 //Funktion zum Schließen des Formulars
@@ -141,6 +142,8 @@ document.getElementById("projektAbbrechen").addEventListener('click', projektAbb
 
 function projektAbbrechen() {
     document.getElementById("projektformular").className = "elementOFF";
+    document.getElementById("bearbeitungSpeichern").className = "elementOFF";
+    document.getElementById("projektSpeichern").className = "elementOFF";
 }
 
 //Funktion zum Loeschen eines Projekts
@@ -198,7 +201,7 @@ function projektSuchen(projektName) {
 
 const savedProject = new Projekt();
 
-//Funktion zum Speichern der eingegebenen Formulardaten fuer das Projekt
+//Funktion zum Speichern der eingegebenen Formulardaten fuer das Erstellen eines neuen Projekts
 document.getElementById("projektSpeichern").addEventListener('click', function (e) {
     //e.preventDefault();
     do {
@@ -207,8 +210,9 @@ document.getElementById("projektSpeichern").addEventListener('click', function (
 
     projektSpeichern();
 
-    //document.getElementById("projektformular").className = "elementOFF";
-    //document.getElementById("projektformular").reset();
+    document.getElementById("projektformular").className = "elementOFF";
+    document.getElementById("bearbeitungSpeichern").className = "elementOFF";
+    document.getElementById("projektformular").reset();
 
 });
 
@@ -288,11 +292,24 @@ function projektSpeichern() {
     Funktion zum Bearbeiten eines bestehenden Projekts
  */
 document.getElementById("projektBearbeiten").addEventListener("click", projektBearbeiten)
-
 function projektBearbeiten() {
 
+    document.getElementById("bearbeitungSpeichern").className = "elementON";
     document.getElementById("projektformular").className = "elementON";
     projektVerzeichnis[counter].fillForm();
+}
+
+document.getElementById("bearbeitungSpeichern").addEventListener('click' , projektBearbeitungSpeichern)
+function projektBearbeitungSpeichern(){
+    // @TODO Hier dein Lieblingsknopf! :P
+    // Hier kannst du den Funktion zum speichern der Änderungen eines bestehenden Projekts verwirklichen
+
+
+
+
+
+    document.getElementById("projektformular").className = "elementOFF";
+    document.getElementById("bearbeitungSpeichern").className = "elementOFF";
 }
 
 /* https://stackoverrun.com/de/q/1227734
