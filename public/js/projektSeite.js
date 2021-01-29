@@ -170,9 +170,12 @@ function projektLoeschen() {
                     cursor.continue();
                 } else if (cursor && cursor.key === projektName) {
                     cursor.delete().onsuccess = () => {
-                        console.log(`${projektName} wurde gelöscht`);
-                        // TODO: hier muss noch das Projekt aus dem Projektverzeichnis gelöscht werden.
-                        //      leider nicht so einfach, da ProjektServices im ProjektVerzeichnis sind. Refactor Name
+                        const loc = projektVerzeichnis.map((projekt, key) => {
+                            if (projekt._name === projektName) {
+                                return key;
+                            }
+                        });
+                        projektVerzeichnis.splice(loc, 1);
                     };
                 } else {
                     console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`)
@@ -199,8 +202,6 @@ function projektSuchen(projektName) {
     );
 }
 
-const savedProject = new Projekt();
-
 //Funktion zum Speichern der eingegebenen Formulardaten fuer das Erstellen eines neuen Projekts
 document.getElementById("projektSpeichern").addEventListener('click', function (e) {
     //e.preventDefault();
@@ -218,13 +219,20 @@ document.getElementById("projektSpeichern").addEventListener('click', function (
 
 /*
     Speichert das aktuell in dem Formular angezeigte Projekt
+
+    Autor: Benjamin Ansohn McDougall
  */
 function projektSpeichern() {
+    /*
+        Private Hilfsfunktion - um die Projekt-Daten aus dem HTML-Formular zu extrahieren
+     */
     function projektVonDerHtmlSeiteExtrahieren() {
         const bezeichnung = document.getElementById('projektbezeichnung').value;
 
         const name = document.getElementById('tn1name').value;
         const mail = document.getElementById('tn1mail').value;
+
+        // TODO: Teilnehmer aus Formular.
 
         const litVerzeichnis = [];
         litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
@@ -260,6 +268,9 @@ function projektSpeichern() {
         return zuSpeicherndesProjekt;
     }
 
+    /*
+        Private Hilfsfunktion die das aktuelle Projekt in der IndexedDb speichert.
+     */
     function projektInIndexedDbSpeichern() {
         indexedDB.initialize().then((db) => {
             const idbRequest = indexedDB.speichern(db, zuSpeicherndesProjekt);
@@ -291,22 +302,20 @@ function projektSpeichern() {
 /*
     Funktion zum Bearbeiten eines bestehenden Projekts
  */
-document.getElementById("projektBearbeiten").addEventListener("click", projektBearbeiten)
-function projektBearbeiten() {
+document.getElementById("projektBearbeiten").addEventListener("click", projektBearbeiten);
 
+function projektBearbeiten() {
     document.getElementById("bearbeitungSpeichern").className = "elementON";
     document.getElementById("projektformular").className = "elementON";
     projektVerzeichnis[counter].fillForm();
 }
 
 document.getElementById("bearbeitungSpeichern").addEventListener('click' , projektBearbeitungSpeichern)
-function projektBearbeitungSpeichern(){
-    // @TODO Hier dein Lieblingsknopf! :P
-    // Hier kannst du den Funktion zum speichern der Änderungen eines bestehenden Projekts verwirklichen
-
-
-
-
+function projektBearbeitungSpeichern() {
+    indexedDB.initialize().then((db) => {
+        projektLoeschen();
+        projektSpeichern();
+    });
 
     document.getElementById("projektformular").className = "elementOFF";
     document.getElementById("bearbeitungSpeichern").className = "elementOFF";
