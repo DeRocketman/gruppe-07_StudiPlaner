@@ -8,8 +8,6 @@ import {Projekt} from "./projekt/domain/projekt.js";
 const fill = document.querySelector(".fill");
 const buttons = document.querySelectorAll('button.buttonClass');
 
-
-
 export function initListeners(projekte) {
     buttons.forEach((button, key) => button.addEventListener('click', () => {
         const className = "activeProgress";

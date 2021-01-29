@@ -304,9 +304,20 @@ ul, #literatur {
 #projektformular button {
     margin-left: 30px;
     padding: 8px;
-    width: 250px;
-}
+    width: 95px;
+    border: 1px solid black;
+    border-radius: 5px;
 
+}
+#projektSpeichern{
+    background-color: #C3F7F4 ;
+}
+#projektSpeichern:hover{
+    background-color: #AB63A0;
+}
+#projektAbbrechen:hover{
+    background-color: #adadad ;
+}
 #projektformular input:focus:invalid {
     background: #ffffff url("images/invalid.jpg") no-repeat 98% center;
     box-shadow: 0 0 5px #d45252;
@@ -324,4 +335,35 @@ ul, #literatur {
     border-color: #28921f;
     content: +"✔";
     color: green;
+}
+
+
+
+.projektButton{
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 95px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+
+}
+#projektAnlegen{
+    background-color: #C3F7F4 ;
+}
+#projektAnlegen:hover{
+    background-color: #AB63A0;
+}
+#projektBearbeiten{
+    background-color: #F8EFC8;
+}
+#projektBearbeiten:hover{
+    background-color: #ABA27D;
+}
+#projektLoeschen:hover{
+    background-color: #adadad;
 }
