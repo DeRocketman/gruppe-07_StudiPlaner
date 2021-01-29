@@ -329,25 +329,19 @@ ul, #literatur {
     background-color: #adadad;
 }
 #projektformular input:focus:invalid {
-    background: #ffffff url("images/invalid.jpg") no-repeat 98% center;
+    background: white url("../images/invalid.png") no-repeat right;
+    background-size: 23px;
     box-shadow: 0 0 5px #d45252;
     border-color: #b03535
 }
 
-#projektformular input:invalid {
-    background:url("images/invalid.jpg") no-repeat 98% center;
-    box-shadow: 0 0 5px #d45252;
-    border-color: #b03535
-}
 
-#projektformular input:valid {
+#projektformular input:focus:valid {
+    background: url("../images/valid.png") no-repeat right;
+    background-size: 23px;
     box-shadow: 0 0 5px #5cd053;
     border-color: #28921f;
-    content: +"✔";
-    color: green;
 }
-
-
 
 .projektButton{
     border: 1px solid black;
@@ -360,7 +354,6 @@ ul, #literatur {
     display: inline-block;
     font-size: 12px;
     font-weight: 600;
-
 }
 #projektAnlegen{
     background-color: #C3F7F4 ;

@@ -135,6 +135,7 @@ document.getElementById("projektAnlegen").addEventListener('click', projektAnleg
 function projektAnlegen() {
     document.getElementById("projektformular").className = "elementON";
     document.getElementById("projektSpeichern").className = "elementON";
+    document.getElementById("projektbezeichnung").readOnly = false;
 }
 
 //Funktion zum Schließen des Formulars
@@ -307,6 +308,7 @@ document.getElementById("projektBearbeiten").addEventListener("click", projektBe
 function projektBearbeiten() {
     document.getElementById("bearbeitungSpeichern").className = "elementON";
     document.getElementById("projektformular").className = "elementON";
+    document.getElementById("projektbezeichnung").readOnly = true;
     projektVerzeichnis[counter].fillForm();
 }
 
