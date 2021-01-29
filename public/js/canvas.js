@@ -1,7 +1,6 @@
 
 /*
     Datei wurde implementiert, um den Umgang mit Canvas zu lernen und die Weissraeume der Seite zu verschönern.
-    Autor: Louis Grümmer
     Quelle: https://www.youtube.com/watch?v=vxljFhP2krI&t=1275s
  */
 

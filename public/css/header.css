@@ -14,11 +14,6 @@ body {
 }
 /*
     Start Navigationsleiste
-
-    Autor: Louis Grümmer
-    Inspiration: https://www.youtube.com/watch?v=gXkqy0b4M5g
-                 https://youtu.be/wHFflWvii3M
-
  */
 
 .navBarTotal{
@@ -94,6 +89,7 @@ body {
     opacity: 50%;
 }
 /* Implementierung der Animation für die Navigationsleiste*/
+/* Quelle: https://www.youtube.com/watch?v=gXkqy0b4M5g*/
 
 @keyframes blendInNavbar{
     from{
@@ -106,15 +102,15 @@ body {
     }
 }
 
-.switchToArrow .line1{
-    transform: rotate(-25deg) translate(-6px,3px);
+.switchToCross .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
 }
 
-.switchToArrow .line2{
+.switchToCross .line2{
     opacity: 0;
 }
-.switchToArrow .line3 {
-    transform: rotate(25deg) translate(-6px, -3px);
+.switchToCross .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 nav a:hover {
@@ -128,19 +124,16 @@ nav a:hover {
     width: 25px;
     height: 3px;
     background-color: #ABA27D;
-    margin: -3px;
+    margin: 5px;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
-.navSwitch div:nth-child(2){
-    transform:rotate(90deg);
-}
+
 /* Navigationsleiste Ende */
 
 /*
     Logo mit Gruß-Formel und Unterschrift
-    Autor:
 */
 header section {
     display: grid;

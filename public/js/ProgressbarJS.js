@@ -27,17 +27,17 @@ export function initListeners(projekte) {
 }
 
 function activateButton(progress, projektname) {
-    let a = 0;
+    let fillLevel = 0;
     let run = setInterval(fillBar, 1);
 
     function fillBar() {
-        a = a + 1;
-        if (a === progress + 1) {
+        fillLevel = fillLevel + 1;
+        if (fillLevel === progress + 1) {
             clearInterval(run);
         } else {
             let counter = document.querySelector(".counter");
-            counter.textContent = a + "%" + " " + projektname;
-            fill.style.width = a + "%";
+            counter.textContent = fillLevel + "%" + " " + projektname;
+            fill.style.width = fillLevel + "%";
         }
     }
 }

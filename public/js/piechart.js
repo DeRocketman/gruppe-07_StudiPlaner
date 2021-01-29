@@ -1,7 +1,7 @@
 /*
 Erzeugt ein Kreisdiagramm
 Autor: Louis Grümmer
-Quelle: https://stackoverflow.com/questions/28067153/html5-and-canvas-to-plot-pie-chart
+Inspiration: https://stackoverflow.com/questions/28067153/html5-and-canvas-to-plot-pie-chart
 */
 
 let pie = document.getElementById('canvasPie');
@@ -23,6 +23,7 @@ let centerX = pie.width / 2;
 let centerY = pie.height / 2;
 
 function drawingPie(pieceOfCake){
+    //summiert die Elemente aus pieData miteinander zu einem Wert, startet mit 0
     let wholePie = pieData.reduce(function (passedIn, pieceOfCake)
     {
         return passedIn + pieceOfCake.piecesize

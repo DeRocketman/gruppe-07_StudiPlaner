@@ -1,8 +1,5 @@
 /*
-
     Inspiration: https://www.youtube.com/watch?v=gXkqy0b4M5g
-    https://www.youtube.com/watch?v=wHFflWvii3M&t=880s
-
  */
 
 function navbarAction(){
@@ -24,7 +21,7 @@ function navbarAction(){
             }
         });
         //Animation für den Navigationsschalter
-        navButton.classList.toggle('switchToArrow');
+        navButton.classList.toggle('switchToCross');
     });
 
 }
