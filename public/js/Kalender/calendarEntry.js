@@ -1,5 +1,6 @@
 
 import {Termin} from "./domain/Termin.js";
+import {IndexedDB} from "../indexedDB.js";
 /*
     Klasse die sich um die Termineinträge kümmert, sprich um die Persistierung und das Laden
     Nutzt die Klasse Termin.
@@ -163,7 +164,7 @@ class CalendarEntry {
 // Beim Laden der Seite wird dieser Eventlistener aufgerufen
 window.addEventListener('load', async () => {
     // müssen hier aufgrund der Asynchronen Natur der Seite auf die items warten -> await
-    calendarEntry.items = calendarEntry.spruchDesTages().then(value => { return JSON.parse(value).sprueche });
+    calendarEntry.items = await calendarEntry.spruchDesTages().then(value => { return JSON.parse(value).sprueche });
     calendarEntry.terminAbfragen();
 }, false);
 
@@ -184,4 +185,10 @@ speichernButton.addEventListener('mousedown', () => {
 const datePicker = document.querySelector("input[type='date']");
 datePicker.addEventListener('change', () => {
     calendarEntry.terminAbfragen(calendarEntry.terminInfosTextArea, datePicker.value);
+});
+
+
+const indexedDb = new IndexedDB('WPGruppe07', 3, 'Termine');
+indexedDb.initialize().then((db) => {
+    console.log(db);
 });

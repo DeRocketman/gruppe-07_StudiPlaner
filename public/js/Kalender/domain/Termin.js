@@ -4,8 +4,6 @@
     Einzeltermin oder eine Terminserie sein und es können weiter Informationen in Form eines Freitextes angeheftet
     werden.
 
-    Der Termin bietet eine toString Methode um sich die Informationen zum Termin anzeigen lassen zu können.
-
     Autor: Ben Ansohn McDougall
  */
 export class Termin {
@@ -17,6 +15,4 @@ export class Termin {
         this.datum = datum;
         this.text = text;
     }
-    toString = () => `Termin für den ${this.datum}: nehmen ${this.teilnehmer} an einer ${this.veranstaltungsArt} 
-    teil mit dieser Information: ${this.text}`;
 }

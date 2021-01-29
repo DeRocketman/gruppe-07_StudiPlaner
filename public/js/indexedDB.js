@@ -3,6 +3,13 @@ import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 import {BeispielProjekt3} from "./projekt/repository/beispielProjekt3.js";
 import {BeispielProjekt4} from "./projekt/repository/beispielProjekt4.js";
+import {
+    beispielTermin1,
+    beispielTermin2,
+    beispielTermin3,
+    beispielTermin4,
+    beispielTermin5
+} from "./Kalender/repository/beispielTermine.js";
 
 /*
     Erstellt ein neues IndexedDb Object.
@@ -18,11 +25,12 @@ export class IndexedDB {
         this.dbVersion = dbVersion;
         this.objectStoreName = objectStore;
         this.projekte = [new Projekt(), BeispielProjekt(), BeispielProjekt2(), BeispielProjekt3(), BeispielProjekt4()];
+        this.termine = [beispielTermin1, beispielTermin2, beispielTermin3, beispielTermin4, beispielTermin5];
     }
 
     /*
-        Initialisiert die IndexDB mit dem DB Namen und der Version falls noch nicht vorhanden. Legt zudem noch 3
-        Beispielprojekte an.
+        Initialisiert die IndexDB mit dem DB Namen und der Version falls noch nicht vorhanden. Legt zudem noch einige
+        Beispielobjekte an je nachdem ob es sich um Projekte oder Termine handelt.
         Prüft zugleich ob der Browser Kompatibel ist.
         Gibt bei Misserfolg eine Fehlermeldung mit FehlerCode aus.
         Gibt bei Erfolg in der Console eine Meldung zurück und die IDBFactory.
@@ -36,122 +44,143 @@ export class IndexedDB {
         Autor: Benjamin Ansohn McDougall, POC: Dirk Stricker
      */
     initialize = () => {
-        return new Promise(((resolve, reject) => {
-            // Prüft ob indexedDB im aktuellen Browser verfügbar ist.
-            if (!window.indexedDB) {
-                alert('Leider unterstützt Dein Browser keine IndexedDb :-/');
-            } else {
-                const requestToOpenDb = window.indexedDB.open(this.dbName, this.dbVersion);
+        /*
+            Private Methode um das ObjectStore für die Projekte anzulegen
 
-                // Falls die Datenbank noch nicht erstellt oder die Versionsnummer
-                // verändert wurde
-                requestToOpenDb.onupgradeneeded = (event) => {
-                    // Hier ist das Result ein IDBDatabase
-                    const db = requestToOpenDb.result;
+            Autor: Benjamin Ansohn McDougall
+         */
+        function createObjectStores(db) {
+            const projektObjectStore = db.createObjectStore('Projekte',
+                {keyPath: "_nummer", autoIncrement: true});
 
-                    const objectStore = db.createObjectStore(this.objectStoreName,
-                        {keyPath: "_nummer", autoIncrement: true});
+            // Damit wir die db besser durchsuchen können, legen wir
+            // hier einen Index für die Namen an.
+            projektObjectStore.createIndex("_name", "_name");
 
-                    // Damit wir die db besser durchsuchen können, legen wir
-                    // hier einen Index für die Namen an.
-                    objectStore.createIndex("_name", "_name");
+            db.createObjectStore('Termine',
+                {keyPath: "datum", autoIncrement: false})
+                .createIndex("Veranstalungsart", "veranstaltungsArt");
 
-                    // Wenn alle Transaktionen erfolgreich waren werden die drei Beispielprojekte angelegt.
-                    objectStore.transaction.oncomplete = () => {
-                        const projekteObjectStore = db.transaction(this.objectStoreName, "readwrite")
-                            .objectStore(this.objectStoreName);
-                        this.projekte.forEach((projekt) => {
-                            projekteObjectStore.put(projekt);
-                        });
-                    }
-                };
-
-                // Abfangen ob die Verbindung nicht erfolgreich war
-                requestToOpenDb.onerror = (event) => {
-                    console.error(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
-                ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
-                    reject(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
-                ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
-                };
-
-                // Abfangen ob die Verbindung erfolgreich war.
-                requestToOpenDb.onsuccess = (event) => {
-                    const db = requestToOpenDb.result;
-                    console.log(`IndexedDb ${this.dbName} mit der Version ${this.dbVersion}: ${db.name}`);
-                    resolve(db);
-                };
+            // Wenn alle Transaktionen erfolgreich waren werden die drei Beispielprojekte angelegt.
+            projektObjectStore.transaction.oncomplete = () => {
+                const projekteObjectStore = db.transaction('Projekte', "readwrite")
+                    .objectStore('Projekte');
+                this.projekte.forEach((projekt) => {
+                    projekteObjectStore.put(projekt);
+                });
+                const termineObjectStore = db.transaction('Termine', "readwrite")
+                    .objectStore('Termine');
+                this.termine.forEach((termin) => {
+                    console.log(termin);
+                    termineObjectStore.put(termin);
+                });
             }
-        }));
-    }
-
-    /*
-        Holt N Objekte via Cursor aus dem ObjectStore.
-        In dieser Funktion nutzen wir den Cursor um im besten Fall n Elemente
-        aus der Datenbank zu lesen. Falls nicht genügend Elemente in dem ObjectStore
-        vorhanden sind, werden die maximal verfügbaren Objekte returned.
-
-        returns IDBRequest(IDBCursor)
-
-        Autor: Ben Ansohn McDougall
-     */
-    retrieveItemsWithCursor = (db) => {
-        const objectStore = db.transaction([this.objectStoreName], 'readonly').objectStore(this.objectStoreName);
-        return objectStore.openCursor();
-    }
-
-    /*
-        Holt alle Objekte aus einem ObjectStore
-     */
-    retrieveAllProjekts = db => {
-        const objectStore = db.transaction([this.objectStoreName], 'readonly')
-            .objectStore(this.objectStoreName);
-        return objectStore.getAll();
-    };
-
-
-    speichern = (db, object) => {
-        const isObject = object != null;
-        console.log("Speicherung beginnt " + object + ' ' + db);
-        if (isObject) {
-
-            const transaction = db.transaction(this.objectStoreName, "readwrite");
-            const objectStore = transaction.objectStore(this.objectStoreName);
-
-            return objectStore.put(object);
         }
-    }
 
-    /*
-        Ruft Einträge aus der IndexedDb, anhand des Projektnamens ab.
 
-        params: db = IDBDatabase, projektName = Projekt._name
-        Returns IDBRequest
+            return new Promise(((resolve, reject) => {
+                // Prüft ob indexedDB im aktuellen Browser verfügbar ist.
+                if (!window.indexedDB) {
+                    alert('Leider unterstützt Dein Browser keine IndexedDb :-/');
+                } else {
+                    const requestToOpenDb = window.indexedDB.open(this.dbName, this.dbVersion);
 
-        Author: Benjamin Ansohn McDougall
-     */
-    get = (db, projektName) => {
-        const isNotProjektNameEmpty = projektName.length > 0;
-        if(isNotProjektNameEmpty) {
+                    // Falls die Datenbank noch nicht erstellt oder die Versionsnummer
+                    // verändert wurde
+                    requestToOpenDb.onupgradeneeded = (event) => {
+                        // Hier ist das Result ein IDBDatabase
+                        const db = requestToOpenDb.result;
+
+                        createObjectStores.call(this, db);
+                    };
+
+                    // Abfangen ob die Verbindung nicht erfolgreich war
+                    requestToOpenDb.onerror = (event) => {
+                        console.error(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
+                ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
+                        reject(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
+                ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
+                    };
+
+                    // Abfangen ob die Verbindung erfolgreich war.
+                    requestToOpenDb.onsuccess = (event) => {
+                        const db = requestToOpenDb.result;
+                        console.log(`IndexedDb ${this.dbName} mit der Version ${this.dbVersion}: ${db.name}`);
+                        resolve(db);
+                    };
+                }
+            }));
+        }
+
+        /*
+            Holt N Objekte via Cursor aus dem ObjectStore.
+            In dieser Funktion nutzen wir den Cursor um im besten Fall n Elemente
+            aus der Datenbank zu lesen. Falls nicht genügend Elemente in dem ObjectStore
+            vorhanden sind, werden die maximal verfügbaren Objekte returned.
+
+            returns IDBRequest(IDBCursor)
+
+            Autor: Ben Ansohn McDougall
+         */
+        retrieveItemsWithCursor = (db) => {
+            const objectStore = db.transaction([this.objectStoreName], 'readonly').objectStore(this.objectStoreName);
+            return objectStore.openCursor();
+        }
+
+        /*
+            Holt alle Objekte aus einem ObjectStore
+         */
+        retrieveAllProjekts = db => {
             const objectStore = db.transaction([this.objectStoreName], 'readonly')
                 .objectStore(this.objectStoreName);
-            return objectStore.get(projektName);
+            return objectStore.getAll();
+        };
+
+
+        speichern = (db, object) => {
+            const isObject = object != null;
+            console.log("Speicherung beginnt " + object + ' ' + db);
+            if (isObject) {
+
+                const transaction = db.transaction(this.objectStoreName, "readwrite");
+                const objectStore = transaction.objectStore(this.objectStoreName);
+
+                return objectStore.put(object);
+            }
+        }
+
+        /*
+            Ruft Einträge aus der IndexedDb, anhand des Projektnamens ab.
+
+            params: db = IDBDatabase, projektName = Projekt._name
+            Returns IDBRequest
+
+            Author: Benjamin Ansohn McDougall
+         */
+        get = (db, projektName) => {
+            const isNotProjektNameEmpty = projektName.length > 0;
+            if (isNotProjektNameEmpty) {
+                const objectStore = db.transaction([this.objectStoreName], 'readonly')
+                    .objectStore(this.objectStoreName);
+                return objectStore.get(projektName);
+            }
+        }
+
+        /*
+            Sucht Einträge aus der IndexDb, anhand des Projektnamens
+
+            params: db = IDBDatabase, projektName = Projekt._name
+            Returns IDBIndex
+
+            Author: Benjamin Ansohn McDougall
+         */
+        searchViaIndex = (db, projektName, indexName) => {
+            const areParamsNotEmpty = projektName.length > 0 && indexName.length > 0;
+            if (areParamsNotEmpty) {
+                const objectStore = db.transaction([this.objectStoreName], 'readwrite')
+                    .objectStore(this.objectStoreName);
+                return objectStore.index(indexName);
+            }
         }
     }
 
-    /*
-        Sucht Einträge aus der IndexDb, anhand des Projektnamens
-
-        params: db = IDBDatabase, projektName = Projekt._name
-        Returns IDBIndex
-
-        Author: Benjamin Ansohn McDougall
-     */
-    searchViaIndex = (db, projektName, indexName) => {
-        const areParamsNotEmpty = projektName.length > 0 && indexName.length > 0;
-        if(areParamsNotEmpty) {
-            const objectStore = db.transaction([this.objectStoreName], 'readwrite')
-                .objectStore(this.objectStoreName);
-            return objectStore.index(indexName);
-        }
-    }
-}
