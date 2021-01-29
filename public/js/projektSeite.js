@@ -205,7 +205,7 @@ function projektSuchen(projektName) {
 
 //Funktion zum Speichern der eingegebenen Formulardaten fuer das Erstellen eines neuen Projekts
 document.getElementById("projektSpeichern").addEventListener('click', function (e) {
-    //e.preventDefault();
+    e.preventDefault();
     do {
         projektEingabenValidieren();
     } while (projektEingabenValidieren() !== true)
