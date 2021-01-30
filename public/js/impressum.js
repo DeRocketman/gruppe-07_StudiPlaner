@@ -1,16 +1,20 @@
 /*
     Autor: Kim Lara Feller
+
+    Verwendete Methoden und die Verwendung von canvas sind an folgenden Quellen orientiert:
+    https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/Spiele
+    https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/Spiele/Arcade-Spiele
  */
 
 //Variabeln Spiel
- x = 0;
+let x = 0;
 let y = 0;
 let xZiel = Math.floor(Math.random()*28)*20+20;
 let yZiel = Math.floor(Math.random()*22)*20+20;
 //Variabeln Punktestandsanzeige / Zeit
 let punkte = 0;
 let startzeit = new Date();
-let zeit = 5;
+const zeit = 30;
 let restzeit = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -77,9 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let key = evt.key;
 
-        //Abfrage der Tasten in der Konsole
+        //Abfrage der Pfeiltasten zum Bewegen der Spielfigur
         console.log('Tastaturcode: ' + evt.key);
-
         //Pfeiltaste links
         if (key === "ArrowLeft") {
             x -= 20;
@@ -88,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 x = 0
             }
         }
-
         //Pfeiltaste oben
         if (key === "ArrowUp") {
             y -= 20;
@@ -97,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 y = 0;
             }
         }
-
         //Pfeiltaste rechts
         if (key === "ArrowRight") {
             x += 20;
