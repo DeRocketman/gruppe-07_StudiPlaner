@@ -3,6 +3,7 @@ import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 import {BeispielProjekt3} from "./projekt/repository/beispielProjekt3.js";
 import {BeispielProjekt4} from "./projekt/repository/beispielProjekt4.js";
+import {BeispielProjekt5} from "./projekt/repository/beispielProjekt5.js";
 import {
     beispielTermin1,
     beispielTermin2,
@@ -24,7 +25,7 @@ export class IndexedDB {
         this.dbName = dbName;
         this.dbVersion = dbVersion;
         this.objectStoreName = objectStore;
-        this.projekte = [new Projekt(), BeispielProjekt(), BeispielProjekt2(), BeispielProjekt3(), BeispielProjekt4()];
+        this.projekte = [BeispielProjekt(), BeispielProjekt2(), BeispielProjekt3(), BeispielProjekt4(), BeispielProjekt5()];
         this.termine = [beispielTermin1, beispielTermin2, beispielTermin3, beispielTermin4, beispielTermin5];
     }
 
@@ -71,7 +72,6 @@ export class IndexedDB {
                 const termineObjectStore = db.transaction('Termine', "readwrite")
                     .objectStore('Termine');
                 this.termine.forEach((termin) => {
-                    console.log(termin);
                     termineObjectStore.put(termin);
                 });
             }
