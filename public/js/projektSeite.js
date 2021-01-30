@@ -21,14 +21,14 @@ document.getElementById("mail1").addEventListener('click', mailsender1);
 
 function mailsender1() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[0]._email + mailbetreff;
+    location.href = "mailto:" + projektServiceVerzeichnis[counter]._projekt._teilnehmerListe[0]._email + mailbetreff;
 }
 
 document.getElementById("mail2").addEventListener('click', mailsender2);
 
 function mailsender2() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[1]._email + mailbetreff;
+    location.href = "mailto:" + projektServiceVerzeichnis[counter]._projekt._teilnehmerListe[1]._email + mailbetreff;
 
 }
 
@@ -36,7 +36,7 @@ document.getElementById("mail3").addEventListener('click', mailsender3);
 
 function mailsender3() {
     const mailbetreff = "?subject=" + document.getElementById("projektName").innerHTML;
-    location.href = "mailto:" + projektVerzeichnis[counter]._projekt._teilnehmerListe[2]._email + mailbetreff;
+    location.href = "mailto:" + projektServiceVerzeichnis[counter]._projekt._teilnehmerListe[2]._email + mailbetreff;
 }
 
 /*
@@ -50,7 +50,7 @@ function mailsender3() {
 */
 
 // Hält die Projekte der Datenbank im Speicher
-let projektVerzeichnis = [];
+let projektServiceVerzeichnis = [];
 
 const indexedDB = new IndexedDB();
 // erstmal die Datenbank initialisieren
@@ -62,9 +62,8 @@ openDb.then((db) => {
 
     objectStoreRequest.onsuccess = (event) => {
         setListeners();
-        event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
-        start(projektVerzeichnis[0]._projekt);
-        projektVerzeichnis[0].fillWindow()
+        event.target.result.forEach((p, key) => projektServiceVerzeichnis[key] = new ProjektService(p));
+        resetProjektView(0);
         db.close(event);
     }
 
@@ -89,11 +88,16 @@ let counter = 0;
 
 function toggleProjekt() {
     counter++;
-    if (counter >= projektVerzeichnis.length) {
+    if (counter >= projektServiceVerzeichnis.length) {
         counter = 0;
     }
-    projektVerzeichnis[counter].fillWindow();
-    start(projektVerzeichnis[counter]._projekt);
+    resetProjektView(counter);
+}
+
+function resetProjektView(position = 0) {
+    projektServiceVerzeichnis[position].fillWindow();
+    start(projektServiceVerzeichnis[position]._projekt);
+    counter = position;
 }
 
 /*
@@ -107,20 +111,18 @@ function setListeners() {
 
         if (key === "ArrowLeft") {
             counter--;
-            if (counter <= 0) {
-                counter = projektVerzeichnis.length - 1;
+            if (counter < 0) {
+                counter = projektServiceVerzeichnis.length - 1;
             }
-            projektVerzeichnis[counter].fillWindow();
-            start(projektVerzeichnis[counter]._projekt);
+            resetProjektView(counter);
         }
 
         if (key === "ArrowRight") {
             counter++;
-            if (counter >= projektVerzeichnis.length) {
+            if (counter >= projektServiceVerzeichnis.length) {
                 counter = 0;
             }
-            projektVerzeichnis[counter].fillWindow();
-            start(projektVerzeichnis[counter]._projekt);
+            resetProjektView(counter);
         }
     });
 
@@ -164,22 +166,33 @@ function projektLoeschen() {
             const projektName = document.getElementById('projektName').innerHTML;
             const idbIndex = indexedDB.searchViaIndex(db, projektName, "_name");
             const idbRequest = idbIndex.openCursor();
-            console.log(idbRequest);
             idbRequest.onsuccess = () => {
                 const cursor = idbRequest.result;
+
                 if (cursor && cursor.key !== projektName) {
                     cursor.continue();
-                } else if (cursor && cursor.key === projektName) {
+                } else if (cursor && cursor.key === projektName && projektServiceVerzeichnis.length > 1) {
                     cursor.delete().onsuccess = () => {
-                        const loc = projektVerzeichnis.map((projekt, key) => {
-                            if (projekt._name === projektName) {
-                                return key;
-                            }
-                        });
-                        projektVerzeichnis.splice(loc, 1);
+                        /*
+                            Private function um das gelöschte Projekt vom Frontend zu entfernen.
+
+                            Autor: Benjamin Ansohn McDougall
+                         */
+                        function removeProjektServiceFromFrontEnd() {
+                            const loc = projektServiceVerzeichnis.map((projektService, key) => {
+                                if (projektService._projekt._name === projektName) {
+                                    return key;
+                                }
+                            });
+                            projektServiceVerzeichnis.splice(loc, 1);
+                            resetProjektView(0);
+                        }
+
+                        removeProjektServiceFromFrontEnd();
                     };
                 } else {
-                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`)
+                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`);
+                    alert('Argh, bitte erst ein neues Projekt anlegen bevor Du das letzte löscht.');
                 }
             }
         }
@@ -231,10 +244,16 @@ function projektSpeichern() {
     function projektVonDerHtmlSeiteExtrahieren() {
         const bezeichnung = document.getElementById('projektbezeichnung').value;
 
-        const name = document.getElementById('tn1name').value;
-        const mail = document.getElementById('tn1mail').value;
+        const teilnehmenden = [];
 
-        // TODO: Teilnehmer aus Formular.
+        for (let i = 1; i < 10; i++) {
+            const name = document.getElementById(`tn${i}name`).value;
+            const mail = document.getElementById(`tn${i}mail`).value;
+
+            if (name !== '') {
+                teilnehmenden.push(new Teilnehmerin(name, mail));
+            }
+        }
 
         const litVerzeichnis = [];
         litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
@@ -260,13 +279,13 @@ function projektSpeichern() {
             Math.random() * 10000000,
             true,
             bezeichnung,
-            [new Teilnehmerin(name, mail)],
+            teilnehmenden,
             litVerzeichnis,
             linkVerzeichnis,
             notizen,
             aufgabenListe,
-            [100, 0, 0],
-            1);
+            [Math.random() * 20, Math.random() * 100, Math.random() * 10],
+            Math.random() * 100);
         return zuSpeicherndesProjekt;
     }
 
@@ -277,9 +296,8 @@ function projektSpeichern() {
         indexedDB.initialize().then((db) => {
             const idbRequest = indexedDB.speichern(db, zuSpeicherndesProjekt);
             idbRequest.transaction.oncomplete = () => {
-                console.log(`${zuSpeicherndesProjekt} wurde in ${indexedDB.objectStoreName} erfolgreich gespeichert.`);
+                console.log(`${zuSpeicherndesProjekt._name} wurde in ${indexedDB.objectStoreName} erfolgreich gespeichert.`);
                 db.close;
-                erfolgreichGespeichert = true;
             }
 
             idbRequest.onerror = () => {
@@ -289,16 +307,13 @@ function projektSpeichern() {
         });
     }
 
-    projektInIndexedDbSpeichern.call(this);
     const zuSpeicherndesProjekt = projektVonDerHtmlSeiteExtrahieren();
-    let erfolgreichGespeichert = false;
+    projektInIndexedDbSpeichern.call(this);
 
-    if (erfolgreichGespeichert) {
-        projektVerzeichnis[projektVerzeichnis.length] = zuSpeicherndesProjekt;
-        const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt);
-        const projektAufSeiteAnzeigen = () => projektImHtmlFormat.fillWindow();
-        projektAufSeiteAnzeigen();
-    }
+    const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt);
+    const anzahlProjekte = projektServiceVerzeichnis.length;
+    projektServiceVerzeichnis[anzahlProjekte] = projektImHtmlFormat;
+    resetProjektView(anzahlProjekte);
 }
 
 /*
@@ -310,14 +325,15 @@ function projektBearbeiten() {
     document.getElementById("bearbeitungSpeichern").className = "elementON";
     document.getElementById("projektformular").className = "elementON";
     document.getElementById("projektbezeichnung").readOnly = true;
-    projektVerzeichnis[counter].fillForm();
+    projektServiceVerzeichnis[counter].fillForm();
 }
 
-document.getElementById("bearbeitungSpeichern").addEventListener('click' , projektBearbeitungSpeichern)
+document.getElementById("bearbeitungSpeichern").addEventListener('click', projektBearbeitungSpeichern)
+
 function projektBearbeitungSpeichern() {
     indexedDB.initialize().then((db) => {
-        projektLoeschen();
         projektSpeichern();
+        projektLoeschen();
     });
 
     document.getElementById("projektformular").className = "elementOFF";
@@ -337,26 +353,35 @@ function projektEingabenValidieren() {
     let projektbezeichnung = document.getElementById("projektbezeichnung");
     let tn1name = document.getElementById("tn1name");
     let tn1mail = document.getElementById("tn1mail");
+    let link1text = document.getElementById("link1text");
     let patternMail = /(^$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]))/;
-    //let patternLink = /(^$|^(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))/;
+    let patternLink = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
     let link1ref = document.getElementById("link1ref");
 
     if (projektbezeichnung.value === "") {
         alert("Dein Projekt braucht einen Namen!");
         document.getElementById("projektbezeichnung");
         projektbezeichnung.reset();
-        return false
+        return false;
     } else if (tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === "") {
         alert("Teilnehmer und E-Mail bitte immer zusammen angeben.")
         tn1name.reset();
         tn1mail.reset();
-        return false
+        return false;
     } else if (!(patternMail.test(tn1mail.value) || tn1mail.value === "")) {
         alert("Ups! Das war keine Emailadresse.");
         tn1mail.reset();
-        return false
+        return false;
+    } else if (link1text.value !== "" && link1ref.value === "" || link1ref.value !== "" && link1text.value === "") {
+        alert("Bitte Linktext und Link zusammen angeben")
+        link1ref.reset();
+        return false;
+    }  else if (!(patternLink.test(link1ref.value) || link1ref.value === "")) {
+        alert("Dies ist keine gültige URL")
+        link1ref.reset();
+        return false;
     } else {
-        return true
+        return true;
     }
 }
 

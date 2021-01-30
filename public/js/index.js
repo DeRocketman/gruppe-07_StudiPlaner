@@ -108,8 +108,7 @@ const nProjekteAusDbLaden = (anzahlZuHolendenProjekte) => {
                 cursor.continue();
             } else {
                 // Da keine Elemente mehr im ObjectStore sind können wir abbrechen.
-                console.log(`Es wurden ${projektVerzeichnis.length} ${indexedDb.objectStoreName} per Cursor geholt`);
-                // TODO: Dinge die man nun auf der index.html initialisiseren kann, z.B. Tabs, Fortschritt
+                // console.log(`Es wurden ${projektVerzeichnis.length} ${indexedDb.objectStoreName} per Cursor geholt`);
                 initListeners(projektVerzeichnis);
                 GruppenAusfuellen(projektVerzeichnis);
                 tabsAusDbFüllen(projektVerzeichnis);

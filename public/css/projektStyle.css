@@ -139,10 +139,6 @@ main article:first-child ul li::marker {
     background-color: #F5D5F0;
 }
 
-#erinnerungsmail fieldset {
-    min-height: 85%;
-}
-
 .erinnerungsmails {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -234,14 +230,12 @@ ul, #literatur {
 
 #projektformular label {
     width:150px;
-    margin-top: 3px;
-    display:inline-block;
-    float:left;
-    padding:3px;
+    display: inline-grid;
+    padding:1px;
 }
 #projektformular input {
-    height:20px;
-    width:220px;
+    height:15px;
+    width:150px;
     padding:5px 5px;
 
     -moz-transition: padding .25s;
@@ -256,6 +250,7 @@ ul, #literatur {
     width: 95px;
     border: 1px solid black;
     border-radius: 5px;
+    display: inline-flex;
 
 }
 #projektSpeichern {
@@ -278,6 +273,12 @@ ul, #literatur {
     background-color: #adadad;
 }
 
+/*
+    Folgende zwei Blöcke manipulieren das das Design der Validierung
+    Quelle invalid.png : https://de.wikipedia.org/wiki/Datei:Attention_niels_epting.svg
+    Quelle valid.png: https://webstockreview.net/pict/getfirst
+
+*/
 #projektformular input:focus:invalid {
     background: white url("../images/invalid.png") no-repeat right;
     background-size: 23px;
@@ -301,10 +302,11 @@ ul, #literatur {
     text-align: center;
     text-decoration: none;
     width: 95px;
-    display: inline-block;
     font-size: 12px;
     font-weight: 600;
+    margin-top: 5px;
 }
+
 #projektAnlegen{
     background-color: #C3F7F4 ;
 }
