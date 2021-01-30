@@ -139,7 +139,7 @@ export class IndexedDB {
 
         speichern = (db, object) => {
             const isObject = object != null;
-            console.log("Speicherung beginnt " + object + ' ' + db);
+            console.log("Speicherung beginnt " + object._name + ' ' + db);
             if (isObject) {
 
                 const transaction = db.transaction(this.objectStoreName, "readwrite");
