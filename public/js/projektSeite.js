@@ -311,8 +311,9 @@ function projektSpeichern() {
     projektInIndexedDbSpeichern.call(this);
 
     const projektImHtmlFormat = new ProjektService(zuSpeicherndesProjekt);
-    const length = projektServiceVerzeichnis.push = projektImHtmlFormat;
-    resetProjektView(length);
+    const anzahlProjekte = projektServiceVerzeichnis.length;
+    projektServiceVerzeichnis[anzahlProjekte] = projektImHtmlFormat;
+    resetProjektView(anzahlProjekte);
 }
 
 /*
@@ -331,8 +332,8 @@ document.getElementById("bearbeitungSpeichern").addEventListener('click', projek
 
 function projektBearbeitungSpeichern() {
     indexedDB.initialize().then((db) => {
-        projektLoeschen();
         projektSpeichern();
+        projektLoeschen();
     });
 
     document.getElementById("projektformular").className = "elementOFF";
