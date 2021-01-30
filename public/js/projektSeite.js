@@ -164,22 +164,33 @@ function projektLoeschen() {
             const projektName = document.getElementById('projektName').innerHTML;
             const idbIndex = indexedDB.searchViaIndex(db, projektName, "_name");
             const idbRequest = idbIndex.openCursor();
-            console.log(idbRequest);
             idbRequest.onsuccess = () => {
                 const cursor = idbRequest.result;
+
                 if (cursor && cursor.key !== projektName) {
                     cursor.continue();
-                } else if (cursor && cursor.key === projektName) {
+                } else if (cursor && cursor.key === projektName && projektVerzeichnis.length > 1) {
                     cursor.delete().onsuccess = () => {
-                        const loc = projektVerzeichnis.map((projekt, key) => {
-                            if (projekt._name === projektName) {
-                                return key;
-                            }
-                        });
-                        projektVerzeichnis.splice(loc, 1);
+                        /*
+                            Private function um das gelöschte Projekt vom Frontend zu entfernen.
+
+                            Autor: Benjamin Ansohn McDougall
+                         */
+                        function removeProjektServiceFromFrontEnd() {
+                            const loc = projektVerzeichnis.map((projektService, key) => {
+                                if (projektService._projekt._name === projektName) {
+                                    return key;
+                                }
+                            });
+                            projektVerzeichnis.splice(loc, 1);
+                            projektVerzeichnis[0].fillWindow();
+                        }
+
+                        removeProjektServiceFromFrontEnd();
                     };
                 } else {
-                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`)
+                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`);
+                    alert('Argh, bitte erst ein neues Projekt anlegen bevor Du das letzte löscht.');
                 }
             }
         }
