@@ -1,4 +1,4 @@
-import { Termin } from './Termin.js'
+import { Termin } from './termin.js'
 
 // Reines Modul um die verschiedenen Monate im Speicher zwischen zu speichern anstatt diese
 // immer wieder generieren zu müssen.

@@ -41,7 +41,7 @@ buttons.forEach((button, key) => button.addEventListener('click', () => {
 
     Autor: Benjamin Ansohn McDougall
  */
-function tabsAusDbFüllen(projektVerzeichnis) {
+function tabsAusDbFuellen(projektVerzeichnis) {
     projektVerzeichnis.forEach((projekt, schluessel) => {
         const nochNichtMehrAlsVierProjekte = schluessel <= 3;
         if (nochNichtMehrAlsVierProjekte) {
@@ -111,7 +111,7 @@ const nProjekteAusDbLaden = (anzahlZuHolendenProjekte) => {
                 // console.log(`Es wurden ${projektVerzeichnis.length} ${indexedDb.objectStoreName} per Cursor geholt`);
                 initListeners(projektVerzeichnis);
                 GruppenAusfuellen(projektVerzeichnis);
-                tabsAusDbFüllen(projektVerzeichnis);
+                tabsAusDbFuellen(projektVerzeichnis);
             }
         }
 
