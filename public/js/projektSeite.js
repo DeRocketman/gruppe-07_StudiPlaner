@@ -185,7 +185,7 @@ function projektLoeschen() {
                                 }
                             });
                             projektVerzeichnis.splice(loc, 1);
-                            projektVerzeichnis[0].fillWindow();
+                            resetProjektView(0);
                         }
 
                         removeProjektServiceFromFrontEnd();
@@ -244,10 +244,19 @@ function projektSpeichern() {
     function projektVonDerHtmlSeiteExtrahieren() {
         const bezeichnung = document.getElementById('projektbezeichnung').value;
 
+        const teilnehmenden = [];
         const name = document.getElementById('tn1name').value;
         const mail = document.getElementById('tn1mail').value;
 
-        // TODO: Teilnehmer aus Formular.
+        for(let i = 1; i < 10; i++) {
+            const name = document.getElementById(`tn${i}name`).value;
+            const mail = document.getElementById(`tn${i}mail`).value;
+
+            if(name !== '') {
+                let amount = teilnehmenden.push(new Teilnehmerin(name, mail));
+                console.log(`${amount} von Teilnehmenden erfasst`)
+            }
+        }
 
         const litVerzeichnis = [];
         litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
@@ -273,7 +282,7 @@ function projektSpeichern() {
             Math.random() * 10000000,
             true,
             bezeichnung,
-            [new Teilnehmerin(name, mail)],
+            teilnehmenden,
             litVerzeichnis,
             linkVerzeichnis,
             notizen,
