@@ -337,26 +337,35 @@ function projektEingabenValidieren() {
     let projektbezeichnung = document.getElementById("projektbezeichnung");
     let tn1name = document.getElementById("tn1name");
     let tn1mail = document.getElementById("tn1mail");
+    let link1text = document.getElementById("link1text");
     let patternMail = /(^$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]))/;
-    //let patternLink = /(^$|^(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))/;
+    let patternLink = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
     let link1ref = document.getElementById("link1ref");
 
     if (projektbezeichnung.value === "") {
         alert("Dein Projekt braucht einen Namen!");
         document.getElementById("projektbezeichnung");
         projektbezeichnung.reset();
-        return false
+        return false;
     } else if (tn1name.value !== "" && tn1mail.value === "" || tn1mail.value !== "" && tn1name.value === "") {
         alert("Teilnehmer und E-Mail bitte immer zusammen angeben.")
         tn1name.reset();
         tn1mail.reset();
-        return false
+        return false;
     } else if (!(patternMail.test(tn1mail.value) || tn1mail.value === "")) {
         alert("Ups! Das war keine Emailadresse.");
         tn1mail.reset();
-        return false
+        return false;
+    } else if (link1text.value !== "" && link1ref.value === "" || link1ref.value !== "" && link1text.value === "") {
+        alert("Bitte Linktext und Link zusammen angeben")
+        link1ref.reset();
+        return false;
+    }  else if (!(patternLink.test(link1ref.value) || link1ref.value === "")) {
+        alert("Dies ist keine gültige URL")
+        link1ref.reset();
+        return false;
     } else {
-        return true
+        return true;
     }
 }
 

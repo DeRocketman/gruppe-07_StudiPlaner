@@ -301,6 +301,7 @@ ul, #literatur {
     width: 95px;
     border: 1px solid black;
     border-radius: 5px;
+    display: inline-flex;
 
 }
 #projektSpeichern {
@@ -352,11 +353,11 @@ ul, #literatur {
     text-align: center;
     text-decoration: none;
     width: 95px;
-    display: inline-block;
     font-size: 12px;
     font-weight: 600;
     margin-top: 5px;
 }
+
 #projektAnlegen{
     background-color: #C3F7F4 ;
 }
