@@ -63,8 +63,7 @@ openDb.then((db) => {
     objectStoreRequest.onsuccess = (event) => {
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
-        start(projektVerzeichnis[0]._projekt);
-        projektVerzeichnis[0].fillWindow()
+        resetProjektView(0);
         db.close(event);
     }
 
@@ -92,8 +91,13 @@ function toggleProjekt() {
     if (counter >= projektVerzeichnis.length) {
         counter = 0;
     }
-    projektVerzeichnis[counter].fillWindow();
-    start(projektVerzeichnis[counter]._projekt);
+    resetProjektView(counter);
+}
+
+function resetProjektView(position = 0) {
+    projektVerzeichnis[position].fillWindow();
+    start(projektVerzeichnis[position]._projekt);
+    counter = position;
 }
 
 /*
@@ -107,11 +111,10 @@ function setListeners() {
 
         if (key === "ArrowLeft") {
             counter--;
-            if (counter <= 0) {
+            if (counter < 0) {
                 counter = projektVerzeichnis.length - 1;
             }
-            projektVerzeichnis[counter].fillWindow();
-            start(projektVerzeichnis[counter]._projekt);
+            resetProjektView(counter);
         }
 
         if (key === "ArrowRight") {
@@ -119,8 +122,7 @@ function setListeners() {
             if (counter >= projektVerzeichnis.length) {
                 counter = 0;
             }
-            projektVerzeichnis[counter].fillWindow();
-            start(projektVerzeichnis[counter]._projekt);
+            resetProjektView(counter);
         }
     });
 
