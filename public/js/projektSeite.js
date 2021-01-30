@@ -214,6 +214,7 @@ document.getElementById("projektSpeichern").addEventListener('click', function (
 
     document.getElementById("projektformular").className = "elementOFF";
     document.getElementById("bearbeitungSpeichern").className = "elementOFF";
+    document.getElementById("projektSpeichern").className = "elementOFF";
     document.getElementById("projektformular").reset();
 
 });

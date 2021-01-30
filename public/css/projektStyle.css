@@ -328,6 +328,7 @@ ul, #literatur {
 #projektAbbrechen:hover{
     background-color: #adadad;
 }
+
 #projektformular input:focus:invalid {
     background: white url("../images/invalid.png") no-repeat right;
     background-size: 23px;
