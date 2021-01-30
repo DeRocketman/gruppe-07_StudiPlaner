@@ -63,8 +63,7 @@ openDb.then((db) => {
     objectStoreRequest.onsuccess = (event) => {
         setListeners();
         event.target.result.forEach((p, key) => projektVerzeichnis[key] = new ProjektService(p));
-        start(projektVerzeichnis[0]._projekt);
-        projektVerzeichnis[0].fillWindow()
+        resetProjektView(0);
         db.close(event);
     }
 
@@ -92,8 +91,13 @@ function toggleProjekt() {
     if (counter >= projektVerzeichnis.length) {
         counter = 0;
     }
-    projektVerzeichnis[counter].fillWindow();
-    start(projektVerzeichnis[counter]._projekt);
+    resetProjektView(counter);
+}
+
+function resetProjektView(position = 0) {
+    projektVerzeichnis[position].fillWindow();
+    start(projektVerzeichnis[position]._projekt);
+    counter = position;
 }
 
 /*
@@ -107,11 +111,10 @@ function setListeners() {
 
         if (key === "ArrowLeft") {
             counter--;
-            if (counter <= 0) {
+            if (counter < 0) {
                 counter = projektVerzeichnis.length - 1;
             }
-            projektVerzeichnis[counter].fillWindow();
-            start(projektVerzeichnis[counter]._projekt);
+            resetProjektView(counter);
         }
 
         if (key === "ArrowRight") {
@@ -119,8 +122,7 @@ function setListeners() {
             if (counter >= projektVerzeichnis.length) {
                 counter = 0;
             }
-            projektVerzeichnis[counter].fillWindow();
-            start(projektVerzeichnis[counter]._projekt);
+            resetProjektView(counter);
         }
     });
 
@@ -164,22 +166,33 @@ function projektLoeschen() {
             const projektName = document.getElementById('projektName').innerHTML;
             const idbIndex = indexedDB.searchViaIndex(db, projektName, "_name");
             const idbRequest = idbIndex.openCursor();
-            console.log(idbRequest);
             idbRequest.onsuccess = () => {
                 const cursor = idbRequest.result;
+
                 if (cursor && cursor.key !== projektName) {
                     cursor.continue();
-                } else if (cursor && cursor.key === projektName) {
+                } else if (cursor && cursor.key === projektName && projektVerzeichnis.length > 1) {
                     cursor.delete().onsuccess = () => {
-                        const loc = projektVerzeichnis.map((projekt, key) => {
-                            if (projekt._name === projektName) {
-                                return key;
-                            }
-                        });
-                        projektVerzeichnis.splice(loc, 1);
+                        /*
+                            Private function um das gelöschte Projekt vom Frontend zu entfernen.
+
+                            Autor: Benjamin Ansohn McDougall
+                         */
+                        function removeProjektServiceFromFrontEnd() {
+                            const loc = projektVerzeichnis.map((projektService, key) => {
+                                if (projektService._projekt._name === projektName) {
+                                    return key;
+                                }
+                            });
+                            projektVerzeichnis.splice(loc, 1);
+                            resetProjektView(0);
+                        }
+
+                        removeProjektServiceFromFrontEnd();
                     };
                 } else {
-                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`)
+                    console.error(`Ein Projekt mit dem Namen ${projektName} konnte nicht gelöscht werden`);
+                    alert('Argh, bitte erst ein neues Projekt anlegen bevor Du das letzte löscht.');
                 }
             }
         }
@@ -231,10 +244,19 @@ function projektSpeichern() {
     function projektVonDerHtmlSeiteExtrahieren() {
         const bezeichnung = document.getElementById('projektbezeichnung').value;
 
+        const teilnehmenden = [];
         const name = document.getElementById('tn1name').value;
         const mail = document.getElementById('tn1mail').value;
 
-        // TODO: Teilnehmer aus Formular.
+        for(let i = 1; i < 10; i++) {
+            const name = document.getElementById(`tn${i}name`).value;
+            const mail = document.getElementById(`tn${i}mail`).value;
+
+            if(name !== '') {
+                let amount = teilnehmenden.push(new Teilnehmerin(name, mail));
+                console.log(`${amount} von Teilnehmenden erfasst`)
+            }
+        }
 
         const litVerzeichnis = [];
         litVerzeichnis[0] = new Literatur(document.getElementById('litForm1').value);
@@ -260,7 +282,7 @@ function projektSpeichern() {
             Math.random() * 10000000,
             true,
             bezeichnung,
-            [new Teilnehmerin(name, mail)],
+            teilnehmenden,
             litVerzeichnis,
             linkVerzeichnis,
             notizen,
