@@ -32,6 +32,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 1em;
 }
+
 #canvasHintergrund {
     position:absolute;
     top:0;
@@ -84,59 +85,7 @@ main article:first-child ul li::marker {
 
 /*Ende Personen */
 
-/*
-Beginn Kreisdiagramm-Projekte
-Autor: Louis Grümmer
-Inspiration: https://www.youtube.com/watch?v=ihe5yeEAeHg
-*/
-#piechart {
-    position: center;
-    left: -10%;
-    top: 50px;
-}
 
-.piece {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    clip: rect(0px, 250px, 250px, 125px);
-    border-radius: 125px;
-}
-
-.piece-inner {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    clip: rect(0px, 125px, 250px, 0px);
-    border-radius: 125px;
-    -webkit-backface-visibility: hidden;
-}
-/* Spezifische Einstellungen */
-#piece1 {
-    transform: rotate(0deg);
-}
-#piece1 > .piece-inner {
-    background: #F8EFC8;
-    transform: rotate(72deg);
-}
-#piece2 {
-    transform: rotate(72deg);
-}
-#piece2 > .piece-inner {
-    background: #C3F7F4;
-    transform: rotate(126deg);
-}
-#piece3 {
-    transform: rotate(198deg);
-}
-#piece3 > .piece-inner {
-    background: #F5D5F0;
-    transform: rotate(168deg);
-}
-#piechartID{
-    margin-right: 200px;
-}
-/* Ende Kreisdiagramm */
 
 .oberhaus:nth-child(3) {
     display: grid;
@@ -370,4 +319,199 @@ ul, #literatur {
 }
 #projektLoeschen:hover{
     background-color: #adadad;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+@media screen and (max-width: 7680px) {
+    body{
+        background-color: #585558;
+        opacity: 75%;
+    }
+
+    #teilnehmerlisteID{
+        background: #585558;
+    }
+    #aufgabenID{
+        background: #585558;
+    }
+    #literaturNotizenID{
+        background: #585558;
+    }
+    #erinnerungsmail{
+        background: #585558;
+    }
+
+
+    main article:first-child ul li {
+        color: #adadad;
+    }
+
+    main article:first-child ul li::marker {
+        color: whitesmoke;
+    }
+
+    .unteraufgabeLinks input {
+        width: 90%;
+        border: 1px solid #adadad;
+        border-radius: 3px;
+    }
+
+    .aufgaben div:nth-child(even) {
+        font-size: 8pt;
+    }
+
+    .aufgaben div:nth-child(odd) input {
+        font-size: 8pt;
+        padding: 6px;
+    }
+
+    #aufgabe_1, #aufgabe_3 {
+        color: white;
+        background-color: #AB63A0;
+    }
+
+    #aufgabe_2 {
+        background-color: #F5D5F0;
+    }
+
+    #erinnerungsmail fieldset {
+        min-height: 85%;
+    }
+
+    .erinnerungsmails {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        font-size: 9pt;
+        text-align: center;
+        border: none;
+    }
+
+    .erinnerungsmails fieldset {
+        min-height: 98%;
+    }
+
+    .erinnerungsmails img {
+        max-height: 30px;
+    }
+
+    .erinnerungsmails div {
+        display: flex;
+        flex-direction: column;
+        padding-top: 23px;
+    }
+
+    /*Beginn Literatur und Links*/
+
+    ul, #literatur {
+        list-style-type: none;
+    }
+
+    #literatur {
+        margin: 0;
+        padding: 0;
+    }
+    .caret {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .caret::before {
+        content: "\25B6";
+        color: #C3F7F4;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    /* Pfeil drehen beim Aufklappen (JavaScript) */
+    .caret-down::before {
+        transform: rotate(90deg);
+    }
+    /* nested bzw. active anzeigen (JavaScript) */
+    .nested {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+    /* Lost Elements */
+    #neuesProjekt{
+        max-height: 50px;
+        max-width:  50px;
+    }
+    /* Einstellungsstyles */
+    .setting{
+        max-height: 13px;
+        max-width: 13px;
+        visibility: hidden;
+    }
+    .settingON{
+        max-height: 13px;
+        max-width: 13px;
+        visibility: visible;
+    }
+    .elementOFF{
+        visibility: hidden;
+    }
+    .elementON{
+        visibility: visible;
+    }
+
+    #projektformular{
+        background-color: #F8EFC8;
+        border: 2px solid #ABA27D;
+        border-radius: 10px;
+        text-align: left;
+        margin-top: -400px;
+        margin-left: -150px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+
+    #projektformular label {
+        width:150px;
+        margin-top: 3px;
+        display:inline-block;
+        float:left;
+        padding:3px;
+    }
+    #projektformular input {
+        height:20px;
+        width:220px;
+        padding:5px 5px;
+
+        -moz-transition: padding .25s;
+        -webkit-transition: padding .25s;
+        -o-transition: padding .25s;
+        transition: padding .25s;
+    }
+
+    #projektformular button {
+        margin-left: 30px;
+        padding: 8px;
+        width: 95px;
+        border: 1px solid black;
+        border-radius: 5px;
+
+    }
+    #projektSpeichern {
+        background-color: #C3F7F4;
+    }
+
+    #bearbeitungSpeichern {
+        background-color: #C3F7F4;
+        z-index: -1;
+    }
+
+    #bearbeitungSpeichern:hover{
+        background-color: #AB63A0;
+    }
+
+    #projektSpeichern:hover{
+        background-color: #AB63A0;
+    }
+    #projektAbbrechen:hover{
+        background-color: #adadad;
+    }
+
 }

@@ -28,7 +28,7 @@ main section fieldset form div input {
 
 #unserFieldset{
     height: 560px;
-    background: white;
+    background: #585558;
 }
 
 .aktuellesDatum {
@@ -38,10 +38,10 @@ main section fieldset form div input {
     text-align: center;
     font-size: 11pt;
 }
-
 #datumsSelektion {
     display: flex;
     flex-flow: row wrap;
+
     margin-bottom: 1em;
 }
 
@@ -109,6 +109,8 @@ hier evtl. noch grid oder flex einbauen
     color: whitesmoke;
     background-color: #C3F7F4;
 }
+
+
 
 
 

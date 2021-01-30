@@ -1,5 +1,5 @@
 import {IndexedDB} from "./indexedDB.js";
-import {initListeners} from "./Progressbar.js";
+import {initListeners} from "./progressbar.js";
 
 
 /*Start Tabs */

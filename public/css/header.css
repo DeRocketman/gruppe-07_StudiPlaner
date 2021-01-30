@@ -171,3 +171,14 @@ header section h2 {
     color: #666;
     text-align: right;
 }
+@media (prefers-color-scheme: dark) {
+
+    body {
+
+        color: whitesmoke;
+    }
+    header section h2 {
+        color: #adadad;
+
+    }
+}

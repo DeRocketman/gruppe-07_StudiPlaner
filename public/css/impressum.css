@@ -63,3 +63,22 @@ main {
     height:100%;
     z-index:-1;
 }
+@media (prefers-color-scheme: dark) {
+
+    body{
+        background-color:  #585558;
+        opacity: 75%;
+    }
+    #spiel{
+        background-color:  #585558;
+    }
+    #spielInfo{
+        background-color:  #585558;
+    }
+    #spielende{
+        background-color: #AB63A0;
+    }
+    #impressum{
+        background-color:  #585558;
+    }
+}

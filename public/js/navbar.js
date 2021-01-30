@@ -1,5 +1,6 @@
 /*
-    Inspiration: https://www.youtube.com/watch?v=gXkqy0b4M5g
+    Animation des Navigationsmenüs
+    Quelle: https://www.youtube.com/watch?v=gXkqy0b4M5g
  */
 
 function navbarAction(){
