@@ -24,7 +24,17 @@ main {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 1em;
 }
-
+footer {
+    position: absolute;
+    bottom: 0;
+    line-height: 20px;
+    width: 100%;
+    text-align: center;
+    background: #AB63A0;
+}
+footer a{
+    color: #F8EFC8;
+}
 #spiel {
     margin-left: 100px;
     background: white;

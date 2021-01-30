@@ -322,6 +322,17 @@ ul, #literatur {
 #projektLoeschen:hover{
     background-color: #adadad;
 }
+footer {
+    position: absolute;
+    bottom: 0;
+    line-height: 20px;
+    width: 100%;
+    text-align: center;
+    background: #AB63A0;
+}
+footer a{
+    color: #F8EFC8;
+}
 @media (prefers-color-scheme: dark) {
 
     body{
@@ -352,5 +363,10 @@ ul, #literatur {
     .unteraufgabeLinks input {
         border: 1px solid #adadad;
     }
-
+    #projektformular{
+        color: #585558;
+    }
+    #projektformular label{
+    color: #585558;
+    }
 }
