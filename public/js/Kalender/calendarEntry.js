@@ -1,5 +1,5 @@
 
-import {Termin} from "./domain/Termin.js";
+import {Termin} from "./domain/termin.js";
 import {IndexedDB} from "../indexedDB.js";
 /*
     Klasse die sich um die Termineinträge kümmert, sprich um die Persistierung und das Laden

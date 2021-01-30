@@ -15,7 +15,7 @@ const fp_calendar = (date = new Date()) => ({
 });
 
 /*
-    Termin Objekt, anstatt die Termin.js Klasse zu nutzen.
+    Termin Objekt, anstatt die termin.js Klasse zu nutzen.
     Ganz im Sinne der funktionalen Programmierung.
 
     param: datePickerDatum -> DatumsFormat wie beim Datepicker Html Element.

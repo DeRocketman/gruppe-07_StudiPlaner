@@ -1,5 +1,5 @@
 import {Teilnehmerin} from "../../projekt/domain/teilnehmerin.js";
-import {Termin} from "../domain/Termin.js";
+import {Termin} from "../domain/termin.js";
 
 export const beispielTermin1 = new Termin(
     '2021-02-01',
