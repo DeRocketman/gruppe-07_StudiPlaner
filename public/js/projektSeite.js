@@ -266,7 +266,7 @@ function projektSpeichern() {
 
         const notizen = document.getElementById('notizen').value;
 
-        const zuSpeicherndesProjekt = new Projekt(
+        return new Projekt(
             Math.random() * 10000000,
             true,
             bezeichnung,
@@ -277,7 +277,6 @@ function projektSpeichern() {
             aufgabenListe,
             [Math.random() * 20, Math.random() * 100, Math.random() * 10],
             Math.random() * 100);
-        return zuSpeicherndesProjekt;
     }
 
     /*
@@ -322,7 +321,7 @@ function projektBearbeiten() {
 document.getElementById("bearbeitungSpeichern").addEventListener('click', projektBearbeitungSpeichern)
 
 function projektBearbeitungSpeichern() {
-    indexedDB.initialize().then((db) => {
+    indexedDB.initialize().then(() => {
         projektSpeichern();
         projektLoeschen();
     });
