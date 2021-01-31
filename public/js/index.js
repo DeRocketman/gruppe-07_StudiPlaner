@@ -61,7 +61,7 @@ function tabsAusDbFuellen(projektVerzeichnis) {
 
     Autor: Ben Ansohn McDougall
  */
-function GruppenAusfuellen(projektVerzeichnis) {
+function gruppenAusfuellen(projektVerzeichnis) {
     projektVerzeichnis.forEach((projekt, schluessel) => {
         const nochNichtMehrAlsVierProjekte = schluessel <= 3;
         if (nochNichtMehrAlsVierProjekte) {
@@ -107,10 +107,8 @@ const nProjekteAusDbLaden = (anzahlZuHolendenProjekte) => {
                 projektVerzeichnis.push(cursor.value);
                 cursor.continue();
             } else {
-                // Da keine Elemente mehr im ObjectStore sind können wir abbrechen.
-                // console.log(`Es wurden ${projektVerzeichnis.length} ${indexedDb.objectStoreName} per Cursor geholt`);
                 initListeners(projektVerzeichnis);
-                GruppenAusfuellen(projektVerzeichnis);
+                gruppenAusfuellen(projektVerzeichnis);
                 tabsAusDbFuellen(projektVerzeichnis);
             }
         }
