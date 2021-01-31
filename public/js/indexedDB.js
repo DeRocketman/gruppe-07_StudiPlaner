@@ -1,4 +1,3 @@
-import {Projekt} from "./projekt/domain/projekt.js";
 import {BeispielProjekt} from "./projekt/repository/beispielProjekt.js";
 import {BeispielProjekt2} from "./projekt/repository/beispielProjekt2.js";
 import {BeispielProjekt3} from "./projekt/repository/beispielProjekt3.js";
@@ -78,109 +77,109 @@ export class IndexedDB {
         }
 
 
-            return new Promise(((resolve, reject) => {
-                // Prüft ob indexedDB im aktuellen Browser verfügbar ist.
-                if (!window.indexedDB) {
-                    alert('Leider unterstützt Dein Browser keine IndexedDb :-/');
-                } else {
-                    const requestToOpenDb = window.indexedDB.open(this.dbName, this.dbVersion);
+        return new Promise(((resolve, reject) => {
+            // Prüft ob indexedDB im aktuellen Browser verfügbar ist.
+            if (!window.indexedDB) {
+                alert('Leider unterstützt Dein Browser keine IndexedDb :-/');
+            } else {
+                const requestToOpenDb = window.indexedDB.open(this.dbName, this.dbVersion);
 
-                    // Falls die Datenbank noch nicht erstellt oder die Versionsnummer
-                    // verändert wurde
-                    requestToOpenDb.onupgradeneeded = (event) => {
-                        // Hier ist das Result ein IDBDatabase
-                        const db = requestToOpenDb.result;
+                // Falls die Datenbank noch nicht erstellt oder die Versionsnummer
+                // verändert wurde
+                requestToOpenDb.onupgradeneeded = () => {
+                    // Hier ist das Result ein IDBDatabase
+                    const db = requestToOpenDb.result;
 
-                        createObjectStores.call(this, db);
-                    };
+                    createObjectStores.call(this, db);
+                };
 
-                    // Abfangen ob die Verbindung nicht erfolgreich war
-                    requestToOpenDb.onerror = (event) => {
-                        console.error(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
+                // Abfangen ob die Verbindung nicht erfolgreich war
+                requestToOpenDb.onerror = () => {
+                    console.error(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
                 ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
-                        reject(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
+                    reject(`Die Verbindung zur IndexedDB ${this.dbName} ist leider fehlgeschlagen:
                 ${requestToOpenDb.errorCode} ${requestToOpenDb.errorDetail}`);
-                    };
+                };
 
-                    // Abfangen ob die Verbindung erfolgreich war.
-                    requestToOpenDb.onsuccess = (event) => {
-                        const db = requestToOpenDb.result;
-                        console.log(`IndexedDb ${this.dbName} mit der Version ${this.dbVersion}: ${db.name}`);
-                        resolve(db);
-                    };
-                }
-            }));
-        }
-
-        /*
-            Holt N Objekte via Cursor aus dem ObjectStore.
-            In dieser Funktion nutzen wir den Cursor um im besten Fall n Elemente
-            aus der Datenbank zu lesen. Falls nicht genügend Elemente in dem ObjectStore
-            vorhanden sind, werden die maximal verfügbaren Objekte returned.
-
-            returns IDBRequest(IDBCursor)
-
-            Autor: Ben Ansohn McDougall
-         */
-        retrieveItemsWithCursor = (db) => {
-            const objectStore = db.transaction([this.objectStoreName], 'readonly').objectStore(this.objectStoreName);
-            return objectStore.openCursor();
-        }
-
-        /*
-            Holt alle Objekte aus einem ObjectStore
-         */
-        retrieveAllProjekts = db => {
-            const objectStore = db.transaction([this.objectStoreName], 'readonly')
-                .objectStore(this.objectStoreName);
-            return objectStore.getAll();
-        };
-
-
-        speichern = (db, object) => {
-            const isObject = object != null;
-            console.log("Speicherung beginnt " + object._name + ' ' + db);
-            if (isObject) {
-
-                const transaction = db.transaction(this.objectStoreName, "readwrite");
-                const objectStore = transaction.objectStore(this.objectStoreName);
-
-                return objectStore.put(object);
+                // Abfangen ob die Verbindung erfolgreich war.
+                requestToOpenDb.onsuccess = () => {
+                    const db = requestToOpenDb.result;
+                    console.log(`IndexedDb ${this.dbName} mit der Version ${this.dbVersion}: ${db.name}`);
+                    resolve(db);
+                };
             }
-        }
+        }));
+    }
 
-        /*
-            Ruft Einträge aus der IndexedDb, anhand des Projektnamens ab.
+    /*
+        Holt N Objekte via Cursor aus dem ObjectStore.
+        In dieser Funktion nutzen wir den Cursor um im besten Fall n Elemente
+        aus der Datenbank zu lesen. Falls nicht genügend Elemente in dem ObjectStore
+        vorhanden sind, werden die maximal verfügbaren Objekte returned.
 
-            params: db = IDBDatabase, projektName = Projekt._name
-            Returns IDBRequest
+        returns IDBRequest(IDBCursor)
 
-            Author: Benjamin Ansohn McDougall
-         */
-        get = (db, projektName) => {
-            const isNotProjektNameEmpty = projektName.length > 0;
-            if (isNotProjektNameEmpty) {
-                const objectStore = db.transaction([this.objectStoreName], 'readonly')
-                    .objectStore(this.objectStoreName);
-                return objectStore.get(projektName);
-            }
-        }
+        Autor: Ben Ansohn McDougall
+     */
+    retrieveItemsWithCursor = (db) => {
+        const objectStore = db.transaction([this.objectStoreName], 'readonly').objectStore(this.objectStoreName);
+        return objectStore.openCursor();
+    }
 
-        /*
-            Sucht Einträge aus der IndexDb, anhand des Projektnamens
+    /*
+        Holt alle Objekte aus einem ObjectStore
+     */
+    retrieveAllProjekts = db => {
+        const objectStore = db.transaction([this.objectStoreName], 'readonly')
+            .objectStore(this.objectStoreName);
+        return objectStore.getAll();
+    };
 
-            params: db = IDBDatabase, projektName = Projekt._name
-            Returns IDBIndex
 
-            Author: Benjamin Ansohn McDougall
-         */
-        searchViaIndex = (db, projektName, indexName) => {
-            const areParamsNotEmpty = projektName.length > 0 && indexName.length > 0;
-            if (areParamsNotEmpty) {
-                const objectStore = db.transaction([this.objectStoreName], 'readwrite')
-                    .objectStore(this.objectStoreName);
-                return objectStore.index(indexName);
-            }
+    speichern = (db, object) => {
+        const isObject = object != null;
+        console.log("Speicherung beginnt " + object._name + ' ' + db);
+        if (isObject) {
+
+            const transaction = db.transaction(this.objectStoreName, "readwrite");
+            const objectStore = transaction.objectStore(this.objectStoreName);
+
+            return objectStore.put(object);
         }
     }
+
+    /*
+        Ruft Einträge aus der IndexedDb, anhand des Projektnamens ab.
+
+        params: db = IDBDatabase, projektName = Projekt._name
+        Returns IDBRequest
+
+        Author: Benjamin Ansohn McDougall
+     */
+    get = (db, projektName) => {
+        const isNotProjektNameEmpty = projektName.length > 0;
+        if (isNotProjektNameEmpty) {
+            const objectStore = db.transaction([this.objectStoreName], 'readonly')
+                .objectStore(this.objectStoreName);
+            return objectStore.get(projektName);
+        }
+    }
+
+    /*
+        Sucht Einträge aus der IndexDb, anhand des Projektnamens
+
+        params: db = IDBDatabase, projektName = Projekt._name
+        Returns IDBIndex
+
+        Author: Benjamin Ansohn McDougall
+     */
+    searchViaIndex = (db, projektName, indexName) => {
+        const areParamsNotEmpty = projektName.length > 0 && indexName.length > 0;
+        if (areParamsNotEmpty) {
+            const objectStore = db.transaction([this.objectStoreName], 'readwrite')
+                .objectStore(this.objectStoreName);
+            return objectStore.index(indexName);
+        }
+    }
+}
 

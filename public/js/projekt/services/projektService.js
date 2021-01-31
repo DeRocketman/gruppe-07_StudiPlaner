@@ -14,7 +14,7 @@ export class ProjektService {
         Füllt die Werte aus dem Projekt auf die Projektseite.
      */
     fillWindow = () => {
-        document.getElementById("projektName").innerHTML = this._projekt._name;
+        document.getElementById("projektName").innerHTML = this._projekt._name + " &#40Gr-07&#41";
 
         const teilnehmerListe = this._projekt._teilnehmerListe;
         const parentNode = document.getElementById('teilnehmerliste');

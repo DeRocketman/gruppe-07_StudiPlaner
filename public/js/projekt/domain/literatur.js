@@ -1,6 +1,6 @@
 /*
     Fachwert - Literatur für ein Projekt
-    Author: Benjamin McDougall
+    Author: Benjamin McDougall und Dirk Stricker
  */
 export class Literatur {
     _titel;

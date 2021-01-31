@@ -213,8 +213,3 @@ cal.highlightToday();
 document.getElementById('vorherigerMonat').addEventListener('mousedown', cal.prevMonth);
 document.getElementById('naechsterMonat').addEventListener('mousedown', cal.nextMonth);
 
-
-// Nais to have in Version 3:
-// 2. Lieber neue Kind-Knoten im Kalender anlegen als leere Tabellenelemente im HTML zu haben.
-//    - Dynamisch erzeugen, ist irgendwie cooler und somit auch modularer einsetzbar ohne viel Aufwand.
-

@@ -247,13 +247,6 @@ const toDatePickerString = obj => {
 };
 
 /*
-    toString Methode.
-
-    param: obj => fp_Calendar
- */
-const toString = obj => `Heute ist ${nameOfDay(obj.weekday)} der ${obj.day}. ${nameOfMonth(obj.month)} ${obj.year} mit ${daysOfMonth(obj)} Tagen`;
-
-/*
     Zeigt die Anzahl der Termine des Monats als String an.
 
     param: termine => Liste von Terminen

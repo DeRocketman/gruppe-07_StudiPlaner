@@ -45,7 +45,7 @@ function mailsender3() {
 
     Initiale Entwicklung: Dirk Stricker
     Refactoring in verschiedene Klassen: Dirk Stricker & Benjamin Ansohn McDougall
-    Formular zur Eingabe: Kim Lara Feller & Louis Grümmer
+    Formular zur Eingabe: Kim Lara Feller & Louis Grümmer, Refactored Dirk Stricker
     IndexedDb: Dirk Stricker und Benjamin Ansohn McDougall
 */
 
@@ -72,15 +72,6 @@ openDb.then((db) => {
                     ${event.target.errorCode} ${event.target.errorDetail}`);
     };
 });
-
-// const projekteInDerDb = db.retrieveAllProjekts();
-
-// const projektService = new ProjektService();
-// projektService.fillWindow();
-// const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));
-// const projektService2 = new ProjektService(BeispielProjekt());
-// const projektService3 = new ProjektService(BeispielProjekt2());
-// const projektVerzeichnis = [projektService, projektService1, projektService2, projektService3];
 
 
 // TODO: REFACTOR THIS AFTER CRUNCH
@@ -275,7 +266,7 @@ function projektSpeichern() {
 
         const notizen = document.getElementById('notizen').value;
 
-        const zuSpeicherndesProjekt = new Projekt(
+        return new Projekt(
             Math.random() * 10000000,
             true,
             bezeichnung,
@@ -286,7 +277,6 @@ function projektSpeichern() {
             aufgabenListe,
             [Math.random() * 20, Math.random() * 100, Math.random() * 10],
             Math.random() * 100);
-        return zuSpeicherndesProjekt;
     }
 
     /*
@@ -331,7 +321,7 @@ function projektBearbeiten() {
 document.getElementById("bearbeitungSpeichern").addEventListener('click', projektBearbeitungSpeichern)
 
 function projektBearbeitungSpeichern() {
-    indexedDB.initialize().then((db) => {
+    indexedDB.initialize().then(() => {
         projektSpeichern();
         projektLoeschen();
     });
@@ -373,7 +363,7 @@ function projektEingabenValidieren() {
         tn1mail.reset();
         return false;
     } else if (link1text.value !== "" && link1ref.value === "" || link1ref.value !== "" && link1text.value === "") {
-        alert("Bitte Linktext und Link zusammen angeben")
+        alert("Bitte Linktext und Link zusammen angeben.")
         link1ref.reset();
         return false;
     }  else if (!(patternLink.test(link1ref.value) || link1ref.value === "")) {
@@ -384,30 +374,3 @@ function projektEingabenValidieren() {
         return true;
     }
 }
-
-/*Beispiel aus den Vorlesungen
-
-function initiate(){
-    document.projektformular.addEventListener("invalid", validation, true);
-    document.projektformular.addEventListener("input", checkval, false);
-    //document.getElementById("projektSpeichern").addEventListener ("click", sendit, false);
-}
-function validation(e){
-    var elem=e.target;
-    elem.style.background='#FFDDDD';
-}
-function sendit(){
-    var valid=document.projektformular.checkValidity();
-    if(valid){
-        document.projektformular.submit();
-    }
-}
-function checkval(e){
-    var elem=e.target;
-    if(elem.validity.valid){
-        elem.style.background='#FFFFFF';
-    }else{
-        elem.style.background='#ff2574';
-    }
-}
-window.addEventListener("load", initiate, false); */

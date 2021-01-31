@@ -9,7 +9,7 @@ import {Link} from "./link.js";
 //       Nummer automatisch in db generieren.
 /*
    Material - Klasse zum anlegen eines neuen Projekts der Projektseite
-   Author: Benjamin McDougall
+   Author: Benjamin McDougall und Dirk Stricker
 
  */
 export class Projekt {
@@ -31,7 +31,7 @@ export class Projekt {
                 notizen = 'Notizen zum Projekt',
                 aufgaben = [new Aufgabe()],
                 pieSize = [500,400,300],
-                progress = 0) {
+                progress = 1) {
         this._nummer = nummer;
         this._aktiviert = aktiviert;
         this._name = name;
