@@ -1,6 +1,6 @@
 /*
     Fachwert - Link für die jeweiligen Projekte
-    Author: Benjamin McDougall
+    Author: Benjamin McDougall und Dirk Stricker
  */
 export class Link {
     _url;

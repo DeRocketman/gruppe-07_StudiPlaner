@@ -4,7 +4,7 @@
     Müssten eine dto (Data transfer Object) bauen, damit die serialisierung funktionieren kann.
     Zeit ist dafür zu knapp und passt nicht in das Zeitfenster und dem Umfang dieses Projekts
 
-    Author: Benjamin McDougall, nachträgliches Refactoring mit Louis Grümmer.
+    Author: Benjamin McDougall und Dirk Stricker, nachträgliches Refactoring mit Louis Grümmer.
  */
 import {Link} from "../domain/link.js";
 

@@ -1,6 +1,6 @@
 /*
     Fachwert - TeilnehmerInnen eines Projekts
-    Author: Benjamin McDougall
+    Author: Benjamin McDougall und Dirk Stricker
  */
 export class Teilnehmerin {
     _name;

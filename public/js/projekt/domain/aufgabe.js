@@ -1,6 +1,6 @@
 /*
     Aufgabe zu einem Projekt.
-    Author: Benjamin McDougall
+    Author: Benjamin McDougall und Dirk Stricker
  */
 export class Aufgabe {
     _beschreibung;
