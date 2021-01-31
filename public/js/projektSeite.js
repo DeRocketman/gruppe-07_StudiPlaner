@@ -45,7 +45,7 @@ function mailsender3() {
 
     Initiale Entwicklung: Dirk Stricker
     Refactoring in verschiedene Klassen: Dirk Stricker & Benjamin Ansohn McDougall
-    Formular zur Eingabe: Kim Lara Feller & Louis Grümmer
+    Formular zur Eingabe: Kim Lara Feller & Louis Grümmer, Refactored Dirk Stricker
     IndexedDb: Dirk Stricker und Benjamin Ansohn McDougall
 */
 

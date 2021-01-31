@@ -85,8 +85,6 @@ main article:first-child ul li::marker {
 
 /*Ende Personen */
 
-
-
 .oberhaus:nth-child(3) {
     display: grid;
     grid-template-columns: 1fr;
@@ -216,6 +214,9 @@ ul, #literatur {
     visibility: visible;
 }
 
+/*
+    Formulardesign beginn
+*/
 #projektformular{
     background-color: #F8EFC8;
     border: 2px solid #ABA27D;
@@ -322,6 +323,9 @@ ul, #literatur {
 #projektLoeschen:hover{
     background-color: #adadad;
 }
+/*
+*       Design der Fußzeile bzw. Fußbereichs
+ */
 footer {
     position: absolute;
     bottom: 0;
