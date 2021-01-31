@@ -332,10 +332,10 @@ footer {
     height: 20px;
     width: 100%;
     text-align: center;
-    background: #AB63A0;
+    background: #C3F7F4;
 }
 footer a{
-    color: #F8EFC8;
+    color: #AB63A0;
 }
 @media (prefers-color-scheme: dark) {
 
