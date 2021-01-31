@@ -35,7 +35,14 @@ window.addEventListener('mousemove',function (event){
     mouse.x = event.x;
     mouse.y = event.y;
 })
-
+/*
+    Erzeugt einen Kreis mit einer zufälligen Farbe des colorArrays
+    @params x x-Position
+    @params y y-Position
+    @params velociraptorX Geschwindigkeit in x-Richtung
+    @params velociraptorY Geschwindigkeit in Y-Richtung
+    @params radius
+ */
 function Circle(x, y, velociraptorX, velociraptorY, radius){
     this.x = x;
     this.y = y;
@@ -51,7 +58,6 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
         cnvs.fillStyle = this.color;
         cnvs.fill();
     }
-
     this.movement = () =>{
         //damit die Kreise im Bild bleiben
         //(+/-this.radius damit der Rand des Kreises vom Bildschirmrand abprallt und nicht der Mittelpunkt)
@@ -80,8 +86,11 @@ function Circle(x, y, velociraptorX, velociraptorY, radius){
 }
     const circleArray = [];
 
-    //erzeugt die angegebene Anzahl an Kreisen mit einer zufälligen Größe, Bewegungsgeschwindigkeit
-    //und Position und speichert sie in einem Array.
+    /*
+        Erzeugt die angegebene Anzahl an Kreisen mit einer zufälligen Größe, Bewegungsgeschwindigkeit
+        und Position und speichert sie in einem Array.
+
+     */
 
     for (let i = 0; i < circleCount; i++){
         const radius = Math.random() * 3 +1;

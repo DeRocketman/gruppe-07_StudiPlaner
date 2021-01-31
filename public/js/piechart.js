@@ -21,6 +21,11 @@ let startingpoint = 0;
 let pieRadius = 120;
 let centerX = pie.width / 2;
 let centerY = pie.height / 2;
+/*
+    Die Funktion bekommt die einzelnen Elemente des pieData-Arrays übergeben und
+    zeichnet diese auf das Canvas zu einem Piechart.
+    @params pieceOfCake
+ */
 
 function drawingPie(pieceOfCake){
     //summiert die Elemente aus pieData miteinander zu einem Wert, startet mit 0
@@ -57,7 +62,10 @@ function drawingPie(pieceOfCake){
 
     startingpoint = endingpoint;
 }
-
+/*
+    Die Funktion aktualisiert das aktuelle Piechart mit den übergebenden Daten
+    @params projekt
+ */
 function start(projekt) {
     pieChart.clearRect(0,0,pie.width,pie.height);
     pieData.forEach((piechart, key) => {
