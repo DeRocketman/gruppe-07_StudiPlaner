@@ -37,11 +37,6 @@ tr:nth-child(even) {
     background-color: darkgrey;
 }
 
-tr:hover {
-    background-color: red;
-    color: white;
-}
-
 td:nth-child(2)::first-letter{
     font-weight: bold;
 }
