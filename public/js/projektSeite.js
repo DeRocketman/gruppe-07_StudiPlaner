@@ -373,7 +373,7 @@ function projektEingabenValidieren() {
         tn1mail.reset();
         return false;
     } else if (link1text.value !== "" && link1ref.value === "" || link1ref.value !== "" && link1text.value === "") {
-        alert("Bitte Linktext und Link zusammen angeben")
+        alert("Bitte Linktext und Link zusammen angeben.")
         link1ref.reset();
         return false;
     }  else if (!(patternLink.test(link1ref.value) || link1ref.value === "")) {
@@ -384,30 +384,3 @@ function projektEingabenValidieren() {
         return true;
     }
 }
-
-/*Beispiel aus den Vorlesungen
-
-function initiate(){
-    document.projektformular.addEventListener("invalid", validation, true);
-    document.projektformular.addEventListener("input", checkval, false);
-    //document.getElementById("projektSpeichern").addEventListener ("click", sendit, false);
-}
-function validation(e){
-    var elem=e.target;
-    elem.style.background='#FFDDDD';
-}
-function sendit(){
-    var valid=document.projektformular.checkValidity();
-    if(valid){
-        document.projektformular.submit();
-    }
-}
-function checkval(e){
-    var elem=e.target;
-    if(elem.validity.valid){
-        elem.style.background='#FFFFFF';
-    }else{
-        elem.style.background='#ff2574';
-    }
-}
-window.addEventListener("load", initiate, false); */
