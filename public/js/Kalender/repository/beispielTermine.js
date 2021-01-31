@@ -1,6 +1,12 @@
 import {Teilnehmerin} from "../../projekt/domain/teilnehmerin.js";
 import {Termin} from "../domain/termin.js";
 
+/*
+    Repository für verschiedene Beispieltermine, quasi nur eine bessere json Datei.
+
+    Autor: Benjamin Ansohn McDougall
+ */
+
 export const beispielTermin1 = new Termin(
     '2021-02-01',
     'Klausur',

@@ -73,15 +73,6 @@ openDb.then((db) => {
     };
 });
 
-// const projekteInDerDb = db.retrieveAllProjekts();
-
-// const projektService = new ProjektService();
-// projektService.fillWindow();
-// const projektService1 = new ProjektService(new Projekt(2, true, 'Projekt 10000'));
-// const projektService2 = new ProjektService(BeispielProjekt());
-// const projektService3 = new ProjektService(BeispielProjekt2());
-// const projektVerzeichnis = [projektService, projektService1, projektService2, projektService3];
-
 
 // TODO: REFACTOR THIS AFTER CRUNCH
 let counter = 0;

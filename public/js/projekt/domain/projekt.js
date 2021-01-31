@@ -31,7 +31,7 @@ export class Projekt {
                 notizen = 'Notizen zum Projekt',
                 aufgaben = [new Aufgabe()],
                 pieSize = [500,400,300],
-                progress = 0) {
+                progress = 1) {
         this._nummer = nummer;
         this._aktiviert = aktiviert;
         this._name = name;
